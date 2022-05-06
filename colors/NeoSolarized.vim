@@ -619,7 +619,7 @@ hi! link gitcommitUnmergedArrow  gitcommitUnmergedFile
 "exe "hi! gitcommitOverflow"
 "exe "hi! gitcommitBlank"
 " }}}
-"
+
 " html highlighting "{{{
 " ---------------------------------------------------------------------
 exe "hi! htmlTag"           .s:fmt_none .s:fg_base01 .s:bg_none
@@ -629,91 +629,6 @@ exe "hi! htmlTagName"       .s:fmt_bold .s:fg_blue   .s:bg_none
 exe "hi! htmlSpecialTagName".s:fmt_ital .s:fg_blue   .s:bg_none
 exe "hi! htmlArg"           .s:fmt_none .s:fg_base00 .s:bg_none
 exe "hi! javaScript"        .s:fmt_none .s:fg_yellow .s:bg_none
-"}}}
-
-" perl highlighting "{{{
-" ---------------------------------------------------------------------
-exe "hi! perlHereDoc"    . s:fg_base1  .s:bg_back   .s:fmt_none
-exe "hi! perlVarPlain"   . s:fg_yellow .s:bg_back   .s:fmt_none
-exe "hi! perlStatementFileDesc". s:fg_cyan.s:bg_back.s:fmt_none
-
-"}}}
-
-" tex highlighting "{{{
-" ---------------------------------------------------------------------
-exe "hi! texStatement"   . s:fg_cyan   .s:bg_back   .s:fmt_none
-exe "hi! texMathZoneX"   . s:fg_yellow .s:bg_back   .s:fmt_none
-exe "hi! texMathMatcher" . s:fg_yellow .s:bg_back   .s:fmt_none
-exe "hi! texMathMatcher" . s:fg_yellow .s:bg_back   .s:fmt_none
-exe "hi! texRefLabel"    . s:fg_yellow .s:bg_back   .s:fmt_none
-"}}}
-
-" ruby highlighting "{{{
-" ---------------------------------------------------------------------
-exe "hi! rubyDefine"     . s:fg_base1  .s:bg_back   .s:fmt_bold
-"rubyInclude
-"rubySharpBang
-"rubyAccess
-"rubyPredefinedVariable
-"rubyBoolean
-"rubyClassVariable
-"rubyBeginEnd
-"rubyRepeatModifier
-"hi! link rubyArrayDelimiter    Special  " [ , , ]
-"rubyCurlyBlock  { , , }
-
-"hi! link rubyClass             Keyword
-"hi! link rubyModule            Keyword
-"hi! link rubyKeyword           Keyword
-"hi! link rubyOperator          Operator
-"hi! link rubyIdentifier        Identifier
-"hi! link rubyInstanceVariable  Identifier
-"hi! link rubyGlobalVariable    Identifier
-"hi! link rubyClassVariable     Identifier
-"hi! link rubyConstant          Type
-"}}}
-
-" haskell syntax highlighting"{{{
-" ---------------------------------------------------------------------
-" For use with syntax/haskell.vim : Haskell Syntax File
-" http://www.vim.org/scripts/script.php?script_id=3034
-" See also Steffen Siering's github repository:
-" http://github.com/urso/dotrc/blob/master/vim/syntax/haskell.vim
-" ---------------------------------------------------------------------
-"
-" Treat True and False specially, see the plugin referenced above
-let hs_highlight_boolean=1
-" highlight delims, see the plugin referenced above
-let hs_highlight_delimiters=1
-
-exe "hi! cPreCondit". s:fg_orange.s:bg_none   .s:fmt_none
-
-exe "hi! VarId"    . s:fg_blue   .s:bg_none   .s:fmt_none
-exe "hi! ConId"    . s:fg_yellow .s:bg_none   .s:fmt_none
-exe "hi! hsImport" . s:fg_magenta.s:bg_none   .s:fmt_none
-exe "hi! hsString" . s:fg_base00 .s:bg_none   .s:fmt_none
-
-exe "hi! hsStructure"        . s:fg_cyan   .s:bg_none   .s:fmt_none
-exe "hi! hs_hlFunctionName"  . s:fg_blue   .s:bg_none
-exe "hi! hsStatement"        . s:fg_cyan   .s:bg_none   .s:fmt_none
-exe "hi! hsImportLabel"      . s:fg_cyan   .s:bg_none   .s:fmt_none
-exe "hi! hs_OpFunctionName"  . s:fg_yellow .s:bg_none   .s:fmt_none
-exe "hi! hs_DeclareFunction" . s:fg_orange .s:bg_none   .s:fmt_none
-exe "hi! hsVarSym"           . s:fg_cyan   .s:bg_none   .s:fmt_none
-exe "hi! hsType"             . s:fg_yellow .s:bg_none   .s:fmt_none
-exe "hi! hsTypedef"          . s:fg_cyan   .s:bg_none   .s:fmt_none
-exe "hi! hsModuleName"       . s:fg_green  .s:bg_none   .s:fmt_undr
-exe "hi! hsModuleStartLabel" . s:fg_magenta.s:bg_none   .s:fmt_none
-hi! link hsImportParams      Delimiter
-hi! link hsDelimTypeExport   Delimiter
-hi! link hsModuleStartLabel  hsStructure
-hi! link hsModuleWhereLabel  hsModuleStartLabel
-
-" following is for the haskell-conceal plugin
-" the first two items don't have an impact, but better safe
-exe "hi! hsNiceOperator"     . s:fg_cyan   .s:bg_none   .s:fmt_none
-exe "hi! hsniceoperator"     . s:fg_cyan   .s:bg_none   .s:fmt_none
-
 "}}}
 
 " pandoc markdown syntax highlighting "{{{
@@ -862,12 +777,6 @@ exe "hi! SignifySignAdd"            . s:fg_green    .s:bg_none  .s:fmt_none
 exe "hi! SignifySignChange"         . s:fg_yellow   .s:bg_none  .s:fmt_none
 exe "hi! SignifySignDelete"         . s:fg_red      .s:bg_none  .s:fmt_none
 exe "hi! SignifySignChangeDelete"   . s:fg_red      .s:bg_none  .s:fmt_none
-" }}}"
-
-" ALE highlighting "{{{
-" ---------------------------------------------------------------------
-exe "hi! ALEErrorSign"          . s:fg_orange   .s:bg_none   .s:fmt_none
-exe "hi! ALEWarningSign"        . s:fg_yellow   .s:bg_none   .s:fmt_none
 " }}}"
 
 " NeoVim terminal buffer colours "{{{

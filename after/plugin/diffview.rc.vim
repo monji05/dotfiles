@@ -1,7 +1,7 @@
 set fillchars+=diff:╱
 
 nnoremap <Space>gd :DiffviewOpen<CR>
-nnoremap <Space>q :DiffviewClose<CR>
+nnoremap <Space>c :DiffviewClose<CR>
 nnoremap <Space>H :DiffviewFileHistory<CR>
 
 lua << EOF
