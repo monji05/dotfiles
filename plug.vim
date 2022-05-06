@@ -18,10 +18,12 @@ if has("nvim")
   Plug 'tpope/vim-fugitive'
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'kyazdani42/nvim-web-devicons'
+  Plug 'sindrets/diffview.nvim'
 
   Plug 'nvim-lua/completion-nvim'
   Plug 'hrsh7th/nvim-cmp'
   Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'L3MON4D3/LuaSnip'
 
   Plug 'kristijanhusak/defx-git'
   Plug 'kristijanhusak/defx-icons'
