@@ -42,6 +42,8 @@ if has("nvim")
   Plug 'junegunn/fzf.vim'
 
   Plug 'lukas-reineke/indent-blankline.nvim'
+
+  Plug 'RRethy/vim-illuminate'
 endif
 
 call plug#end()
