@@ -11,5 +11,4 @@ nnoremap <silent>K :Lspsaga hover_doc<CR>
 nnoremap <silent>gs :Lspsaga signature_help<CR>
 nnoremap <silent>gh <Cmd>Lspsaga lsp_finder<CR>
 nnoremap <silent>gr :Lspsaga rename<CR>
-nnoremap <silent> <A-d> :Lspsaga open_floaterm<CR>
-tnoremap <silent> <A-d> <C-\><C-n>:Lspsaga close_floaterm<CR>
+highlight link LspSagaFinderSelection Search

@@ -10,14 +10,18 @@ Plug 'tomtom/tcomment_vim'
 
 if has("nvim")
   Plug 'neovim/nvim-lspconfig'
+  Plug 'williamboman/nvim-lsp-installer'
   Plug 'onsails/lspkind-nvim'
   Plug 'tami5/lspsaga.nvim'
+	Plug 'mfussenegger/nvim-jdtls'
+  Plug 'eclipse/eclipse.jdt.ls'
 
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-lua/popup.nvim'
   Plug 'TimUntersberger/neogit'
 
   Plug 'nvim-telescope/telescope.nvim'
+  Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'sindrets/diffview.nvim'
 
@@ -45,6 +49,10 @@ if has("nvim")
   Plug 'lukas-reineke/indent-blankline.nvim'
 
   Plug 'RRethy/vim-illuminate'
+
+  Plug 'vim-scripts/SingleCompile'
+
+  Plug 'norcalli/nvim-colorizer.lua'
 endif
 
 call plug#end()

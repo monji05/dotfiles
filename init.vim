@@ -68,6 +68,8 @@ set formatoptions+=r
 " vim-signify (git plugin)
 set updatetime=100
 
+" java compile set up
+let g:syntastic_java_checkers = []
 "}}}
 
 
@@ -127,6 +129,8 @@ runtime ./maps.vim
 
 " Syntax theme "{{{
 " ---------------------------------------------------------------------
+if exists("g:vscode")
+else
 
 " true color
 syntax enable
@@ -138,9 +142,9 @@ set background=dark
 " Use NeoSolarized
 let g:neosolarized_termtrans=1
 runtime ./colors/NeoSolarized.vim
-colorscheme NeoSolarized
+" colorscheme OceanicNext
+endif
 "}}}
-"
 
 " Extras "{{{
 " ---------------------------------------------------------------------

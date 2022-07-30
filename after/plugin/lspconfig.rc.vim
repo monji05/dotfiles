@@ -39,6 +39,20 @@ nvim_lsp.tsserver.setup {
     capabilities = capabilities
 }
 
+
+nvim_lsp.clangd.setup {
+    on_attach = on_attach,
+    fileteyps = {"cpp", "c++", "cc"},
+    capabilities = capabilities
+}
+
+ nvim_lsp.jdtls.setup {
+     on_attach = on_attach,
+     filetypes = {"java"},
+     capabilities = capabilities,
+     root_dir = vim.loop.cwd
+ }
+
 -- icon
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {

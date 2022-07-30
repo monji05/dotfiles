@@ -77,8 +77,11 @@ autocmd FileType defx call s:defx_my_settings()
 	endfunction
 
 call defx#custom#option('_', {
-      \ 'columns': 'icons:indent:filename:type'
+      \ 'columns': 'git:indent:icons:indent:filename:type',
+      \ 'show_ignored_files': 1,
+      \ 'resume': 1,
       \ })
+
 call defx#custom#column('git', 'indicators', {
   \ 'Modified'  : 'M',
   \ 'Staged'    : '✚',
