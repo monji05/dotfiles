@@ -33,6 +33,7 @@ vim.opt.path:append { '**' } -- Finding files - Search down into subfolders
 vim.opt.fillchars = 'diff:╱'
 vim.opt.laststatus = 3
 vim.opt.iskeyword:append("-")
+vim.opt.clipboard:append('unnamed')
 
 -- Undercurl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
