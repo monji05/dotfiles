@@ -19,7 +19,10 @@ lualine.setup {
         path = 1 -- 0 = just filename, 1 = relative path, 2 = absolute path
       },
       'diff',
-      'diagnostics',
+      { 'diagnostics',
+        sources = { "nvim_diagnostic" },
+        symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' }
+      },
     },
   },
   inactive_sections = {
