@@ -62,13 +62,6 @@ require('lazy').setup({
     lazy = true
   },
   {
-    'akinsho/toggleterm.nvim', -- terminal on neovim
-    version = '*',
-    keys = { '<C-\\>' },
-    lazy = true
-  },
-
-  {
     'kylechui/nvim-surround',
     version = "*",
   },
@@ -77,4 +70,9 @@ require('lazy').setup({
     ft = { 'markdown' },
     lazy = true
   },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = "nvim-lua/plenary.nvim",
+    lazy = true
+  }
 })
