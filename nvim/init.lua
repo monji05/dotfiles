@@ -1,3 +1,4 @@
+require('options')
 require('base')
 require('highlights')
 require('maps')

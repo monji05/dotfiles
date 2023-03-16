@@ -11,6 +11,7 @@ alias ll='exa -la -g --icons --header'
 alias gl='git log --graph --all'
 alias gs='git status'
 alias gc='git commit -m'
+alias rm='rm -i'
 
 #theme
 set -g theme_color_scheme terminal-dark

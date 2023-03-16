@@ -38,3 +38,5 @@ Group.new("DiffAdd", colors.none, colors.diffAdd, styles.NONE)
 Group.new("DiffDelete", colors.none, colors.diffDelete, styles.NONE)
 Group.new("DiffChange", colors.none, colors.base03, styles.NONE)
 Group.new('DiffText', colors.none, colors.diffText, styles.NONE)
+
+Group.new("HoverBorder", colors.yellow, colors.none, styles.NONE)
