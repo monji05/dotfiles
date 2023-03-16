@@ -12,67 +12,62 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
+  cache_enabled = true,
   {
     'svrana/neosolarized.nvim',
-    dependencies = { 'tjdevries/colorbuddy.nvim', lazy = true },
+    dependencies = { 'tjdevries/colorbuddy.nvim' },
+    lazy = false
   },
-  { 'nvim-lualine/lualine.nvim', lazy = true }, -- Statusline
-  { 'nvim-lua/popup.nvim',       lazy = true },
-  { 'onsails/lspkind-nvim',      lazy = true }, -- vscode-like pictograms
+  { 'nvim-lualine/lualine.nvim', event = 'BufNewfile, BufRead', lazy = true }, -- Statusline
+  { 'nvim-lua/popup.nvim',       event = 'BufNewfile, BufRead' },
+  { 'onsails/lspkind-nvim',      event = 'LspAttach' }, -- vscode-like pictograms
   { 'hrsh7th/cmp-nvim-lsp', }, -- nvim-cmp source for neovim's built-in LSP
   { 'hrsh7th/nvim-cmp', -- Completion
     dependencies = 'hrsh7th/cmp-buffer',
   },
-  { 'neovim/nvim-lspconfig',             lazy = true }, -- LSP
-  { 'williamboman/mason.nvim',           lazy = true },
-  { 'williamboman/mason-lspconfig.nvim', lazy = true },
-  { 'jose-elias-alvarez/null-ls.nvim',   lazy = true }, --  Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
-
-  { 'glepnir/lspsaga.nvim',              lazy = true }, -- LSP UIs
-  { 'L3MON4D3/LuaSnip',                  lazy = true },
-  { 'nvim-treesitter/nvim-treesitter',   lazy = true },
-  { 'windwp/nvim-ts-autotag',            lazy = true },
-  { 'kyazdani42/nvim-web-devicons',      lazy = true }, -- File icons
+  { 'neovim/nvim-lspconfig',             event = 'LspAttach' }, -- LSP
+  { 'williamboman/mason.nvim',           event = 'CmdlineEnter' },
+  { 'williamboman/mason-lspconfig.nvim', event = 'CmdlineEnter' },
+  { 'jose-elias-alvarez/null-ls.nvim',   event = 'BufRead' }, --  Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
+  { 'glepnir/lspsaga.nvim',              event = 'LspAttach' }, -- LSP UIs
+  { 'L3MON4D3/LuaSnip',                  event = 'InsertEnter' },
+  { 'nvim-treesitter/nvim-treesitter',   event = 'VeryLazy' },
+  { 'windwp/nvim-ts-autotag',            event = 'InsertEnter' },
+  { 'kyazdani42/nvim-web-devicons',      event = 'BufRead' }, -- File icons
   {
     'nvim-telescope/telescope.nvim',
-    keys = { ';f', ';r', '\\', ';;', lazy = true },
+    keys = { ';f', ';r', '\\', ';;' },
+    cmd = 'Telescope',
     dependencies = "nvim-telescope/telescope-file-browser.nvim"
   },
-  { 'windwp/nvim-autopairs',               lazy = true },
-  { 'norcalli/nvim-colorizer.lua',         lazy = true },
-  { 'lewis6991/gitsigns.nvim',             lazy = true }, -- Git diff marker
-  { 'akinsho/nvim-bufferline.lua',         lazy = true },
-  { 'RRethy/vim-illuminate',               lazy = true }, -- highlight on current cursol word
-  { 'lukas-reineke/indent-blankline.nvim', lazy = true }, -- indent line
-  { 'numToStr/Comment.nvim',               lazy = true }, --comment
-  { 'kevinhwang91/nvim-hlslens',           lazy = true }, -- show count result search word
-  {
-    'TimUntersberger/neogit',
-    dependencies = 'nvim-lua/plenary.nvim',
-    lazy = true
-  },
+  { 'windwp/nvim-autopairs',               event = 'ModeChanged' },
+  { 'norcalli/nvim-colorizer.lua',         event = 'BufRead' },
+  { 'lewis6991/gitsigns.nvim',             event = 'BufRead' }, -- Git diff marker
+  { 'akinsho/nvim-bufferline.lua',         event = 'BufRead' },
+  { 'lukas-reineke/indent-blankline.nvim', event = 'BufRead' }, -- indent line
+  { 'numToStr/Comment.nvim',               keys = { '<C-u>', '<C-y>' } }, --comment
+  { 'kevinhwang91/nvim-hlslens',           event = 'CmdlineEnter' }, -- show count result search word
   {
     "nvim-neo-tree/neo-tree.nvim",
-    keys = { "fi" },
+    cmd = "Fi",
     branch = "v2.x",
     dependencies = {
       "MunifTanjim/nui.nvim",
-
     },
-    lazy = true
+    event = 'VeryLazy'
   },
   {
     'kylechui/nvim-surround',
     version = "*",
+    event = 'ModeChanged'
   },
   {
     'davidgranstrom/nvim-markdown-preview',
-    ft = { 'markdown' },
-    lazy = true
+    ft = 'markdown',
   },
   {
     "folke/todo-comments.nvim",
-    dependencies = "nvim-lua/plenary.nvim",
-    lazy = true
+    dependencies = { "nvim-lua/plenary.nvim", lazy = false },
+    event = 'BufRead'
   }
 })
