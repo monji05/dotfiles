@@ -1,4 +1,4 @@
-vim.cmd("autocmd!")
+vim.api.nvim_command("autocmd!")
 
 vim.scriptencoding = 'utf-8'
 vim.opt.encoding = 'utf-8'
@@ -33,11 +33,11 @@ vim.opt.path:append { '**' } -- Finding files - Search down into subfolders
 vim.opt.fillchars = 'diff:╱'
 vim.opt.laststatus = 3
 vim.opt.iskeyword:append("-")
-vim.opt.clipboard:append('unnamed')
+vim.opt.shada = ""
 
 -- Undercurl
-vim.cmd([[let &t_Cs = "\e[4:3m"]])
-vim.cmd([[let &t_Ce = "\e[4:0m"]])
+vim.api.nvim_command [[let &t_Cs = "\e[4:3m"]]
+vim.api.nvim_command [[let &t_Ce = "\e[4:0m"]]
 
 -- Turn off paste mode when leaving insert
 vim.api.nvim_create_autocmd("InsertLeave", {
@@ -48,18 +48,5 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 -- Add asterisks in block comments
 vim.opt.formatoptions:append { 'r' }
 
--- yank to clipboard
-vim.cmd([[
-  if !empty($WSL_DISTRO_NAME)
-     let s:clip = '/mnt/c/Windows/System32/clip.exe'
-     if executable(s:clip)
-       augroup WSLYank
-         autocmd!
-         autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
-       augroup END
-     endif
-   endif
-]])
-
 -- set theme on nvim-markdown-preview
-vim.cmd([[let g:nvim_markdown_preview_theme = 'solarized-dark']])
+vim.api.nvim_command [[let g:nvim_markdown_preview_theme = 'solarized-dark']]
