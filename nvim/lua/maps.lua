@@ -1,7 +1,5 @@
 local keymap = vim.keymap
 
--- jj to NOMAL mode
--- keymap.set('i', 'jj', '<ESC>')
 
 -- save on <Space> w
 keymap.set('n', '<Space>w', ':w<CR>')

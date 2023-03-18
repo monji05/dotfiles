@@ -14,6 +14,14 @@ return {
     local noice = require("noice")
 
     noice.setup({
+      enable = true,
+      cmdline = {
+        format = {
+          cmdline = { pattern = "^:", icon = ":", lang = "vim" },
+          search_down = { kind = "search", pattern = "^/", icon = " /", lang = "regex" },
+          search_up = { kind = "search", pattern = "^%?", icon = " ?", lang = "regex" },
+        }
+      },
       messages = {
         view_search = "mini",
       },
@@ -31,6 +39,12 @@ return {
           opts = { skip = true },
         },
       },
+    })
+    local notify = require('notify')
+    notify.setup({
+      background_colour = "#000",
+      level = 2,
+      render = "default"
     })
   end
 }
