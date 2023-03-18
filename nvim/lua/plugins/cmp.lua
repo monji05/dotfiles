@@ -1,14 +1,12 @@
 return {
   'hrsh7th/nvim-cmp', -- Completion
-  dependencies = {
-    'hrsh7th/cmp-buffer',
-    'onsails/lspkind-nvim', -- vscode-like pictograms
-  },
-  lazy = true,
   module = 'cmp',
+  dependencies = {
+    { 'hrsh7th/cmp-buffer',   event = 'InsertEnter' },
+    { 'onsails/lspkind-nvim', event = 'InsertEnter' }, -- vscode-like pictograms
+  },
   config = function()
-    local status, cmp = pcall(require, "cmp")
-    if (not status) then return end
+    local cmp = require 'cmp'
     local lspkind = require 'lspkind'
 
     local function formatForTailwindCSS(entry, vim_item)

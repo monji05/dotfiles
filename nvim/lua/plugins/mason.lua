@@ -1,8 +1,7 @@
 return {
   'williamboman/mason.nvim',
-  dependencies = {'williamboman/mason-lspconfig.nvim'},
-  event = 'BufEnter',
-  lazy = true ,
+  dependencies = { 'williamboman/mason-lspconfig.nvim', cmd = 'Mason' },
+  module = 'mason',
   config = function()
     local status, mason = pcall(require, 'mason')
     if (not status) then return end

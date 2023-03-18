@@ -3,6 +3,7 @@ return {
   branch = "v2.x",
   dependencies = {
     "MunifTanjim/nui.nvim",
+    "nvim-lua/plenary.nvim",
   },
   lazy = true,
   keys = "fi",
@@ -72,7 +73,7 @@ return {
         },
       },
       window = {
-        position = "left",
+        position = "float",
         width = 40,
         mapping_options = {
           noremap = true,
