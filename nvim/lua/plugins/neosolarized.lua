@@ -4,10 +4,7 @@ return {
   lazy = false,
   -- config
   config = function()
-    local status, n = pcall(require, "neosolarized")
-    if (not status) then return end
-
-    n.setup({
+    require('neosolarized').setup({
       comment_italics = false,
     })
 

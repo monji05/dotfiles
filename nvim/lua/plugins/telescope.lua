@@ -9,10 +9,6 @@ return {
     local actions = require('telescope.actions')
     local builtin = require("telescope.builtin")
 
-    local function telescope_buffer_dir()
-      return vim.fn.expand('%:p:h')
-    end
-
     telescope.setup {
       defaults = {
         mappings = {
@@ -27,7 +23,10 @@ return {
           ".vscode",
           "tmp",
           "vendor",
-          "docs"
+          "docs",
+          -- for obsidian
+          ".trash",
+          ".obsidian",
         }
       },
     }

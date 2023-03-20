@@ -21,8 +21,14 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   })
 end
+
 vim.opt.rtp:prepend(lazypath)
-require('lazy').setup('plugins')
+require('lazy').setup("plugins", {
+  change_detection = {
+    enabled = false,
+    notify = false, -- get a notification when changes are found
+  },
+})
 
 local has = function(x)
   return vim.fn.has(x) == 1

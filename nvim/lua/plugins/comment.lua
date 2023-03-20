@@ -1,7 +1,6 @@
 return {
   'numToStr/Comment.nvim',
-  keys = { '<C-u>', '<C-y>' },
-  lazy = true,
+  event = "BufEnter",
   config = function()
     local status, comment = pcall(require, 'Comment')
 

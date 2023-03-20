@@ -1,13 +1,13 @@
 return {
-  'norcalli/nvim-colorizer.lua',
+  'NvChad/nvim-colorizer.lua',
   event = 'BufRead',
   lazy = true,
   config = function()
-    local status, colorizer = pcall(require, 'colorizer')
-    if (not status) then return end
-
-    colorizer.setup({
-      "*",
-    })
+    require("colorizer").setup {
+      filetypes = { '*' },
+      user_default_options = {
+        tailwind = true,
+      }
+    }
   end
 }
