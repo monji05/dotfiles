@@ -2,7 +2,6 @@ return {
   'kylechui/nvim-surround',
   version = "*",
   event = 'InsertEnter',
-  lazy = true,
   config = function()
     local status, surround = pcall(require, 'nvim-surround')
 

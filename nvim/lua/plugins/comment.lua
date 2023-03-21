@@ -1,6 +1,7 @@
 return {
   'numToStr/Comment.nvim',
-  event = "BufEnter",
+  event = "ModeChanged",
+  cmd = "Gc",
   config = function()
     local status, comment = pcall(require, 'Comment')
 
