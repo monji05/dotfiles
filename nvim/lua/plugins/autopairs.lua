@@ -1,7 +1,6 @@
 return {
   'windwp/nvim-autopairs',
-  event = 'ModeChanged',
-  lazy = true,
+  event = 'InsertEnter',
   config = function()
     local status, ts = pcall(require, "nvim-autopairs")
     if (not status) then return end

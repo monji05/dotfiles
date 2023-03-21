@@ -1,7 +1,6 @@
 return {
   'akinsho/nvim-bufferline.lua',
   event = 'TabEnter',
-  lazy = true,
   config = function()
     local status, bufferline = pcall(require, "bufferline")
 
