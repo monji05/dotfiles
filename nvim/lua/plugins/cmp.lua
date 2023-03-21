@@ -3,7 +3,6 @@ return {
   module = 'cmp',
   dependencies = {
     { 'hrsh7th/cmp-buffer',                     event = 'InsertEnter' },
-    { 'onsails/lspkind-nvim',                   event = 'InsertEnter' }, -- vscode-like pictograms
     { "roobert/tailwindcss-colorizer-cmp.nvim", event = 'InsertEnter', config = true },
   },
   config = function()

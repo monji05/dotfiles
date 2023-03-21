@@ -1,7 +1,6 @@
 return {
   'jose-elias-alvarez/null-ls.nvim', --  Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
   event = 'BufEnter',
-  lazy = true,
   config = function()
     local status, null_ls = pcall(require, "null-ls")
     if (not status) then return end

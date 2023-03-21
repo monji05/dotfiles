@@ -1,7 +1,6 @@
 return {
   'onsails/lspkind-nvim', -- vscode-like pictograms
   event = 'InsertEnter',
-  lazy = true,
   config = function()
     local status, lspkind = pcall(require, "lspkind")
     if (not status) then return end

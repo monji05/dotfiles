@@ -1,7 +1,6 @@
 return {
   'glepnir/lspsaga.nvim', -- LSP UIs
-  event = 'LspAttach',
-  lazy = true,
+  event = 'BufRead',
   config = function()
     local status, saga = pcall(require, "lspsaga")
     if (not status) then return end

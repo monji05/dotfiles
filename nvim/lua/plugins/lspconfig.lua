@@ -1,7 +1,6 @@
 return {
   'neovim/nvim-lspconfig',
-  event = 'BufEnter',
-  module = 'lsp',
+  event = 'BufRead',
   config = function()
     local status, nvim_lsp = pcall(require, "lspconfig")
     if (not status) then return end
