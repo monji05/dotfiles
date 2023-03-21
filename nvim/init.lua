@@ -30,11 +30,13 @@ require('lazy').setup("plugins", {
   },
 })
 
+require('theme/nightfly')
+
 local has = function(x)
   return vim.fn.has(x) == 1
 end
-local is_mac = has 'macunix'
 
+local is_mac = has 'macunix'
 if is_mac then
   require('macos')
 elseif is_mac == 0 then

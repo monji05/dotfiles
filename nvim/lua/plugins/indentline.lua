@@ -54,13 +54,12 @@ return {
     vim.api.nvim_command [[highlight IndentBlanklineIndent1 guifg=#3E4452 guibg=#000 gui=nocombine]]
 
     indent_blankline.setup({
-      -- show_end_of_line = true,
       space_char_blankline = " ",
       -- show_current_context = true,
-      -- show_current_context_start = true,
+      -- show_current_context_start = false,
       char_highlight_list = {
         "IndentBlanklineIndent1"
-      }
+      },
     })
   end
 }

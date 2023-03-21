@@ -146,7 +146,7 @@ return {
 
     nvim_lsp.tailwindcss.setup {}
 
-    nvim_lsp.markdownlint.setup {}
+    nvim_lsp.marksman.setup {}
 
     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
       vim.lsp.diagnostic.on_publish_diagnostics, {
