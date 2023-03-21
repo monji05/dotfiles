@@ -39,4 +39,3 @@ vim.g.did_load_ftplugin         = 1
 vim.g.loaded_rrhelper           = 1
 
 -- " }}}
-
