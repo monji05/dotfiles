@@ -1,6 +1,6 @@
 return {
   'kevinhwang91/nvim-hlslens', -- show count result search word
-  event = 'CmdlineEnter',
+  event = 'VeryLazy',
   config = function()
     local status, hlslens = pcall(require, 'hlslens')
     if (not status) then
