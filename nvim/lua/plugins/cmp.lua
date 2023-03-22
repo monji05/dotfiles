@@ -1,6 +1,6 @@
 return {
   'hrsh7th/nvim-cmp', -- Completion
-  module = 'cmp',
+  lazy = false,
   dependencies = {
     { 'hrsh7th/cmp-buffer',                     event = 'InsertEnter' },
     { "roobert/tailwindcss-colorizer-cmp.nvim", event = 'InsertEnter', config = true },
@@ -18,7 +18,7 @@ return {
           if vim.fn.hlID(group) < 1 then
             vim.api.nvim_set_hl(0, group, { fg = '#' .. color })
           end
-          vim_item.kind = "●"
+          vim_item.kind = "■"
           vim_item.kind_hl_group = group
           return vim_item
         end
@@ -34,7 +34,7 @@ return {
         end,
       },
       mapping = cmp.mapping.preset.insert({
-        ['<C-d>'] = cmp.mapping.scroll_docs( -4),
+        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.close(),

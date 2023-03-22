@@ -1,6 +1,6 @@
 return {
-  'kevinhwang91/nvim-hlslens',
-  event = 'CmdlineEnter', -- show count result search word
+  'kevinhwang91/nvim-hlslens', -- show count result search word
+  event = 'CmdlineEnter',
   config = function()
     local status, hlslens = pcall(require, 'hlslens')
     if (not status) then
@@ -20,7 +20,7 @@ return {
           indicator = ''
         end
 
-        local lnum, col = unpack(posList[idx])
+        local lnum, col = posList[idx][1], posList[idx][1]
         if nearest then
           local cnt = #posList
           if indicator ~= '' then

@@ -1,5 +1,4 @@
 require('ft')
-require('options')
 require('base')
 require('highlights')
 require('maps')
@@ -28,6 +27,25 @@ require('lazy').setup("plugins", {
     enabled = false,
     notify = false, -- get a notification when changes are found
   },
+  performance = {
+    chache = {
+      enabled = true
+    },
+  },
+  rtp = {
+    disabled = {
+      "gzip",
+      "matchit",
+      "matchparen",
+      "netrwPlugin",
+      "Jrplugin",
+      "tarPlugin",
+      "tohtml",
+      "tutor",
+      "zipPlugin",
+    },
+  },
+  debug = false,
 })
 
 require('theme/nightfly')

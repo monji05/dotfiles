@@ -1,5 +1,6 @@
 return {
   'neovim/nvim-lspconfig',
+  dependencies = { 'hrsh7th/cmp-nvim-lsp' },
   event = 'BufRead',
   config = function()
     local status, nvim_lsp = pcall(require, "lspconfig")
@@ -112,7 +113,6 @@ return {
             -- Get the language server to recognize the `vim` global
             globals = { 'vim' },
           },
-
           workspace = {
             -- Make the server aware of Neovim runtime files
             library = vim.api.nvim_get_runtime_file("", true),
@@ -149,11 +149,11 @@ return {
 
     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
       vim.lsp.diagnostic.on_publish_diagnostics, {
-      underline = true,
-      update_in_insert = false,
-      virtual_text = { spacing = 4, prefix = "●" },
-      severity_sort = true,
-    }
+        underline = true,
+        update_in_insert = false,
+        virtual_text = { spacing = 4, prefix = "●" },
+        severity_sort = true,
+      }
     )
 
     -- Diagnostic symbols in the sign column (gutter)
