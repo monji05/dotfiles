@@ -11,7 +11,7 @@ return {
 			lualine.setup({
 				options = {
 					icons_nabled = true,
-					theme = "nightfly",
+					theme = "tokyonight",
 					component_separators = { left = "", right = "" },
 					section_separators = { left = "", right = "" },
 					disabled_filetypes = {},
