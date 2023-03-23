@@ -17,15 +17,28 @@ if not vim.loop.fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
+
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
-    { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+    {
+      "LazyVim/LazyVim",
+      import = "lazyvim.plugins",
+      opts = {},
+    },
     { import = "plugins" },
   },
   change_detection = {
     enabled = false,
     notify = false, -- get a notification when changes are found
+  },
+  diff = {
+    cmd = "terminal_git"
+  },
+  defaults = {
+    autocmds = false,
+    keymaps = false,
+    options = false,
   },
   performance = {
     chache = {
