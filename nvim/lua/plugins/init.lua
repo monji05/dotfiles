@@ -1,14 +1,15 @@
 return {
   {
-    'nvim-lua/popup.nvim',
-    event = 'BufRead',
-    lazy = true
+    "nvim-lua/popup.nvim",
+    event = "BufRead",
+    lazy = true,
   },
   {
     "nvim-lua/plenary.nvim",
-    lazy = false
+    lazy = false,
   },
   {
-    'echasnovski/mini.nvim',
-  }
+    "echasnovski/mini.nvim",
+    lazy = true,
+  },
 }

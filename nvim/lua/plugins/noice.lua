@@ -27,7 +27,7 @@ return {
         view = "mini",
         view_warn = "mini",
         view_error = "mini",
-        view_search = "mini"
+        view_search = "mini",
       },
       notify = {
         view = "mini",
@@ -40,11 +40,11 @@ return {
           ["vim.lsp.util.stylize_markdown"] = true,
           -- override cmp documentation with Noice (needs the other options to work)
           ["cmp.entry.get_documentation"] = true,
-        }
-      }
+        },
+      },
     })
     require("notify").setup({
-      background_colour = '#000',
+      background_colour = "#000",
     })
   end,
 }

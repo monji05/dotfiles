@@ -1,17 +1,9 @@
 return {
-  'numToStr/Comment.nvim',
-  event = "ModeChanged",
-  cmd = "Gc",
-  config = function()
-    local status, comment = pcall(require, 'Comment')
-
-    if (not status) then return end
-
-    comment.setup({
-      toggler = {
-        line = '<C-u>',
-        block = '<C-y>'
-      }
-    })
-  end
+  "numToStr/Comment.nvim",
+  event = "BufRead",
+  opts = {
+    toggler = {
+      line = "<C-u>",
+    },
+  },
 }

@@ -1,5 +1,4 @@
 local keymap = vim.keymap
-
 -- save on <Space> w
 keymap.set("n", "<Space>w", ":w<CR>")
 

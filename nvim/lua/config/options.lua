@@ -1,9 +1,6 @@
-vim.api.nvim_command("autocmd!")
 
-vim.scriptencoding = "utf-8"
-vim.opt.encoding = "utf-8"
-vim.opt.fileencoding = "utf-8"
-
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 vim.opt.relativenumber = true
 vim.opt.signcolumn = "yes"
 vim.opt.number = true
