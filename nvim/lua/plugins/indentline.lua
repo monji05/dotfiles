@@ -1,6 +1,6 @@
 return {
-  'lukas-reineke/indent-blankline.nvim',
-  event = 'BufEnter',
+  "lukas-reineke/indent-blankline.nvim",
+  event = "BufEnter",
   lazy = true,
   config = function()
     local status_ok, indent_blankline = pcall(require, "indent_blankline")
@@ -51,15 +51,15 @@ return {
     -- vim.opt.listchars:append "space:⋅"
     -- vim.opt.listchars:append "space:"
 
-    vim.api.nvim_command [[highlight IndentBlanklineIndent1 guifg=#3E4452 guibg=#000 gui=nocombine]]
+    vim.api.nvim_command([[highlight IndentBlanklineIndent1 guifg=#3E4452 guibg=#000 gui=nocombine]])
 
     indent_blankline.setup({
       space_char_blankline = " ",
       -- show_current_context = true,
       -- show_current_context_start = false,
       char_highlight_list = {
-        "IndentBlanklineIndent1"
+        "IndentBlanklineIndent1",
       },
     })
-  end
+  end,
 }

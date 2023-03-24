@@ -8,4 +8,7 @@ return {
     "nvim-lua/plenary.nvim",
     lazy = false
   },
+  {
+    'echasnovski/mini.nvim',
+  }
 }
