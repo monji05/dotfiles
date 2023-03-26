@@ -2,7 +2,6 @@ require("config.options")
 require("config.keymaps")
 require("config.ft")
 require("config.lazy")
-require("colorscheme")
 
 local has = function(x)
   return vim.fn.has(x) == 1

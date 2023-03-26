@@ -1,12 +1,11 @@
 return {
-  'neovim/nvim-lspconfig',
-  dependencies = { 'hrsh7th/cmp-nvim-lsp' },
-  event = 'BufRead',
+  "neovim/nvim-lspconfig",
+  dependencies = { "hrsh7th/cmp-nvim-lsp" },
+  event = { "BufReadPre", "BufNewFile" },
   config = function()
-    local status, nvim_lsp = pcall(require, "lspconfig")
-    if (not status) then return end
+    local nvim_lsp = require("lspconfig")
 
-    local protocol = require('vim.lsp.protocol')
+    local protocol = require("vim.lsp.protocol")
     local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
     local enable_format_on_save = function(_, bufnr)
       vim.api.nvim_clear_autocmds({ group = augroup_format, buffer = bufnr })
@@ -22,87 +21,77 @@ return {
     -- Use an on_attach function to only map the following keys
     -- after the language server attaches to the current buffer
     local on_attach = function(client, bufnr)
-      local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+      local function buf_set_keymap(...)
+        vim.api.nvim_buf_set_keymap(bufnr, ...)
+      end
 
-      local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+      local function buf_set_option(...)
+        vim.api.nvim_buf_set_option(bufnr, ...)
+      end
 
       --Enable completion triggered by <c-x><c-o>
-      buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+      buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
       -- Mappings.
       local opts = { noremap = true, silent = true }
 
       -- See `:help vim.lsp.*` for documentation on any of the below functions
-      buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-      buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+      buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+      buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 
       -- formatting
       if client.server_capabilities.documentFormattingProvider then
         vim.api.nvim_create_autocmd("BufWritePre", {
           group = vim.api.nvim_create_augroup("Format", { clear = true }),
           buffer = bufnr,
-          callback = function() vim.lsp.buf.format() end
+          callback = function()
+            vim.lsp.buf.format()
+          end,
         })
       end
     end
 
     protocol.CompletionItemKind = {
-      '', -- Text
-      '', -- Method
-      '', -- Function
-      '', -- Constructor
-      '', -- Field
-      '', -- Variable
-      '', -- Class
-      'ﰮ', -- Interface
-      '', -- Module
-      '', -- Property
-      '', -- Unit
-      '', -- Value
-      '', -- Enum
-      '', -- Keyword
-      '﬌', -- Snippet
-      '', -- Color
-      '', -- File
-      '', -- Reference
-      '', -- Folder
-      '', -- EnumMember
-      '', -- Constant
-      '', -- Struct
-      '', -- Event
-      'ﬦ', -- Operator
-      '', -- TypeParameter
+      "", -- Text
+      "", -- Method
+      "", -- Function
+      "", -- Constructor
+      "", -- Field
+      "", -- Variable
+      "", -- Class
+      "ﰮ", -- Interface
+      "", -- Module
+      "", -- Property
+      "", -- Unit
+      "", -- Value
+      "", -- Enum
+      "", -- Keyword
+      "﬌", -- Snippet
+      "", -- Color
+      "", -- File
+      "", -- Reference
+      "", -- Folder
+      "", -- EnumMember
+      "", -- Constant
+      "", -- Struct
+      "", -- Event
+      "ﬦ", -- Operator
+      "", -- TypeParameter
     }
 
     -- Set up completion using nvim_cmp with LSP source
-    local capabilities = require('cmp_nvim_lsp').default_capabilities(
-      vim.lsp.protocol.make_client_capabilities()
-    )
+    local capabilities = require("cmp_nvim_lsp").default_capabilities()
+    capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-    nvim_lsp.flow.setup {
-      on_attach = on_attach,
-      capabilities = capabilities
-    }
+    local servers = { "tsserver", "intelephense", "marksman" }
+    for _, lsp in ipairs(servers) do
+      nvim_lsp[lsp].setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
+      })
+    end
 
-    nvim_lsp.tsserver.setup {
-      on_attach = on_attach,
-      filetypes = {
-        "javascript",
-        "javascriptreact",
-        "javascript.jsx",
-        "typescript",
-        "typescriptreact",
-        "typescript.tsx",
-        "javascript"
-      },
-      capabilities = capabilities
-    }
-
-    nvim_lsp.sourcekit.setup {
-      on_attach = on_attach,
-    }
-
-    nvim_lsp.lua_ls.setup {
+    nvim_lsp.lua_ls.setup({
       on_attach = function(client, bufnr)
         on_attach(client, bufnr)
         enable_format_on_save(client, bufnr)
@@ -110,51 +99,28 @@ return {
       settings = {
         Lua = {
           diagnostics = {
-            -- Get the language server to recognize the `vim` global
-            globals = { 'vim' },
+            globals = { "vim" },
           },
-          workspace = {
-            -- Make the server aware of Neovim runtime files
-            library = vim.api.nvim_get_runtime_file("", true),
-            checkThirdParty = false
+          completion = {
+            callSnippet = "Replace",
           },
         },
       },
-    }
+    })
 
-    nvim_lsp.intelephense.setup {
+    nvim_lsp.intelephense.setup({
       on_attach = on_attach,
       capabilities = capabilities,
-    }
+    })
 
-    local _, configs = pcall(require, 'lspconfig.configs')
-    configs.blade = {
-      default_config = {
-        cmd = { "laravel-dev-generators", "lsp" },
-        filetypes = { 'blade' },
-        root_dir = function(fname)
-          return nvim_lsp.util.find_git_ancestor(fname)
-        end,
-        settings = {},
-      },
-    }
-    nvim_lsp.blade.setup {
-      nn_attach = on_attach,
-      capabilities = capabilities,
-    }
+    nvim_lsp.tailwindcss.setup({})
 
-    nvim_lsp.tailwindcss.setup {}
-
-    nvim_lsp.marksman.setup {}
-
-    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-      vim.lsp.diagnostic.on_publish_diagnostics, {
-        underline = true,
-        update_in_insert = false,
-        virtual_text = { spacing = 4, prefix = "●" },
-        severity_sort = true,
-      }
-    )
+    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+      underline = true,
+      update_in_insert = false,
+      virtual_text = { spacing = 4, prefix = "●" },
+      severity_sort = true,
+    })
 
     -- Diagnostic symbols in the sign column (gutter)
     -- local signs = { Error = "E", Warn = "W", Hint = "H", Info = "I" }
@@ -166,22 +132,12 @@ return {
 
     vim.diagnostic.config({
       virtual_text = {
-        prefix = '●'
+        prefix = "●",
       },
       update_in_insert = true,
       float = {
         source = "always", -- Or "if_many"
       },
     })
-
-    local s, colors = pcall(require, "lsp-colors")
-    if (not s) then return end
-
-    colors.setup {
-      Error = "#db4b4b",
-      Warning = "#e0af68",
-      Information = "#0db9d7",
-      Hint = "#10B981"
-    }
-  end
+  end,
 }
