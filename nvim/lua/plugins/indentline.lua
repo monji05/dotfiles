@@ -50,6 +50,8 @@ return {
     vim.opt.list = true
     -- vim.opt.listchars:append "space:⋅"
     -- vim.opt.listchars:append "space:"
+    -- vim.opt.listchars:append "tab:»-"
+    vim.opt.listchars:append "tab:»"
 
     vim.api.nvim_command([[highlight IndentBlanklineIndent1 guifg=#3E4452 guibg=#000 gui=nocombine]])
 
