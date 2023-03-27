@@ -54,7 +54,8 @@ return {
     { "gh",        "<CMD>Lspsaga hover_doc<CR>" },
     { "gr",        "<CMD>Lspsaga rename<CR>" },
     { "<leader>j", "<CMD>Lspsaga diagnostic_jump_next<CR>" },
-    { "<C-t>",     "<CMD>Lspsaga toggle_floaterm<CR>" },
-    { "<C-t>",     mode = "t",                             "<CMD>Lspsaga close_floaterm<CR>" },
+    -- use zellij
+    -- { "<C-t>",     "<CMD>Lspsaga toggle_floaterm<CR>" },
+    -- { "<C-t>",     mode = "t",                             "<CMD>Lspsaga close_floaterm<CR>" },
   },
 }
