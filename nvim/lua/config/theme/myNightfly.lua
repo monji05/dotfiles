@@ -21,16 +21,3 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 })
 vim.api.nvim_command([[colorscheme nightfly]])
 vim.g.nightflyTransparent = true
-
-
-
-local hoge = 'hoge'
-local foo = {
-  hoge,
-  "foo",
-  {
-    "b",
-    "c"
-  },
-  "aaaa",
-}
