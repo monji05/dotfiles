@@ -11,7 +11,7 @@ return {
         changedelete = { hl = 'GitSignsChange', text = '~', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
         untracked    = { hl = 'GitSignsAdd', text = '┆', numhl = 'GitSignsAddNr', linehl = 'GitSignsAddLn' },
       },
-      numhl = false, -- diff highlight line number
+      numhl = false,  -- diff highlight line number
       linehl = false, -- diff highlight line
       on_attach = function(bufnr)
         local gs = package.loaded.gitsigns

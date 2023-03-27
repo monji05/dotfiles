@@ -7,16 +7,18 @@ return {
       module = { "nvim-web-devicons" },
     },
     config = function()
-      local status, lualine = pcall(require, "lualine")
-      if not status then
-        return
-      end
+      local my_nightfly = require("lualine.themes.nightfly")
+      local my_b_bg = "#414455"
+      my_nightfly.normal.b.bg = my_b_bg
+      my_nightfly.insert.b.bg = my_b_bg
+      my_nightfly.visual.b.bg = my_b_bg
+      my_nightfly.replace.b.bg = my_b_bg
+      my_nightfly.inactive.b.bg = my_b_bg
 
-      lualine.setup({
+      require("lualine").setup({
         options = {
+          theme = my_nightfly,
           icons_enabled = true,
-          -- theme = "tokyonight",
-          theme = "solarized_dark",
           component_separators = { left = "", right = "" },
           section_separators = { left = "", right = "" },
           disabled_filetypes = {},
@@ -28,7 +30,7 @@ return {
             {
               "filename",
               file_status = true, -- displays file status (readonly status, modified status)
-              path = 1,    -- 0 = just filename, 1 = relative path, 2 = absolute path
+              path = 1,           -- 0 = just filename, 1 = relative path, 2 = absolute path
             },
             "diff",
             {
@@ -37,6 +39,9 @@ return {
               symbols = { error = " ", warn = " ", info = " ", hint = " " },
             },
           },
+          lualine_z = {
+            "os.date(' %H:%M')"
+          }
         },
         inactive_sections = {
           lualine_a = {},

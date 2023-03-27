@@ -8,6 +8,8 @@ return {
       floats = "transparent",
     },
     on_colors = function(colors)
+      -- bg_dark = "#1e2030",
+      -- bg = "#222436",
       colors.black = "#000000"
       colors.comment = "#828590"
       colors.gitSigns = {

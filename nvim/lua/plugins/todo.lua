@@ -6,6 +6,6 @@ return {
   keys = {
     { "]t",         function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
     { "[t",         function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
-    { "<leader>ts", "<cmd>TodoTelescope<cr>",                            desc = "Todo" },
+    { "<leader>to", "<cmd>TodoTelescope<cr>",                            desc = "Todo" },
   },
 }

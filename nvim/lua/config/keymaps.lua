@@ -1,38 +1,43 @@
-local keymap = vim.keymap
+local keymap = vim.api.nvim_set_keymap
+local opts = { noremap = true }
+
+keymap("n", "j", "gj", opts)
+keymap("n", "k", "gk", opts)
+
 -- save on <Space> w
-keymap.set("n", "<Space>w", ":w<CR>")
+keymap("n", "<Space>w", ":w<CR>", opts)
 
 -- close current file on <Space> x
-keymap.set("n", "<Space>x", ":q<CR>")
+keymap("n", "<Space>x", ":q<CR>", opts)
 
 -- cc to :nohl
-keymap.set("n", "cc", ":nohl<CR>")
+keymap("n", "cc", ":nohl<CR>", opts)
 
 -- <C-r> to :source %
-keymap.set("n", "<C-r>", ":source %<CR>")
+keymap("n", "<C-r>", ":source %<CR>", opts)
 
 -- increment / decrement
-keymap.set("n", "-", "<C-x>")
-keymap.set("n", "+", "<C-a>")
+keymap("n", "-", "<C-x>", opts)
+keymap("n", "+", "<C-a>", opts)
 
 -- Select all
-keymap.set("n", "<C-a>", "gg<S-v>G")
+keymap("n", "<C-a>", "gg<S-v>G", opts)
 
 -- New tab
-keymap.set("n", "te", ":tabedit<CR>")
+keymap("n", "te", ":tabedit<CR>", opts)
 
 -- Split window
-keymap.set("n", "ss", ":split<Return><C-w>w")
-keymap.set("n", "sv", ":vsplit<Return><C-w>w")
+keymap("n", "ss", ":split<Return><C-w>w", opts)
+keymap("n", "sv", ":vsplit<Return><C-w>w", opts)
 
 -- Move window
-keymap.set("", "sh", "<C-w>h")
-keymap.set("", "sk", "<C-w>k")
-keymap.set("", "sj", "<C-w>j")
-keymap.set("", "sl", "<C-w>l")
+keymap("", "sh", "<C-w>h", opts)
+keymap("", "sk", "<C-w>k", opts)
+keymap("", "sj", "<C-w>j", opts)
+keymap("", "sl", "<C-w>l", opts)
 
 -- Resize window
-keymap.set("n", "<C-w><left>", "<C-w><")
-keymap.set("n", "<C-w><right>", "<C-w>>")
-keymap.set("n", "<C-w><up>", "<C-w>+")
-keymap.set("n", "<C-w><down>", "<C-w>-")
+keymap("n", "<C-w><left>", "<C-w><", opts)
+keymap("n", "<C-w><right>", "<C-w>>", opts)
+keymap("n", "<C-w><up>", "<C-w>+", opts)
+keymap("n", "<C-w><down>", "<C-w>-", opts)

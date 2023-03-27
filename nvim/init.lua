@@ -2,6 +2,7 @@ require("config.options")
 require("config.keymaps")
 require("config.ft")
 require("config.lazy")
+require("config.theme.myNightfly")
 
 local has = function(x)
   return vim.fn.has(x) == 1
@@ -13,3 +14,7 @@ if is_mac then
 elseif is_mac == 0 then
   require("config/windows")
 end
+
+
+-- tokyonight
+-- vim.api.nvim_command([[colorscheme tokyonight]])
