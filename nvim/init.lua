@@ -1,6 +1,5 @@
 require("config.options")
 require("config.keymaps")
-require("config.ft")
 require("config.lazy")
 require("config.theme.myNightfly")
 
