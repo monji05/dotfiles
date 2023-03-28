@@ -8,7 +8,7 @@ return {
       sources = {
         nls.builtins.formatting.fish_indent,
         nls.builtins.diagnostics.fish,
-        -- nls.builtins.formatting.stylua,
+        nls.builtins.formatting.stylua,
         nls.builtins.formatting.shfmt,
         nls.builtins.diagnostics.flake8,
       },
