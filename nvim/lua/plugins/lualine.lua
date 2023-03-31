@@ -1,6 +1,6 @@
 return {
   {
-    "nvim-lualine/lualine.nvim",     -- Statusline
+    "nvim-lualine/lualine.nvim", -- Statusline
     event = { "InsertEnter", "CursorHold", "FocusLost", "BufRead", "BufNewFile" },
     dependencies = {
       "kyazdani42/nvim-web-devicons",
@@ -17,7 +17,8 @@ return {
 
       require("lualine").setup({
         options = {
-          theme = my_nightfly,
+          -- theme = my_nightfly,
+          theme = "solarized_dark",
           icons_enabled = true,
           component_separators = { left = "", right = "" },
           section_separators = { left = "", right = "" },
@@ -29,8 +30,8 @@ return {
           lualine_c = {
             {
               "filename",
-              file_status = true,               -- displays file status (readonly status, modified status)
-              path = 1,                         -- 0 = just filename, 1 = relative path, 2 = absolute path
+              file_status = true, -- displays file status (readonly status, modified status)
+              path = 1,           -- 0 = just filename, 1 = relative path, 2 = absolute path
             },
             "diff",
             {

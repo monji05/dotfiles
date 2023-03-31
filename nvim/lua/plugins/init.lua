@@ -6,7 +6,7 @@ return {
   },
   {
     "nvim-lua/plenary.nvim",
-    lazy = false,
+    evet = { "BufReadPre", "BufNewFile" }
   },
   {
     "echasnovski/mini.nvim",
