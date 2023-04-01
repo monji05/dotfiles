@@ -33,6 +33,9 @@ return {
         ["cmp.entry.get_documentation"] = true,
       },
     },
+    presets = {
+      inc_rename = true,
+    },
   },
   keys = {
     { "<leader>H", "<CMD>NoiceHistory<CR>" },

@@ -5,4 +5,13 @@
 /gitui
 raycast
 .DS_Store
+/.git
+/node_modules
+/packages
+/.vscode
+/tmp
+/vendor
+# for obsidian
+/.trash
+/.obsidian
 

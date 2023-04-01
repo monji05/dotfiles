@@ -18,18 +18,6 @@ return {
             ["q"] = actions.close,
           },
         },
-        file_ignore_patterns = {
-          "node_modules",
-          ".git/*",
-          "packages",
-          ".vscode",
-          "tmp",
-          "vendor",
-          "docs",
-          -- for obsidian
-          ".trash",
-          ".obsidian",
-        },
       },
     })
 
