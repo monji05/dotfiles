@@ -1,7 +1,8 @@
 require("config.options")
 require("config.keymaps")
 require("config.lazy")
-require("config.theme.myNightfly")
+-- nightfly
+-- require("config.theme.myNightfly")
 
 local has = function(x)
   return vim.fn.has(x) == 1
