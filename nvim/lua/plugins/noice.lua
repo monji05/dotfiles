@@ -2,6 +2,7 @@ return {
   "folke/noice.nvim",
   event = "BufEnter",
   module = "noice",
+  dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
   opts = {
     -- add any options here
     cmdline = {

@@ -5,17 +5,11 @@ return {
     "MunifTanjim/nui.nvim",
     "nvim-lua/plenary.nvim",
   },
-  lazy = true,
-  keys = "fi",
+  keys = {
+    { "fi", ":Neotree float<CR>" },
+  },
   config = function()
-    local status, neotree = pcall(require, "neo-tree")
-
-    if not status then
-      print("neo-tree not found !")
-      return
-    end
-
-    neotree.setup({
+    require("neo-tree").setup({
       close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
       popup_border_style = "rounded",
       enable_git_status = true,
@@ -160,7 +154,7 @@ return {
             ["/"] = "fuzzy_finder",
             ["D"] = "fuzzy_finder_directory",
             ["f"] = "filter_on_submit",
-            ["<c-x>"] = "clear_filter",
+            ["F"] = "clear_filter",
             ["[g"] = "prev_git_modified",
             ["]g"] = "next_git_modified",
           },
@@ -193,6 +187,5 @@ return {
         },
       },
     })
-    vim.keymap.set("n", "fi", ":Neotree float<CR>")
   end,
 }
