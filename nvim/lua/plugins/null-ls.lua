@@ -7,7 +7,7 @@ return {
       root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
       sources = {
         -- markdown
-        nls.builtins.formatting.markdonwlint,
+        nls.builtins.formatting.markdownlint,
         -- fish
         nls.builtins.formatting.fish_indent,
         nls.builtins.diagnostics.fish,

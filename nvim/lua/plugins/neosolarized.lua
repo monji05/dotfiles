@@ -5,7 +5,7 @@ return {
     -- lazy = false,
     -- priority = 1000,
   },
-  event = { "BufReadPre", "BufNewFile" },
+  event = { "BufReadPre", "BufRead", "BufNewFile" },
   -- it hasn't changed my customize color on below lazy, priority
   -- lazy = false,
   -- priority = 1000,
