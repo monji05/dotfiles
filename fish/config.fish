@@ -2,7 +2,7 @@ set fish_greeting ""
 set -gx TERM xterm-256color
 
 fish_add_path /opt/homebrew/bin
-set -U fish_user_paths $fish_user_paths $HOME/.cargo/bin
+fish_add_path $HOME/.cargo/bin
 
 alias g='git'
 alias vim='nvim'
