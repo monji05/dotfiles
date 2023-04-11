@@ -2,14 +2,9 @@ return {
   "svrana/neosolarized.nvim",
   dependencies = {
     "tjdevries/colorbuddy.nvim",
-    -- lazy = false,
-    -- priority = 1000,
   },
   event = { "BufReadPre", "BufRead", "BufNewFile" },
-  -- it hasn't changed my customize color on below lazy, priority
-  -- lazy = false,
-  -- priority = 1000,
-  opts = function()
+  config = function()
     local n = require("neosolarized").setup({
       comment_italics = false,
     })
