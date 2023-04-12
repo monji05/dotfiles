@@ -69,13 +69,22 @@ return {
         { name = "buffer" },
       }),
       formatting = {
-        format = lspkind.cmp_format({
-          maxwidth = 50,
-          before = function(entry, vim_item)
-            vim_item = formatForTailwindCSS(entry, vim_item)
-            return vim_item
-          end,
-        }),
+        fields = { "kind", "abbr", "menu" },
+        format = function(entry, vim_item)
+          local kind = lspkind.cmp_format({ mode = "symbol_text", maxwidth = 55 })(entry, vim_item)
+          local strings = vim.split(kind.kind, "%s", { trimempty = true })
+          kind.kind = " " .. (strings[1] or "") .. " "
+          kind.menu = "    (" .. (strings[2] or "") .. ")"
+
+          return kind
+        end,
+      },
+      window = {
+        completion = {
+          winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+          col_offset = -3,
+          side_padding = 0,
+        },
       },
     })
 

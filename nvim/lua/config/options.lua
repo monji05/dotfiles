@@ -24,7 +24,7 @@ vim.opt.inccommand = "split"
 vim.opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
 vim.opt.smarttab = true
 vim.opt.breakindent = true
-vim.opt.wrap = false          -- No Wrap lines
+vim.opt.wrap = false -- No Wrap lines
 vim.opt.backspace = { "start", "eol", "indent" }
 vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders
 vim.opt.fillchars = "diff:╱"
@@ -38,7 +38,7 @@ vim.opt.termguicolors = true
 -- winblend = 0 is required for noice background color on neosolarized_dark
 vim.opt.winblend = 0
 vim.opt.wildoptions = "pum"
-vim.opt.pumblend = 10 -- transparency popup for lsp, float window
+vim.opt.pumblend = 0 -- transparency popup for lsp, float window
 vim.opt.background = "dark"
 
 -- Undercurl

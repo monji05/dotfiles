@@ -1,21 +1,18 @@
 return {
-  'onsails/lspkind-nvim', -- vscode-like pictograms
-  event = 'InsertEnter',
+  "onsails/lspkind-nvim", -- vscode-like pictograms
+  event = "InsertEnter",
   config = function()
-    local status, lspkind = pcall(require, "lspkind")
-    if (not status) then return end
-
-    lspkind.init({
+    require("lspkind").init({
       -- enables text annotations
       --
       -- default: true
-      mode = 'symbol',
+      mode = "symbol",
       -- default symbol map
       -- can be either 'default' (requires nerd-fonts font) or
       -- 'codicons' for codicon preset (requires vscode-codicons font)
       --
       -- default: 'default'
-      preset = 'codicons',
+      preset = "codicons",
       -- override preset symbols
       --
       -- default: {}
@@ -44,8 +41,8 @@ return {
         Struct = "פּ",
         Event = "",
         Operator = "",
-        TypeParameter = ""
+        TypeParameter = "",
       },
     })
-  end
+  end,
 }
