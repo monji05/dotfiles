@@ -8,7 +8,7 @@ return {
       user_default_options = {
         RGB = true,       -- #RGB hex codes
         RRGGBB = true,    -- #RRGGBB hex codes
-        names = false,    -- "Name" codes like Blue
+        names = true,     -- "Name" codes like Blue
         RRGGBBAA = true,  -- #RRGGBBAA hex codes
         AARRGGBB = false, -- 0xAARRGGBB hex codes
         rgb_fn = true,    -- CSS rgb() and rgba() functions
