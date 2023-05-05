@@ -11,6 +11,7 @@ return {
       highlight = {
         enable = true,
         disable = { "vim" },
+        additional_vim_regex_highlighting = { "markdown" },
       },
       indent = {
         enable = true,
