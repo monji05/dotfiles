@@ -1,8 +1,12 @@
 return {
   "nvim-telescope/telescope.nvim",
-  keys = { ";f", ";r", "\\", ";;", "<leader>f" },
+  keys = { ";f", ";r", "\\", ";;", "<leader>f", "<leader>z" },
   cmd = "Telescope",
-  dependencies = "nvim-telescope/telescope-file-browser.nvim",
+  dependencies = {
+    "nvim-telescope/telescope-file-browser.nvim",
+    "nvim-telescope/telescope-z.nvim",
+    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+  },
   config = function()
     local telescope = require("telescope")
     local actions = require("telescope.actions")
@@ -14,10 +18,11 @@ return {
         mappings = {
           n = {
             ["q"] = actions.close,
-            ["o"] = actions.select_tab,
+            ["<CR>"] = actions.select_tab,
           },
           i = {
             ["<C-u>"] = false,
+            ["<CR>"] = actions.select_tab,
           },
         },
       },
@@ -35,6 +40,7 @@ return {
               ["<C-w>"] = function()
                 vim.cmd("normal vbd")
               end,
+              ["<C-o>"] = actions.select_tab,
             },
             ["n"] = {
               -- your custom normal mode mappings
@@ -47,6 +53,11 @@ return {
               end,
             },
           },
+        },
+        fzf = {
+          fuzzy = true,
+          override_generic_sorter = true,
+          override_file_sorter = true,
         },
       },
     })
@@ -82,7 +93,11 @@ return {
       { noremap = true }
     )
 
+    vim.api.nvim_set_keymap("n", "<leader>z", "<Cmd>Telescope z list<CR>", { noremap = true })
+
     -- must call load_extension after set up function:
     telescope.load_extension("file_browser")
+    telescope.load_extension("z")
+    telescope.load_extension("fzf")
   end,
 }
