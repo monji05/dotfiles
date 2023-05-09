@@ -15,19 +15,23 @@ return {
 
     telescope.setup({
       defaults = {
+        prompt_prefix = " ",
+        selection_caret = " ",
+        prompt_title = "Find File",
         mappings = {
           n = {
             ["q"] = actions.close,
-            ["<CR>"] = actions.select_tab,
+            ["o"] = actions.select_tab,
           },
           i = {
             ["<C-u>"] = false,
-            ["<CR>"] = actions.select_tab,
+            ["<C-o>"] = actions.select_tab,
           },
         },
       },
       extensions = {
         file_browser = {
+          initial_mode = "normal",
           cwd = "absolute",
           theme = "ivy",
           prompt_path = true,

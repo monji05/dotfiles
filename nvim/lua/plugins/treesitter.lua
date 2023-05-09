@@ -2,10 +2,7 @@ return {
   "nvim-treesitter/nvim-treesitter",
   event = "BufEnter",
   config = function()
-    local status, ts = pcall(require, "nvim-treesitter.configs")
-    if not status then
-      return
-    end
+    local ts = require("nvim-treesitter.configs")
 
     ts.setup({
       highlight = {
