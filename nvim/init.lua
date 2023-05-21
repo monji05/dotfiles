@@ -14,6 +14,3 @@ if is_mac then
 elseif is_mac == 0 then
   require("config/windows")
 end
-
--- tokyonight
--- vim.api.nvim_command([[colorscheme tokyonight]])

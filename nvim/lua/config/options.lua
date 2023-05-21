@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.opt.relativenumber = true
-vim.opt.signcolumn = "yes"
+vim.opt.signcolumn = "number"
 vim.opt.number = true
 
 vim.opt.title = true
@@ -24,7 +24,7 @@ vim.opt.inccommand = "split"
 vim.opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
 vim.opt.smarttab = true
 vim.opt.breakindent = true
-vim.opt.wrap = false -- No Wrap lines
+vim.opt.wrap = false          -- No Wrap lines
 vim.opt.backspace = { "start", "eol", "indent" }
 vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders
 vim.opt.fillchars = "diff:╱"

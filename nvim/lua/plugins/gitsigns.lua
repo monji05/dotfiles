@@ -2,8 +2,6 @@ return {
   "lewis6991/gitsigns.nvim",
   event = { "BufRead" },
   config = function()
-    require("scrollbar.handlers.gitsigns").setup()
-
     require("gitsigns").setup({
       signs = {
         add = { hl = "GitSignsAdd", text = "+", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
@@ -13,7 +11,8 @@ return {
         changedelete = { hl = "GitSignsChange", text = "~", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
         untracked = { hl = "GitSignsAdd", text = "┆", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
       },
-      numhl = false,  -- diff highlight line number
+      signcolumn = false,
+      numhl = true,   -- diff highlight line number
       linehl = false, -- diff highlight line
       on_attach = function(bufnr)
         local gs = package.loaded.gitsigns
@@ -49,6 +48,7 @@ return {
         map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
         map("n", "<Space>d", ":Gitsigns diffthis<CR>")
         map("n", "<Space>h", gs.preview_hunk)
+        map("n", "<Space>b", ":Gitsigns blame_line<CR>")
       end,
     })
   end,

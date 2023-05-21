@@ -1,9 +1,21 @@
 return {
-  "jose-elias-alvarez/null-ls.nvim",
-  event = { "BufReadPre", "BufNewFile", "BufRead", "BufEnter" },
-  opts = function()
+  "jay-babu/mason-null-ls.nvim",
+  -- event = { "InsertEnter" },
+  dependencies = {
+    { "williamboman/mason.nvim",         dependencies = "williamboman/mason-lspconfig.nvim", cmd = { "Mason" } },
+    { "jose-elias-alvarez/null-ls.nvim", cmd = { "W" } },
+  },
+  config = function()
+    require("mason-null-ls").setup({
+      ensure_installed = {},
+      automatic_installation = true,
+      handlers = {},
+    })
+    require("mason").setup({
+      automatic_installation = true,
+    })
     local nls = require("null-ls")
-    return {
+    nls.setup({
       root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
       sources = {
         -- markdown
@@ -18,6 +30,6 @@ return {
         -- python
         nls.builtins.diagnostics.flake8,
       },
-    }
+    })
   end,
 }

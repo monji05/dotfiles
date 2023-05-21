@@ -5,7 +5,7 @@ return {
     { "roobert/tailwindcss-colorizer-cmp.nvim", event = "InsertEnter" },
     { "L3MON4D3/LuaSnip",                       event = "InsertEnter" },
   },
-  event = { "BufReadPre", "BufNewFile" },
+  event = { "InsertEnter" },
   config = function()
     local cmp = require("cmp")
     local lspkind = require("lspkind")
