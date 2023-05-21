@@ -1,3 +1,19 @@
+
+layout {
+  tab name="nvim" command="z"
+  nvim {
+    args "nvim"
+  }
+  tab name="zellij" command="z"
+  nvim {
+    args "zellij"
+  }
+  tab name="docker" command="z"
+  nvim {
+    args "docker"
+  }
+}
+
 // If you'd like to override the default keybindings completely, be sure to change "keybinds" to "keybinds clear-defaults=true"
 keybinds clear-defaults=true {
     normal {
