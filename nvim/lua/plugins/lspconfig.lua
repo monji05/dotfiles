@@ -83,7 +83,7 @@ return {
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
     capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-    local servers = { "tsserver", "intelephense", "marksman" }
+    local servers = { "tsserver", "intelephense", "marksman", "tailwindcss", "jdtls", "java" }
     for _, lsp in ipairs(servers) do
       nvim_lsp[lsp].setup({
         on_attach = on_attach,
@@ -106,16 +106,6 @@ return {
           },
         },
       },
-    })
-
-    nvim_lsp.intelephense.setup({
-      on_attach = on_attach,
-      capabilities = capabilities,
-    })
-
-    nvim_lsp.tailwindcss.setup({
-      on_attach = on_attach,
-      capabilities = capabilities,
     })
 
     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
