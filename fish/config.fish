@@ -3,6 +3,7 @@ set -gx TERM xterm-256color
 
 fish_add_path /opt/homebrew/bin
 fish_add_path $HOME/.cargo/bin
+fish_add_path /usr/bin/java
 
 alias g='git'
 alias vim='nvim'
@@ -13,6 +14,11 @@ alias gs='git status'
 alias gc='git commit -m'
 alias rm='rm -i'
 alias cl='clear'
+alias cd1='cd ..'
+alias cd2='cd ../../'
+alias cd3='cd ../../../'
+alias cd4='cd ../../../../'
+alias cd5='cd ../../../../../'
 
 #theme
 set -g theme_color_scheme terminal-dark
