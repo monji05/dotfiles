@@ -1,5 +1,8 @@
 return {
   "nvim-treesitter/nvim-treesitter",
+  dependencies = {
+    "nvim-treesitter/playground",
+  },
   event = "BufEnter",
   config = function()
     local ts = require("nvim-treesitter.configs")

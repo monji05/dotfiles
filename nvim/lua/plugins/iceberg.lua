@@ -1,6 +1,6 @@
 return {
   "https://codeberg.org/oahlen/iceberg.nvim",
   config = function()
-    vim.cmd.colorscheme("iceberg")
+    -- vim.api.nvim_command([[colorscheme iceberg]])
   end,
 }
