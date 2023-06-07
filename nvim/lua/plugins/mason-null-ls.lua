@@ -1,9 +1,13 @@
 return {
   "jay-babu/mason-null-ls.nvim",
-  -- event = { "InsertEnter" },
+  module = { "mason" },
   dependencies = {
-    { "williamboman/mason.nvim",         dependencies = "williamboman/mason-lspconfig.nvim", cmd = { "Mason" } },
-    { "jose-elias-alvarez/null-ls.nvim", cmd = { "W" } },
+    {
+      "williamboman/mason.nvim",
+      dependencies = "williamboman/mason-lspconfig.nvim",
+      event = { "InsertEnter", "InsertLeave" },
+    },
+    { "jose-elias-alvarez/null-ls.nvim", event = { "BufWriteCmd" } },
   },
   config = function()
     require("mason-null-ls").setup({

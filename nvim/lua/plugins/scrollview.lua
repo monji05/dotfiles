@@ -1,6 +1,15 @@
 return {
   "petertriho/nvim-scrollbar",
-  event = { "BufRead" },
+  event = {
+    "BufWinEnter",
+    "CmdwinLeave",
+    "TabEnter",
+    "TermEnter",
+    "TextChanged",
+    "VimResized",
+    "WinEnter",
+    "WinScrolled",
+  },
   opts = {
     -- marks = {
     --   GitAdd = {

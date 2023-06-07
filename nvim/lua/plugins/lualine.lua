@@ -3,23 +3,13 @@ return {
     "nvim-lualine/lualine.nvim", -- Statusline
     event = { "InsertEnter", "CursorHold", "FocusLost", "BufRead", "BufNewFile" },
     dependencies = {
-      "kyazdani42/nvim-web-devicons",
+      "nvim-tree/nvim-web-devicons",
       module = { "nvim-web-devicons" },
     },
     config = function()
-      local my_nightfly = require("lualine.themes.nightfly")
-      local my_b_bg = "#414455"
-      my_nightfly.normal.b.bg = my_b_bg
-      my_nightfly.insert.b.bg = my_b_bg
-      my_nightfly.visual.b.bg = my_b_bg
-      my_nightfly.replace.b.bg = my_b_bg
-      my_nightfly.inactive.b.bg = my_b_bg
-
       require("lualine").setup({
         options = {
-          -- theme = my_nightfly,
-          -- theme = "solarized_dark",
-          theme = "iceberg",
+          theme = "solarized_dark",
           icons_enabled = true,
           component_separators = { left = "", right = "" },
           section_separators = { left = "", right = "" },

@@ -1,7 +1,7 @@
 return {
   "svrana/neosolarized.nvim",
   dependencies = { "tjdevries/colorbuddy.nvim" },
-  event = { "BufReadPre", "BufRead", "BufNewFile" },
+  event = { "BufReadPre", "BufNewFile" },
   config = function()
     local n = require("neosolarized").setup({
       comment_italics = false,
