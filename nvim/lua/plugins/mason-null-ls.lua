@@ -7,7 +7,7 @@ return {
       dependencies = "williamboman/mason-lspconfig.nvim",
       event = { "InsertEnter", "InsertLeave" },
     },
-    { "jose-elias-alvarez/null-ls.nvim", event = { "BufWriteCmd" } },
+    { "jose-elias-alvarez/null-ls.nvim", event = { "BufReadPre", "BufNewFile" } },
   },
   config = function()
     require("mason-null-ls").setup({
