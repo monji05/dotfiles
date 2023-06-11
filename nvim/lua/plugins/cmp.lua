@@ -1,5 +1,6 @@
 return {
   "hrsh7th/nvim-cmp", -- Completion
+  module = "cmp",
   dependencies = {
     { "hrsh7th/cmp-buffer",                     event = "InsertEnter" },
     { "roobert/tailwindcss-colorizer-cmp.nvim", event = "InsertEnter" },

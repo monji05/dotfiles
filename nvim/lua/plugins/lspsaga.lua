@@ -1,6 +1,8 @@
 return {
   "kkharji/lspsaga.nvim", -- LSP UIs
-  event = "BufRead",
+  opt = true,
+  branch = "main",
+  event = "LspAttach",
   opts = {
     debug = false,
     use_saga_diagnostic_sign = true,
@@ -50,13 +52,8 @@ return {
     highlight_prefix = false,
   },
   keys = {
-    { "gd", "<CMD>Lspsaga lsp_finder<CR>" },
-    { "gh", "<CMD>Lspsaga hover_doc<CR>" },
-    -- use increname
-    -- { "gr", "<CMD>Lspsaga rename<CR>" },
+    { "gd",        "<CMD>Lspsaga lsp_finder<CR>" },
+    { "gh",        "<CMD>Lspsaga hover_doc<CR>" },
     { "<leader>j", "<CMD>Lspsaga diagnostic_jump_next<CR>" },
-    -- use zellij
-    -- { "<C-t>",     "<CMD>Lspsaga toggle_floaterm<CR>" },
-    -- { "<C-t>",     mode = "t",                             "<CMD>Lspsaga close_floaterm<CR>" },
   },
 }

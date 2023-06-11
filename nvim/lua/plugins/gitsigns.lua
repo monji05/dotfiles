@@ -12,7 +12,7 @@ return {
         untracked = { hl = "GitSignsAdd", text = "┆", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
       },
       signcolumn = true,
-      numhl = false,   -- diff highlight line number
+      numhl = false,  -- diff highlight line number
       linehl = false, -- diff highlight line
       on_attach = function(bufnr)
         local gs = package.loaded.gitsigns
@@ -47,7 +47,7 @@ return {
         -- Text object
         map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
         map("n", "<Space>d", ":Gitsigns diffthis<CR>")
-        map("n", "<Space>h", gs.preview_hunk)
+        map("n", "<Space>gh", gs.preview_hunk)
         map("n", "<Space>b", ":Gitsigns blame_line<CR>")
       end,
     })

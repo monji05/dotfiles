@@ -1,8 +1,10 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  event = "BufEnter",
+  dependencies = { "nvim-treesitter/nvim-treesitter-context" },
+  event = "UIEnter",
   config = function()
     local ts = require("nvim-treesitter.configs")
+    require("treesitter-context").setup()
 
     ts.setup({
       highlight = {
