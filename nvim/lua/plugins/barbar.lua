@@ -11,6 +11,7 @@ return {
       -- Disable highlighting alternate buffers
       highlight_alternate = false,
       icons = {
+        button = "",
         -- Configure the base icons on the bufferline.
         -- Valid options to display the buffer index and -number are `true`, 'superscript' and 'subscript'
         buffer_index = false,
