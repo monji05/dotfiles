@@ -17,10 +17,10 @@ return {
         buffer_number = false,
         -- Enables / disables diagnostic symbols
         diagnostics = {
-          [vim.diagnostic.severity.ERROR] = { enabled = true, icon = "ﬀ" },
-          [vim.diagnostic.severity.WARN] = { enabled = false },
-          [vim.diagnostic.severity.INFO] = { enabled = false },
-          [vim.diagnostic.severity.HINT] = { enabled = true },
+          [vim.diagnostic.severity.ERROR] = { enabled = true, icon = " " },
+          [vim.diagnostic.severity.WARN] = { enabled = true, icon = " " },
+          [vim.diagnostic.severity.INFO] = { enabled = true, icon = " " },
+          [vim.diagnostic.severity.HINT] = { enabled = true, icon = "" },
         },
         gitsigns = {
           added = { enabled = true, icon = "+" },
@@ -53,6 +53,12 @@ return {
     --highlight
     vim.api.nvim_command([[highlight BufferInactive guibg=#002b36]])
     vim.api.nvim_command([[highlight BufferInactiveADDED guibg=#002b36]])
+    vim.api.nvim_command([[highlight BufferInactiveCHANGED guibg=#002b36]])
+    vim.api.nvim_command([[highlight BufferInactiveDELETED guibg=#002b36]])
     vim.api.nvim_command([[highlight BufferInactiveSign guibg=#002b36]])
+    vim.api.nvim_command([[highlight BufferInactiveERROR guibg=#002b36]])
+    vim.api.nvim_command([[highlight BufferInactiveWARN guibg=#002b36]])
+    vim.api.nvim_command([[highlight BufferInactiveINFO guibg=#002b36]])
+    vim.api.nvim_command([[highlight BufferInactiveHINT guibg=#002b36]])
   end,
 }
