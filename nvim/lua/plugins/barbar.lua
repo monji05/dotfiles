@@ -11,6 +11,7 @@ return {
       -- Disable highlighting alternate buffers
       highlight_alternate = false,
       icons = {
+        pinned = { button = "", filename = true },
         button = "",
         -- Configure the base icons on the bufferline.
         -- Valid options to display the buffer index and -number are `true`, 'superscript' and 'subscript'
@@ -33,19 +34,14 @@ return {
 
     local map = vim.api.nvim_set_keymap
     local opts = { noremap = true, silent = true }
-    -- Move to previous/next
     map("n", "<Tab>", "<Cmd>BufferNext<CR>", opts)
     map("n", "<S-Tab>", "<Cmd>BufferPrevious<CR>", opts)
-    -- Re-order to previous/next
     map("n", "<Leader><left>", "<Cmd>BufferMovePrevious<CR>", opts)
     map("n", "<Leader><right>", "<Cmd>BufferMoveNext<CR>", opts)
-    -- Pin/unpin bufferhls
     map("n", "<Leader>P", "<Cmd>BufferPin<CR>", opts)
-    -- Close buffer
-    map("n", "<Leader>bc", "<Cmd>BufferClose<CR>", opts)
-    -- Magic buffer-picking mode
+    map("n", "<Leader>x", "<Cmd>BufferClose<CR>", opts)
+    map("n", "<S-x>", "<Cmd>BufferRestore<CR>", opts)
     map("n", "<Leader>p", "<Cmd>BufferPick<CR>", opts)
-    -- Sort automatically by...
     map("n", "<Leader>bb", "<Cmd>BufferOrderByBufferNumber<CR>", opts)
     map("n", "<Leader>bd", "<Cmd>BufferOrderByDirectory<CR>", opts)
     map("n", "<Leader>bl", "<Cmd>BufferOrderByLanguage<CR>", opts)
