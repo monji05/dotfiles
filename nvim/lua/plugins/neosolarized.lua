@@ -30,11 +30,19 @@ return {
     n.Color.new("myGitSingsAddBg", "#4F6E04")
     n.Color.new("myGitSingsChangeBg", "#7E5F00")
     n.Color.new("myGitSingsDeleteBg", "#9A2320")
+
+    -- diff color on LineNumber
     n.Group.new("GitSignsAddLn", n.colors.none, n.colors.myGitSingsAddBg, n.styles.NONE)
     n.Group.new("GitSignsAddNr", n.colors.none, n.colors.myGitSingsAddBg, n.styles.NONE)
     n.Group.new("GitSignsChangeLn", n.colors.none, n.colors.myGitSingsChangeBg, n.styles.NONE)
     n.Group.new("GitSignsChangeNr", n.colors.none, n.colors.myGitSingsChangeBg, n.styles.NONE)
     n.Group.new("GitSignsDeleteLn", n.colors.none, n.colors.myGitSingsDeleteBg, n.styles.NONE)
     n.Group.new("GitSignsDeleteNr", n.colors.none, n.colors.myGitSingsDeleteBg, n.styles.NONE)
+
+    -- for diffview
+    n.Group.new("DiffAdd", n.colors.none, n.colors.base02, n.styles.NONE)
+    n.Group.new("DiffChange", n.colors.none, n.colors.base02, n.styles.NONE)
+    n.Group.new("DiffDelete", n.colors.red, n.colors.base02, n.styles.NONE)
+    n.Group.new("DiffText", n.colors.black, n.colors.yellow, n.styles.NONE)
   end,
 }
