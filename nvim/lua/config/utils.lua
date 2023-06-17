@@ -21,6 +21,7 @@ end
 local plugins = {
   {
     "lewis6991/impatient.nvim",
+    priority = 100,
   },
   {
     "nvim-lua/popup.nvim",
