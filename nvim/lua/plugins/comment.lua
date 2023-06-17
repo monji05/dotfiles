@@ -1,9 +1,5 @@
-return {
-  "numToStr/Comment.nvim",
-  event = "BufRead",
-  opts = {
-    toggler = {
-      line = "<C-u>",
-    },
+require("Comment").setup({
+  toggler = {
+    line = "<C-u>",
   },
-}
+})

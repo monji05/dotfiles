@@ -1,7 +1,7 @@
 vim.loader.enable()
 require("config.options")
 require("config.keymaps")
-require("config.lazy")
+require("config.utils")
 
 local has = function(x)
   return vim.fn.has(x) == 1
