@@ -30,6 +30,7 @@ return {
               sources = { "nvim_diagnostic" },
               symbols = { error = " ", warn = " ", info = " ", hint = " " },
             },
+            { require("NeoComposer.ui").status_recording },
           },
           lualine_z = {
             "os.date(' %m-%d(%a) %H:%M')",

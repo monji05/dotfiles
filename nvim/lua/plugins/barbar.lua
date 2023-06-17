@@ -50,6 +50,7 @@ return {
     --highlight
     vim.api.nvim_command([[highlight BufferCurrentHint  guifg=#2aa198]])
     vim.api.nvim_command([[highlight BufferCurrentADDED  guifg=#719e07]])
+    vim.api.nvim_command([[highlight BufferCurrentCHANGED  guifg=#b58900]])
     vim.api.nvim_command([[highlight BufferInactive guibg=#002b36]])
     vim.api.nvim_command([[highlight BufferInactiveMod  guibg=#002b36]])
     vim.api.nvim_command([[highlight BufferInactiveADDED guibg=#002b36]])

@@ -8,6 +8,24 @@ return {
       -- background_set = true,
     })
 
+    -- basic color
+    -- Color.new("base03", "#002b36")
+    -- Color.new("base02", "#073642")
+    -- Color.new("base01", "#586e75")
+    -- Color.new("base00", "#657b83")
+    -- Color.new("base0", "#839496")
+    -- Color.new("base1", "#93a1a1")
+    -- Color.new("base2", "#eee8d5")
+    -- Color.new("base3", "#fdf6e3")
+    -- Color.new("yellow", "#b58900")
+    -- Color.new("orange", "#cb4b16")
+    -- Color.new("red", "#dc322f")
+    -- Color.new("magenta", "#d33682")
+    -- Color.new("violet", "#6c71c4")
+    -- Color.new("blue", "#268bd2")
+    -- Color.new("cyan", "#2aa198")
+    -- Color.new("green", "#719e07")
+
     n.Color.new("black", "#000000")
     n.Group.new("CursorLine", n.colors.none, n.colors.base03, n.styles.NONE, n.colors.base1)
     n.Group.new("CursorLineNr", n.colors.yellow, n.colors.black, n.styles.NONE, n.colors.base1)
