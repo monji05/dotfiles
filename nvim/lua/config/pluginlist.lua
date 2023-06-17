@@ -20,6 +20,9 @@ end
 
 local plugins = {
   {
+    "lewis6991/impatient.nvim",
+  },
+  {
     "nvim-lua/popup.nvim",
     event = "BufRead",
     lazy = true,
