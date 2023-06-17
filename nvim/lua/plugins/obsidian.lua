@@ -1,30 +1,4 @@
-return {
-  "epwalsh/obsidian.nvim",
-  lazy = true,
-  event = { "BufReadPre /Users/eriko/Documents/Obsidian Vault/**.md" },
-  -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand':
-  -- event = { "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md" },
-  dependencies = {
-    -- Required.
-    "nvim-lua/plenary.nvim",
-
-    -- Optional, for completion.
-    "hrsh7th/nvim-cmp",
-
-    -- Optional, for search and quick-switch functionality.
-    "nvim-telescope/telescope.nvim",
-
-    -- Optional, an alternative to telescope for search and quick-switch functionality.
-    -- "ibhagwan/fzf-lua"
-
-    -- Optional, another alternative to telescope for search and quick-switch functionality.
-    -- "junegunn/fzf",
-    -- "junegunn/fzf.vim"
-  },
-  keys = {
-    { "<leader>o", "<Cmd>ObsidianTemplate<CR>"}
-  },
-  opts = {
+require("obsidian").setup({
     dir = "~/Documents/Obsidian Vault", -- no need to call 'vim.fn.expand' here
     -- Optional, completion.
     completion = {
@@ -80,18 +54,15 @@ return {
     use_advanced_uri = true,
     -- Optional, set to true to force ':ObsidianOpen' to bring the app to the foreground.
     open_app_foreground = false,
-  },
-  config = function(_, opts)
-    require("obsidian").setup(opts)
+})
 
-    -- Optional, override the 'gf' keymap to utilize Obsidian's search functionality.
-    -- see also: 'follow_url_func' config option above.
-    vim.keymap.set("n", "gf", function()
-      if require("obsidian").util.cursor_on_markdown_link() then
-        return "<cmd>ObsidianFollowLink<CR>"
-      else
-        return "gf"
-      end
-    end, { noremap = false, expr = true })
-  end,
-}
+-- Optional, override the 'gf' keymap to utilize Obsidian's search functionality.
+-- see also: 'follow_url_func' config option above.
+vim.keymap.set("n", "gf", function()
+  if require("obsidian").util.cursor_on_markdown_link() then
+    return "<cmd>ObsidianFollowLink<CR>"
+  else
+    return "gf"
+  end
+end, { noremap = false, expr = true })
+

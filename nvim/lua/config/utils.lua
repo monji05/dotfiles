@@ -43,6 +43,7 @@ local plugins = {
   },
   {
     "romgrk/barbar.nvim",
+    event = "VimEnter",
     config = function()
       require("plugins/barbar")
     end,
@@ -52,7 +53,7 @@ local plugins = {
     version = "*",
     name = "barbecue",
     dependencies = {
-      "nvim-tree/nvim-web-devicons", -- optional dependency
+      "nvim-tree/nvim-web-devicons",
       "SmiteshP/nvim-navic",
     },
     config = function()
@@ -129,6 +130,7 @@ local plugins = {
   },
   {
     "RRethy/vim-illuminate",
+    event = "VeryLazy",
   },
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -147,8 +149,9 @@ local plugins = {
   },
   {
     "neovim/nvim-lspconfig",
-    dependencies = { "hrsh7th/cmp-nvim-lsp" },
-    event = { "BufReadPre", "BufNewFile" },
+    module = "lspconfig",
+    dependencies = { "hrsh7th/cmp-nvim-lsp"},
+    event = { "BufReadPre", "BufNewFile"},
     config = function()
       require("plugins/lspconfig")
     end,
@@ -173,7 +176,6 @@ local plugins = {
     "nvim-lualine/lualine.nvim",
     dependencies = {
       "nvim-tree/nvim-web-devicons",
-      module = { "nvim-web-devicons" },
     },
     event = { "InsertEnter", "CursorHold", "FocusLost", "BufRead", "BufNewFile" },
     config = function()
@@ -181,26 +183,27 @@ local plugins = {
     end,
   },
   {
-    "L3MON4D3/LuaSnip",
-    config = function()
+    -- I won't use yet
+    -- "L3MON4D3/LuaSnip",
+    -- config = function()
       -- require("plugins/luasnip")
-    end,
+    -- end,
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
     event = { "BufReadPre", "BufNewFile" },
-    config = function ()
+    config = function()
       require("plugins.null-ls")
-    end
+    end,
   },
   {
     "williamboman/mason.nvim",
     module = { "mason" },
     dependencies = "williamboman/mason-lspconfig.nvim",
     event = { "InsertEnter", "InsertLeave" },
-    config = function ()
+    config = function()
       require("plugins.mason")
-    end
+    end,
   },
   {
     "echasnovski/mini.align",
@@ -256,6 +259,30 @@ local plugins = {
   },
   {
     "epwalsh/obsidian.nvim",
+    event = { "BufReadPre /Users/eriko/Documents/Obsidian Vault/**.md" },
+    -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand':
+    -- event = { "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md" },
+    dependencies = {
+      -- Required.
+      "nvim-lua/plenary.nvim",
+
+      -- Optional, for completion.
+      "hrsh7th/nvim-cmp",
+
+      -- Optional, for search and quick-switch functionality.
+      "nvim-telescope/telescope.nvim",
+
+      -- Optional, an alternative to telescope for search and quick-switch functionality.
+      -- "ibhagwan/fzf-lua"
+
+      -- Optional, another alternative to telescope for search and quick-switch functionality.
+      -- "junegunn/fzf",
+      -- "junegunn/fzf.vim"
+    },
+    keys = {
+      { "<leader>o", "<Cmd>ObsidianTemplate<CR>" },
+    },
+
     config = function()
       require("plugins/obsidian")
     end,
@@ -305,10 +332,10 @@ local plugins = {
   {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
-      "nvim-treesitter/nvim-treesitter-context",
-      "nvim-treesitter/nvim-treesitter-textobjects",
+      { "nvim-treesitter/nvim-treesitter-textobjects", event = "ModeChanged" },
+      { "nvim-treesitter/nvim-treesitter-context",     event = "VeryLazy" },
     },
-    event = "UIEnter",
+    event = { "VimEnter", "UIEnter" },
     config = function()
       require("plugins/treesitter")
     end,
