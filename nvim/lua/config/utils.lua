@@ -187,19 +187,20 @@ local plugins = {
     end,
   },
   {
-    "jay-babu/mason-null-ls.nvim",
+    "jose-elias-alvarez/null-ls.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function ()
+      require("plugins.null-ls")
+    end
+  },
+  {
+    "williamboman/mason.nvim",
     module = { "mason" },
-    dependencies = {
-      {
-        "williamboman/mason.nvim",
-        dependencies = "williamboman/mason-lspconfig.nvim",
-        event = { "InsertEnter", "InsertLeave" },
-      },
-      { "jose-elias-alvarez/null-ls.nvim", event = { "BufReadPre", "BufNewFile" } },
-    },
-    config = function()
-      require("plugins/mason-null-ls")
-    end,
+    dependencies = "williamboman/mason-lspconfig.nvim",
+    event = { "InsertEnter", "InsertLeave" },
+    config = function ()
+      require("plugins.mason")
+    end
   },
   {
     "echasnovski/mini.align",

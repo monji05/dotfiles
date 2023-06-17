@@ -1,11 +1,3 @@
-require("mason-null-ls").setup({
-  ensure_installed = {},
-  automatic_installation = true,
-  handlers = {},
-})
-require("mason").setup({
-  automatic_installation = true,
-})
 local nls = require("null-ls")
 nls.setup({
   root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
