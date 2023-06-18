@@ -347,12 +347,16 @@ local plugins = {
       "<leader>tq",
       "gR",
     },
-    config = require("plugins/trouble"),
+    config = function()
+      require("plugins/trouble")
+    end
   },
   {
     "dstein64/vim-startuptime",
     cmd = "StartupTime",
-    config = require("plugins/vim-startuptime"),
+    config = function()
+      require("plugins/vim-startuptime")
+    end
   },
   {
     "folke/which-key.nvim",
@@ -368,7 +372,6 @@ local plugins = {
     config = function()
       require("plugins.illuminate")
     end
-
   }
 }
 
