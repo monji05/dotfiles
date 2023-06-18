@@ -123,7 +123,7 @@ local plugins = {
   },
   {
     "lewis6991/hover.nvim",
-    keys = { "K", "GK" },
+    keys = { "K", "gK" },
     config = function()
       require("plugins/hover")
     end,
