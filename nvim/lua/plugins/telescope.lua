@@ -3,6 +3,8 @@ local actions = require("telescope.actions")
 local builtin = require("telescope.builtin")
 local fb_actions = telescope.extensions.file_browser.actions
 local ui = require("config.icons").get("ui")
+local lga_actions = require("telescope-live-grep-args.actions")
+
 require("file_history").setup({
   -- This is the location where it will create your file history repository
   backup_dir = "~/.file-history-git",
@@ -10,6 +12,7 @@ require("file_history").setup({
   git_cmd = "git",
 })
 require("telescope").load_extension("recent_files")
+
 telescope.setup({
   defaults = {
     prompt_prefix = ui.Telescope,
@@ -24,6 +27,14 @@ telescope.setup({
         ["<C-u>"] = false,
         ["<C-o>"] = actions.select_tab,
       },
+    },
+    vimgrep_arguments = {
+      "rg",
+      "--no-heading",
+      "--with-filename",
+      "--line-number",
+      "--column",
+      "--smart-case",
     },
   },
   extensions = {
@@ -55,6 +66,16 @@ telescope.setup({
         },
       },
     },
+    live_grep_args = {
+      auto_quoting = true, -- enable/disable auto-quoting
+      -- define mappings, e.g.
+      mappings = {         -- extend mappings
+        i = {
+          ["<C-q>"] = lga_actions.quote_prompt(),
+          ["<C-Q>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+        },
+      },
+    },
     recent_files = {},
     fzf = {
       fuzzy = true,
@@ -69,9 +90,6 @@ vim.keymap.set("n", ";f", function()
     no_ignore = false,
     hidden = true,
   })
-end)
-vim.keymap.set("n", ";r", function()
-  builtin.live_grep()
 end)
 vim.keymap.set("n", "\\\\", function()
   builtin.buffers()
@@ -102,11 +120,14 @@ telescope.load_extension("file_browser")
 telescope.load_extension("z")
 telescope.load_extension("fzf")
 telescope.load_extension("file_history")
-vim.api.nvim_set_keymap("n", "<leader>h", ":Telescope file_history history<CR>", { noremap = true })
+telescope.load_extension("live_grep_args")
 
+vim.api.nvim_set_keymap("n", "<leader>th", "<Cmd>Telescope file_history history<CR>", { noremap = true })
 vim.api.nvim_set_keymap(
   "n",
   "<Leader><Leader>",
   [[<cmd>lua require('telescope').extensions.recent_files.pick()<CR>]],
   { noremap = true, silent = true }
 )
+vim.api.nvim_set_keymap("n", ";r",
+  "[[<Cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>]]", { noremap = true, silent = true })

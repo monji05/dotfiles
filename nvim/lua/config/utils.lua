@@ -305,6 +305,7 @@ local plugins = {
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       "dawsers/telescope-file-history.nvim",
       "smartpde/telescope-recent-files",
+      "nvim-telescope/telescope-live-grep-args.nvim",
     },
     keys = { ";f", ";r", "\\", ";;", "<leader>f", "<leader>z" },
     config = function()
