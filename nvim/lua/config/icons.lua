@@ -29,10 +29,10 @@ local data = {
     TypeParameter = "",
   },
   diagnostics = {
-    error = "",
-    warn = "",
+    error = " ",
+    warn = " ",
     hint = "",
-    info = "",
+    info = " ",
     header = "   ",
     preview = "  ",
     finder_definition = "  ",

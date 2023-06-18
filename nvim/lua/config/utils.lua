@@ -20,10 +20,6 @@ end
 
 local plugins = {
   {
-    "lewis6991/impatient.nvim",
-    priority = 100,
-  },
-  {
     "nvim-lua/popup.nvim",
     event = "BufRead",
     lazy = true,
@@ -52,6 +48,7 @@ local plugins = {
     "utilyre/barbecue.nvim",
     version = "*",
     name = "barbecue",
+    event = "BufReadPost",
     dependencies = {
       "nvim-tree/nvim-web-devicons",
       "SmiteshP/nvim-navic",
@@ -150,9 +147,26 @@ local plugins = {
   },
   {
     "neovim/nvim-lspconfig",
-    module = "lspconfig",
-    dependencies = { "hrsh7th/cmp-nvim-lsp" },
-    event = { "BufRead" },
+    lazy = true,
+    event = { "BufReadPost", "BufAdd", "BufNewFile" },
+    dependencies = {
+      {
+        "williamboman/mason.nvim",
+        config = function()
+          require("plugins.mason")
+        end,
+      },
+      { "williamboman/mason-lspconfig.nvim" },
+      {
+        "nvimdev/lspsaga.nvim",
+        config = function()
+          require("plugins.lspsaga")
+        end,
+      },
+      {
+        "hrsh7th/cmp-nvim-lsp",
+      },
+    },
     config = function()
       require("plugins/lspconfig")
     end,
@@ -162,15 +176,6 @@ local plugins = {
     event = "InsertEnter",
     config = function()
       require("plugins/lspkind")
-    end,
-  },
-  {
-    "kkharji/lspsaga.nvim",
-    event = { "InsertLeave" },
-    -- opt = true,
-    -- branch = "main",
-    config = function()
-      require("plugins/lspsaga")
     end,
   },
   {
@@ -192,18 +197,9 @@ local plugins = {
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
+    lazy = true,
     config = function()
       require("plugins.null-ls")
-    end,
-  },
-  {
-    "williamboman/mason.nvim",
-    module = { "mason" },
-    cmd = { "Mason" },
-    dependencies = "williamboman/mason-lspconfig.nvim",
-    event = { "InsertEnter", "InsertLeave" },
-    config = function()
-      require("plugins.mason")
     end,
   },
   {
@@ -325,11 +321,12 @@ local plugins = {
   },
   {
     "nvim-treesitter/nvim-treesitter",
+    lazy = true,
     dependencies = {
       { "nvim-treesitter/nvim-treesitter-textobjects", event = "ModeChanged" },
       { "nvim-treesitter/nvim-treesitter-context",     event = "VeryLazy" },
     },
-    event = { "VimEnter", "UIEnter" },
+    event = { "CursorHold", "CursorHoldI" },
     config = function()
       require("plugins/treesitter")
     end,
@@ -370,11 +367,6 @@ require("lazy").setup(plugins, {
     enabled = false,
     notify = false, -- get a notification when changes are found
   },
-  performance = {
-    chache = {
-      enabled = true,
-    },
-  },
   rtp = {
     disabled = {
       "gzip",
@@ -388,5 +380,26 @@ require("lazy").setup(plugins, {
       "zipPlugin",
     },
   },
+  install = {
+    -- install missing plugins on startup. This doesn't increase startup time.
+    missing = true,
+    colorscheme = { "catppuccin" },
+  },
   debug = false,
+  performance = {
+    cache = {
+      enabled = true,
+      path = vim.fn.stdpath("cache") .. "/lazy/cache",
+      -- Once one of the following events triggers, caching will be disabled.
+      -- To cache all modules, set this to `{}`, but that is not recommended.
+      disable_events = { "UIEnter", "BufReadPre" },
+      ttl = 3600 * 24 * 2, -- keep unused modules for up to 2 days
+    },
+    reset_packpath = true, -- reset the package path to improve startup time
+    rtp = {
+      reset = true,        -- reset the runtime path to $VIMRUNTIME and the config directory
+      ---@type string[]
+      paths = {},          -- add any custom paths here that you want to include in the rtp
+    },
+  },
 })
