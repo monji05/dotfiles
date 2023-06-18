@@ -335,36 +335,41 @@ local plugins = {
     },
     config = function()
       require("plugins/treesitter")
-    end,
+    end
   },
   {
     "folke/trouble.nvim",
     keys = {
-      "<leader>xx",
-      "<leader>xw",
-      "<leader>xd",
-      "<leader>xl",
-      "<leader>xq",
-      "<leader>xd",
+      "<leader>tt",
+      "<leader>tw",
+      "<leader>td",
+      "<leader>tl",
+      "<leader>tq",
+      "gR",
     },
-    config = function()
-      require("plugins/trouble")
-    end,
+    config = require("plugins/trouble"),
   },
   {
     "dstein64/vim-startuptime",
     cmd = "StartupTime",
-    config = function()
-      require("plugins/vim-startuptime")
-    end,
+    config = require("plugins/vim-startuptime"),
   },
   {
     "folke/which-key.nvim",
     keys = "<Leader>",
     config = function()
       require("which-key").setup({})
-    end,
+    end
   },
+  {
+    "RRethy/vim-illuminate",
+    lazy = true,
+    event = { "CursorHold", "CursorHoldI" },
+    config = function()
+      require("plugins.illuminate")
+    end
+
+  }
 }
 
 vim.opt.rtp:prepend(lazypath)

@@ -10,7 +10,7 @@ require("lspsaga").setup({
   infor_sign = diagnostics.info,
   diagnostic_header_icon = diagnostics.header,
   -- code action title icon
-  code_action_icon = diagnostics.hint,
+  code_action_icon = "",
   code_action_prompt = {
     enable = true,
     sign = true,
@@ -27,10 +27,6 @@ require("lspsaga").setup({
     quit = "q",
     scroll_down = "<C-f>",
     scroll_up = "<C-b>",
-  },
-  code_action_keys = {
-    quit = "q",
-    exec = "<CR>",
   },
   rename_action_keys = {
     quit = "<C-c>",
@@ -51,6 +47,5 @@ require("lspsaga").setup({
 
 local opt = { silent = true, noremap = true }
 vim.keymap.set("n", "gd", "<CMD>Lspsaga lsp_finder<CR>", opt)
-vim.keymap.set("n", "gs", "<CMD>Lspsaga code_action<CR>", opt)
 vim.keymap.set("n", "gh", "<CMD>Lspsaga hover_doc<CR>", opt)
 vim.keymap.set("n", "<leader>j", "<CMD>Lspsaga diagnostic_jump_next<CR>", opt)
