@@ -1,11 +1,17 @@
+local git = require("config.icons").get("git")
 require("gitsigns").setup({
   signs = {
-    add = { hl = "GitSignsAdd", text = "+", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
-    change = { hl = "GitSignsChange", text = "|", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
-    delete = { hl = "GitSignsDelete", text = "-", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-    topdelete = { hl = "GitSignsDelete", text = "‾", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-    changedelete = { hl = "GitSignsChange", text = "~", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
-    untracked = { hl = "GitSignsAdd", text = "┆", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
+    add = { hl = "GitSignsAdd", text = git.add, numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
+    change = { hl = "GitSignsChange", text = git.change, numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
+    delete = { hl = "GitSignsDelete", text = git.delete, numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
+    topdelete = { hl = "GitSignsDelete", text = git.topdelete, numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
+    changedelete = {
+      hl = "GitSignsChange",
+      text = git.changedelete,
+      numhl = "GitSignsChangeNr",
+      linehl = "GitSignsChangeLn",
+    },
+    untracked = { hl = "GitSignsAdd", text = git.untracked, numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
   },
   signcolumn = true,
   numhl = false,  -- diff highlight line number

@@ -91,6 +91,7 @@ local plugins = {
   },
   {
     "ruifm/gitlinker.nvim",
+    keys = { "<Leader>gb", "<Leader>gv" },
     config = function()
       require("plugins/gitlinker")
     end,
@@ -150,8 +151,8 @@ local plugins = {
   {
     "neovim/nvim-lspconfig",
     module = "lspconfig",
-    dependencies = { "hrsh7th/cmp-nvim-lsp"},
-    event = { "BufReadPre", "BufNewFile"},
+    dependencies = { "hrsh7th/cmp-nvim-lsp" },
+    event = { "BufRead" },
     config = function()
       require("plugins/lspconfig")
     end,
@@ -165,9 +166,9 @@ local plugins = {
   },
   {
     "kkharji/lspsaga.nvim",
-    event = "LspAttach",
-    opt = true,
-    branch = "main",
+    event = { "InsertLeave" },
+    -- opt = true,
+    -- branch = "main",
     config = function()
       require("plugins/lspsaga")
     end,
@@ -186,12 +187,11 @@ local plugins = {
     -- I won't use yet
     -- "L3MON4D3/LuaSnip",
     -- config = function()
-      -- require("plugins/luasnip")
+    -- require("plugins/luasnip")
     -- end,
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
-    event = { "BufReadPre", "BufNewFile" },
     config = function()
       require("plugins.null-ls")
     end,
@@ -199,6 +199,7 @@ local plugins = {
   {
     "williamboman/mason.nvim",
     module = { "mason" },
+    cmd = { "Mason" },
     dependencies = "williamboman/mason-lspconfig.nvim",
     event = { "InsertEnter", "InsertLeave" },
     config = function()
@@ -291,13 +292,6 @@ local plugins = {
     "potamides/pantran.nvim",
     config = function()
       require("plugins/pantran")
-    end,
-  },
-  {
-    "petertriho/nvim-scrollbar",
-    config = function()
-      -- rename file
-      require("plugins/scrollview")
     end,
   },
   {
