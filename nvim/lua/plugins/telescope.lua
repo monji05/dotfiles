@@ -2,6 +2,7 @@ local telescope = require("telescope")
 local actions = require("telescope.actions")
 local builtin = require("telescope.builtin")
 local fb_actions = telescope.extensions.file_browser.actions
+local ui = require("config.icons").get("ui")
 require("file_history").setup({
   -- This is the location where it will create your file history repository
   backup_dir = "~/.file-history-git",
@@ -11,8 +12,8 @@ require("file_history").setup({
 require("telescope").load_extension("recent_files")
 telescope.setup({
   defaults = {
-    prompt_prefix = " ",
-    selection_caret = " ",
+    prompt_prefix = ui.Telescope,
+    selection_caret = ui.selection_caret,
     prompt_title = "Find File",
     mappings = {
       n = {

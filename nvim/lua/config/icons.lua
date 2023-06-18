@@ -31,7 +31,7 @@ local data = {
   diagnostics = {
     error = " ",
     warn = " ",
-    hint = "",
+    hint = " ",
     info = " ",
     header = "   ",
     preview = "  ",
@@ -48,10 +48,14 @@ local data = {
     changedelete = "~",
     untracked = "┆",
   },
+  ui = {
+    selection_caret = " ",
+    Telescope = " ",
+  }
 }
 
 ---Get a specific icon set.
----@param category "kind"|"type"|"documents"|"git"|"diagnostics"|"cmp"
+---@param category "kind"|"type"|"ui"|"documents"|"git"|"diagnostics"|"cmp"
 ---@param add_space? boolean @Add trailing space after the icon.
 function icons.get(category, add_space)
   if add_space then

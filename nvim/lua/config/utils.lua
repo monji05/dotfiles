@@ -26,7 +26,7 @@ local plugins = {
   },
   {
     "nvim-lua/plenary.nvim",
-    evet = { "BufReadPre", "BufNewFile" },
+    event = { "BufReadPre", "BufNewFile" },
   },
   {
     "echasnovski/mini.nvim",
@@ -115,6 +115,8 @@ local plugins = {
   },
   {
     "kevinhwang91/nvim-hlslens", -- show count result search word
+    lazy = true,
+    event = { "CursorHold" },
     config = function()
       require("plugins/hlslens")
     end,
@@ -125,10 +127,6 @@ local plugins = {
     config = function()
       require("plugins/hover")
     end,
-  },
-  {
-    "RRethy/vim-illuminate",
-    event = "VeryLazy",
   },
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -180,6 +178,7 @@ local plugins = {
   },
   {
     "nvim-lualine/lualine.nvim",
+    lazy = true,
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
@@ -239,8 +238,9 @@ local plugins = {
   },
   {
     "svrana/neosolarized.nvim",
+    lazy = true,
+    event = { "BufReadPost", "BufAdd", "BufNewFile" },
     dependencies = { "tjdevries/colorbuddy.nvim" },
-    event = { "BufReadPre", "BufNewFile" },
     config = function()
       require("plugins/neosolarized")
     end,
@@ -298,6 +298,7 @@ local plugins = {
   },
   {
     "nvim-telescope/telescope.nvim",
+    lazy = true,
     dependencies = {
       "nvim-telescope/telescope-file-browser.nvim",
       "nvim-telescope/telescope-z.nvim",
@@ -306,7 +307,6 @@ local plugins = {
       "smartpde/telescope-recent-files",
     },
     keys = { ";f", ";r", "\\", ";;", "<leader>f", "<leader>z" },
-    module = "Telescope",
     config = function()
       require("plugins/telescope")
     end,
@@ -322,11 +322,16 @@ local plugins = {
   {
     "nvim-treesitter/nvim-treesitter",
     lazy = true,
+    build = function()
+      if #vim.api.nvim_list_uis() ~= 0 then
+        vim.api.nvim_command("TSUpdate")
+      end
+    end,
+    event = { "BufAdd", "CursorHold", "CursorHoldI" },
     dependencies = {
-      { "nvim-treesitter/nvim-treesitter-textobjects", event = "ModeChanged" },
-      { "nvim-treesitter/nvim-treesitter-context",     event = "VeryLazy" },
+      { "nvim-treesitter/nvim-treesitter-textobjects", },
+      { "nvim-treesitter/nvim-treesitter-context", },
     },
-    event = { "CursorHold", "CursorHoldI" },
     config = function()
       require("plugins/treesitter")
     end,
