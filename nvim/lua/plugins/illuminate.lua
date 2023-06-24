@@ -24,6 +24,6 @@ require("illuminate").configure({
   },
   under_cursor = false,
 })
-vim.api.nvim_command([[highlight IlluminatedWordText guibg=#073642 gui=NONE]])
-vim.api.nvim_command([[highlight IlluminatedWordRead guibg=#073642 gui=NONE]])
-vim.api.nvim_command([[highlight IlluminatedWordWrite guibg=#073642 gui=NONE]])
+vim.api.nvim_command([[highlight IlluminatedWordText guibg=#002B36 gui=NONE]])
+vim.api.nvim_command([[highlight IlluminatedWordRead guibg=#002B36 gui=NONE]])
+vim.api.nvim_command([[highlight IlluminatedWordWrite guibg=#002B36 gui=NONE]])

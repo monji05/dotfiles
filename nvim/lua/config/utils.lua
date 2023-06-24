@@ -372,6 +372,12 @@ local plugins = {
     config = function()
       require("plugins.illuminate")
     end
+  },
+  {
+    "mfussenegger/nvim-dap",
+    config = function()
+      require("plugins.dap")
+    end
   }
 }
 
