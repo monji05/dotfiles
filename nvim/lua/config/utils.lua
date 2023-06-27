@@ -314,7 +314,7 @@ local plugins = {
   },
   {
     "folke/todo-comments.nvim",
-    cmd = { "TodoTrouble", "TodoTelescope" },
+    keys = { '[t', ']t' },
     event = { "BufReadPost", "BufNewFile" },
     config = function()
       require("plugins/todo")
@@ -374,8 +374,39 @@ local plugins = {
     end
   },
   {
-    "mfussenegger/nvim-dap",
-  }
+    "yuchanns/phpfmt.nvim",
+    ft = "php",
+    event = { "ModeChanged", "BufNewFile", "BufWriteCmd" },
+    config = function()
+      require('plugins.phpformatter')
+    end
+  },
+  {
+    'mfussenegger/nvim-dap',
+    lazy = true,
+    dependencies = {
+      'rcarriga/nvim-dap-ui',
+      'theHamsta/nvim-dap-virtual-text',
+      "folke/neodev.nvim",
+    },
+    keys = {
+      '<F5>',
+      '<F6>',
+      '<F10>',
+      '<F12>',
+      '<leader>db',
+      '<leader>dr',
+      '<leader>dl',
+      "<leader>tu",
+
+    },
+    config = function()
+      require("plugins.nvim-dap")
+      require('plugins.nvim-dap-ui')
+      require('plugins.nvim-dap-virtual-text')
+      require('plugins.neodev')
+    end
+  },
 }
 
 vim.opt.rtp:prepend(lazypath)
