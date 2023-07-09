@@ -197,6 +197,7 @@ local plugins = {
   {
     "jose-elias-alvarez/null-ls.nvim",
     lazy = true,
+    event = { "BufRead", "BufReadpre", "InsertEnter" },
     config = function()
       require("plugins.null-ls")
     end,
@@ -314,7 +315,7 @@ local plugins = {
   },
   {
     "folke/todo-comments.nvim",
-    keys = { '[t', ']t' },
+    keys = { "[t", "]t" },
     event = { "BufReadPost", "BufNewFile" },
     config = function()
       require("plugins/todo")
@@ -330,12 +331,12 @@ local plugins = {
     end,
     event = { "BufAdd", "CursorHold", "CursorHoldI" },
     dependencies = {
-      { "nvim-treesitter/nvim-treesitter-textobjects", },
-      { "nvim-treesitter/nvim-treesitter-context", },
+      { "nvim-treesitter/nvim-treesitter-textobjects" },
+      { "nvim-treesitter/nvim-treesitter-context" },
     },
     config = function()
       require("plugins/treesitter")
-    end
+    end,
   },
   {
     "folke/trouble.nvim",
@@ -349,21 +350,21 @@ local plugins = {
     },
     config = function()
       require("plugins/trouble")
-    end
+    end,
   },
   {
     "dstein64/vim-startuptime",
     cmd = "StartupTime",
     config = function()
       require("plugins/vim-startuptime")
-    end
+    end,
   },
   {
     "folke/which-key.nvim",
     keys = "<Leader>",
     config = function()
       require("which-key").setup({})
-    end
+    end,
   },
   {
     "RRethy/vim-illuminate",
@@ -371,41 +372,53 @@ local plugins = {
     event = { "CursorHold", "CursorHoldI" },
     config = function()
       require("plugins.illuminate")
-    end
+    end,
   },
   {
     "yuchanns/phpfmt.nvim",
     ft = "php",
     event = { "ModeChanged", "BufNewFile", "BufWriteCmd" },
     config = function()
-      require('plugins.phpformatter')
-    end
+      require("plugins.phpformatter")
+    end,
   },
   {
-    'mfussenegger/nvim-dap',
+    "mfussenegger/nvim-dap",
     lazy = true,
     dependencies = {
-      'rcarriga/nvim-dap-ui',
-      'theHamsta/nvim-dap-virtual-text',
+      "rcarriga/nvim-dap-ui",
+      "theHamsta/nvim-dap-virtual-text",
       "folke/neodev.nvim",
     },
     keys = {
-      '<F5>',
-      '<F6>',
-      '<F10>',
-      '<F12>',
-      '<leader>db',
-      '<leader>dr',
-      '<leader>dl',
+      "<F5>",
+      "<F6>",
+      "<F10>",
+      "<F12>",
+      "<leader>db",
+      "<leader>dr",
+      "<leader>dl",
       "<leader>tu",
-
     },
     config = function()
       require("plugins.nvim-dap")
-      require('plugins.nvim-dap-ui')
-      require('plugins.nvim-dap-virtual-text')
-      require('plugins.neodev')
-    end
+      require("plugins.nvim-dap-ui")
+      require("plugins.nvim-dap-virtual-text")
+      require("plugins.neodev")
+    end,
+  },
+  {
+    "pwntester/octo.nvim",
+    lazy = true,
+    cmd = "Octo pr list",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("plugins.octo")
+    end,
   },
 }
 

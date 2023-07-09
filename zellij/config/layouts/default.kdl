@@ -8,11 +8,15 @@ layout {
       plugin location="zellij:status-bar"
     }
   }
-  tab name="nvim" focus=true cwd="/Users/eriko/.config/nvim" {
+  tab name="public" focus=true cwd="/Users/erikomishina/www/offerbox/public_html" {
     pane {
     }
   }
-  tab name="zellij" cwd="/Users/eriko/.config/zellij" {
+  tab name="docker" cwd="/Users/erikomishina/www/offerbox/public_html" {
+    pane {
+    }
+  }
+  tab name="nvim" cwd="/Users/erikomishina/.config/nvim" {
     pane {
     }
   }
