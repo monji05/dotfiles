@@ -304,7 +304,7 @@ scrollback_editor "/opt/homebrew/bin/nvim"
 
 // The folder in which Zellij will look for layouts
 //
-layout_dir "/Users/eriko/.config/zellij/config/layouts"
+layout_dir "/Users/erikomishina/.config/zellij/config/layouts"
 
 // The folder in which Zellij will look for themes
 //
