@@ -29,7 +29,7 @@ local hl = {
   ReadOnly = { fg = colors.red },
 
   -- WorkDir = { fg = get_highlight('Comment').fg, bold = true },
-  WorkDir = { fg = colors.base02, bold = true },
+  WorkDir = { fg = get_hl('Directory').fg, bold = true },
 
   CurrentPath = { fg = get_hl('Directory').fg, bold = true },
 
@@ -82,7 +82,7 @@ do
   }
 
   hl.Mode = setmetatable({
-    normal = { fg = mode_colors.normal }
+    normal = { fg = mode_colors.normal, bg = colors.base03 }
   }, {
     __index = function(_, mode)
       return {
@@ -94,6 +94,11 @@ do
     end
   })
 end
+
+M.lsp_colors = {
+  lua_ls = colors.green,
+  intelephense = colors.green,
+}
 
 M.highlight = hl
 M.colors = colors
