@@ -381,7 +381,15 @@ local plugins = {
   },
   {
     "mfussenegger/nvim-dap",
-  }
+  },
+  {
+    'tomiis4/Hypersonic.nvim', -- interactive support for regexp
+    event = "CmdlineEnter",
+    cmd = "Hypersonic",
+    config = function()
+      require("plugins.hypersonic")
+    end
+  },
 }
 
 vim.opt.rtp:prepend(lazypath)

@@ -2,6 +2,9 @@ local diagnostics = require("config.icons").get("diagnostics")
 
 require("lspsaga").setup({
   debug = false,
+  ui = {
+    code_action = ""
+  },
   use_saga_diagnostic_sign = true,
   -- diagnostic sign
   error_sign = diagnostics.error,
@@ -9,8 +12,6 @@ require("lspsaga").setup({
   hint_sign = diagnostics.hint,
   infor_sign = diagnostics.info,
   diagnostic_header_icon = diagnostics.header,
-  -- code action title icon
-  code_action_icon = "",
   code_action_prompt = {
     enable = true,
     sign = true,
