@@ -51,8 +51,9 @@ n.Group.new("GitSignsChangeNr", n.colors.none, n.colors.myGitSingsChangeBg, n.st
 n.Group.new("GitSignsDeleteLn", n.colors.none, n.colors.myGitSingsDeleteBg, n.styles.NONE)
 n.Group.new("GitSignsDeleteNr", n.colors.none, n.colors.myGitSingsDeleteBg, n.styles.NONE)
 
+n.Color.new("MyDiffText", "#32555e")
 -- for diffview
 n.Group.new("DiffAdd", n.colors.none, n.colors.base02, n.styles.NONE)
 n.Group.new("DiffChange", n.colors.none, n.colors.base02, n.styles.NONE)
 n.Group.new("DiffDelete", n.colors.red, n.colors.base02, n.styles.NONE)
-n.Group.new("DiffText", n.colors.none, n.colors.black, n.styles.NONE)
+n.Group.new("DiffText", n.colors.none, n.colors.MyDiffText, n.styles.NONE)
