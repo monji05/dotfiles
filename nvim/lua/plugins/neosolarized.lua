@@ -55,4 +55,4 @@ n.Group.new("GitSignsDeleteNr", n.colors.none, n.colors.myGitSingsDeleteBg, n.st
 n.Group.new("DiffAdd", n.colors.none, n.colors.base02, n.styles.NONE)
 n.Group.new("DiffChange", n.colors.none, n.colors.base02, n.styles.NONE)
 n.Group.new("DiffDelete", n.colors.red, n.colors.base02, n.styles.NONE)
-n.Group.new("DiffText", n.colors.black, n.colors.yellow, n.styles.NONE)
+n.Group.new("DiffText", n.colors.none, n.colors.black, n.styles.NONE)
