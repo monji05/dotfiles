@@ -186,34 +186,9 @@ local plugins = {
       require("plugins/lspkind")
     end,
   },
-  -- {
-  --   "nvim-lualine/lualine.nvim",
-  --   lazy = true,
-  --   dependencies = {
-  --     "nvim-tree/nvim-web-devicons",
-  --   },
-  --   event = { "InsertEnter", "CursorHold", "FocusLost", "BufRead", "BufNewFile" },
-  --   config = function()
-  --     require("plugins/lualine")
-  --   end,
-  -- },
-  {
-    "j-hui/fidget.nvim",
-    config = function()
-      require("plugins.fidget")
-    end,
-    tag = "legacy",
-    dependencies = {
-      "neovim/nvim-lspconfig",
-    }
-  },
   {
     "rebelot/heirline.nvim",
     event = "UiEnter",
-    dependencies = {
-      "j-hui/fidget.nvim",
-      "nvim-lua/lsp-status.nvim",
-    },
     config = function()
       require("plugins.heirline")
     end
