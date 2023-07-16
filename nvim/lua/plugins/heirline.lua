@@ -13,6 +13,7 @@ local neo = require("plugins.heirline-config.neosolarized")
 local hl = neo.highlight
 local colors = neo.colors
 local lsp_colors = neo.lsp_colors
+local dap = require('dap')
 
 local Align, Space, Null, ReadOnly
 do
@@ -292,11 +293,24 @@ local FileProperties = {
   hl = hl.FileProperties,
 }
 
-local LSPMessages = {
-  Space,
-  provider = require("lsp-status").status,
-  hl = { fg = "gray" },
-  Space,
+local DapMessages = {
+  -- display the dap messages only on the debugged file
+  condition = function()
+    -- local session = dap_available and dap.session()
+    local session = dap.session()
+    if session then
+      local filename = api.nvim_buf_get_name(0)
+      if session.config then
+        local progname = session.config.program
+        return filename == progname
+      end
+    end
+    return false
+  end,
+  provider = function()
+    return ' ' .. dap.status() .. ' '
+  end,
+  hl = hl.DapMessages
 }
 
 local StatusLines = {
@@ -339,7 +353,7 @@ local StatusLines = {
     },
     Space(4),
     Align,
-    -- DapMessages,
+    DapMessages,
     FileProperties,
   }
 }
