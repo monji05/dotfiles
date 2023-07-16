@@ -29,7 +29,7 @@ local hl = {
   ReadOnly = { fg = colors.red },
 
   -- WorkDir = { fg = get_highlight('Comment').fg, bold = true },
-  WorkDir = { fg = get_hl('Directory').fg, bold = true },
+  WorkDir = { fg = colors.base00, bold = true },
 
   CurrentPath = { fg = get_hl('Directory').fg, bold = true },
 
@@ -50,16 +50,12 @@ local hl = {
   LspIndicator = { fg = colors.blue },
   LspServer = { fg = colors.blue, bold = true },
 
-  Diagnostic = {
-    error = { fg = get_hl('DiagnosticSignError').fg },
-    warn  = { fg = get_hl('DiagnosticSignWarn').fg },
-    info  = { fg = get_hl('DiagnosticSignInfo').fg },
-    hint  = { fg = get_hl('DiagnosticSignHint').fg }
-  },
-
-  ScrollBar = { bg = colors.grey0, fg = colors.fg1 },
-
-  SearchResults = { fg = colors.black, bg = colors.aqua },
+  -- Diagnostic = {
+  --   error = { fg = get_hl('DiagnosticSignError').fg },
+  --   warn  = { fg = get_hl('DiagnosticSignWarn').fg },
+  --   info  = { fg = get_hl('DiagnosticSignInfo').fg },
+  --   hint  = { fg = get_hl('DiagnosticSignHint').fg }
+  -- },
 }
 
 do

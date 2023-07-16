@@ -183,7 +183,7 @@ local Git = {
     self.has_changes = self.status_dict.added ~= 0 or self.status_dict.removed ~= 0 or self.status_dict.changed ~= 0
   end,
 
-  hl = { fg = "orange" },
+  hl = { fg = hl.Git.branch.fg, bold = true },
 
 
   { -- git branch name
