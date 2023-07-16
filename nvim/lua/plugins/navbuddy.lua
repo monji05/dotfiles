@@ -57,3 +57,7 @@ navbuddy.setup {
     TypeParameter = kind.TypeParameter,
   },
 }
+
+local opts = { silent = true, noremap = true }
+-- not works
+vim.api.nvim_keymap_set("n", "<leader>dy", ":lua require('nvim-navbuddy').open()", opts)
