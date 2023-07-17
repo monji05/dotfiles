@@ -29,10 +29,6 @@ local plugins = {
     event = { "BufReadPre", "BufNewFile" },
   },
   {
-    "echasnovski/mini.nvim",
-    lazy = true,
-  },
-  {
     "windwp/nvim-ts-autotag",
     event = "InsertEnter",
     ft = "typescript",
@@ -164,6 +160,16 @@ local plugins = {
       {
         "hrsh7th/cmp-nvim-lsp",
       },
+      {
+        "SmiteshP/nvim-navbuddy",
+        -- keys = { "<leader>nv", },
+        cmd = "Navbuddy",
+        dependencies = {
+          "SmiteshP/nvim-navic",
+          "MunifTanjim/nui.nvim"
+        },
+        opts = { lsp = { auto_attach = true } }
+      }
     },
     config = function()
       require("plugins/lspconfig")
@@ -177,15 +183,11 @@ local plugins = {
     end,
   },
   {
-    "nvim-lualine/lualine.nvim",
-    lazy = true,
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-    event = { "InsertEnter", "CursorHold", "FocusLost", "BufRead", "BufNewFile" },
+    "rebelot/heirline.nvim",
+    event = "UiEnter",
     config = function()
-      require("plugins/lualine")
-    end,
+      require("plugins.heirline")
+    end
   },
   {
     -- I won't use yet
@@ -292,10 +294,13 @@ local plugins = {
     end,
   },
   {
-    "kylechui/nvim-surround",
+    'echasnovski/mini.surround',
+    version = false,
+    event = "VimEnter",
     config = function()
-      require("plugins/surround")
-    end,
+      require("plugins.mini-surround")
+    end
+
   },
   {
     "nvim-telescope/telescope.nvim",
@@ -419,6 +424,14 @@ local plugins = {
     config = function()
       require("plugins.octo")
     end,
+  },
+  {
+    'tomiis4/Hypersonic.nvim', -- interactive support for regexp
+    event = "CmdlineEnter",
+    cmd = "Hypersonic",
+    config = function()
+      require("plugins.hypersonic")
+    end
   },
 }
 

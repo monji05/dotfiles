@@ -30,7 +30,7 @@ local on_attach = function(client, bufnr)
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-  buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+  buf_set_keymap("n", "gi", "<Cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 
   -- formatting
   if client.server_capabilities.documentFormattingProvider then
@@ -48,7 +48,7 @@ end
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-local servers = { "tsserver", "intelephense", "marksman", "tailwindcss", "jdtls", "java" }
+local servers = { "tsserver", "intelephense", "marksman", "tailwindcss", "jdtls" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup({
     on_attach = on_attach,
@@ -56,9 +56,10 @@ for _, lsp in ipairs(servers) do
   })
 end
 
+local navbuddy = require("nvim-navbuddy")
 nvim_lsp.lua_ls.setup({
   on_attach = function(client, bufnr)
-    on_attach(client, bufnr)
+    navbuddy.attach(client, bufnr)
     enable_format_on_save(client, bufnr)
   end,
   settings = {
