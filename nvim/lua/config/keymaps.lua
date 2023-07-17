@@ -53,4 +53,4 @@ keymap("n", "s", '"_s', opts)
 -- '<,'> normal .
 
 -- ビジュアルモードでヤンクしたワードを連続でペーストできるように(最高)
-vim.api.nvim_command [[xnoremap <expr> p 'pgv"'.v:register.'y`>']]
+keymap("x", "p", '"_xp', opts)
