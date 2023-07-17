@@ -43,4 +43,14 @@ keymap("n", "<C-w><up>", "<C-w>+", opts)
 keymap("n", "<C-w><down>", "<C-w>-", opts)
 
 -- レジスタを上書きせずに現在行を下にコピーする :t
-keymap("n", "yy", ":t.<CR>", opts)
+keymap("n", "p", ":t.<CR>", opts)
+
+-- use x, s command not using register
+keymap("n", "x", '"_x', opts)
+keymap("n", "s", '"_s', opts)
+
+-- execute . command each line in visual mode selection
+-- '<,'> normal .
+
+-- ビジュアルモードでヤンクしたワードを連続でペーストできるように(最高)
+vim.api.nvim_command [[xnoremap <expr> p 'pgv"'.v:register.'y`>']]
