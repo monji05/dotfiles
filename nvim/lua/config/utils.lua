@@ -297,10 +297,13 @@ local plugins = {
     end,
   },
   {
-    "kylechui/nvim-surround",
+    'echasnovski/mini.surround',
+    version = false,
+    event = "VimEnter",
     config = function()
-      require("plugins/surround")
-    end,
+      require("plugins.mini-surround")
+    end
+
   },
   {
     "nvim-telescope/telescope.nvim",

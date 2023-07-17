@@ -41,3 +41,6 @@ keymap("n", "<C-w><left>", "<C-w><", opts)
 keymap("n", "<C-w><right>", "<C-w>>", opts)
 keymap("n", "<C-w><up>", "<C-w>+", opts)
 keymap("n", "<C-w><down>", "<C-w>-", opts)
+
+-- レジスタを上書きせずに現在行を下にコピーする :t
+keymap("n", "yy", ":t.<CR>", opts)
