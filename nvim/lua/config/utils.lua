@@ -29,10 +29,6 @@ local plugins = {
     event = { "BufReadPre", "BufNewFile" },
   },
   {
-    "echasnovski/mini.nvim",
-    lazy = true,
-  },
-  {
     "windwp/nvim-ts-autotag",
     event = "InsertEnter",
     ft = "typescript",
