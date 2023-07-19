@@ -287,6 +287,7 @@ local plugins = {
     end,
   },
   {
+    -- transration engine
     "potamides/pantran.nvim",
     config = function()
       require("plugins/pantran")

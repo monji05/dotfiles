@@ -43,7 +43,7 @@ keymap("n", "<C-w><up>", "<C-w>+", opts)
 keymap("n", "<C-w><down>", "<C-w>-", opts)
 
 -- レジスタを上書きせずに現在行を下にコピーする :t
-keymap("n", "p", ":t.<CR>", opts)
+keymap("n", "t", ":t.<CR>", opts)
 
 -- use x, s command not using register
 keymap("n", "x", '"_x', opts)
@@ -53,4 +53,4 @@ keymap("n", "s", '"_s', opts)
 -- '<,'> normal .
 
 -- ビジュアルモードでヤンクしたワードを連続でペーストできるように(最高)
-keymap("x", "p", '"_xp', opts)
+keymap("v", "p", '"_xP', opts)
