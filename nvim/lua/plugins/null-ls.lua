@@ -13,7 +13,13 @@ nls.setup({
     -- python
     nls.builtins.diagnostics.flake8,
     -- php
-    -- nls.builtins.diagnostics.phpcsfixer,
+    nls.builtins.diagnostics.phpcs.with({
+      command = "./composer/bin/phpcs",
+      args = {
+        "--standard=./phpcs_ruleset.xml",
+      },
+    }),
+    nls.builtins.formatting.phpcbf.with({}),
   },
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then
@@ -31,9 +37,3 @@ nls.setup({
     end
   end,
 })
-nls.register(nls.builtins.diagnostics.phpcs.with({
-  command = "./composer/bin/phpcs",
-  args = {
-    "--standard=./phpcs_ruleset.xml",
-  },
-}))

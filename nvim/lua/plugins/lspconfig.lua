@@ -48,7 +48,8 @@ end
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-local servers = { "tsserver", "intelephense", "marksman", "tailwindcss", "jdtls" }
+-- local servers = { "tsserver", "intelephense", "marksman", "tailwindcss", "jdtls" }
+local servers = { "tsserver", "marksman", "tailwindcss", "jdtls" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup({
     on_attach = on_attach,
@@ -69,6 +70,20 @@ nvim_lsp.lua_ls.setup({
       },
       completion = {
         callSnippet = "Replace",
+      },
+    },
+  },
+})
+
+nvim_lsp.intelephense.setup({
+  settings = {
+    intelephense = {
+      stbus = { "core", "Core" },
+      environment = {
+        includePaths = {
+          -- "/Users/erikomishina/www/offerbox/public_html/fuel/app/core/classes/",
+          "**/fuel/app/core/classes/",
+        },
       },
     },
   },

@@ -16,6 +16,11 @@ layout {
     pane {
     }
   }
+  tab name="logs" cwd="/Users/erikomishina/www/offerbox/public_html/fuel/app/logs" {
+    pane {
+
+    }
+  }
   tab name="nvim" cwd="/Users/erikomishina/.config/nvim" {
     pane {
     }

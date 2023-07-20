@@ -166,10 +166,10 @@ local plugins = {
         cmd = "Navbuddy",
         dependencies = {
           "SmiteshP/nvim-navic",
-          "MunifTanjim/nui.nvim"
+          "MunifTanjim/nui.nvim",
         },
-        opts = { lsp = { auto_attach = true } }
-      }
+        opts = { lsp = { auto_attach = true } },
+      },
     },
     config = function()
       require("plugins/lspconfig")
@@ -187,7 +187,7 @@ local plugins = {
     event = "UiEnter",
     config = function()
       require("plugins.heirline")
-    end
+    end,
   },
   {
     -- I won't use yet
@@ -294,13 +294,12 @@ local plugins = {
     end,
   },
   {
-    'echasnovski/mini.surround',
+    "echasnovski/mini.surround",
     version = false,
     event = "VimEnter",
     config = function()
       require("plugins.mini-surround")
-    end
-
+    end,
   },
   {
     "nvim-telescope/telescope.nvim",
@@ -380,14 +379,6 @@ local plugins = {
     end,
   },
   {
-    "yuchanns/phpfmt.nvim",
-    ft = "php",
-    event = { "ModeChanged", "BufNewFile", "BufWriteCmd" },
-    config = function()
-      require("plugins.phpformatter")
-    end,
-  },
-  {
     "mfussenegger/nvim-dap",
     lazy = true,
     dependencies = {
@@ -426,12 +417,12 @@ local plugins = {
     end,
   },
   {
-    'tomiis4/Hypersonic.nvim', -- interactive support for regexp
+    "tomiis4/Hypersonic.nvim", -- interactive support for regexp
     event = "CmdlineEnter",
     cmd = "Hypersonic",
     config = function()
       require("plugins.hypersonic")
-    end
+    end,
   },
 }
 

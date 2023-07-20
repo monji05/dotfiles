@@ -9,16 +9,15 @@ require("mini.surround").setup( -- No need to copy this inside `setup()`. Will b
 
     -- Module mappings. Use `''` (empty string) to disable one.
     mappings = {
-      add = 'sa',            -- Add surrounding in Normal and Visual modes
-      delete = 'sd',         -- Delete surrounding
-      find = 'sf',           -- Find surrounding (to the right)
-      find_left = 'sF',      -- Find surrounding (to the left)
-      highlight = 'hs',      -- Highlight surrounding
-      replace = 'sr',        -- Replace surrounding
-      update_n_lines = 'sn', -- Update `n_lines`
-
-      suffix_last = 'l',     -- Suffix to search with "prev" method
-      suffix_next = 'n',     -- Suffix to search with "next" method
+      add = "sa",            -- Add surrounding in Normal and Visual modes
+      delete = "sd",         -- Delete surrounding
+      find = "sf",           -- Find surrounding (to the right)
+      find_left = "sF",      -- Find surrounding (to the left)
+      replace = "sr",        -- Replace surrounding
+      update_n_lines = "sn", -- Update `n_lines`
+      highlight = "Sh",
+      suffix_last = "l",     -- Suffix to search with "prev" method
+      suffix_next = "n",     -- Suffix to search with "next" method
     },
 
     -- Number of lines within which surrounding is searched
@@ -33,7 +32,7 @@ require("mini.surround").setup( -- No need to copy this inside `setup()`. Will b
     -- neighborhood). One of 'cover', 'cover_or_next', 'cover_or_prev',
     -- 'cover_or_nearest', 'next', 'prev', 'nearest'. For more details,
     -- see `:h MiniSurround.config`.
-    search_method = 'cover',
+    search_method = "cover",
 
     -- Whether to disable showing non-error feedback
     silent = false,
