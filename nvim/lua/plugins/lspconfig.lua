@@ -29,7 +29,7 @@ local on_attach = function(client, bufnr)
   local opts = { noremap = true, silent = true }
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+  -- buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
   buf_set_keymap("n", "gi", "<Cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 
   -- formatting
@@ -48,8 +48,7 @@ end
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
--- local servers = { "tsserver", "intelephense", "marksman", "tailwindcss", "jdtls" }
-local servers = { "tsserver", "marksman", "tailwindcss", "jdtls" }
+local servers = { "tsserver", "phpactor", "marksman", "tailwindcss", "jdtls" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup({
     on_attach = on_attach,
@@ -75,19 +74,8 @@ nvim_lsp.lua_ls.setup({
   },
 })
 
-nvim_lsp.intelephense.setup({
-  settings = {
-    intelephense = {
-      stbus = { "core", "Core" },
-      environment = {
-        includePaths = {
-          -- "/Users/erikomishina/www/offerbox/public_html/fuel/app/core/classes/",
-          "**/fuel/app/core/classes/",
-        },
-      },
-    },
-  },
-})
+--php
+vim.g.phpactorPhpBin = "./composer/bin/php7.1.3"
 
 local diagnostics = require("config.icons").get("diagnostics")
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
