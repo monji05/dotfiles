@@ -1,7 +1,9 @@
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local nls = require("null-ls")
+local utils = require("null-ls.utils")
 nls.setup({
-  root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
+  root_dir = utils.root_pattern("composer.json", "package.json", ".null-ls-root", ".neoconf.json", "Makefile", ".git"), -- add composer
+  diagnostics_format = "#{m} (#{c}) [#{s}]",
   sources = {
     -- fish
     nls.builtins.formatting.fish_indent,
@@ -19,7 +21,12 @@ nls.setup({
         "--standard=./phpcs_ruleset.xml",
       },
     }),
-    nls.builtins.formatting.phpcbf.with({}),
+    nls.builtins.formatting.phpcbf.with({
+      command = "./composer/bin/phpcbf",
+      args = {
+        "--standard=PSR2",
+      },
+    }),
   },
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then
