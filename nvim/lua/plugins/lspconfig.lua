@@ -44,7 +44,7 @@ end
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-local servers = { "tsserver", "marksman", "tailwindcss", "jdtls" }
+local servers = { "tsserver", "marksman", "tailwindcss", "jdtls", "json-lsp" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup({
     on_attach = on_attach,

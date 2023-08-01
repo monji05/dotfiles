@@ -16,4 +16,8 @@ layout {
     pane {
     }
   }
+  tab name="Obsidian" cwd="/Users/eriko/Documents/Obsidian Vault" {
+    pane {
+    }
+  }
 }
