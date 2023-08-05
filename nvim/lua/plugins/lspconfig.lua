@@ -70,24 +70,23 @@ nvim_lsp.lua_ls.setup({
   },
 })
 
-nvim_lsp.phpactor.setup({
-  init_options = {
-    ["language_server_phpstan.enabled"] = false,
-    ["language_server_psalm.enabled"] = false,
-  },
-  capabilities = capabilities,
-  on_attach = function(client, bufnr)
-    navbuddy.attach(client, bufnr)
-  end,
-
-})
-
--- nvim_lsp.intelephense.setup({
+-- nvim_lsp.phpactor.setup({
+--   init_options = {
+--     ["language_server_phpstan.enabled"] = false,
+--     ["language_server_psalm.enabled"] = false,
+--   },
+--   capabilities = capabilities,
 --   on_attach = function(client, bufnr)
 --     navbuddy.attach(client, bufnr)
 --   end,
 --
 -- })
+
+nvim_lsp.intelephense.setup({
+  on_attach = function(client, bufnr)
+    navbuddy.attach(client, bufnr)
+  end,
+})
 
 local diagnostics = require("config.icons").get("diagnostics")
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
