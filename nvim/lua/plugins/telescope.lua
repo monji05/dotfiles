@@ -126,8 +126,8 @@ vim.api.nvim_set_keymap("n", "<leader>th", "<Cmd>Telescope file_history history<
 vim.api.nvim_set_keymap(
   "n",
   "<Leader><Leader>",
-  [[<cmd>lua require('telescope').extensions.recent_files.pick()<CR>]],
+  "<cmd>lua require('telescope').extensions.recent_files.pick()<CR>",
   { noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap("n", ";r",
-  "[[<Cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>]]", { noremap = true, silent = true })
+  "<Cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", { noremap = true, silent = true })
