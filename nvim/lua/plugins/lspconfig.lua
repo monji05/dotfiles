@@ -48,7 +48,7 @@ end
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-local servers = { "tsserver", "phpactor", "marksman", "tailwindcss", "jdtls" }
+local servers = { "tsserver", "marksman", "tailwindcss", "jdtls" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup({
     on_attach = on_attach,
@@ -76,12 +76,24 @@ nvim_lsp.lua_ls.setup({
 
 --php
 vim.g.phpactorPhpBin = "./composer/bin/php7.1.3"
+nvim_lsp.phpactor.setup({
+  on_attach = function(client, bufnr)
+    navbuddy.attach(client, bufnr)
+  end,
+})
+
+-- nvim_lsp.intelephense.setup({
+--   on_attach = function(client, bufnr)
+--     navbuddy.attach(client, bufnr)
+--   end,
+-- })
 
 local diagnostics = require("config.icons").get("diagnostics")
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
   underline = true,
   update_in_insert = false,
-  virtual_text = { spacing = 4, prefix = diagnostics.prefix },
+  -- virtual_text = { spacing = 4, prefix = diagnostics.prefix },
+  virtual_text = false,
   severity_sort = true,
 })
 

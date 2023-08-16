@@ -16,13 +16,11 @@ nls.setup({
     nls.builtins.diagnostics.flake8,
     -- php
     nls.builtins.diagnostics.phpcs.with({
-      command = "./composer/bin/phpcs",
       args = {
         "--standard=./phpcs_ruleset.xml",
       },
     }),
     nls.builtins.formatting.phpcbf.with({
-      command = "./composer/bin/phpcbf",
       args = {
         "--standard=PSR2",
       },

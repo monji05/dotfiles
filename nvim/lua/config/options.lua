@@ -50,6 +50,9 @@ vim.opt.wildoptions = "pum"
 vim.opt.pumblend = 0 -- transparency popup for lsp, float window
 vim.opt.background = "dark"
 
+-- not sync scroll when using split view
+vim.g.noscb = true
+
 -- Undercurl
 vim.api.nvim_command([[let &t_Cs = "\e[4:3m"]])
 vim.api.nvim_command([[let &t_Ce = "\e[4:0m"]])
