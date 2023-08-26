@@ -392,8 +392,24 @@ local plugins = {
   },
   {
     "f-person/git-blame.nvim",
-    event = "VeryLazy",
     cmd = { "GitBlameCopyCommitURL", "GitBlameOpenCommitURL", "GitBlameCopyFileURL", "GitBlameToggle" },
+    keys = {
+      {
+        "<leader>b",
+        "<CMD>GitBlameToggle<CR>",
+        desc = "toggle git blame"
+      },
+      {
+        "<leader>gu",
+        "<CMD>GitBlameCopyCommitURL<CR>",
+        desc = "copy commit URL"
+      },
+      {
+        "<leader>bf",
+        "<CMD>GitBlameCopyFileURL<CR>",
+        desc = "copy file URL"
+      }
+    },
     config = function()
       require("plugins.gitblame")
     end
