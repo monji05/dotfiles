@@ -65,6 +65,7 @@ vim.opt.formatoptions:append({ "r" })
 
 -- set theme on nvim-markdown-preview
 vim.api.nvim_command([[let g:nvim_markdown_preview_theme = 'solarized-dark']])
+vim.g.gitblame_enabled = 0
 
 -- fast start up
 vim.g.loaded_2html_plugin = 1
