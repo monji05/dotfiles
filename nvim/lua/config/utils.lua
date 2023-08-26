@@ -384,7 +384,7 @@ local plugins = {
     end
   },
   {
-    -- very useful join, split word in braket, function
+    -- very useful join, split word in bracket, function
     "Wansmer/treesj",
     desc = "Toggle Treesitter Join",
     cmd = { "TSJToggle", "TSJSplit", "TSJJoin" },
