@@ -430,11 +430,6 @@ local plugins = {
     cmd = { "GitBlameCopyCommitURL", "GitBlameOpenCommitURL", "GitBlameCopyFileURL", "GitBlameToggle" },
     keys = {
       {
-        "<leader>b",
-        "<CMD>GitBlameToggle<CR>",
-        desc = "toggle git blame",
-      },
-      {
         "<leader>gu",
         "<CMD>GitBlameCopyCommitURL<CR>",
         desc = "copy commit URL",
