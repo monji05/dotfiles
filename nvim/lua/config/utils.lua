@@ -374,7 +374,7 @@ local plugins = {
   },
   {
     "mfussenegger/nvim-dap",
-    lazy = true,
+    event = "VeryLazy",
     dependencies = {
       "rcarriga/nvim-dap-ui",
       "theHamsta/nvim-dap-virtual-text",
@@ -432,23 +432,23 @@ local plugins = {
       {
         "<leader>b",
         "<CMD>GitBlameToggle<CR>",
-        desc = "toggle git blame"
+        desc = "toggle git blame",
       },
       {
         "<leader>gu",
         "<CMD>GitBlameCopyCommitURL<CR>",
-        desc = "copy commit URL"
+        desc = "copy commit URL",
       },
       {
         "<leader>bf",
         "<CMD>GitBlameCopyFileURL<CR>",
-        desc = "copy file URL"
-      }
+        desc = "copy file URL",
+      },
     },
     config = function()
       require("plugins.gitblame")
-    end
-  }
+    end,
+  },
 }
 
 vim.opt.rtp:prepend(lazypath)
