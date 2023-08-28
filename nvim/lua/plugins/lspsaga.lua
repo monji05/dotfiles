@@ -2,12 +2,9 @@ local diagnostics = require("config.icons").get("diagnostics")
 
 require("lspsaga").setup({
   debug = false,
+  -- for disable phpactor code_action
   lightbulb = {
     enable = false,
-  },
-  ui = {
-    enable = false,
-    code_action = "",
   },
   use_saga_diagnostic_sign = true,
   -- diagnostic sign
@@ -54,4 +51,5 @@ local opt = { silent = true, noremap = true }
 vim.keymap.set("n", "gd", "<CMD>Lspsaga goto_definition<CR>", opt)
 vim.keymap.set("n", "gf", "<CMD>Lspsaga finder<CR>", opt)
 vim.keymap.set("n", "gh", "<CMD>Lspsaga hover_doc<CR>", opt)
+vim.keymap.set("n", "gf", "<CMD>Lspsaga finder<Cr>", opt)
 vim.keymap.set("n", "<leader>j", "<CMD>Lspsaga diagnostic_jump_next<CR>", opt)

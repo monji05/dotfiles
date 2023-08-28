@@ -40,7 +40,6 @@ telescope.setup({
   extensions = {
     file_browser = {
       initial_mode = "normal",
-      cwd = "absolute",
       theme = "ivy",
       prompt_path = true,
       -- disables netrw and use telescope-file-browser in its place

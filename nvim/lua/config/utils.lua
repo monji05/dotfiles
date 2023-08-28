@@ -83,13 +83,6 @@ local plugins = {
     event = "BufReadPre",
   },
   {
-    "ruifm/gitlinker.nvim",
-    keys = { "<Leader>gb", "<Leader>gv" },
-    config = function()
-      require("plugins/gitlinker")
-    end,
-  },
-  {
     "lewis6991/gitsigns.nvim",
     event = { "BufRead" },
     config = function()
@@ -288,6 +281,7 @@ local plugins = {
     end,
   },
   {
+    -- transration engine
     "potamides/pantran.nvim",
     config = function()
       require("plugins/pantran")
@@ -424,6 +418,37 @@ local plugins = {
       require("plugins.hypersonic")
     end,
   },
+  {
+    -- very useful join, split word in bracket, function
+    "Wansmer/treesj",
+    desc = "Toggle Treesitter Join",
+    cmd = { "TSJToggle", "TSJSplit", "TSJJoin" },
+    opts = { use_default_keymaps = false },
+  },
+  {
+    "f-person/git-blame.nvim",
+    cmd = { "GitBlameCopyCommitURL", "GitBlameOpenCommitURL", "GitBlameCopyFileURL", "GitBlameToggle" },
+    keys = {
+      {
+        "<leader>b",
+        "<CMD>GitBlameToggle<CR>",
+        desc = "toggle git blame"
+      },
+      {
+        "<leader>gu",
+        "<CMD>GitBlameCopyCommitURL<CR>",
+        desc = "copy commit URL"
+      },
+      {
+        "<leader>bf",
+        "<CMD>GitBlameCopyFileURL<CR>",
+        desc = "copy file URL"
+      }
+    },
+    config = function()
+      require("plugins.gitblame")
+    end
+  }
 }
 
 vim.opt.rtp:prepend(lazypath)
