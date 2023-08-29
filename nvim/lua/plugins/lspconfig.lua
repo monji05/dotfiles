@@ -56,10 +56,9 @@ for _, lsp in ipairs(servers) do
   })
 end
 
-local navbuddy = require("nvim-navbuddy")
 nvim_lsp.lua_ls.setup({
   on_attach = function(client, bufnr)
-    navbuddy.attach(client, bufnr)
+    on_attach(client, bufnr)
     enable_format_on_save(client, bufnr)
   end,
   settings = {
@@ -76,7 +75,7 @@ nvim_lsp.lua_ls.setup({
 
 nvim_lsp.intelephense.setup({
   on_attach = function(client, bufnr)
-    navbuddy.attach(client, bufnr)
+    on_attach(client, bufnr)
   end,
 })
 

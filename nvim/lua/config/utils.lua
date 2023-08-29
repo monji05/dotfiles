@@ -153,16 +153,6 @@ local plugins = {
       {
         "hrsh7th/cmp-nvim-lsp",
       },
-      {
-        "SmiteshP/nvim-navbuddy",
-        -- keys = { "<leader>nv", },
-        cmd = "Navbuddy",
-        dependencies = {
-          "SmiteshP/nvim-navic",
-          "MunifTanjim/nui.nvim",
-        },
-        opts = { lsp = { auto_attach = true } },
-      },
     },
     config = function()
       require("plugins/lspconfig")
@@ -443,6 +433,15 @@ local plugins = {
     config = function()
       require("plugins.gitblame")
     end,
+  },
+  {
+    -- "bluz71/vim-nightfly-colors",
+    -- name = "nightfly",
+    -- lazy = true,
+    -- event = { "BufReadPost", "BufAdd", "BufNewFile" },
+    -- config = function()
+    --   vim.api.nvim_command("colorscheme nightfly")
+    -- end,
   },
 }
 
