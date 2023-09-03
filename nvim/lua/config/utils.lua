@@ -197,13 +197,6 @@ local plugins = {
     end,
   },
   {
-    "echasnovski/mini.align",
-    cmd = "Ga",
-    config = function()
-      require("mini.align").setup()
-    end,
-  },
-  {
     "echasnovski/mini.indentscope",
     config = function()
       require("plugins/mini-indentscope")
@@ -214,13 +207,6 @@ local plugins = {
     event = "InsertEnter",
     config = function()
       require("mini.pairs").setup()
-    end,
-  },
-  {
-    "echasnovski/mini.splitjoin",
-    cmd = "Gs",
-    config = function()
-      require("plugins/mini-splitjoin")
     end,
   },
   {
