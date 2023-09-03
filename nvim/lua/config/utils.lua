@@ -57,6 +57,7 @@ local plugins = {
     "hrsh7th/nvim-cmp",
     dependencies = {
       { "hrsh7th/cmp-buffer",                     event = "InsertEnter" },
+      { "hrsh7th/cmp-path",                       event = "InsertEnter" },
       { "roobert/tailwindcss-colorizer-cmp.nvim", event = "InsertEnter" },
       { "L3MON4D3/LuaSnip",                       event = "InsertEnter" },
     },
@@ -188,13 +189,6 @@ local plugins = {
     end,
   },
   {
-    "echasnovski/mini.align",
-    cmd = "Ga",
-    config = function()
-      require("mini.align").setup()
-    end,
-  },
-  {
     "echasnovski/mini.indentscope",
     config = function()
       require("plugins/mini-indentscope")
@@ -208,13 +202,6 @@ local plugins = {
     end,
   },
   {
-    "echasnovski/mini.splitjoin",
-    cmd = "Gs",
-    config = function()
-      require("plugins/mini-splitjoin")
-    end,
-  },
-  {
     "ecthelionvi/NeoComposer.nvim",
     dependencies = { "kkharji/sqlite.lua" },
     event = "VeryLazy",
@@ -223,13 +210,13 @@ local plugins = {
     end,
   },
   {
-    "svrana/neosolarized.nvim",
-    lazy = true,
-    event = { "BufReadPost", "BufAdd", "BufNewFile" },
-    dependencies = { "tjdevries/colorbuddy.nvim" },
-    config = function()
-      require("plugins/neosolarized")
-    end,
+    -- "svrana/neosolarized.nvim",
+    -- lazy = true,
+    -- event = { "BufReadPost", "BufAdd", "BufNewFile" },
+    -- dependencies = { "tjdevries/colorbuddy.nvim" },
+    -- config = function()
+    --   require("plugins/neosolarized")
+    -- end,
   },
   {
     "folke/noice.nvim",
@@ -435,13 +422,11 @@ local plugins = {
     end,
   },
   {
-    -- "bluz71/vim-nightfly-colors",
-    -- name = "nightfly",
-    -- lazy = true,
-    -- event = { "BufReadPost", "BufAdd", "BufNewFile" },
-    -- config = function()
-    --   vim.api.nvim_command("colorscheme nightfly")
-    -- end,
+    "bluz71/vim-nightfly-colors",
+    name = "nightfly",
+    config = function()
+      require("plugins.nightfly")
+    end,
   },
 }
 
