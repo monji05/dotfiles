@@ -32,6 +32,3 @@ set -g fish_key_bindings fish_vi_key_bindings
 bind -M insert \cc 'clear; commandline -f repaint'
 
 set -U tide_git_icon 
-
-#set nightflyTheme
-source $HOME/.config/fish/themes/nightfly.fish
