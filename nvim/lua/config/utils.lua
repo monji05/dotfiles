@@ -57,6 +57,7 @@ local plugins = {
     "hrsh7th/nvim-cmp",
     dependencies = {
       { "hrsh7th/cmp-buffer",                     event = "InsertEnter" },
+      { "hrsh7th/cmp-path",                       event = "InsertEnter" },
       { "roobert/tailwindcss-colorizer-cmp.nvim", event = "InsertEnter" },
       { "L3MON4D3/LuaSnip",                       event = "InsertEnter" },
     },
@@ -398,6 +399,13 @@ local plugins = {
     },
     config = function()
       require("plugins.gitblame")
+    end
+  },
+  {
+    "bluz71/vim-nightfly-colors",
+    name = "nightfly",
+    config = function()
+      vim.api.nvim_command("colorscheme nightfly")
     end
   }
 }
