@@ -219,13 +219,13 @@ local plugins = {
     end,
   },
   {
-    "svrana/neosolarized.nvim",
-    lazy = true,
-    event = { "BufReadPost", "BufAdd", "BufNewFile" },
-    dependencies = { "tjdevries/colorbuddy.nvim" },
-    config = function()
-      require("plugins/neosolarized")
-    end,
+    -- "svrana/neosolarized.nvim",
+    -- lazy = true,
+    -- event = { "BufReadPost", "BufAdd", "BufNewFile" },
+    -- dependencies = { "tjdevries/colorbuddy.nvim" },
+    -- config = function()
+    --   require("plugins/neosolarized")
+    -- end,
   },
   {
     "folke/noice.nvim",
@@ -405,7 +405,7 @@ local plugins = {
     "bluz71/vim-nightfly-colors",
     name = "nightfly",
     config = function()
-      vim.api.nvim_command("colorscheme nightfly")
+      require("plugins.nightfly")
     end
   }
 }
