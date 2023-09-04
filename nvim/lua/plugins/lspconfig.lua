@@ -74,9 +74,11 @@ nvim_lsp.lua_ls.setup({
 })
 
 nvim_lsp.intelephense.setup({
-  on_attach = function(client, bufnr)
-    on_attach(client, bufnr)
+  -- Ref: https://github.com/bmewburn/vscode-intelephense/issues/2003#issuecomment-1555040833
+  on_init = function(client)
+    client.server_capabilities.documentFormattingProvider = false
   end,
+  capabilities = capabilities,
 })
 
 local diagnostics = require("config.icons").get("diagnostics")

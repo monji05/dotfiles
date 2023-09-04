@@ -20,11 +20,11 @@ nls.setup({
         "--standard=./phpcs_ruleset.xml",
       },
     }),
-    -- nls.builtins.formatting.phpcbf.with({
-    --   args = {
-    --     "--standard=PSR2",
-    --   },
-    -- }),
+    nls.builtins.formatting.phpcbf.with({
+      args = {
+        "--standard=PSR2",
+      },
+    }),
   },
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then
