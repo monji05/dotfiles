@@ -432,6 +432,14 @@ local plugins = {
     -- Convenience file operations for neovim
     "chrisgrieser/nvim-genghis",
     dependencies = "stevearc/dressing.nvim",
+    keys = {
+      "<leader>yp",
+      "<leader>yn",
+      "<leader>rf",
+      "<leader>mf",
+      "<leader>nf",
+      "<leader>yf",
+    },
     config = function()
       require("plugins.genghis")
     end,
