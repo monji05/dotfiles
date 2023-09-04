@@ -407,7 +407,15 @@ local plugins = {
     config = function()
       require("plugins.nightfly")
     end
-  }
+  },
+  {
+    -- Convenience file operations for neovim
+    "chrisgrieser/nvim-genghis",
+    dependencies = "stevearc/dressing.nvim",
+    config = function()
+      require("plugins.genghis")
+    end
+  },
 }
 
 vim.opt.rtp:prepend(lazypath)
