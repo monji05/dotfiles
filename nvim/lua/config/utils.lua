@@ -426,7 +426,15 @@ local plugins = {
     name = "nightfly",
     config = function()
       require("plugins.nightfly")
-    end,
+    end
+  },
+  {
+    -- Convenience file operations for neovim
+    "chrisgrieser/nvim-genghis",
+    dependencies = "stevearc/dressing.nvim",
+    config = function()
+      require("plugins.genghis")
+    end
   },
 }
 
