@@ -51,6 +51,5 @@ local opt = { silent = true, noremap = true }
 vim.keymap.set("n", "gd", "<CMD>Lspsaga goto_definition<CR>", opt)
 vim.keymap.set("n", "gf", "<CMD>Lspsaga finder<CR>", opt)
 vim.keymap.set("n", "gh", "<CMD>Lspsaga hover_doc<CR>", opt)
-vim.keymap.set("n", "gf", "<CMD>Lspsaga finder<Cr>", opt)
 vim.keymap.set("n", "<leader>j", "<CMD>Lspsaga diagnostic_jump_next<CR>", opt)
 vim.keymap.set("n", "<leader>go", "<CMD>Lspsaga outline<CR>", opt)

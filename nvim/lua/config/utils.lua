@@ -174,10 +174,9 @@ local plugins = {
     end,
   },
   {
-    -- I won't use yet
     -- "L3MON4D3/LuaSnip",
     -- config = function()
-    -- require("plugins/luasnip")
+    --   require("plugins/luasnip")
     -- end,
   },
   {
