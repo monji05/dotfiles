@@ -4,6 +4,10 @@ set -gx TERM xterm-256color
 fish_add_path /opt/homebrew/bin
 fish_add_path $HOME/.cargo/bin
 fish_add_path /usr/bin/java
+# for gulp
+fish_add_path $HOME/www/offerbox/public_html/node_modules/.bin
+# it's too slow when start up terminal.
+eval (anyenv init - | source)
 
 alias g='git'
 alias vim='nvim'
