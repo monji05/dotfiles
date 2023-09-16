@@ -219,13 +219,13 @@ local plugins = {
     end,
   },
   {
-    -- "svrana/neosolarized.nvim",
-    -- lazy = true,
-    -- event = { "BufReadPost", "BufAdd", "BufNewFile" },
-    -- dependencies = { "tjdevries/colorbuddy.nvim" },
-    -- config = function()
-    --   require("plugins/neosolarized")
-    -- end,
+    "svrana/neosolarized.nvim",
+    lazy = true,
+    event = { "BufReadPost", "BufAdd", "BufNewFile" },
+    dependencies = { "tjdevries/colorbuddy.nvim" },
+    config = function()
+      require("plugins/neosolarized")
+    end,
   },
   {
     "folke/noice.nvim",
@@ -402,13 +402,6 @@ local plugins = {
     end
   },
   {
-    "bluz71/vim-nightfly-colors",
-    name = "nightfly",
-    config = function()
-      require("plugins.nightfly")
-    end
-  },
-  {
     -- Convenience file operations for neovim
     "chrisgrieser/nvim-genghis",
     dependencies = "stevearc/dressing.nvim",
@@ -416,6 +409,17 @@ local plugins = {
       require("plugins.genghis")
     end
   },
+  {
+    "nvim-neorg/neorg",
+    build = ":Neorg sync-parsers",
+    ft = "norg",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("plugins.neorg")
+      vim.wo.foldlevel = 99
+      vim.wo.conceallevel = 2
+    end
+  }
 }
 
 vim.opt.rtp:prepend(lazypath)

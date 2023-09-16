@@ -16,7 +16,11 @@ layout {
     pane {
     }
   }
-  tab name="Obsidian" cwd="/Users/eriko/Documents/Obsidian Vault" {
+  tab name="Neorg" cwd="/Users/eriko/neorg_notes" {
+    pane {
+    }
+  }
+  tab name="Develop" cwd="/Users/eriko/Develop" {
     pane {
     }
   }
