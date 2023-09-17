@@ -396,6 +396,12 @@ local plugins = {
       vim.wo.foldlevel = 99
       vim.wo.conceallevel = 2
     end
+  },
+  {
+    "jbyuki/venn.nvim",
+    config = function()
+      require("plugins.venn")
+    end
   }
 }
 
