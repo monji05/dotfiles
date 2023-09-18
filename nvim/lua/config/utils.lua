@@ -227,36 +227,6 @@ local plugins = {
     end,
   },
   {
-    "epwalsh/obsidian.nvim",
-    event = { "BufReadPre /Users/eriko/Documents/Obsidian Vault/**.md" },
-    -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand':
-    -- event = { "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md" },
-    dependencies = {
-      -- Required.
-      "nvim-lua/plenary.nvim",
-
-      -- Optional, for completion.
-      "hrsh7th/nvim-cmp",
-
-      -- Optional, for search and quick-switch functionality.
-      "nvim-telescope/telescope.nvim",
-
-      -- Optional, an alternative to telescope for search and quick-switch functionality.
-      -- "ibhagwan/fzf-lua"
-
-      -- Optional, another alternative to telescope for search and quick-switch functionality.
-      -- "junegunn/fzf",
-      -- "junegunn/fzf.vim"
-    },
-    keys = {
-      { "<leader>o", "<Cmd>ObsidianTemplate<CR>" },
-    },
-
-    config = function()
-      require("plugins/obsidian")
-    end,
-  },
-  {
     -- transration engine
     "potamides/pantran.nvim",
     config = function()
@@ -421,13 +391,6 @@ local plugins = {
     end,
   },
   {
-    -- "bluz71/vim-nightfly-colors",
-    -- name = "nightfly",
-    -- config = function()
-    --   require("plugins.nightfly")
-    -- end,
-  },
-  {
     -- Convenience file operations for neovim
     "chrisgrieser/nvim-genghis",
     dependencies = "stevearc/dressing.nvim",
@@ -443,6 +406,30 @@ local plugins = {
       require("plugins.genghis")
     end,
   },
+  {
+    "nvim-neorg/neorg",
+    build = ":Neorg sync-parsers",
+    ft = "norg",
+    dependencies = {
+      { "nvim-lua/plenary.nvim" },
+      { "laher/neorg-exec" },
+      { "nvim-neorg/neorg-telescope" },
+      { "max397574/neorg-kanban" },
+      { "max397574/neorg-contexts" },
+      { "pysan3/neorg-templates" },
+    },
+    config = function()
+      require("plugins.neorg")
+      vim.wo.foldlevel = 99
+      vim.wo.conceallevel = 2
+    end
+  },
+  {
+    "jbyuki/venn.nvim",
+    config = function()
+      require("plugins.venn")
+    end
+  }
 }
 
 vim.opt.rtp:prepend(lazypath)
