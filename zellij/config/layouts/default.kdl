@@ -25,11 +25,7 @@ layout {
     pane {
     }
   }
-  tab name="Neorg" cwd="/Users/eriko/neorg_notes" {
-    pane {
-    }
-  }
-  tab name="Develop" cwd="/Users/eriko/Develop" {
+  tab name="Neorg" cwd="/Users/erikomishina/neorg_notes" {
     pane {
     }
   }
