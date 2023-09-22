@@ -8,7 +8,11 @@ layout {
       plugin location="zellij:status-bar"
     }
   }
-  tab name="public" focus=true cwd="/Users/erikomishina/www/offerbox/public_html" {
+  tab name="public_html" focus=true cwd="/Users/erikomishina/www/offerbox/public_html" {
+    pane {
+    }
+  }
+  tab name="Neorg" cwd="/Users/erikomishina/neorg_notes" {
     pane {
     }
   }
@@ -22,10 +26,6 @@ layout {
     }
   }
   tab name="nvim" cwd="/Users/erikomishina/.config/nvim" {
-    pane {
-    }
-  }
-  tab name="Neorg" cwd="/Users/erikomishina/neorg_notes" {
     pane {
     }
   }
