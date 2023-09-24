@@ -8,8 +8,7 @@ ts.setup({
     additional_vim_regex_highlighting = { "markdown" },
   },
   indent = {
-    enable = true,
-    disable = {},
+    enable = false,
   },
   ensure_installed = {
     "tsx",
@@ -30,15 +29,6 @@ ts.setup({
   textobjects = {
     select = true,
     lookahead = true,
-    swap = {
-      enable = true,
-      swap_next = {
-        ["<leader>a"] = "@parameter.inner",
-      },
-      swap_previous = {
-        ["<leader>a"] = "@parameter.inner",
-      },
-    },
     move = {
       enable = true,
       set_jumps = true, -- whether to set jumps in the jumplist
@@ -61,6 +51,8 @@ ts.setup({
     },
     keymaps = {
       -- you can use the capture groups defined in textobjects.scm
+      ["aa"] = "@parameter.outer",
+      ["ia"] = "@parameter.inner",
       ["af"] = "@function.outer",
       ["if"] = "@function.inner",
       ["ac"] = "@class.outer",
@@ -72,7 +64,7 @@ ts.setup({
     },
     selection_modes = {
       ["@parameter.outer"] = "v", -- charwise
-      ["@function.outer"] = "v",  -- linewise
+      ["@function.outer"] = "V",  -- linewise
       ["@class.outer"] = "<c-v>", -- blockwise
     },
     lsp_interop = {
