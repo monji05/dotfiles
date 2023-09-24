@@ -8,8 +8,7 @@ ts.setup({
     additional_vim_regex_highlighting = { "markdown" },
   },
   indent = {
-    enable = true,
-    disable = {},
+    enable = false,
   },
   ensure_installed = {
     "tsx",
