@@ -22,6 +22,8 @@ ts.setup({
     "lua",
     "markdown",
     "markdown_inline",
+    "norg",
+    "norg_meta",
   },
   autotag = {
     enable = true,
