@@ -23,7 +23,7 @@ ts.setup({
     "markdown",
     "markdown_inline",
     "norg",
-    "norg_meta",
+    -- "norg_meta",
   },
   autotag = {
     enable = true,

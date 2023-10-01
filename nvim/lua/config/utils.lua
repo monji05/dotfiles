@@ -120,11 +120,12 @@ local plugins = {
   },
   {
     "lukas-reineke/indent-blankline.nvim",
-    event = "BufEnter",
+    main = "ibl",
     lazy = true,
+    ft = { "lua", "php", "html", "css", "js", "jsx", "ts", "tsx", },
     config = function()
-      require("plugins/indentline")
-    end,
+      require("plugins.indentline")
+    end
   },
   {
     "kdheepak/lazygit.nvim",
@@ -219,13 +220,13 @@ local plugins = {
     end,
   },
   {
-    "svrana/neosolarized.nvim",
-    lazy = true,
-    event = { "BufReadPost", "BufAdd", "BufNewFile" },
-    dependencies = { "tjdevries/colorbuddy.nvim" },
-    config = function()
-      require("plugins/neosolarized")
-    end,
+    -- "svrana/neosolarized.nvim",
+    -- lazy = true,
+    -- event = { "BufReadPost", "BufAdd", "BufNewFile" },
+    -- dependencies = { "tjdevries/colorbuddy.nvim" },
+    -- config = function()
+    --   require("plugins/neosolarized")
+    -- end,
   },
   {
     "folke/noice.nvim",
@@ -401,6 +402,20 @@ local plugins = {
     "jbyuki/venn.nvim",
     config = function()
       require("plugins.venn")
+    end
+  },
+  {
+    "folke/tokyonight.nvim",
+    config = function()
+      vim.api.nvim_command("colorscheme tokyonight")
+      require("tokyonight").setup({
+        style = "night",
+        transparent = true,
+        on_colors = function(colors)
+          colors.bg_dark = "#021e34"
+          colors.bg = "#021e34"
+        end
+      })
     end
   }
 }
