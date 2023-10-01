@@ -1,5 +1,5 @@
 vim.api.nvim_command([[highlight IblIndentHilight guifg=#3E4452 guibg=#000 gui=nocombine]])
-local ibl = require("ibl").setup {
+local ibl = require("ibl").setup({
   indent = {
     char = "▏",
     tab_char = "|",
@@ -23,12 +23,11 @@ local ibl = require("ibl").setup {
       "neogitstatus",
       "NvimTree",
       "Trouble",
-
     },
     buftypes = {
       "terminal",
       "nofile",
-    }
+    },
   },
-  smart_indent_cap = false
-}
+  smart_indent_cap = false,
+})

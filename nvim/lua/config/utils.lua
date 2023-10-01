@@ -7,15 +7,15 @@ vim.api.nvim_command([[
 
 if not vim.loop.fs_stat(lazypath) then
   vim.fn
-      .system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
-        lazypath,
-      }, { text = true })
-      :wait()
+    .system({
+      "git",
+      "clone",
+      "--filter=blob:none",
+      "https://github.com/folke/lazy.nvim.git",
+      "--branch=stable", -- latest stable release
+      lazypath,
+    }, { text = true })
+    :wait()
 end
 
 local plugins = {
@@ -56,10 +56,10 @@ local plugins = {
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
-      { "hrsh7th/cmp-buffer",                     event = "InsertEnter" },
-      { "hrsh7th/cmp-path",                       event = "InsertEnter" },
+      { "hrsh7th/cmp-buffer", event = "InsertEnter" },
+      { "hrsh7th/cmp-path", event = "InsertEnter" },
       { "roobert/tailwindcss-colorizer-cmp.nvim", event = "InsertEnter" },
-      { "L3MON4D3/LuaSnip",                       event = "InsertEnter" },
+      { "L3MON4D3/LuaSnip", event = "InsertEnter" },
     },
     event = { "InsertEnter" },
     config = function()
@@ -122,10 +122,10 @@ local plugins = {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
     lazy = true,
-    ft = { "lua", "php", "html", "css", "js", "jsx", "ts", "tsx", },
+    ft = { "lua", "php", "html", "css", "js", "jsx", "ts", "tsx" },
     config = function()
       require("plugins.indentline")
-    end
+    end,
   },
   {
     "kdheepak/lazygit.nvim",
@@ -468,18 +468,18 @@ local plugins = {
     -- end
   },
   {
-    'johnfrankmorgan/whitespace.nvim',
+    "johnfrankmorgan/whitespace.nvim",
     config = function()
-      require('whitespace-nvim').setup({
+      require("whitespace-nvim").setup({
         -- configuration options and their defaults
 
         -- `highlight` configures which highlight is used to display
         -- trailing whitespace
-        highlight = 'DiagnosticVirtualTextError',
+        highlight = "DiagnosticVirtualTextError",
 
         -- `ignored_filetypes` configures which filetypes to ignore when
         -- displaying trailing whitespace
-        ignored_filetypes = { 'TelescopePrompt', 'Trouble', 'help', "cmdline" },
+        ignored_filetypes = { "TelescopePrompt", "Trouble", "help", "cmdline" },
 
         -- `ignore_terminal` configures whether to ignore terminal buffers
         ignore_terminal = true,
@@ -487,8 +487,8 @@ local plugins = {
 
       -- remove trailing whitespace with a keybinding
       -- vim.keymap.set('n', '<Leader>t', require('whitespace-nvim').trim)
-    end
-  }
+    end,
+  },
 }
 
 vim.opt.rtp:prepend(lazypath)
@@ -527,9 +527,9 @@ require("lazy").setup(plugins, {
     },
     reset_packpath = true, -- reset the package path to improve startup time
     rtp = {
-      reset = true,        -- reset the runtime path to $VIMRUNTIME and the config directory
+      reset = true, -- reset the runtime path to $VIMRUNTIME and the config directory
       ---@type string[]
-      paths = {},          -- add any custom paths here that you want to include in the rtp
+      paths = {}, -- add any custom paths here that you want to include in the rtp
     },
   },
 })
