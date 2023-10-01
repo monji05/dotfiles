@@ -346,7 +346,7 @@ local plugins = {
   {
     "pwntester/octo.nvim",
     lazy = true,
-    cmd = "Octo pr list",
+    cmd = "Octo",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim",
@@ -422,14 +422,14 @@ local plugins = {
       require("plugins.neorg")
       vim.wo.foldlevel = 99
       vim.wo.conceallevel = 2
-    end
+    end,
   },
   {
     "jbyuki/venn.nvim",
     config = function()
       require("plugins.venn")
-    end
-  }
+    end,
+  },
 }
 
 vim.opt.rtp:prepend(lazypath)
