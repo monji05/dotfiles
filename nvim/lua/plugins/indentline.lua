@@ -1,9 +1,14 @@
+vim.api.nvim_command([[highlight IblIndentHilight guifg=#3E4452 guibg=#000 gui=nocombine]])
 local ibl = require("ibl").setup {
   indent = {
     char = "▏",
+    tab_char = "|",
+    highlight = "IblIndentHilight",
   },
   whitespace = {
-    remove_blankline_trail = false,
+    -- remove_blankline_trail = false,
+    remove_blankline_trail = true,
+    highlight = "IblIndentHilight",
   },
   scope = {
     -- don't be true! tree-sitter cause error!
@@ -25,7 +30,5 @@ local ibl = require("ibl").setup {
       "nofile",
     }
   },
-  smart_indent_cap = true
+  smart_indent_cap = false
 }
-
-vim.opt.listchars:append("tab:»-")
