@@ -1,8 +1,8 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 vim.api.nvim_command([[
   syntax off
-  filetype plugin indent off
-  filetype off
+  filetype plugin indent on
+  filetype on
 ]])
 
 if not vim.loop.fs_stat(lazypath) then
@@ -195,13 +195,6 @@ local plugins = {
     end,
   },
   {
-    "echasnovski/mini.pairs",
-    event = "InsertEnter",
-    config = function()
-      require("mini.pairs").setup()
-    end,
-  },
-  {
     "ecthelionvi/NeoComposer.nvim",
     dependencies = { "kkharji/sqlite.lua" },
     event = "VeryLazy",
@@ -210,13 +203,13 @@ local plugins = {
     end,
   },
   {
-    -- "svrana/neosolarized.nvim",
-    -- lazy = true,
-    -- event = { "BufReadPost", "BufAdd", "BufNewFile" },
-    -- dependencies = { "tjdevries/colorbuddy.nvim" },
-    -- config = function()
-    --   require("plugins/neosolarized")
-    -- end,
+    "svrana/neosolarized.nvim",
+    lazy = true,
+    event = { "BufReadPost", "BufAdd", "BufNewFile" },
+    dependencies = { "tjdevries/colorbuddy.nvim" },
+    config = function()
+      require("plugins/neosolarized")
+    end,
   },
   {
     "folke/noice.nvim",
@@ -432,45 +425,45 @@ local plugins = {
     end,
   },
   {
-    "folke/tokyonight.nvim",
-    config = function()
-      local bg = "#011628"
-      local bg_dark = "#011423"
-      local bg_highlight = "#143652"
-      local bg_search = "#0A64AC"
-      local bg_visual = "#275378"
-      local fg = "#CBE0F0"
-      local fg_dark = "#B4D0E9"
-      -- local fg_gutter = "#627E97"
-      local border = "#547998"
-      local gitSigns_add = "#6D955A"
-      local gitSigns_change = "#978351"
-
-      require("tokyonight").setup({
-        style = "night",
-        on_colors = function(colors)
-          colors.bg = bg
-          colors.bg_dark = bg_dark
-          colors.bg_float = bg_dark
-          colors.bg_highlight = bg_highlight
-          colors.bg_popup = bg_dark
-          colors.bg_search = bg_search
-          colors.bg_sidebar = bg_dark
-          colors.bg_statusline = bg_dark
-          colors.bg_visual = bg_visual
-          colors.border = border
-          colors.fg = fg
-          colors.fg_dark = fg_dark
-          -- colors.fg_float = fg
-          -- colors.fg_gutter = fg_gutter
-          colors.fg_sidebar = fg_dark
-          colors.gitSigns.add = gitSigns_add
-          colors.gitSigns.change = gitSigns_change
-        end,
-
-      })
-      vim.api.nvim_command("colorscheme tokyonight")
-    end
+    -- "folke/tokyonight.nvim",
+    -- config = function()
+    --   local bg = "#011628"
+    --   local bg_dark = "#011423"
+    --   local bg_highlight = "#143652"
+    --   local bg_search = "#0A64AC"
+    --   local bg_visual = "#275378"
+    --   local fg = "#CBE0F0"
+    --   local fg_dark = "#B4D0E9"
+    --   -- local fg_gutter = "#627E97"
+    --   local border = "#547998"
+    --   local gitSigns_add = "#6D955A"
+    --   local gitSigns_change = "#978351"
+    --
+    --   require("tokyonight").setup({
+    --     style = "night",
+    --     on_colors = function(colors)
+    --       colors.bg = bg
+    --       colors.bg_dark = bg_dark
+    --       colors.bg_float = bg_dark
+    --       colors.bg_highlight = bg_highlight
+    --       colors.bg_popup = bg_dark
+    --       colors.bg_search = bg_search
+    --       colors.bg_sidebar = bg_dark
+    --       colors.bg_statusline = bg_dark
+    --       colors.bg_visual = bg_visual
+    --       colors.border = border
+    --       colors.fg = fg
+    --       colors.fg_dark = fg_dark
+    --       -- colors.fg_float = fg
+    --       -- colors.fg_gutter = fg_gutter
+    --       colors.fg_sidebar = fg_dark
+    --       colors.gitSigns.add = gitSigns_add
+    --       colors.gitSigns.change = gitSigns_change
+    --     end,
+    --
+    --   })
+    --   vim.api.nvim_command("colorscheme tokyonight")
+    -- end
   },
   {
     "johnfrankmorgan/whitespace.nvim",
@@ -492,8 +485,33 @@ local plugins = {
 
       -- remove trailing whitespace with a keybinding
       -- vim.keymap.set('n', '<Leader>t', require('whitespace-nvim').trim)
-    end,
+    end
   },
+  {
+    'altermo/ultimate-autopair.nvim',
+    event = { 'InsertEnter', 'CmdlineEnter' },
+    branch = 'v0.6', --recomended as each new version will have breaking changes
+    config = function()
+      require("plugins.ultimate-autopair")
+    end
+  },
+  {
+    'kristijanhusak/vim-dadbod-ui',
+    dependencies = {
+      { 'tpope/vim-dadbod',                     lazy = true },
+      { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
+    },
+    cmd = {
+      'DBUI',
+      'DBUIToggle',
+      'DBUIAddConnection',
+      'DBUIFindBuffer',
+    },
+    init = function()
+      -- Your DBUI configuration
+      vim.g.db_ui_use_nerd_fonts = 1
+    end,
+  }
 }
 
 vim.opt.rtp:prepend(lazypath)

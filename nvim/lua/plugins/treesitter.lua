@@ -24,6 +24,7 @@ ts.setup({
     "markdown_inline",
     "norg",
     -- "norg_meta",
+    "kdl"
   },
   autotag = {
     enable = true,

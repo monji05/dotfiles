@@ -14,7 +14,7 @@ require("gitsigns").setup({
     untracked = { hl = "GitSignsAdd", text = git.untracked, numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
   },
   signcolumn = true,
-  numhl = false,  -- diff highlight line number
+  numhl = false, -- diff highlight line number
   linehl = false, -- diff highlight line
   on_attach = function(bufnr)
     local gs = package.loaded.gitsigns
@@ -48,8 +48,9 @@ require("gitsigns").setup({
 
     -- Text object
     map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
-    map("n", "<Space>d", ":Gitsigns diffthis<CR>")
-    map("n", "<Space>h", gs.preview_hunk)
-    map("n", "<leader>b", "<CMD>Gitsigns blame_line<CR>")
+    map({ "v", "n" }, "<Leader>sh", ":Gitsigns stage_hunk<CR>")
+    map({ "v", "n" }, "<Leader>dh", ":Gitsigns undo_stage_hunk<CR>")
+    -- map("n", "<Space>d", ":Gitsigns diffthis<CR>")
+    -- map("n", "<Space>h", gs.preview_hunk)
   end,
 })

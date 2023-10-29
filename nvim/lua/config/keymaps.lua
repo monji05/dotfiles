@@ -37,8 +37,8 @@ keymap("", "sj", "<C-w>j", opts)
 keymap("", "sl", "<C-w>l", opts)
 
 -- Resize window
-keymap("n", "<C-w><left>", "<C-w><", opts)
-keymap("n", "<C-w><right>", "<C-w>>", opts)
+keymap("n", "<C-w><left>", ":vertical resize +3<CR>", opts)
+keymap("n", "<C-w><right>", ":vertical resize -3<CR>", opts)
 keymap("n", "<C-w><up>", "<C-w>+", opts)
 keymap("n", "<C-w><down>", "<C-w>-", opts)
 
@@ -56,11 +56,14 @@ keymap("n", "s", '"_s', opts)
 -- x = visual block mode
 keymap("v", "p", '"_xP', opts)
 
--- automatically create multiline comment
-keymap("i", "/*", "/****/<left><left><left><left>", opts)
+-- automatically create PHP Doc
+keymap("i", "/*", " /**\n *\n*\n*\n*/<left><left><left><left>", opts)
 
 -- replace current cursor word
 keymap("v", "<leader>r", "\"hy:%s/<C-r>h//g<left><left>", opts)
 
 -- sort selected line in visual mode
 keymap("v", "<C-s>", ":sort<CR>", opts)
+
+-- reload config
+keymap("n", "<leader>e", ":source ~/.config/nvim/init.lua<CR>", opts)

@@ -29,5 +29,4 @@ local ibl = require("ibl").setup({
       "nofile",
     },
   },
-  smart_indent_cap = false,
 })
