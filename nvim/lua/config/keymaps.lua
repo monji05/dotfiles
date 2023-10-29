@@ -37,8 +37,8 @@ keymap("", "sj", "<C-w>j", opts)
 keymap("", "sl", "<C-w>l", opts)
 
 -- Resize window
-keymap("n", "<C-w><left>", "<C-w><", opts)
-keymap("n", "<C-w><right>", "<C-w>>", opts)
+keymap("n", "<C-w><left>", ":vertical resize +3<CR>", opts)
+keymap("n", "<C-w><right>", ":vertical resize -3<CR>", opts)
 keymap("n", "<C-w><up>", "<C-w>+", opts)
 keymap("n", "<C-w><down>", "<C-w>-", opts)
 

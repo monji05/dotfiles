@@ -205,13 +205,6 @@ local plugins = {
     end,
   },
   {
-    "echasnovski/mini.pairs",
-    event = "InsertEnter",
-    config = function()
-      require("mini.pairs").setup()
-    end,
-  },
-  {
     "ecthelionvi/NeoComposer.nvim",
     dependencies = { "kkharji/sqlite.lua" },
     event = "VeryLazy",
@@ -465,6 +458,14 @@ local plugins = {
 
       -- remove trailing whitespace with a keybinding
       -- vim.keymap.set('n', '<Leader>t', require('whitespace-nvim').trim)
+    end
+  },
+  {
+    'altermo/ultimate-autopair.nvim',
+    event = { 'InsertEnter', 'CmdlineEnter' },
+    branch = 'v0.6', --recomended as each new version will have breaking changes
+    config = function()
+      require("plugins.ultimate-autopair")
     end
   }
 }
