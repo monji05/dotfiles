@@ -1,8 +1,8 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 vim.api.nvim_command([[
   syntax off
-  filetype plugin indent on
-  filetype on
+  filetype plugin indent off
+  filetype off
 ]])
 
 if not vim.loop.fs_stat(lazypath) then
@@ -496,21 +496,23 @@ local plugins = {
     end,
   },
   {
-    "kristijanhusak/vim-dadbod-ui",
-    dependencies = {
-      { "tpope/vim-dadbod", lazy = true },
-      { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
-    },
-    cmd = {
-      "DBUI",
-      "DBUIToggle",
-      "DBUIAddConnection",
-      "DBUIFindBuffer",
-    },
-    init = function()
-      -- Your DBUI configuration
-      vim.g.db_ui_use_nerd_fonts = 1
-    end,
+    -- "kristijanhusak/vim-dadbod-ui",
+    -- dependencies = {
+    --   { "tpope/vim-dadbod", lazy = true },
+    --   { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
+    -- },
+    -- cmd = {
+    --   "DBUI",
+    --   "DBUIToggle",
+    --   "DBUIAddConnection",
+    --   "DBUIFindBuffer",
+    -- },
+    -- init = function()
+    --   -- Your DBUI configuration
+    --   vim.g.db_ui_use_nerd_fonts = 1
+    --   vim.g.db_ui_use_nvim_notify = 1
+    --   vim.g.db_ui_tmp_query_location = "~/code/queries"
+    -- end,
   },
 }
 
