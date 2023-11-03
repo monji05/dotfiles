@@ -1,8 +1,8 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 vim.api.nvim_command([[
   syntax off
-  filetype plugin indent on
-  filetype on
+  filetype plugin indent off
+  filetype off
 ]])
 
 if not vim.loop.fs_stat(lazypath) then
@@ -469,21 +469,12 @@ local plugins = {
     end
   },
   {
-    'kristijanhusak/vim-dadbod-ui',
+    "weirongxu/plantuml-previewer.vim",
     dependencies = {
-      { 'tpope/vim-dadbod',                     lazy = true },
-      { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
+      "tyru/open-browser.vim",
     },
-    cmd = {
-      'DBUI',
-      'DBUIToggle',
-      'DBUIAddConnection',
-      'DBUIFindBuffer',
-    },
-    init = function()
-      -- Your DBUI configuration
-      vim.g.db_ui_use_nerd_fonts = 1
-    end,
+    ft = "plantuml",
+    cmd = { "PlantumlStart", "PlantumlSave" }
   }
 }
 
