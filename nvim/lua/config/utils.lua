@@ -192,11 +192,11 @@ local plugins = {
     -- end,
   },
   {
-    "jose-elias-alvarez/null-ls.nvim",
-    lazy = true,
-    config = function()
-      require("plugins.null-ls")
-    end,
+    -- "jose-elias-alvarez/null-ls.nvim",
+    -- lazy = true,
+    -- config = function()
+    --   require("plugins.null-ls")
+    -- end,
   },
   {
     "echasnovski/mini.indentscope",
@@ -472,9 +472,16 @@ local plugins = {
     "weirongxu/plantuml-previewer.vim",
     dependencies = {
       "tyru/open-browser.vim",
+      "aklt/plantuml-syntax"
     },
     ft = "plantuml",
     cmd = { "PlantumlStart", "PlantumlSave" }
+  },
+  {
+    "mfussenegger/nvim-lint",
+    config = function()
+      require("plugins.lint")
+    end
   }
 }
 
