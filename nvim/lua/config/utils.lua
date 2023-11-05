@@ -7,15 +7,15 @@ vim.api.nvim_command([[
 
 if not vim.loop.fs_stat(lazypath) then
   vim.fn
-    .system({
-      "git",
-      "clone",
-      "--filter=blob:none",
-      "https://github.com/folke/lazy.nvim.git",
-      "--branch=stable", -- latest stable release
-      lazypath,
-    }, { text = true })
-    :wait()
+      .system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+      }, { text = true })
+      :wait()
 end
 
 local plugins = {
@@ -56,10 +56,10 @@ local plugins = {
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
-      { "hrsh7th/cmp-buffer", event = "InsertEnter" },
-      { "hrsh7th/cmp-path", event = "InsertEnter" },
+      { "hrsh7th/cmp-buffer",                     event = "InsertEnter" },
+      { "hrsh7th/cmp-path",                       event = "InsertEnter" },
       { "roobert/tailwindcss-colorizer-cmp.nvim", event = "InsertEnter" },
-      { "L3MON4D3/LuaSnip", event = "InsertEnter" },
+      { "L3MON4D3/LuaSnip",                       event = "InsertEnter" },
     },
     event = { "InsertEnter" },
     config = function()
@@ -181,12 +181,11 @@ local plugins = {
     -- end,
   },
   {
-    "jose-elias-alvarez/null-ls.nvim",
-    lazy = true,
-    event = { "BufRead", "BufReadpre", "InsertEnter" },
-    config = function()
-      require("plugins.null-ls")
-    end,
+    -- "jose-elias-alvarez/null-ls.nvim",
+    -- lazy = true,
+    -- config = function()
+    --   require("plugins.null-ls")
+    -- end,
   },
   {
     "echasnovski/mini.indentscope",
@@ -203,13 +202,13 @@ local plugins = {
     end,
   },
   {
-    "svrana/neosolarized.nvim",
-    lazy = true,
-    event = { "BufReadPost", "BufAdd", "BufNewFile" },
-    dependencies = { "tjdevries/colorbuddy.nvim" },
-    config = function()
-      require("plugins/neosolarized")
-    end,
+    -- "svrana/neosolarized.nvim",
+    -- lazy = true,
+    -- event = { "BufReadPost", "BufAdd", "BufNewFile" },
+    -- dependencies = { "tjdevries/colorbuddy.nvim" },
+    -- config = function()
+    --   require("plugins/neosolarized")
+    -- end,
   },
   {
     "folke/noice.nvim",
@@ -419,51 +418,49 @@ local plugins = {
     end,
   },
   {
-    "jbyuki/venn.nvim",
+    "folke/tokyonight.nvim",
     config = function()
-      require("plugins.venn")
+      local bg = "#011628"
+      local bg_dark = "#011423"
+      local bg_highlight = "#143652"
+      local bg_search = "#0A64AC"
+      local bg_visual = "#275378"
+      local fg = "#CBE0F0"
+      local fg_dark = "#B4D0E9"
+      local border = "#547998"
+      local gitSigns_add = "#6D955A"
+      local gitSigns_change = "#978351"
+
+      require("tokyonight").setup({
+        style = "night",
+        on_colors = function(colors)
+          colors.bg = bg
+          colors.bg_dark = bg_dark
+          colors.bg_float = bg_dark
+          colors.bg_highlight = bg_highlight
+          colors.bg_popup = bg_dark
+          colors.bg_search = bg_search
+          colors.bg_sidebar = bg_dark
+          colors.bg_statusline = bg_dark
+          colors.bg_visual = bg_visual
+          colors.border = border
+          colors.fg = fg
+          colors.fg_float = fg
+          colors.fg_sidebar = fg_dark
+          colors.gitSigns.add = gitSigns_add
+          colors.gitSigns.change = gitSigns_change
+        end,
+        on_highlights = function(hl, c)
+          hl.CursorLineNr = {
+            fg = c.orange,
+          }
+          hl.LineNr = {
+            fg = border,
+          }
+        end,
+      })
+      vim.api.nvim_command("colorscheme tokyonight")
     end,
-  },
-  {
-    -- "folke/tokyonight.nvim",
-    -- config = function()
-    --   local bg = "#011628"
-    --   local bg_dark = "#011423"
-    --   local bg_highlight = "#143652"
-    --   local bg_search = "#0A64AC"
-    --   local bg_visual = "#275378"
-    --   local fg = "#CBE0F0"
-    --   local fg_dark = "#B4D0E9"
-    --   -- local fg_gutter = "#627E97"
-    --   local border = "#547998"
-    --   local gitSigns_add = "#6D955A"
-    --   local gitSigns_change = "#978351"
-    --
-    --   require("tokyonight").setup({
-    --     style = "night",
-    --     on_colors = function(colors)
-    --       colors.bg = bg
-    --       colors.bg_dark = bg_dark
-    --       colors.bg_float = bg_dark
-    --       colors.bg_highlight = bg_highlight
-    --       colors.bg_popup = bg_dark
-    --       colors.bg_search = bg_search
-    --       colors.bg_sidebar = bg_dark
-    --       colors.bg_statusline = bg_dark
-    --       colors.bg_visual = bg_visual
-    --       colors.border = border
-    --       colors.fg = fg
-    --       colors.fg_dark = fg_dark
-    --       -- colors.fg_float = fg
-    --       -- colors.fg_gutter = fg_gutter
-    --       colors.fg_sidebar = fg_dark
-    --       colors.gitSigns.add = gitSigns_add
-    --       colors.gitSigns.change = gitSigns_change
-    --     end,
-    --
-    --   })
-    --   vim.api.nvim_command("colorscheme tokyonight")
-    -- end
   },
   {
     "johnfrankmorgan/whitespace.nvim",
@@ -496,23 +493,19 @@ local plugins = {
     end,
   },
   {
-    -- "kristijanhusak/vim-dadbod-ui",
-    -- dependencies = {
-    --   { "tpope/vim-dadbod", lazy = true },
-    --   { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
-    -- },
-    -- cmd = {
-    --   "DBUI",
-    --   "DBUIToggle",
-    --   "DBUIAddConnection",
-    --   "DBUIFindBuffer",
-    -- },
-    -- init = function()
-    --   -- Your DBUI configuration
-    --   vim.g.db_ui_use_nerd_fonts = 1
-    --   vim.g.db_ui_use_nvim_notify = 1
-    --   vim.g.db_ui_tmp_query_location = "~/code/queries"
-    -- end,
+    "weirongxu/plantuml-previewer.vim",
+    dependencies = {
+      "tyru/open-browser.vim",
+      "aklt/plantuml-syntax",
+    },
+    ft = "plantuml",
+    cmd = { "PlantumlStart", "PlantumlSave" },
+  },
+  {
+    "mfussenegger/nvim-lint",
+    config = function()
+      require("plugins.lint")
+    end,
   },
 }
 
@@ -552,9 +545,9 @@ require("lazy").setup(plugins, {
     },
     reset_packpath = true, -- reset the package path to improve startup time
     rtp = {
-      reset = true, -- reset the runtime path to $VIMRUNTIME and the config directory
+      reset = true,        -- reset the runtime path to $VIMRUNTIME and the config directory
       ---@type string[]
-      paths = {}, -- add any custom paths here that you want to include in the rtp
+      paths = {},          -- add any custom paths here that you want to include in the rtp
     },
   },
 })
