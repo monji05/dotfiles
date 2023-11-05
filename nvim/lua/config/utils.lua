@@ -392,12 +392,6 @@ local plugins = {
     end
   },
   {
-    "jbyuki/venn.nvim",
-    config = function()
-      require("plugins.venn")
-    end
-  },
-  {
     "folke/tokyonight.nvim",
     config = function()
       local bg = "#011628"
