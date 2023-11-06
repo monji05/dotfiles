@@ -21,8 +21,9 @@ local n = require("neosolarized").setup({
 -- Color.new("green", "#719e07")
 
 n.Color.new("black", "#000000")
+n.Group.new("LineNr", n.colors.base00, n.colors.base03, n.styles.NONE, n.colors.base1)
 n.Group.new("CursorLine", n.colors.none, n.colors.base03, n.styles.NONE, n.colors.base1)
-n.Group.new("CursorLineNr", n.colors.yellow, n.colors.black, n.styles.NONE, n.colors.base1)
+n.Group.new("CursorLineNr", n.colors.yellow, n.colors.base03, n.styles.NONE, n.colors.base1)
 
 local cError = n.groups.Error.fg
 local cInfo = n.groups.Information.fg
