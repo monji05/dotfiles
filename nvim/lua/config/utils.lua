@@ -213,13 +213,13 @@ local plugins = {
     end,
   },
   {
-    -- "svrana/neosolarized.nvim",
-    -- lazy = true,
-    -- event = { "BufReadPost", "BufAdd", "BufNewFile" },
-    -- dependencies = { "tjdevries/colorbuddy.nvim" },
-    -- config = function()
-    --   require("plugins/neosolarized")
-    -- end,
+    "svrana/neosolarized.nvim",
+    lazy = true,
+    event = { "BufReadPost", "BufAdd", "BufNewFile" },
+    dependencies = { "tjdevries/colorbuddy.nvim" },
+    config = function()
+      require("plugins/neosolarized")
+    end,
   },
   {
     "folke/noice.nvim",
@@ -473,7 +473,7 @@ local plugins = {
       "aklt/plantuml-syntax"
     },
     ft = "plantuml",
-    cmd = { "PlantumlStart", "PlantumlSave" }
+    cmd = { "PlantumlOpen", "PlantumlStart", "PlantumlSave" }
   },
   {
     "mfussenegger/nvim-lint",
