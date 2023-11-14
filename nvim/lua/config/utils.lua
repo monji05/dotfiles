@@ -202,15 +202,6 @@ local plugins = {
     end,
   },
   {
-    -- "svrana/neosolarized.nvim",
-    -- lazy = true,
-    -- event = { "BufReadPost", "BufAdd", "BufNewFile" },
-    -- dependencies = { "tjdevries/colorbuddy.nvim" },
-    -- config = function()
-    --   require("plugins/neosolarized")
-    -- end,
-  },
-  {
     "folke/noice.nvim",
     event = "BufEnter",
     module = "noice",
@@ -418,52 +409,7 @@ local plugins = {
     end,
   },
   {
-    "folke/tokyonight.nvim",
-    config = function()
-      local bg = "#011628"
-      local bg_dark = "#011423"
-      local bg_highlight = "#143652"
-      local bg_search = "#0A64AC"
-      local bg_visual = "#275378"
-      local fg = "#CBE0F0"
-      local fg_dark = "#B4D0E9"
-      local border = "#547998"
-      local gitSigns_add = "#6D955A"
-      local gitSigns_change = "#978351"
-
-      require("tokyonight").setup({
-        style = "night",
-        on_colors = function(colors)
-          colors.bg = bg
-          colors.bg_dark = bg_dark
-          colors.bg_float = bg_dark
-          colors.bg_highlight = bg_highlight
-          colors.bg_popup = bg_dark
-          colors.bg_search = bg_search
-          colors.bg_sidebar = bg_dark
-          colors.bg_statusline = bg_dark
-          colors.bg_visual = bg_visual
-          colors.border = border
-          colors.fg = fg
-          colors.fg_float = fg
-          colors.fg_sidebar = fg_dark
-          colors.gitSigns.add = gitSigns_add
-          colors.gitSigns.change = gitSigns_change
-        end,
-        on_highlights = function(hl, c)
-          hl.CursorLineNr = {
-            fg = c.orange,
-          }
-          hl.LineNr = {
-            fg = border,
-          }
-        end,
-      })
-      vim.api.nvim_command("colorscheme tokyonight")
-    end,
-  },
-  {
-    "johnfrankmorgan/whitespace.nvim",
+    'johnfrankmorgan/whitespace.nvim',
     config = function()
       require("whitespace-nvim").setup({
         -- configuration options and their defaults
@@ -499,7 +445,7 @@ local plugins = {
       "aklt/plantuml-syntax",
     },
     ft = "plantuml",
-    cmd = { "PlantumlStart", "PlantumlSave" },
+    cmd = { "PlantumlOpen", "PlantumlStart", "PlantumlSave" }
   },
   {
     "mfussenegger/nvim-lint",
@@ -507,6 +453,15 @@ local plugins = {
       require("plugins.lint")
     end,
   },
+  {
+    "craftzdog/solarized-osaka.nvim",
+    lazy = true,
+    event = { "BufReadPost", "BufAdd", "BufNewFile" },
+    config = function()
+      require("plugins/solarized-osaka")
+      vim.api.nvim_command("colorscheme solarized-osaka")
+    end,
+  }
 }
 
 vim.opt.rtp:prepend(lazypath)
