@@ -53,7 +53,6 @@ keymap("n", "s", '"_s', opts)
 -- '<,'> normal .
 
 -- ビジュアルモードでヤンクしたワードを連続でペーストできるように(最高)
--- x = visual block mode
 keymap("v", "p", '"_xP', opts)
 
 -- automatically create PHP Doc
