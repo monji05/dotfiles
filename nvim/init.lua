@@ -1,16 +1,2 @@
-vim.loader.enable()
-
-require("config.options")
-require("config.keymaps")
-require("config.utils")
-
-local has = function(x)
-  return vim.fn.has(x) == 1
-end
-
-local is_mac = has("macunix")
-if is_mac then
-  require("config/macos")
-elseif is_mac == 0 then
-  require("config/windows")
-end
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")

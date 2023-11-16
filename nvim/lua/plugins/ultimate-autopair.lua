@@ -1,2 +1,0 @@
-require("ultimate-autopair").setup({
-})

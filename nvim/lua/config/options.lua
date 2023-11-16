@@ -1,3 +1,7 @@
+-- Options are automatically loaded before lazy.nvim startup
+-- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
+-- Add any additional options here
+
 if vim.fn.has("unix") == 1 then
   vim.env.LANG = "en_US.UTF-8"
 else
@@ -22,8 +26,8 @@ vim.opt.backup = false
 vim.opt.showcmd = true
 vim.opt.cmdheight = 1
 vim.opt.expandtab = true
-vim.opt.shiftwidth = 2
 vim.opt.smarttab = true
+vim.opt.shiftwidth = 2
 
 vim.opt.scrolloff = 30
 vim.opt.backupskip = { "/tmp/*", "/private/tmp/*" }
@@ -31,7 +35,7 @@ vim.opt.inccommand = "split"
 vim.opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
 vim.opt.smarttab = true
 vim.opt.breakindent = true
-vim.opt.wrap = false          -- No Wrap lines
+vim.opt.wrap = false -- No Wrap lines
 vim.opt.backspace = { "start", "eol", "indent" }
 vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders
 vim.opt.fillchars = "diff:╱"
@@ -64,46 +68,5 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 vim.opt.formatoptions:append({ "r" })
 
 -- set theme on nvim-markdown-preview
-vim.api.nvim_command([[let g:nvim_markdown_preview_theme = 'solarized-dark']])
+vim.api.nvim_command([[let g:nvim_markdown_preview_theme = 'solarized-osaka']])
 vim.g.gitblame_enabled = 0
-
--- fast start up
-vim.g.loaded_2html_plugin = 1
-vim.g.loaded_getscript = 1
-vim.g.loaded_getscriptPlugin = 1
-vim.g.loaded_gzip = 1
-vim.g.loaded_logiPat = 1
-vim.g.loaded_man = 1
-vim.g.loaded_matchit = 1
-vim.g.loaded_matchparen = 1
-vim.g.loaded_netrwFileHandlers = 1
-vim.g.loaded_netrwPlugin = 1
-vim.g.loaded_netrwSettings = 1
-vim.g.loaded_remote_plugins = 1
-vim.g.loaded_rplugin = 1
-vim.g.loaded_rrhelper = 1
-vim.g.loaded_shada_plugin = 1
-vim.g.loaded_shada_plugin = 1
-vim.g.loaded_spec = 1
-vim.g.loaded_spellfile_plugin = 1
-vim.g.loaded_spellfile_plugin = 1
-vim.g.loaded_tar = 1
-vim.g.loaded_tarPlugin = 1
-vim.g.loaded_tutor_mode_plugin = 1
-vim.g.loaded_vimball = 1
-vim.g.loaded_vimballPlugin = 1
-vim.g.loaded_zip = 1
-vim.g.loaded_zipPlugin = 1
-vim.g.load_black = 1
-vim.g.loaded_fzf = 1
-vim.g.loaded_gtags = 1
-vim.g.loaded_gtags_cscope = 1
-vim.g.loaded_node_provider = 0
-vim.g.loaded_perl_provider = 0
-vim.g.loaded_python3_provider = 0
-vim.g.loaded_python_provider = 0
-vim.g.loaded_pythonx_provider = 0
-vim.g.loaded_ruby_provider = 0
-
--- statuscolumn to right of line numbers
-vim.opt.statuscolumn = "%=%{v:relnum?v:relnum:v:lnum} %s"
