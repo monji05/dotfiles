@@ -27,31 +27,45 @@ return {
       local telescope = require("telescope")
       local fb_actions = telescope.extensions.file_browser.actions
       local actions = require("telescope.actions")
-      opts.extensions = {
-        file_browser = {
-          initial_mode = "normal",
-          theme = "ivy",
-          display_stat = { date = false, size = false },
-          -- disables netrw and use telescope-file-browser in its place
-          hijack_netrw = true,
-          prompt_path = true,
+      opts = {
+        defaults = {
           mappings = {
-            -- your custom insert mode mappings
-            ["i"] = {
-              ["<C-w>"] = function()
-                vim.cmd("normal vbd")
-              end,
+            i = {
               ["<C-o>"] = actions.select_tab,
+              ["<C-q>"] = actions.close,
             },
-            ["n"] = {
-              -- your custom normal mode mappings
-              ["n"] = fb_actions.create,
+            n = {
               ["o"] = actions.select_tab,
-              ["h"] = fb_actions.goto_parent_dir,
-              ["H"] = fb_actions.toggle_hidden,
-              ["/"] = function()
-                vim.cmd("startinsert")
-              end,
+              ["q"] = actions.close,
+            },
+          },
+        },
+        extensions = {
+          file_browser = {
+            initial_mode = "normal",
+            theme = "ivy",
+            display_stat = { date = false, size = false },
+            -- disables netrw and use telescope-file-browser in its place
+            hijack_netrw = true,
+            prompt_path = true,
+            mappings = {
+              -- your custom insert mode mappings
+              ["i"] = {
+                ["<C-w>"] = function()
+                  vim.cmd("normal vbd")
+                end,
+                ["<C-o>"] = actions.select_tab,
+              },
+              ["n"] = {
+                -- your custom normal mode mappings
+                ["n"] = fb_actions.create,
+                ["o"] = actions.select_tab,
+                ["h"] = fb_actions.goto_parent_dir,
+                ["H"] = fb_actions.toggle_hidden,
+                ["/"] = function()
+                  vim.cmd("startinsert")
+                end,
+              },
             },
           },
         },
