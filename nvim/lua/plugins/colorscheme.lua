@@ -1,8 +1,7 @@
 return {
   "craftzdog/solarized-osaka.nvim",
   lazy = true,
-  event = { "InsertLeave" },
-  -- event = { "BufReadPost", "BufAdd", "BufNewFile" },
+  event = { "BufReadPost", "BufAdd", "BufNewFile" },
   opts = {
     -- Value is any valid attr-list value for `:help nvim_set_hl`
     comments = { italic = true },
