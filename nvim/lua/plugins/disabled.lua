@@ -5,4 +5,5 @@ return {
   { "folke/flash.nvim", enabled = false },
   { "folke/tokyonight.nvim", enabled = false },
   { "echasnovski/mini.comment", enabled = false },
+  { "echasnovski/mini.surround", enabled = false },
 }
