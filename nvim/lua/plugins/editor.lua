@@ -53,31 +53,31 @@ return {
                 ["i"] = lga_actions.quote_prompt({ postfix = " -ig !**/tests/**" }),
               },
             },
-            file_browser = {
-              initial_mode = "normal",
-              theme = "ivy",
-              display_stat = { date = false, size = false },
-              -- disables netrw and use telescope-file-browser in its place
-              hijack_netrw = true,
-              prompt_path = true,
-              mappings = {
-                -- your custom insert mode mappings
-                ["i"] = {
-                  ["<C-w>"] = function()
-                    vim.cmd("normal vbd")
-                  end,
-                  ["<C-o>"] = actions.select_tab,
-                },
-                ["n"] = {
-                  -- your custom normal mode mappings
-                  ["n"] = fb_actions.create,
-                  ["o"] = actions.select_tab,
-                  ["h"] = fb_actions.goto_parent_dir,
-                  ["H"] = fb_actions.toggle_hidden,
-                  ["/"] = function()
-                    vim.cmd("startinsert")
-                  end,
-                },
+          },
+          file_browser = {
+            initial_mode = "normal",
+            theme = "ivy",
+            display_stat = { date = false, size = false },
+            -- disables netrw and use telescope-file-browser in its place
+            hijack_netrw = true,
+            prompt_path = true,
+            mappings = {
+              -- your custom insert mode mappings
+              ["i"] = {
+                ["<C-w>"] = function()
+                  vim.cmd("normal vbd")
+                end,
+                ["<C-o>"] = actions.select_tab,
+              },
+              ["n"] = {
+                -- your custom normal mode mappings
+                ["n"] = fb_actions.create,
+                ["o"] = actions.select_tab,
+                ["h"] = fb_actions.goto_parent_dir,
+                ["H"] = fb_actions.toggle_hidden,
+                ["/"] = function()
+                  vim.cmd("startinsert")
+                end,
               },
             },
           },
