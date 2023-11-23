@@ -22,6 +22,10 @@ return {
         "<leader>f",
         ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
       },
+      {
+        ";;",
+        "<Cmd>Telescope resume<CR>",
+      },
     },
     config = function(_, opts)
       local telescope = require("telescope")
