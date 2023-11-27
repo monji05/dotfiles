@@ -11,7 +11,7 @@ keymap("n", "k", "gk", opts)
 keymap("n", "<leader>w", ":w<CR>", opts)
 
 -- close current file on <Space> x
-keymap("n", "<leader>q", ":qa<CR>", opts)
+keymap("n", "<leader>q", ":q<CR>", opts)
 
 -- cc to :nohl
 keymap("n", "cc", ":nohl<CR>", opts)
