@@ -221,14 +221,105 @@ return {
   },
   {
     "nvim-lualine/lualine.nvim",
-    opts = {
-      sections = {
-        lualine_c = {
-          {
-            "filename",
-            path = 1,
+    config = function()
+      local lualine = require("lualine")
+      local lazy_status = require("lazy.status") -- to configure lazy pending updates count
+
+      local colors = {
+        blue = "#65D1FF",
+        green = "#3EFFDC",
+        violet = "#FF61EF",
+        yellow = "#FFDA7B",
+        red = "#FF4A4A",
+        fg = "#c3ccdc",
+        bg = "#112638",
+        inactive_bg = "#2c3043",
+      }
+
+      local my_lualine_theme = {
+        normal = {
+          a = { bg = colors.blue, fg = colors.bg, gui = "bold" },
+          b = { bg = colors.bg, fg = colors.fg },
+          c = { bg = colors.bg, fg = colors.fg },
+        },
+        insert = {
+          a = { bg = colors.green, fg = colors.bg, gui = "bold" },
+          b = { bg = colors.bg, fg = colors.fg },
+          c = { bg = colors.bg, fg = colors.fg },
+        },
+        visual = {
+          a = { bg = colors.violet, fg = colors.bg, gui = "bold" },
+          b = { bg = colors.bg, fg = colors.fg },
+          c = { bg = colors.bg, fg = colors.fg },
+        },
+        command = {
+          a = { bg = colors.yellow, fg = colors.bg, gui = "bold" },
+          b = { bg = colors.bg, fg = colors.fg },
+          c = { bg = colors.bg, fg = colors.fg },
+        },
+        replace = {
+          a = { bg = colors.red, fg = colors.bg, gui = "bold" },
+          b = { bg = colors.bg, fg = colors.fg },
+          c = { bg = colors.bg, fg = colors.fg },
+        },
+        inactive = {
+          a = { bg = colors.inactive_bg, fg = colors.semilightgray, gui = "bold" },
+          b = { bg = colors.inactive_bg, fg = colors.semilightgray },
+          c = { bg = colors.inactive_bg, fg = colors.semilightgray },
+        },
+      }
+
+      -- configure lualine with modified theme
+      lualine.setup({
+        options = {
+          theme = my_lualine_theme,
+        },
+        sections = {
+          lualine_c = {
+            {
+              "filename",
+              path = 1,
+            },
+          },
+          lualine_x = {
+            {
+              lazy_status.updates,
+              cond = lazy_status.has_updates,
+              color = { fg = "#ff9e64" },
+            },
+            { "encoding" },
+            { "fileformat" },
+            { "filetype" },
           },
         },
+      })
+    end,
+  },
+  {
+    "NvChad/nvim-colorizer.lua",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {
+      user_default_options = {
+        RGB = true, -- #RGB hex codes
+        RRGGBB = true, -- #RRGGBB hex codes
+        names = false, -- "Name" codes like Blue or blue
+        RRGGBBAA = false, -- #RRGGBBAA hex codes
+        AARRGGBB = false, -- 0xAARRGGBB hex codes
+        rgb_fn = false, -- CSS rgb() and rgba() functions
+        hsl_fn = false, -- CSS hsl() and hsla() functions
+        css = false, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+        css_fn = false, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+        -- Available modes for `mode`: foreground, background,  virtualtext
+        mode = "background", -- Set the display mode.
+        -- Available methods are false / true / "normal" / "lsp" / "both"
+        -- True is same as normal
+        tailwind = true, -- Enable tailwind colors
+        -- parsers can contain values used in |user_default_options|
+        sass = { enable = false, parsers = { "css" } }, -- Enable sass colors
+        virtualtext = "■",
+        -- update color values even if buffer is not focused
+        -- example use: cmp_menu, cmp_docs
+        always_update = false,
       },
     },
   },
