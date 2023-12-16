@@ -72,11 +72,22 @@ return {
               },
             },
           },
+          aerial = {
+            -- Display symbols as <root>.<parent>.<symbol>
+            show_nesting = {
+              ["_"] = false, -- This key will be the default
+              json = true, -- You can set the option for specific filetypes
+              yaml = true,
+              php = true,
+              lua = true,
+            },
+          },
         },
       }
       telescope.setup(opts)
-      require("telescope").load_extension("fzf")
-      require("telescope").load_extension("file_browser")
+      telescope.load_extension("fzf")
+      telescope.load_extension("file_browser")
+      telescope.load_extension("aerial")
     end,
   },
   {
@@ -208,6 +219,22 @@ return {
         map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
         map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
       end,
+    },
+  },
+  {
+    "stevearc/aerial.nvim",
+    opts = {},
+    -- Optional dependencies
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+    },
+    keys = {
+      {
+        ";a",
+        "<Cmd>AerialOpen<cr>",
+        desc = "Open Aerial Window",
+      },
     },
   },
 }
