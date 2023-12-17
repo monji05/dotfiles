@@ -143,4 +143,15 @@ return {
       "hrsh7th/cmp-cmdline",
     },
   },
+  {
+    "altermo/ultimate-autopair.nvim",
+    event = { "InsertEnter", "CmdlineEnter" },
+    branch = "v0.6", --recomended as each new version will have breaking changes
+    opts = {
+      bs = { -- *ultimate-autopair-map-backspace-config*
+        single_delete = true,
+        -- <!--|--> > bs > <!-|
+      },
+    },
+  },
 }
