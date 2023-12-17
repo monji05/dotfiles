@@ -37,7 +37,6 @@ return {
       { "nvim-lua/plenary.nvim" },
       { "laher/neorg-exec" },
       { "nvim-neorg/neorg-telescope" },
-      { "max397574/neorg-kanban" },
       { "max397574/neorg-contexts" },
       -- { "pysan3/neorg-templates" },
     },
@@ -71,7 +70,7 @@ return {
           ["core.qol.todo_items"] = {},
           -- ["core.integrations.telescope"] = {},
           -- ["core.tempus"] = {},
-          -- ["core.ui.calendar"] = {}
+          -- ["core.ui.calendar"] = {}, required neovim +10.0.0
         },
       })
 
@@ -148,5 +147,22 @@ return {
         "tailwindcss-language-server",
       })
     end,
+  },
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      "hrsh7th/cmp-cmdline",
+    },
+  },
+  {
+    "altermo/ultimate-autopair.nvim",
+    event = { "InsertEnter", "CmdlineEnter" },
+    branch = "v0.6", --recomended as each new version will have breaking changes
+    opts = {
+      bs = { -- *ultimate-autopair-map-backspace-config*
+        single_delete = true,
+        -- <!--|--> > bs > <!-|
+      },
+    },
   },
 }
