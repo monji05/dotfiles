@@ -55,6 +55,8 @@ vim.opt.pumblend = 0 -- transparency popup for lsp, float window
 vim.opt.background = "dark"
 
 -- Undercurl
+vim.opt.spell = true
+vim.opt.spelllang = { "en_us" }
 vim.api.nvim_command([[let &t_Cs = "\e[4:3m"]])
 vim.api.nvim_command([[let &t_Ce = "\e[4:0m"]])
 
