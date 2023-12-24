@@ -1,8 +1,5 @@
 layout {
   default_tab_template {
-    pane size=1 borderless=true {
-      plugin location="zellij:compact-bar"
-    }
     children
     pane size=1 borderless=true {
       plugin location="zellij:status-bar"
@@ -13,11 +10,61 @@ layout {
     }
   }
   tab name="Neorg" cwd="/Users/erikomishina/neorg_notes" {
+
+    pane size=1 borderless=true {
+      plugin location="file:/Users/eriko/.config/zellij/zjstatus/zjstatus.wasm" {
+        format_left  "{mode} {tabs}"
+        format_right "{datetime}"
+        format_space ""
+
+        mode_normal        "#[fg=#212121,bg=#9ece6a] {name} "
+        mode_tab           "#[fg=#212121,bg=#fb8c00] {name} "
+        mode_locked        "#[bg=#c62828] {name} "
+        mode_pane          "#[bg=#673ab7] {name} "
+        mode_rename_pane   "#[bg=#e65100] {name} "
+        mode_scroll        "#[fg=#212121,bg=#ffb74d] {name} "
+        mode_enter_search  "#[fg=#212121,bg=#ffb74d] {name} "
+
+        tab_normal   "#[fg=#6C7086,bg=#002b36] {index} {name} "
+        tab_active   "#[fg=#fdd835,bg=#002b36,bold,italic] {index} {name} "
+        tab_active_fullscreen   "#[fg=#9399B2,bold,italic] {index} {name} [] "
+
+        datetime        "#[fg=#6C7086,bold] {format} "
+        datetime_format "%Y %b %d %A %H:%M"
+        datetime_timezone "Asia/Tokyo"
+      }
+    }
+  }
+
+  tab name="nvim" focus=true cwd="/Users/eriko/.config/nvim" borderless=true {
+  }
+
+  tab name="zellij" cwd="/Users/eriko/.config/zellij" {
     pane {
     }
   }
   tab name="docker" cwd="/Users/erikomishina/www/offerbox/public_html" {
-    pane {
+        pane split_direction="vertical" size="85%" {
+      pane {
+
+      }
+
+      pane size="20%" {
+        command "tb"
+        args "none"
+
+      }
+
+    }
+
+    pane split_direction="vertical" size="15%" {
+      // docker
+      pane {
+      }
+
+      // pomodoro work
+      pane {
+      }
     }
   }
   tab name="logs" cwd="/Users/erikomishina/www/offerbox/public_html/fuel/app/logs" {
@@ -26,6 +73,10 @@ layout {
     }
   }
   tab name="nvim" cwd="/Users/erikomishina/.config/nvim" {
+    pane {
+    }
+  }
+  tab name="qmk_firmware" cwd="/Users/eriko/qmk_firmware/keyboards/keyball/qmk_firmware/keyboards/keyball/keyball61/keymaps/default/" {
     pane {
     }
   }

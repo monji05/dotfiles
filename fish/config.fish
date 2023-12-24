@@ -8,6 +8,7 @@ fish_add_path /usr/bin/java
 fish_add_path $HOME/www/offerbox/public_html/node_modules/.bin
 # it's too slow when start up terminal.
 eval (anyenv init - | source)
+set -gx PROFILE $HOME/.config/fish/config.fish
 
 alias g='git'
 alias vim='nvim'
@@ -36,3 +37,20 @@ set -g fish_key_bindings fish_vi_key_bindings
 bind -M insert \cc 'clear; commandline -f repaint'
 
 set -U tide_git_icon 
+
+#set nightflyTheme
+# source $HOME/.config/fish/themes/nightfly.fish
+
+# Mac setup for pomo
+# Requires https://github.com/caarlos0/timer to be installed
+# brew install terminal-notifier
+# brew install caarlos0/tap/timer
+alias work="timer 25m && terminal-notifier -message 'Pomodoro'\
+        -title 'Work Timer is up! Take a Break 😊'\
+        -appIcon '~/Pictures/pumpkin.png'\
+        -sound Crystal"
+
+alias rest="timer 5m && terminal-notifier -message 'Pomodoro'\
+        -title 'Break is over! Get back to work 😬'\
+        -appIcon '~/Pictures/pumpkin.png'\
+        -sound Crystal"
