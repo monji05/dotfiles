@@ -30,14 +30,27 @@ layout {
     }
   }
 
-  tab name="nvim" focus=true cwd="/Users/eriko/.config/nvim" {
-    pane {
+  // for project tab pane
+  tab name="nvim" focus=true cwd="/Users/eriko/.config/nvim" borderless=true {
+    pane split_direction="vertical" size="85%" {
+      pane {
+
+      }
+
+      pane size="20%" {
+        command "tb"
+        args "none"
+
+      }
+
     }
 
     pane split_direction="vertical" size="15%" {
+      // docker
       pane {
       }
 
+      // pomodoro work
       pane {
       }
     }
