@@ -39,7 +39,7 @@ source $HOME/.config/fish/themes/nightfly.fish
 
 # Mac setup for pomo
 # Requires https://github.com/caarlos0/timer to be installed
-alias work="timer 1s && terminal-notifier -message 'Pomodoro'\
+alias work="timer 25m && terminal-notifier -message 'Pomodoro'\
         -title 'Work Timer is up! Take a Break 😊'\
         -appIcon '~/Pictures/pumpkin.png'\
         -sound Crystal"
