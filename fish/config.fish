@@ -4,6 +4,7 @@ set -gx TERM xterm-256color
 fish_add_path /opt/homebrew/bin
 fish_add_path $HOME/.cargo/bin
 fish_add_path /usr/bin/java
+set -gx PROFILE $HOME/.config/fish/config.fish
 
 alias g='git'
 alias vim='nvim'
@@ -35,3 +36,15 @@ set -U tide_git_icon 
 
 #set nightflyTheme
 source $HOME/.config/fish/themes/nightfly.fish
+
+# Mac setup for pomo
+# Requires https://github.com/caarlos0/timer to be installed
+alias work="timer 1s && terminal-notifier -message 'Pomodoro'\
+        -title 'Work Timer is up! Take a Break 😊'\
+        -appIcon '~/Pictures/pumpkin.png'\
+        -sound Crystal"
+
+alias rest="timer 5m && terminal-notifier -message 'Pomodoro'\
+        -title 'Break is over! Get back to work 😬'\
+        -appIcon '~/Pictures/pumpkin.png'\
+        -sound Crystal"
