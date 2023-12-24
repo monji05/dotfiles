@@ -8,27 +8,24 @@ layout {
     pane size=1 borderless=true {
       plugin location="file:/Users/eriko/.config/zellij/zjstatus/zjstatus.wasm" {
         format_left  "{mode} {tabs}"
-          format_right "{command_git_branch_format} {datetime}"
-          format_space ""
+        format_right "{datetime}"
+        format_space ""
 
-          mode_normal        "#[fg=#212121,bg=#9ece6a] {name} "
-          mode_locked        "#[bg=#c62828] {name} "
-          mode_pane          "#[bg=#673ab7] {name} "
-          mode_rename_pane   "#[bg=#e65100] {name} "
-          mode_scroll        "#[fg=#212121,bg=#ffb74d] {name} "
-          mode_enter_search  "#[fg=#212121,bg=#ffb74d] {name} "
+        mode_normal        "#[fg=#212121,bg=#9ece6a] {name} "
+        mode_tab           "#[fg=#212121,bg=#fb8c00] {name} "
+        mode_locked        "#[bg=#c62828] {name} "
+        mode_pane          "#[bg=#673ab7] {name} "
+        mode_rename_pane   "#[bg=#e65100] {name} "
+        mode_scroll        "#[fg=#212121,bg=#ffb74d] {name} "
+        mode_enter_search  "#[fg=#212121,bg=#ffb74d] {name} "
 
-          tab_normal   "#[fg=#6C7086,bg=#002b36] {index} {name} "
-          tab_active   "#[fg=#fdd835,bg=#002b36,bold,italic] {index} {name} "
-          tab_active_fullscreen   "#[fg=#9399B2,bold,italic] {index} {name} [] "
+        tab_normal   "#[fg=#6C7086,bg=#002b36] {index} {name} "
+        tab_active   "#[fg=#fdd835,bg=#002b36,bold,italic] {index} {name} "
+        tab_active_fullscreen   "#[fg=#9399B2,bold,italic] {index} {name} [] "
 
-          command_git_branch_command   "git rev-parse --abbrev-ref HEAD"
-          command_git_branch_format    "#[fg=blue] {stdout} "
-          command_git_branch_interval  "10"
-
-          datetime        "#[fg=#6C7086,bold] {format} "
-          datetime_format "%Y %b %d %A %H:%M"
-          datetime_timezone "Asia/Tokyo"
+        datetime        "#[fg=#6C7086,bold] {format} "
+        datetime_format "%Y %b %d %A %H:%M"
+        datetime_timezone "Asia/Tokyo"
       }
     }
   }
