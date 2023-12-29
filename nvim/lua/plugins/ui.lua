@@ -18,6 +18,7 @@ return {
     },
     config = function()
       local icons = require("lazyvim.config").icons
+      local my_icons = require("config.icons")
       local barbar = require("barbar")
       local opts = {
         -- Enable highlighting visible buffers
@@ -39,9 +40,9 @@ return {
             [vim.diagnostic.severity.HINT] = { enabled = true, icon = icons.diagnostics.hint },
           },
           gitsigns = {
-            added = { enabled = true, icon = icons.git.added },
-            changed = { enabled = true, icon = icons.git.modified },
-            deleted = { enabled = true, icon = icons.git.deleted },
+            added = { enabled = true, icon = my_icons.git.added },
+            changed = { enabled = true, icon = my_icons.git.modified },
+            deleted = { enabled = true, icon = my_icons.git.deleted },
           },
         },
       }

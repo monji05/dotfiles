@@ -31,8 +31,11 @@ return {
       local telescope = require("telescope")
       local fb_actions = telescope.extensions.file_browser.actions
       local actions = require("telescope.actions")
+      local my_icons = require("config.icons")
       opts = {
         defaults = {
+          prompt_prefix = my_icons.telescope.prompt,
+          selection_caret = my_icons.telescope.selection_caret,
           mappings = {
             i = {
               ["<C-o>"] = actions.select_tab,
