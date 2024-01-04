@@ -4,14 +4,23 @@
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
+vim.keymap.del("n", "<leader>ww")
+vim.keymap.del("n", "<leader>wd")
+vim.keymap.del("n", "<leader>w-")
+vim.keymap.del("n", "<leader>w|")
+vim.keymap.del("n", "<leader>qd")
+vim.keymap.del("n", "<leader>ql")
+vim.keymap.del("n", "<leader>qq")
+vim.keymap.del("n", "<leader>qs")
+
 keymap("n", "j", "gj", opts)
 keymap("n", "k", "gk", opts)
 
 -- save on <Space> w
-keymap("n", "<leader>w", ":w<CR>", opts)
+keymap("n", "<leader>w", ":w<CR>", { callback = true, noremap = false, desc = "save current file" })
 
 -- close current file on <Space> x
-keymap("n", "<leader>q", ":q<CR>", opts)
+keymap("n", "<leader>q", ":q<CR>", { noremap = false, desc = "quit current file" })
 
 -- cc to :nohl
 keymap("n", "cc", ":nohl<CR>", opts)

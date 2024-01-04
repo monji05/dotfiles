@@ -44,6 +44,9 @@ vim.opt.iskeyword:append("-")
 vim.opt.shada = ""
 vim.opt.swapfile = false
 vim.opt.showtabline = 2
+vim.opt.shell = "fish"
+vim.opt.splitbelow = true -- Put new windows below current
+vim.opt.splitright = true -- Put new windows right of current
 
 -- hightlight
 vim.opt.cursorline = true
@@ -70,3 +73,10 @@ vim.opt.formatoptions:append({ "r" })
 -- set theme on nvim-markdown-preview
 vim.api.nvim_command([[let g:nvim_markdown_preview_theme = 'solarized-osaka']])
 vim.g.gitblame_enabled = 0
+
+-- Undercurl
+vim.cmd([[let &t_Cs = "\e[4:3m"]])
+vim.cmd([[let &t_Ce = "\e[4:0m"]])
+
+-- Add asterisks in block comments
+vim.opt.formatoptions:append({ "r" })
