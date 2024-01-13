@@ -20,7 +20,7 @@ export ACCENT_COLOR=0xff2cf9ed
 # -- Red Scheme ---
 # export BAR_COLOR=0xff23090e
 # export ITEM_BG_COLOR=0xff591221
-# export ACCENT_COLOR=0xffff2453
+export RED=0xffff2453
 
 # -- Blue Scheme ---
 # export BAR_COLOR=0xff021254
@@ -30,7 +30,7 @@ export ACCENT_COLOR=0xff2cf9ed
 # -- Green Scheme --
 # export BAR_COLOR=0xff003315
 # export ITEM_BG_COLOR=0xff008c39
-# export ACCENT_COLOR=0xff1dfca1
+export GREEN=0xff1dfca1
 
 # -- Orange Scheme --
 # export BAR_COLOR=0xff381c02
