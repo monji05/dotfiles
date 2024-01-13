@@ -33,8 +33,8 @@ return {
 
       require("tokyonight").setup({
         style = "night",
-        -- transparent = true,
-        transparent = false,
+        transparent = true,
+        -- transparent = false,
         on_colors = function(colors)
           colors.bg = bg
           colors.bg_dark = bg_dark
@@ -55,6 +55,7 @@ return {
 
         on_highlights = function(hl, c)
           hl.CursorLineNr.fg = c.orange
+          hl["@punctuation.bracket"] = { fg = c.magenta }
         end,
       })
       -- load the colorscheme here
