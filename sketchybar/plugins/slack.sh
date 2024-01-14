@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
+
+source "$CONFIG_DIR/icons.sh"
 STATUS_LABEL=$(lsappinfo info -only StatusLabel "Slack")
-ICON="󰒱"
 if [[ $STATUS_LABEL =~ \"label\"=\"([^\"]*)\" ]]; then
     LABEL="${BASH_REMATCH[1]}"
 
@@ -18,4 +19,4 @@ else
   exit 0
 fi
 
-sketchybar --set $NAME icon=$ICON label="${LABEL}" icon.color=${ICON_COLOR}
+sketchybar --set $NAME icon=$SLACK label="${LABEL}" icon.color=${ICON_COLOR}
