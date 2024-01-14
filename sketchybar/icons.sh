@@ -61,4 +61,4 @@ MODE_PENDING=􀈏
 SLACK=󰒱
 
 # flow pomodoro
-POMODORO=󰄉
+POMODORO=􀐱
