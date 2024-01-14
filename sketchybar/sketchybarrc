@@ -20,6 +20,24 @@ ITEM_DIR="$CONFIG_DIR/items"
 # If you are looking for other colors, see the color picker:
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
+# Setting up the general bar appearance of the bar
+# bar=(
+# 	height=45
+# 	color=$BAR_COLOR
+# 	border_width=2
+# 	border_color=$BAR_BORDER_COLOR
+# 	shadow=off
+# 	position=top
+# 	sticky=on
+# 	padding_right=10
+# 	padding_left=10
+# 	y_offset=-5
+# 	margin=-2
+# 	topmost=window
+# )
+#
+# sketchybar --bar "${bar[@]}"
+
 sketchybar --bar height=37 \
 	blur_radius=30 \
 	position=top \
@@ -59,6 +77,7 @@ source $ITEM_DIR/media.sh
 
 # --- Right Side Items ---
 source $ITEM_DIR/calendar.sh
+source $ITEM_DIR/wifi.sh
 source $ITEM_DIR/volume.sh
 source $ITEM_DIR/battery.sh
 source $ITEM_DIR/cpu.sh
