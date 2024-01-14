@@ -59,3 +59,6 @@ MODE_PENDING=􀈏
 
 # slack
 SLACK=󰒱
+
+# flow pomodoro
+POMODORO=󰄉
