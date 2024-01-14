@@ -10,6 +10,7 @@ apple_logo=(
 	label.drawing=off
 	click_script="$POPUP_CLICK_SCRIPT"
 	popup.height=35
+	popup.background.color=$POPUP_BACKGROUND_COLOR
 )
 
 apple_prefs=(
