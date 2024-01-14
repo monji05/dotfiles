@@ -6,6 +6,9 @@
 # https://github.com/FelixKratz/dotfiles
 
 source "$CONFIG_DIR/colors.sh" # Loads all defined colors
+source "$CONFIG_DIR/icons.sh"  # Loads all defined colors
+
+FONT="SF pro"
 
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 ITEM_DIR="$CONFIG_DIR/items"
@@ -30,9 +33,9 @@ sketchybar --bar height=37 \
 # For a full list of all available item properties see:
 # https://felixkratz.github.io/SketchyBar/config/items
 
-sketchybar --default icon.font="SF Pro:Semibold:15.0" \
+sketchybar --default icon.font="$FONT:Semibold:16.0" \
 	icon.color=$WHITE \
-	label.font="SF Pro:Semibold:15.0" \
+	label.font="$FONT:Semibold:16.0" \
 	label.color=$WHITE \
 	background.color=$ITEM_BG_COLOR \
 	background.corner_radius=5 \
@@ -47,6 +50,7 @@ sketchybar --default icon.font="SF Pro:Semibold:15.0" \
 	icon.padding_right=4
 
 # -- Left Side Items --
+source $ITEM_DIR/apple.sh
 source $ITEM_DIR/spaces.sh
 source $ITEM_DIR/front_app.sh
 
