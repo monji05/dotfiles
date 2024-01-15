@@ -62,3 +62,6 @@ SLACK=󰒱
 
 # flow pomodoro
 POMODORO=􀐱
+
+#vpn
+VPN_ICON=􁅏
