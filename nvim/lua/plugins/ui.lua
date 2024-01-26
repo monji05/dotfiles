@@ -276,4 +276,11 @@ return {
       require("octo").setup()
     end,
   },
+  {
+    "TobinPalmer/rayso.nvim",
+    cmd = { "Rayso" },
+    config = function()
+      require("rayso").setup({})
+    end,
+  },
 }
