@@ -153,4 +153,14 @@ return {
       vim.cmd([[colorscheme catppuccin]])
     end,
   },
+  {
+    "kepano/flexoki-neovim",
+    name = "flexoki",
+    config = function()
+      require("flexoki").setup({
+        transparent = true,
+      })
+      vim.cmd([[colorscheme flexoki-dark]])
+    end,
+  },
 }
