@@ -8,6 +8,10 @@ return {
       comments = { italic = true },
       keywords = { italic = true },
     },
+    on_colors = function(colors)
+      colors.base0 = colors.base1
+    end,
+    on_highlights = function(hl, c) end,
   },
   -- {
   --   "bluz71/vim-nightfly-guicolors",
@@ -160,7 +164,7 @@ return {
       require("flexoki").setup({
         transparent = true,
       })
-      vim.cmd([[colorscheme flexoki-dark]])
+      -- vim.cmd([[colorscheme flexoki-dark]])
     end,
   },
 }

@@ -152,7 +152,17 @@ return {
     "hrsh7th/nvim-cmp",
     dependencies = {
       "hrsh7th/cmp-cmdline",
+      "lukas-reineke/cmp-rg",
     },
+    opts = function()
+      require("cmp").setup({
+        sources = {
+          {
+            name = "rg",
+          },
+        },
+      })
+    end,
   },
   {
     "altermo/ultimate-autopair.nvim",
@@ -164,5 +174,26 @@ return {
         -- <!--|--> > bs > <!-|
       },
     },
+  },
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "olimorris/neotest-phpunit",
+    },
+    config = function()
+      require("neotest").setup({
+        adapters = {
+          require("neotest-phpunit"),
+        },
+      })
+    end,
+  },
+  {
+    "akinsho/git-conflict.nvim",
+    version = "*",
+    config = true,
   },
 }
