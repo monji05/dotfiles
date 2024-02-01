@@ -32,27 +32,8 @@ layout {
 
   // for project tab pane
   tab name="nvim" focus=true cwd="/Users/eriko/.config/nvim" borderless=true {
-    pane split_direction="vertical" size="85%" {
-      pane {
+    pane {
 
-      }
-
-      pane size="20%" {
-        command "tb"
-        args "none"
-
-      }
-
-    }
-
-    pane split_direction="vertical" size="15%" {
-      // docker
-      pane {
-      }
-
-      // pomodoro work
-      pane {
-      }
     }
   }
 
@@ -68,7 +49,18 @@ layout {
     pane {
     }
   }
-  tab name="qmk_firmware" cwd="/Users/eriko/qmk_firmware/keyboards/keyball/qmk_firmware/keyboards/keyball/keyball61/keymaps/default/" {
+
+  tab name="yabai" cwd="/Users/eriko/.config/yabai" {
+    pane {
+    }
+  }
+
+  tab name="skhd" cwd="/Users/eriko/.config/skhd" {
+    pane {
+    }
+  }
+
+  tab name="sketchybar" cwd="/Users/eriko/.config/sketchybar" {
     pane {
     }
   }
