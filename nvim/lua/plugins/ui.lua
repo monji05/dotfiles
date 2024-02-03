@@ -287,6 +287,14 @@ return {
         },
       }
 
+      local lint_progress = function()
+        local linters = require("lint").get_running()
+        if #linters == 0 then
+          return "󰦕"
+        end
+        return "󱉶 " .. table.concat(linters, ", ")
+      end
+
       -- configure lualine with modified theme
       lualine.setup({
         options = {
@@ -301,6 +309,9 @@ return {
               "filename",
               file_status = true,
               path = 1,
+            },
+            {
+              lint_progress,
             },
           },
           lualine_x = {

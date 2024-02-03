@@ -13,8 +13,16 @@ return {
       "-q",
     }
 
+    -- cpelll
+    local cspell = lint.linters.cspell
+    cspell.args = { "--config=~/.config/cspell/cspell.json" }
+
     lint.linters_by_ft = {
-      php = { "phpcs" },
+      php = { "phpcs", "cspell" },
+      lua = { "cspell" },
+      markdown = { "cspell" },
+      neorg = { "cspell" },
+      json = { "cspell" },
     }
 
     vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave", "TextChanged" }, {
