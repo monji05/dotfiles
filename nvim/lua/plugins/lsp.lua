@@ -15,7 +15,7 @@ return {
         error_sign = icons.error,
         warn_sign = icons.warn,
         hint_sign = icons.hint,
-        infor_sign = icons.info,
+        info_sign = icons.info,
         diagnostic_header_icon = icons.header,
         code_action_prompt = {
           enable = true,
@@ -76,6 +76,7 @@ return {
         },
       })
       nvim_lsp.intelephense.setup({})
+      nvim_lsp.typos_lsp.setup({})
     end,
   },
 }

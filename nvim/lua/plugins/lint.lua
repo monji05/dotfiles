@@ -1,22 +1,19 @@
 return {
-  "mfussenegger/nvim-lint",
-  config = function()
-    local lint = require("lint")
+  {
+    "nvimtools/none-ls.nvim",
+    config = function()
+      local null_ls = require("null-ls")
+      local sources = {
+        null_ls.builtins.diagnostics.phpcs.with({
+          extra_args = {
+            "--standard=./phpcs_ruleset.xml",
+          },
+        }),
+      }
 
-    -- PHP
-    local phpcs = lint.linters.phpcs
-    phpcs.cmd = "vendor/bin/phpcs"
-    -- phpcs.stdin = false
-    phpcs.args = {
-      "--standard=./phpcs_ruleset.xml",
-      "--report=json",
-      "-q",
-    }
-
-    vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave", "TextChanged" }, {
-      callback = function()
-        require("lint").try_lint()
-      end,
-    })
-  end,
+      null_ls.setup({
+        sources = sources,
+      })
+    end,
+  },
 }
