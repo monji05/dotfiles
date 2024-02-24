@@ -23,7 +23,7 @@ style = "Italic"
 
 [font.normal]
 family = "PlemolJP Console NF"
-style = "Regular"
+style = "Light"
 
 [window]
 decorations = "full"
