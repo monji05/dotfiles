@@ -7,23 +7,24 @@ program = "/opt/homebrew/bin/fish"
 cursor = "#839496"
 
 [font]
-size = 25.0
-
-[font.bold]
-family = "PlemolJP Console NF"
-style = "Regular"
-
-[font.bold_italic]
-family = "PlemolJP Console NF"
-style = "Italic"
-
-[font.italic]
-family = "PlemolJP Console NF"
-style = "Italic"
+size = 23
 
 [font.normal]
 family = "PlemolJP Console NF"
 style = "Light"
+
+[font.bold]
+style = "Light"
+
+[font.bold_italic]
+style = "Light"
+
+[font.italic]
+style = "Light Italic"
+
+[font.offset]
+x = 1
+y = 1
 
 [window]
 decorations = "full"
