@@ -38,7 +38,6 @@ vim.opt.breakindent = true
 vim.opt.wrap = false -- No Wrap lines
 vim.opt.backspace = { "start", "eol", "indent" }
 vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders
-vim.opt.fillchars = "diff:╱"
 vim.opt.laststatus = 3
 vim.opt.iskeyword:append("-")
 vim.opt.shada = ""
@@ -48,18 +47,17 @@ vim.opt.shell = "fish"
 vim.opt.splitbelow = true -- Put new windows below current
 vim.opt.splitright = true -- Put new windows right of current
 
--- hightlight
-vim.opt.cursorline = true
-vim.opt.termguicolors = true
--- winblend = 0 is required for noice background color on neosolarized_dark
-vim.opt.winblend = 0
-vim.opt.wildoptions = "pum"
-vim.opt.pumblend = 0 -- transparency popup for lsp, float window
+-- highlight
 vim.opt.background = "dark"
 
--- Undercurl
-vim.api.nvim_command([[let &t_Cs = "\e[4:3m"]])
-vim.api.nvim_command([[let &t_Ce = "\e[4:0m"]])
+vim.opt.fillchars = {
+  foldopen = "",
+  foldclose = "",
+  fold = " ",
+  foldsep = " ",
+  diff = "╱",
+  eob = " ",
+}
 
 -- Turn off paste mode when leaving insert
 vim.api.nvim_create_autocmd("InsertLeave", {
