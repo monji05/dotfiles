@@ -202,7 +202,7 @@ return {
     opts = {
       config = {
         center = {
-          { action = "Telescope find_files", desc = " Find file", icon = " ", key = "f" },
+          { action = "Telescope find_files", desc = " Find file", icon = " ", key = "f" },
           { action = "ene | startinsert", desc = " New file", icon = " ", key = "n" },
           { action = "Telescope oldfiles", desc = " Recent files", icon = " ", key = "r" },
           { action = "Telescope live_grep", desc = " Find text", icon = " ", key = "g" },
@@ -379,5 +379,16 @@ return {
     config = function()
       require("rayso").setup({})
     end,
+  },
+  {
+    "nvim-tree/nvim-web-devicons",
+    require("nvim-web-devicons").setup({
+      override = {
+        toml = {
+          icon = "",
+          name = "Toml",
+        },
+      },
+    }),
   },
 }
