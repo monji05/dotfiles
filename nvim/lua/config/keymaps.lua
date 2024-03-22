@@ -1,7 +1,9 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
-local keymap = vim.api.nvim_set_keymap
+
+-- vim.keymap.setは複数のモードを指定できる {"i", "n"}
+local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 vim.keymap.del("n", "<leader>ww")
@@ -85,5 +87,3 @@ keymap("i", "∆", "<ESC>:m .+1<CR>==gi", opts)
 keymap("i", "˚", "<ESC>:m .-2<CR>==gi", opts)
 keymap("v", "∆", ":m '>+1<CR>gv=gv", opts)
 keymap("v", "˚", ":m '<-2<CR>gv=gv", opts)
-
-vim.opt.clipboard:append("unnamedplus")
