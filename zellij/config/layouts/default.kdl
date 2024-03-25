@@ -2,57 +2,65 @@ layout {
   default_tab_template {
     children
     pane size=1 borderless=true {
+      plugin location="zellij:compact-bar"
+    }
+    pane size=1 borderless=true {
       plugin location="zellij:status-bar"
     }
   }
-  tab name="public_html" focus=true cwd="/Users/erikomishinamishina/www/offerbox/public_html" {
+  tab name="public_html" focus=true cwd="/Users/erikomishina/www/offerbox/public_html" {
     pane {
     }
   }
 
-  tab name="docker" cwd="/Users/erikomishinamishina/www/offerbox/public_html" {
-    pane {
-
-    }
-  }
-
-  tab name="Neorg" cwd="/Users/erikomishinamishina/neorg_notes" {
+  tab name="docker" cwd="/Users/erikomishina/www/offerbox/public_html" {
     pane {
 
     }
   }
 
-  tab name="nvim" focus=true cwd="/Users/erikomishina/.config/nvim" borderless=true {
+  tab name="logs" cwd="/Users/erikomishina/www/offerbox/public_html/fuel/app/logs" {
+    pane {
+
+    }
   }
+
+  tab name="DBeaver Scripts" cwd="/Users/erikomishina/Library/DBeaverData/workspace6/General/Scripts" {
+    pane {
+
+    }
+  }
+
+  tab name="Neorg" cwd="/Users/erikomishina/neorg_notes" {
+    pane {
+
+    }
+  }
+
+  tab name="nvim" cwd="/Users/erikomishina/.config/nvim" {
+    pane {
+
+    }
+  }
+
 
   tab name="zellij" cwd="/Users/erikomishina/.config/zellij" {
     pane {
     }
   }
 
-  tab name="logs" cwd="/Users/erikomishinamishina/www/offerbox/public_html/fuel/app/logs" {
-    pane {
-
-    }
-  }
-
-  tab name="nvim" cwd="/Users/erikomishinamishina/.config/nvim" {
-    pane {
-    }
-  }
-
-  tab name="yabai" cwd="/Users/erikomishina/.config/yabai" {
-    pane {
-    }
-  }
-
-  tab name="skhd" cwd="/Users/erikomishina/.config/skhd" {
-    pane {
-    }
-  }
-
-  tab name="sketchybar" cwd="/Users/erikomishina/.config/sketchybar" {
-    pane {
-    }
-  }
+//  tab name="yabai" cwd="/Users/erikomishina/.config/yabai" {
+//    pane {
+//    }
+//  }
+//
+//  tab name="skhd" cwd="/Users/erikomishina/.config/skhd" {
+//    pane {
+//    }
+//  }
+//
+//  tab name="sketchybar" cwd="/Users/erikomishina/.config/sketchybar" {
+//    pane {
+//    }
+//  }
 }

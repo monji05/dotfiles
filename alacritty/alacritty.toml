@@ -1,4 +1,4 @@
-import = ["/Users/eriko/.config/alacritty/colorscheme/solarized.toml"]
+import = ["~/.config/alacritty/colorscheme/solarized.toml"]
 
 [shell]
 program = "/opt/homebrew/bin/fish"

@@ -61,22 +61,30 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    config = function()
-      local nvim_lsp = require("lspconfig")
-      nvim_lsp.lua_ls.setup({
-        settings = {
-          Lua = {
-            diagnostics = {
-              globals = { "vim" },
-            },
-            completion = {
-              callSnippet = "Replace",
-            },
-          },
-        },
-      })
-      nvim_lsp.intelephense.setup({})
-      nvim_lsp.typos_lsp.setup({})
-    end,
+    opts = {
+      -- options for vim.lsp.buf.format
+      -- `bufnr` and `filter` is handled by the LazyVim formatter,
+      -- but can be also overridden when specified
+      format = {
+        formatting_options = nil,
+        timeout_ms = nil,
+        filter = function(client)
+          return client.name ~= "intelephense"
+        end,
+      },
+      -- return true if you don't want this server to be setup with lspconfig
+      ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
+      setup = {
+        -- example to setup with typescript.nvim
+        -- tsserver = function(_, opts)
+        --   require("typescript").setup({ server = opts })
+        --   return true
+        -- end,
+        -- Specify * to use this function as a fallback for any server
+        -- ["*"] = function(server, opts) end,
+        intelephense = function(_, opts) end,
+        typo_ls = function(_, opts) end,
+      },
+    },
   },
 }

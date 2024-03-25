@@ -5,17 +5,17 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 -- This is where you actually apply your config choices
-
--- For example, changing the color scheme:
+config.term = "wezterm"
 config.font = wezterm.font("PlemolJPConsoleNF Nerd Font")
 config.font_size = 24.0
 config.default_prog = { "/opt/homebrew/bin/fish" }
-config.window_background_opacity = 0.8
+config.window_background_opacity = 0.90
 
 -- solarized-osaka night colorscheme
 config.colors = {
 	foreground = "#c0caf5",
-	background = "#1a1b26",
+	-- background = "#1a1b26",
+	background = "#00181a",
 	cursor_bg = "#c0caf5",
 	cursor_border = "#c0caf5",
 	cursor_fg = "#1a1b26",

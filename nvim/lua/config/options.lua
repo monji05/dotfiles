@@ -35,7 +35,7 @@ vim.opt.inccommand = "split"
 vim.opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
 vim.opt.smarttab = true
 vim.opt.breakindent = true
-vim.opt.wrap = false -- No Wrap lines
+vim.opt.wrap = false          -- No Wrap lines
 vim.opt.backspace = { "start", "eol", "indent" }
 vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders
 vim.opt.laststatus = 3
@@ -75,6 +75,13 @@ vim.g.gitblame_enabled = 0
 -- Undercurl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
+-- vim.cmd([[let &t_Cs = "\e[60m"]])
+-- vim.cmd([[let &t_Ce = "\e[24m"]])
+vim.cmd([[hi SpellBad   guisp=red    gui=undercurl term=underline cterm=undercurl]])
+vim.cmd([[hi SpellCap   guisp=yellow gui=undercurl term=underline cterm=undercurl]])
+vim.cmd([[hi SpellRare  guisp=blue   gui=undercurl term=underline cterm=undercurl]])
+vim.cmd([[hi SpellLocal guisp=orange gui=undercurl term=underline cterm=undercurl]])
+vim.cmd([[set spell]])
 
 -- Add asterisks in block comments
 vim.opt.formatoptions:append({ "r" })
