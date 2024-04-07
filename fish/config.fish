@@ -12,6 +12,7 @@ fish_add_path $HOME/www/offerbox/public_html/node_modules/.bin
 # anyenvの用途は主にgulp sass がnode 9.4.0が必要だから
 # eval (anyenv init - fish| source)
 set -gx PROFILE $HOME/.config/fish/config.fish
+fish_add_path /usr/local/bin/
 
 alias g='git'
 alias vim='nvim'
