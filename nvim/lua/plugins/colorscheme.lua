@@ -59,7 +59,6 @@ return {
 
         on_highlights = function(hl, c)
           hl.CursorLineNr.fg = c.orange
-          hl["@punctuation.bracket"] = { fg = c.magenta }
         end,
       })
       -- load the colorscheme here
