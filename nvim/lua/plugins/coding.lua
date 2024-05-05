@@ -39,26 +39,6 @@ return {
     cmd = { "PlantumlOpen", "PlantumlStart", "PlantumlSave" },
   },
   {
-    "nomnivore/ollama.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    -- All the user commands added by the plugin
-    cmd = { "Ollama", "OllamaModel", "OllamaServe", "OllamaServeStop" },
-    -- Sample keybind for prompting. Note that the <c-u> is important for selections to work properly.
-    keys = {
-      {
-        "<leader>oo",
-        ":<c-u>lua require('ollama').prompt()<cr>",
-        desc = "ollama prompt",
-        mode = { "n", "v" },
-      },
-    },
-    opts = {
-      model = "llama2",
-    },
-  },
-  {
     "williamboman/mason.nvim",
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
@@ -100,6 +80,7 @@ return {
   },
   {
     "nvim-neotest/neotest",
+    cmd = { "Neotest" },
     dependencies = {
       "nvim-neotest/nvim-nio",
       "nvim-lua/plenary.nvim",
@@ -123,6 +104,7 @@ return {
   {
     "toppair/peek.nvim",
     event = { "VeryLazy" },
+    ft = { "markdown" },
     build = "deno task --quiet build:fast",
     config = function()
       require("peek").setup()
