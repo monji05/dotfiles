@@ -103,6 +103,11 @@ return {
     module = "noice",
     dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
     opts = {
+      lsp = {
+        signature = {
+          enabled = false,
+        },
+      },
       cmdline = {
         format = {
           search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex" },
@@ -269,12 +274,6 @@ return {
         always_update = false,
       },
     },
-  },
-  {
-    "stevearc/oil.nvim",
-    opts = {},
-    -- Optional dependencies
-    dependencies = { "nvim-tree/nvim-web-devicons" },
   },
   {
     "pwntester/octo.nvim",
