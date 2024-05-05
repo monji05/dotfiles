@@ -98,6 +98,13 @@ return {
   },
   {
     "akinsho/git-conflict.nvim",
+    -- co — choose ours
+    -- ct — choose theirs
+    -- cb — choose both
+    -- c0 — choose none
+    -- ]x — move to previous conflict
+    -- [x — move to next conflict
+    keys = { "co", "ct", "]x", "[x" },
     version = "*",
     config = true,
   },
