@@ -65,4 +65,63 @@ return {
       vim.cmd([[colorscheme tokyonight]])
     end,
   },
+  {
+    {
+      "maxmx03/solarized.nvim",
+      config = function()
+        vim.o.background = "dark" -- or 'light'
+
+        require("solarized").setup({
+          styles = {
+            comments = { italic = true, bold = false },
+            functions = { italic = false, bold = false },
+            variables = { italic = false, bold = false },
+          },
+          transparent = true,
+          theme = "default", -- or 'neo'
+          colors = function(colors, colorhelper)
+            local darken = colorhelper.darken
+
+            return {
+              bg = darken(colors.base03, 70),
+            }
+          end,
+          highlights = function(c, colorhelper)
+            local darken = colorhelper.darken
+            return {
+              Number = { fg = c.cyan },
+
+              CursorLineNr = { fg = c.yellow },
+              -- MatchParen = { fg = c.red }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+              keyword = { fg = c.green, bold = false },
+              Function = { italic = false },
+              -- DiffViewSidebar
+              diffAdded = { fg = c.green },
+              diffRemoved = { fg = c.red },
+              diffChanged = { fg = c.yellow },
+              diffOldFile = { fg = c.violet },
+              diffNewFile = { fg = c.orange },
+              diffFile = { fg = c.blue },
+              diffLine = { fg = c.base01 },
+              diffIndexLine = { fg = c.magenta },
+              ["@punctuation.bracket"] = { fg = c.base0 }, -- For brackets and parens.
+              -- WhichKey
+              WhichKey = { fg = c.cyan },
+              WhichKeyGroup = { fg = c.blue },
+              WhichKeyDesc = { fg = c.magenta },
+              WhichKeySeparator = { fg = c.base1 },
+              WhichKeyFloat = { bg = c.bg_sidebar },
+              WhichKeyValue = { fg = c.violet },
+              -- DiffView
+              DiffViewAsAdd = { fg = c.bg },
+              DiffDelete = { bg = c.base00, fg = darken(c.red, 60) },
+              DiffChange = { bg = "NONE", fg = darken(c.yellow, 40) },
+              DiffText = { bg = "NONE" },
+            }
+          end,
+        })
+        -- vim.cmd.colorscheme("solarized")
+      end,
+    },
+  },
 }

@@ -287,13 +287,6 @@ return {
     end,
   },
   {
-    "TobinPalmer/rayso.nvim",
-    cmd = { "Rayso" },
-    config = function()
-      require("rayso").setup({})
-    end,
-  },
-  {
     "nvim-tree/nvim-web-devicons",
     require("nvim-web-devicons").setup({
       override = {
