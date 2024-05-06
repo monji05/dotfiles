@@ -86,6 +86,7 @@ return {
               keyword = { fg = c.green, bold = false },
               Function = { italic = false },
               Identifier = { fg = c.base0 },
+              ["@variable"] = { fg = c.base0 }, -- Any variable name that does not have another highlight.
 
               -- DiffViewSidebar
               diffAdded = { fg = c.green },
@@ -111,7 +112,7 @@ return {
               DiffText = { bg = "NONE" },
 
               -- Barbar
-              BufferCurrent = { bg = c.bg, fg = c.fg },
+              BufferCurrent = { bg = c.bg, fg = c.base2 },
               BufferCurrentERROR = { bg = c.bg, fg = c.error },
               BufferCurrentHINT = { bg = c.bg, fg = c.hint },
               BufferCurrentINFO = { bg = c.bg, fg = c.info },
@@ -129,6 +130,9 @@ return {
 
               -- indent-blankline
               IblINdent = { fg = darken(c.base01, 40) },
+
+              -- Markdown
+              ["@markup.list.markdown"] = { fg = c.red, bold = true },
             }
           end,
         })
