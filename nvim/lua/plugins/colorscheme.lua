@@ -120,7 +120,6 @@ return {
             }
           end,
         })
-        -- vim.cmd.colorscheme("solarized")
       end,
     },
   },
