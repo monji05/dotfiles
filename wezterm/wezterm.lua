@@ -10,7 +10,8 @@ local config = wezterm.config_builder()
 config.font = wezterm.font("PlemolJPConsoleNF Nerd Font")
 config.font_size = 22
 config.default_prog = { "/opt/homebrew/bin/fish" }
-config.window_background_opacity = 0.85 -- for tokyonight
+-- config.window_background_opacity = 0.85 -- for tokyonight
+config.window_background_opacity = 1 -- for solarized
 -- config.window_background_opacity = 0.95 -- for solarized-osaka
 
 -- solarized-osaka night colorscheme
@@ -18,10 +19,13 @@ config.colors = {
 	foreground = "#c0caf5",
 
 	-- tokyonight
-	background = "#011628",
+	-- background = "#011628",
 
 	-- solarized-osaka
 	-- background = "#00181a",
+
+	-- solarized
+	background = "#002B36",
 	cursor_bg = "#c0caf5",
 	cursor_border = "#c0caf5",
 	cursor_fg = "#1a1b26",
