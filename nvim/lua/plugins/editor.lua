@@ -98,7 +98,7 @@ return {
       -- for solarized.nvim's highlight
       -- https://github.com/sindrets/diffview.nvim/issues/241#issuecomment-1298862577
       vim.cmd([[highlight DiffAdd gui=none guifg=none guibg=#073642]])
-      -- vim.cmd([[highlight DiffChange gui=none guifg=none guibg=#272D43]])
+      vim.cmd([[highlight DiffChange gui=none guifg=none guibg=#272D43]])
       vim.cmd([[highlight DiffText gui=none guifg=none guibg=#394b70]])
       vim.cmd([[highlight DiffDelete gui=none guifg=none guibg=#3F2D3D]])
       vim.cmd([[highlight DiffviewDiffAddAsDelete guibg=#3f2d3d gui=none guifg=none]])
