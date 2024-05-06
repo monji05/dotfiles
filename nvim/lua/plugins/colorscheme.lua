@@ -117,6 +117,23 @@ return {
               DiffDelete = { bg = c.base00, fg = darken(c.red, 60) },
               DiffChange = { bg = "NONE", fg = darken(c.yellow, 40) },
               DiffText = { bg = "NONE" },
+
+              -- Barbar
+              BufferCurrent = { bg = c.bg, fg = c.fg },
+              BufferCurrentERROR = { bg = c.bg, fg = c.error },
+              BufferCurrentHINT = { bg = c.bg, fg = c.hint },
+              BufferCurrentINFO = { bg = c.bg, fg = c.info },
+              BufferCurrentWARN = { bg = c.bg, fg = c.warning },
+              BufferCurrentIndex = { bg = c.bg, fg = c.info },
+              BufferCurrentMod = { bg = c.bg, fg = c.warning },
+              BufferCurrentSign = { bg = c.bg, fg = c.hint },
+              BufferCurrentTarget = { bg = c.bg, fg = c.red },
+              BufferCurrentADDED = { fg = c.hint, bg = c.bg },
+              BufferCurrentCHANGED = { fg = c.warning, bg = c.bg },
+              BufferCurrentDELETED = { fg = c.warning, bg = c.bg },
+              BufferAlternate = { bg = c.fg_gutter, fg = c.fg },
+              BufferAlternateERROR = { bg = c.fg_gutter, fg = c.error },
+              BufferAlternateHINT = { bg = c.fg_gutter, fg = c.hint },
             }
           end,
         })
