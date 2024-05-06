@@ -134,6 +134,9 @@ return {
               BufferAlternate = { bg = c.fg_gutter, fg = c.fg },
               BufferAlternateERROR = { bg = c.fg_gutter, fg = c.error },
               BufferAlternateHINT = { bg = c.fg_gutter, fg = c.hint },
+
+              -- indent-blankline
+              IblINdent = { fg = darken(c.base01, 40) },
             }
           end,
         })
