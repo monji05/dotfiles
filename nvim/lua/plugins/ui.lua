@@ -46,23 +46,6 @@ return {
           },
         },
       }
-      -- highlight
-      vim.api.nvim_command([[highlight BufferCurrent  guifg=#dadada]])
-      vim.api.nvim_command([[highlight BufferCurrentHint  guifg=#2aa198]])
-      vim.api.nvim_command([[highlight BufferCurrentADDED  guifg=#719e07]])
-      vim.api.nvim_command([[highlight BufferCurrentCHANGED  guifg=#b58900]])
-      vim.api.nvim_command([[highlight BufferCurrentDELETED guifg=#b2555b]])
-      vim.api.nvim_command([[highlight BufferCurrentSign  guifg=#719e07]])
-      vim.api.nvim_command([[highlight BufferInactive guibg=#002b36]])
-      vim.api.nvim_command([[highlight BufferInactiveMod  guibg=#002b36]])
-      vim.api.nvim_command([[highlight BufferInactiveADDED guibg=#002b36]])
-      vim.api.nvim_command([[highlight BufferInactiveCHANGED guibg=#002b36]])
-      vim.api.nvim_command([[highlight BufferInactiveDELETED guibg=#002b36]])
-      vim.api.nvim_command([[highlight BufferInactiveSign guibg=#002b36]])
-      vim.api.nvim_command([[highlight BufferInactiveERROR guibg=#002b36]])
-      vim.api.nvim_command([[highlight BufferInactiveWARN guibg=#002b36]])
-      vim.api.nvim_command([[highlight BufferInactiveINFO guibg=#002b36]])
-      vim.api.nvim_command([[highlight BufferInactiveHINT guibg=#002b36]])
       barbar.setup(opts)
     end,
   },
