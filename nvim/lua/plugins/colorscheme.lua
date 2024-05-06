@@ -90,11 +90,11 @@ return {
             local darken = colorhelper.darken
             return {
               Number = { fg = c.cyan },
-
               CursorLineNr = { fg = c.yellow },
-              -- MatchParen = { fg = c.red }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
               keyword = { fg = c.green, bold = false },
               Function = { italic = false },
+              Identifier = { fg = c.base0 },
+
               -- DiffViewSidebar
               diffAdded = { fg = c.green },
               diffRemoved = { fg = c.red },
