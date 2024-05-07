@@ -79,7 +79,7 @@ keymap("v", "<leader>r", '"hy:%s/<C-r>h//g<left><left>', opts)
 keymap("v", "<C-s>", ":sort<CR>", opts)
 
 -- reload config
-keymap("n", "<leader>e", ":source ~/.config/nvim/init.lua<CR>", opts)
+keymap("n", "<leader>R", ":source ~/.config/nvim/init.lua<CR>", opts)
 
 keymap("n", "∆", ":m .+1<CR>==", opts)
 keymap("n", "˚", ":m .-2<CR>==", opts)

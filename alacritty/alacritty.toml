@@ -10,7 +10,7 @@ cursor = "#839496"
 size = 24
 
 [font.normal]
-family = "PlemolJP Console NF"
+family = "PlemolJPConsoleNF Nerd Font"
 style = "Light"
 
 [font.bold]
@@ -24,7 +24,7 @@ style = "Light Italic"
 
 [font.offset]
 x = 1
-y = 1
+y = 0
 
 [window]
 decorations = "full"

@@ -13,14 +13,6 @@ return {
     end,
     on_highlights = function(hl, c) end,
   },
-  -- {
-  --   "bluz71/vim-nightfly-guicolors",
-  --   priority = 1000, -- make sure to load this before all the other start plugins
-  --   config = function()
-  --     -- load the colorscheme here
-  --     vim.cmd([[colorscheme nightfly]])
-  --   end,
-  -- },
   {
     "folke/tokyonight.nvim",
     priority = 1000, -- make sure to load this before all the other start plugins
@@ -59,112 +51,92 @@ return {
 
         on_highlights = function(hl, c)
           hl.CursorLineNr.fg = c.orange
-          hl["@punctuation.bracket"] = { fg = c.magenta }
         end,
       })
       -- load the colorscheme here
       vim.cmd([[colorscheme tokyonight]])
     end,
   },
-  -- {
-  --   "catppuccin/nvim",
-  --   name = "catppuccin",
-  --   build = ":CatppuccinCompile",
-  --   config = function()
-  --     local colors = require("catppuccin.palettes").get_palette() -- fetch colors from palette
-  --
-  --     local options = {
-  --       flavour = "macchiato", -- latte, frappe, macchiato, mocha
-  --       background = { -- :h background
-  --         light = "latte",
-  --         dark = "macchiato",
-  --       },
-  --       transparent_background = true,
-  --       compile = {
-  --         enabled = true,
-  --         path = vim.fn.stdpath("cache") .. "/catppuccin",
-  --       },
-  --       integrations = {
-  --         dap = {
-  --           enabled = true,
-  --           enable_ui = true,
-  --         },
-  --         cmp = true,
-  --         leap = true,
-  --       },
-  --       custom_highlights = {
-  --         Comment = { fg = colors.surface2, style = { "italic" } }, -- just comments
-  --         Constant = { fg = colors.peach }, -- (preferred) any constant
-  --         String = { fg = colors.yellow, style = { "italic", "bold" } }, -- a string constant: "this is a string"
-  --         Character = { fg = colors.teal }, --  a character constant: 'c', '\n'
-  --         Number = { fg = colors.maroon }, --   a number constant: 234, 0xff
-  --         Float = { fg = colors.maroon }, --    a floating point constant: 2.3e10
-  --         Boolean = { fg = colors.maroon }, --  a boolean constant: TRUE, false
-  --         Identifier = { fg = colors.text }, -- (preferred) any variable name
-  --         Function = { fg = colors.green }, -- function name (also: methods for classes)
-  --         Statement = { fg = colors.mauve }, -- (preferred) any statement
-  --         Conditional = { fg = colors.red }, --  if, then, else, endif, switch, etcp.
-  --         Repeat = { fg = colors.red }, --   for, do, while, etcp.
-  --         Label = { fg = colors.peach }, --    case, default, etcp.
-  --         Operator = { fg = colors.text }, -- "sizeof", "+", "*", etcp.
-  --         Keyword = { fg = colors.pink }, --  any other keyword
-  --         PreProc = { fg = colors.peach }, -- (preferred) generic Preprocessor
-  --         Include = { fg = colors.green }, --  preprocessor #include
-  --         StorageClass = { fg = colors.yellow }, -- static, register, volatile, etcp.
-  --         Structure = { fg = colors.yellow }, --  struct, union, enum, etcp.
-  --         Typedef = { fg = colors.yellow }, --  A typedef
-  --         Special = { fg = colors.peach }, -- (preferred) any special symbol
-  --         Type = { fg = colors.teal }, -- (preferred) int, long, char, etcp.
-  --         TSInclude = { fg = colors.peach, style = { "italic" } },
-  --         ["@include"] = { fg = colors.peach, style = { "italic" } },
-  --         TSField = { fg = colors.blue }, -- For fields.
-  --         ["@field"] = { fg = colors.blue }, -- For fields.
-  --         TSProperty = { fg = colors.blue }, -- Same as TSField.
-  --         ["@property"] = { fg = colors.blue }, -- Same as TSField.
-  --         TSConstant = { fg = colors.maroon }, -- For constants
-  --         ["@constant.builtin"] = { fg = colors.maroon }, -- For constants
-  --         TSParameter = { fg = colors.text, style = { "italic" } }, -- For parameters of a function.
-  --         ["@parameter"] = { fg = colors.text, style = { "italic" } }, -- For parameters of a function.
-  --         TSOperator = { fg = colors.text },
-  --         ["@operator"] = { fg = colors.text },
-  --         TSKeywordFunction = { fg = colors.peach }, -- For keywords used to define a fuction.
-  --         ["@keyword.function"] = { fg = colors.peach }, -- For keywords used to define a fuction.
-  --         TSKeyword = { fg = colors.peach }, -- For keywords that don't fall in previous categories.
-  --         ["@keyword"] = { fg = colors.peach }, -- For keywords that don't fall in previous categories.
-  --         TSKeywordReturn = { fg = colors.peach },
-  --         ["@keyword.return"] = { fg = colors.peach },
-  --         TSType = { fg = colors.teal }, -- For types.
-  --         ["@type"] = { fg = colors.teal }, -- For types.
-  --         TSTypeBuiltin = { fg = colors.teal, style = { "italic" } }, -- For builtin types.
-  --         ["@type.builtin"] = { fg = colors.teal, style = { "italic" } }, -- For builtin types.
-  --         TSVariableBuiltin = { fg = colors.red }, -- Variable names that are defined by the languages, like this or self.
-  --         ["@variable.builtin"] = { fg = colors.red }, -- Variable names that are defined by the languages, like this or self.
-  --         TSFunction = { fg = colors.green }, -- For function (calls and definitions).
-  --         ["@function.builtin"] = { fg = colors.green }, -- For function (calls and definitions).
-  --         TSMethod = { fg = colors.green }, -- For method calls and definitions.
-  --         ["@function"] = { fg = colors.green }, -- For method calls and definitions.
-  --         TSString = { fg = colors.yellow, style = { "italic" } }, -- For strings.
-  --         ["@string"] = { fg = colors.yellow, style = { "italic" } }, -- For strings.
-  --         BufferLineSeparator = { fg = colors.peach, bg = "NONE" },
-  --         BufferLineBufferVisible = { fg = colors.surface1, bg = "NONE" },
-  --         BufferLineBufferSelected = { fg = colors.text, bg = "NONE", style = { "bold", "italic" } }, -- current
-  --         BufferLineIndicatorSelected = { fg = colors.peach, bg = "NONE" },
-  --       },
-  --     }
-  --
-  --     require("catppuccin").setup(options)
-  --
-  --     vim.cmd([[colorscheme catppuccin]])
-  --   end,
-  -- },
   {
-    "kepano/flexoki-neovim",
-    name = "flexoki",
-    config = function()
-      require("flexoki").setup({
-        transparent = true,
-      })
-      -- vim.cmd([[colorscheme flexoki-dark]])
-    end,
+    {
+      "maxmx03/solarized.nvim",
+      config = function()
+        vim.o.background = "dark" -- or 'light'
+
+        require("solarized").setup({
+          styles = {
+            comments = { italic = true, bold = false },
+            functions = { italic = false, bold = false },
+            variables = { italic = false, bold = false },
+          },
+          transparent = true,
+          theme = "default", -- or 'neo'
+          colors = function(colors, colorhelper)
+            local darken = colorhelper.darken
+
+            return {
+              bg = darken(colors.base03, 70),
+            }
+          end,
+          highlights = function(c, colorhelper)
+            local darken = colorhelper.darken
+            return {
+              Number = { fg = c.cyan },
+              CursorLineNr = { fg = c.yellow },
+              keyword = { fg = c.green, bold = false },
+              Function = { italic = false },
+              Identifier = { fg = c.base0 },
+              ["@variable"] = { fg = c.base0 }, -- Any variable name that does not have another highlight.
+
+              -- DiffViewSidebar
+              diffAdded = { fg = c.green },
+              diffRemoved = { fg = c.red },
+              diffChanged = { fg = c.yellow },
+              diffOldFile = { fg = c.violet },
+              diffNewFile = { fg = c.orange },
+              diffFile = { fg = c.blue },
+              diffLine = { fg = c.base01 },
+              diffIndexLine = { fg = c.magenta },
+              ["@punctuation.bracket"] = { fg = c.base0 }, -- For brackets and parens.
+              -- WhichKey
+              WhichKey = { fg = c.cyan },
+              WhichKeyGroup = { fg = c.blue },
+              WhichKeyDesc = { fg = c.magenta },
+              WhichKeySeparator = { fg = c.base1 },
+              WhichKeyFloat = { bg = c.bg_sidebar },
+              WhichKeyValue = { fg = c.violet },
+              -- DiffView
+              DiffViewAsAdd = { fg = c.bg },
+              DiffDelete = { bg = c.base00, fg = darken(c.red, 60) },
+              DiffChange = { bg = "NONE", fg = darken(c.yellow, 40) },
+              DiffText = { bg = "NONE" },
+
+              -- Barbar
+              BufferCurrent = { bg = c.bg, fg = c.base2 },
+              BufferCurrentERROR = { bg = c.bg, fg = c.error },
+              BufferCurrentHINT = { bg = c.bg, fg = c.hint },
+              BufferCurrentINFO = { bg = c.bg, fg = c.info },
+              BufferCurrentWARN = { bg = c.bg, fg = c.warning },
+              BufferCurrentIndex = { bg = c.bg, fg = c.info },
+              BufferCurrentMod = { bg = c.bg, fg = c.warning },
+              BufferCurrentSign = { bg = c.bg, fg = c.hint },
+              BufferCurrentTarget = { bg = c.bg, fg = c.red },
+              BufferCurrentADDED = { fg = c.hint, bg = c.bg },
+              BufferCurrentCHANGED = { fg = c.warning, bg = c.bg },
+              BufferCurrentDELETED = { fg = c.warning, bg = c.bg },
+              BufferAlternate = { bg = c.fg_gutter, fg = c.fg },
+              BufferAlternateERROR = { bg = c.fg_gutter, fg = c.error },
+              BufferAlternateHINT = { bg = c.fg_gutter, fg = c.hint },
+
+              -- indent-blankline
+              IblINdent = { fg = darken(c.base01, 40) },
+
+              -- Markdown
+              ["@markup.list.markdown"] = { fg = c.red, bold = true },
+            }
+          end,
+        })
+      end,
+    },
   },
 }

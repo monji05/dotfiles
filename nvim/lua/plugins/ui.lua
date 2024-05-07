@@ -46,23 +46,6 @@ return {
           },
         },
       }
-      -- highlight
-      vim.api.nvim_command([[highlight BufferCurrent  guifg=#dadada]])
-      vim.api.nvim_command([[highlight BufferCurrentHint  guifg=#2aa198]])
-      vim.api.nvim_command([[highlight BufferCurrentADDED  guifg=#719e07]])
-      vim.api.nvim_command([[highlight BufferCurrentCHANGED  guifg=#b58900]])
-      vim.api.nvim_command([[highlight BufferCurrentDELETED guifg=#b2555b]])
-      vim.api.nvim_command([[highlight BufferCurrentSign  guifg=#719e07]])
-      vim.api.nvim_command([[highlight BufferInactive guibg=#002b36]])
-      vim.api.nvim_command([[highlight BufferInactiveMod  guibg=#002b36]])
-      vim.api.nvim_command([[highlight BufferInactiveADDED guibg=#002b36]])
-      vim.api.nvim_command([[highlight BufferInactiveCHANGED guibg=#002b36]])
-      vim.api.nvim_command([[highlight BufferInactiveDELETED guibg=#002b36]])
-      vim.api.nvim_command([[highlight BufferInactiveSign guibg=#002b36]])
-      vim.api.nvim_command([[highlight BufferInactiveERROR guibg=#002b36]])
-      vim.api.nvim_command([[highlight BufferInactiveWARN guibg=#002b36]])
-      vim.api.nvim_command([[highlight BufferInactiveINFO guibg=#002b36]])
-      vim.api.nvim_command([[highlight BufferInactiveHINT guibg=#002b36]])
       barbar.setup(opts)
     end,
   },
@@ -103,6 +86,11 @@ return {
     module = "noice",
     dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
     opts = {
+      lsp = {
+        signature = {
+          enabled = false,
+        },
+      },
       cmdline = {
         format = {
           search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex" },
@@ -298,7 +286,8 @@ return {
       -- configure lualine with modified theme
       lualine.setup({
         options = {
-          theme = my_lualine_theme,
+          -- theme = my_lualine_theme,
+          theme = "solarized",
         },
         sections = {
           lualine_b = {
@@ -357,12 +346,6 @@ return {
     },
   },
   {
-    "stevearc/oil.nvim",
-    opts = {},
-    -- Optional dependencies
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-  },
-  {
     "pwntester/octo.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -371,13 +354,6 @@ return {
     },
     config = function()
       require("octo").setup()
-    end,
-  },
-  {
-    "TobinPalmer/rayso.nvim",
-    cmd = { "Rayso" },
-    config = function()
-      require("rayso").setup({})
     end,
   },
   {

@@ -115,6 +115,7 @@ return {
   },
   {
     "nvim-neotest/neotest",
+    cmd = { "Neotest" },
     dependencies = {
       "nvim-neotest/nvim-nio",
       "nvim-lua/plenary.nvim",
@@ -132,12 +133,20 @@ return {
   },
   {
     "akinsho/git-conflict.nvim",
+    -- co — choose ours
+    -- ct — choose theirs
+    -- cb — choose both
+    -- c0 — choose none
+    -- ]x — move to previous conflict
+    -- [x — move to next conflict
+    keys = { "co", "ct", "]x", "[x" },
     version = "*",
     config = true,
   },
   {
     "toppair/peek.nvim",
     event = { "VeryLazy" },
+    ft = { "markdown" },
     build = "deno task --quiet build:fast",
     config = function()
       require("peek").setup()

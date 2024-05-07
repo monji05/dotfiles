@@ -7,15 +7,23 @@ local config = wezterm.config_builder()
 -- This is where you actually apply your config choices
 config.term = "wezterm"
 config.font = wezterm.font("PlemolJPConsoleNF Nerd Font")
-config.font_size = 24.0
+config.font_size = 22
 config.default_prog = { "/opt/homebrew/bin/fish" }
-config.window_background_opacity = 0.90
+-- config.window_background_opacity = 0.85 -- for tokyonight
+config.window_background_opacity = 0.95 -- for solarized
+-- config.window_background_opacity = 0.95 -- for solarized-osaka
 
 -- solarized-osaka night colorscheme
 config.colors = {
 	foreground = "#c0caf5",
-	-- background = "#1a1b26",
-	background = "#00181a",
+	-- tokyonight
+	-- background = "#011628",
+
+	-- solarized-osaka
+	-- background = "#00181a",
+
+	-- solarized
+	background = "#002B36",
 	cursor_bg = "#c0caf5",
 	cursor_border = "#c0caf5",
 	cursor_fg = "#1a1b26",
@@ -28,6 +36,7 @@ config.colors = {
 	tab_bar = {
 		inactive_tab_edge = "#16161e",
 		background = "#191b28",
+		-- background = "#011628",
 		active_tab = {
 			fg_color = "#7aa2f7",
 			bg_color = "#1a1b26",
@@ -49,6 +58,15 @@ config.colors = {
 			fg_color = "#7aa2f7",
 			bg_color = "#191b28",
 		},
+	},
+}
+
+config.keys = {
+	-- disabled to cmd+t is create new tab.
+	{
+		key = "t",
+		mods = "CMD",
+		action = wezterm.action.DisableDefaultAssignment,
 	},
 }
 -- and finally, return the configuration to wezterm
