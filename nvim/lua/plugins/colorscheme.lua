@@ -133,6 +133,11 @@ return {
 
               -- Markdown
               ["@markup.list.markdown"] = { fg = c.red, bold = true },
+              ["@markup.heading.1.markdown"] = { fg = c.green, bold = true },
+              ["@markup.heading.2.markdown"] = { fg = c.yellow, bold = true },
+              ["@markup.heading.3.markdown"] = { fg = c.cyan, bold = true },
+              ["@markup.heading.5.markdown"] = { fg = c.blue, bold = true },
+              ["@markup.heading.6.markdown"] = { fg = c.magenta, bold = true },
             }
           end,
         })

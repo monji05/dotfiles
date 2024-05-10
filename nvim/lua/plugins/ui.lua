@@ -3,18 +3,18 @@ return {
     "romgrk/barbar.nvim",
     event = "InsertLeave",
     keys = {
-      { "<Tab>",           "<Cmd>BufferNext<CR>" },
-      { "<S-Tab>",         "<Cmd>BufferPrevious<CR>" },
-      { "<Leader><left>",  "<Cmd>BufferMovePrevious<CR>" },
+      { "<Tab>", "<Cmd>BufferNext<CR>" },
+      { "<S-Tab>", "<Cmd>BufferPrevious<CR>" },
+      { "<Leader><left>", "<Cmd>BufferMovePrevious<CR>" },
       { "<Leader><right>", "<Cmd>BufferMoveNext<CR>" },
-      { "<Leader>P",       "<Cmd>BufferPin<CR>" },
-      { "<Leader>x",       "<Cmd>BufferClose<CR>" },
-      { "<S-x>",           "<Cmd>BufferRestore<CR>" },
-      { "<Leader>p",       "<Cmd>BufferPick<CR>" },
-      { "<Leader>bb",      "<Cmd>BufferOrderByBufferNumber<CR>" },
-      { "<Leader>bd",      "<Cmd>BufferOrderByDirectory<CR>" },
-      { "<Leader>bl",      "<Cmd>BufferOrderByLanguage<CR>" },
-      { "<Leader>bw",      "<Cmd>BufferOrderByWindowNumber<CR>" },
+      { "<Leader>P", "<Cmd>BufferPin<CR>" },
+      { "<Leader>x", "<Cmd>BufferClose<CR>" },
+      { "<S-x>", "<Cmd>BufferRestore<CR>" },
+      { "<Leader>p", "<Cmd>BufferPick<CR>" },
+      { "<Leader>bb", "<Cmd>BufferOrderByBufferNumber<CR>" },
+      { "<Leader>bd", "<Cmd>BufferOrderByDirectory<CR>" },
+      { "<Leader>bl", "<Cmd>BufferOrderByLanguage<CR>" },
+      { "<Leader>bw", "<Cmd>BufferOrderByWindowNumber<CR>" },
     },
     config = function()
       local icons = require("lazyvim.config").icons
@@ -166,10 +166,10 @@ return {
         layouts = {
           {
             elements = {
-              { id = "watches",     size = 0.20 },
-              { id = "stacks",      size = 0.20 },
+              { id = "watches", size = 0.20 },
+              { id = "stacks", size = 0.20 },
               { id = "breakpoints", size = 0.20 },
-              { id = "scopes",      size = 0.40 },
+              { id = "scopes", size = 0.40 },
             },
             size = 50,
             position = "right",
@@ -322,20 +322,20 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     opts = {
       user_default_options = {
-        RGB = true,          -- #RGB hex codes
-        RRGGBB = true,       -- #RRGGBB hex codes
-        names = false,       -- "Name" codes like Blue or blue
-        RRGGBBAA = false,    -- #RRGGBBAA hex codes
-        AARRGGBB = false,    -- 0xAARRGGBB hex codes
-        rgb_fn = false,      -- CSS rgb() and rgba() functions
-        hsl_fn = false,      -- CSS hsl() and hsla() functions
-        css = false,         -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-        css_fn = false,      -- Enable all CSS *functions*: rgb_fn, hsl_fn
+        RGB = true, -- #RGB hex codes
+        RRGGBB = true, -- #RRGGBB hex codes
+        names = false, -- "Name" codes like Blue or blue
+        RRGGBBAA = false, -- #RRGGBBAA hex codes
+        AARRGGBB = false, -- 0xAARRGGBB hex codes
+        rgb_fn = false, -- CSS rgb() and rgba() functions
+        hsl_fn = false, -- CSS hsl() and hsla() functions
+        css = false, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+        css_fn = false, -- Enable all CSS *functions*: rgb_fn, hsl_fn
         -- Available modes for `mode`: foreground, background,  virtualtext
         mode = "background", -- Set the display mode.
         -- Available methods are false / true / "normal" / "lsp" / "both"
         -- True is same as normal
-        tailwind = true,                                -- Enable tailwind colors
+        tailwind = true, -- Enable tailwind colors
         -- parsers can contain values used in |user_default_options|
         sass = { enable = false, parsers = { "css" } }, -- Enable sass colors
         virtualtext = "■",
@@ -370,7 +370,7 @@ return {
   {
     "kristijanhusak/vim-dadbod-ui",
     dependencies = {
-      { "tpope/vim-dadbod",                     lazy = true },
+      { "tpope/vim-dadbod", lazy = true },
       { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
     },
     cmd = {
@@ -382,6 +382,50 @@ return {
     init = function()
       -- Your DBUI configuration
       vim.g.db_ui_use_nerd_fonts = 1
+    end,
+  },
+  {
+    "MeanderingProgrammer/markdown.nvim",
+    ft = "markdown",
+    name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    config = function()
+      require("render-markdown").setup({
+        highlights = {
+          heading = {
+            -- Background of heading line
+            backgrounds = { "NONE" },
+            -- Foreground of heading character only
+            foregrounds = {
+              "diffAdded",
+              "diffChanged",
+              "diffremoved",
+            },
+          },
+          -- Horizontal break
+          dash = "CursorLineNr",
+          -- Code blocks
+          code = "ColorColumn",
+          -- Bullet points in list
+          bullet = "Number",
+          checkbox = {
+            -- Unchecked checkboxes
+            unchecked = "@markup.list.unchecked",
+            -- Checked checkboxes
+            checked = "@markup.heading",
+          },
+          table = {
+            -- Header of a markdown table
+            head = "@markup.heading",
+            -- Non header rows in a markdown table
+            row = "Normal",
+          },
+          -- LaTeX blocks
+          latex = "@markup.math",
+          -- Quote character in a block quote
+          quote = "@markup.quote",
+        },
+      })
     end,
   },
 }
