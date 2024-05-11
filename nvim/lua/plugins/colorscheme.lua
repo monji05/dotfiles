@@ -105,11 +105,6 @@ return {
               WhichKeySeparator = { fg = c.base1 },
               WhichKeyFloat = { bg = c.bg_sidebar },
               WhichKeyValue = { fg = c.violet },
-              -- DiffView
-              DiffViewAsAdd = { fg = c.bg },
-              DiffDelete = { bg = c.base00, fg = darken(c.red, 60) },
-              DiffChange = { bg = "NONE", fg = darken(c.yellow, 40) },
-              DiffText = { bg = "NONE" },
 
               -- Barbar
               BufferCurrent = { bg = c.bg, fg = c.base2 },
