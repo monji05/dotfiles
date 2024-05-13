@@ -15,8 +15,8 @@ set -gx PROFILE $HOME/.config/fish/config.fish
 fish_add_path /usr/local/bin/
 
 alias g='git'
-alias vim='nvim'
-alias v='fd --type f --hidden --exclude .git |fzf-tmux -p |xargs nvim'
+alias v='nvim'
+# alias v='fd --type f --hidden --exclude .git |fzf-tmux -p |xargs nvim'
 alias ll='exa -la -g --icons --header'
 alias gl='git log --graph --all'
 alias gs='git status'
