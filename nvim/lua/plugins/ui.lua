@@ -1,55 +1,5 @@
 return {
   {
-    "romgrk/barbar.nvim",
-    event = "InsertLeave",
-    keys = {
-      { "<Tab>", "<Cmd>BufferNext<CR>" },
-      { "<S-Tab>", "<Cmd>BufferPrevious<CR>" },
-      { "<Leader><left>", "<Cmd>BufferMovePrevious<CR>" },
-      { "<Leader><right>", "<Cmd>BufferMoveNext<CR>" },
-      { "<Leader>P", "<Cmd>BufferPin<CR>" },
-      { "<Leader>x", "<Cmd>BufferClose<CR>" },
-      { "<S-x>", "<Cmd>BufferRestore<CR>" },
-      { "<Leader>p", "<Cmd>BufferPick<CR>" },
-      { "<Leader>bb", "<Cmd>BufferOrderByBufferNumber<CR>" },
-      { "<Leader>bd", "<Cmd>BufferOrderByDirectory<CR>" },
-      { "<Leader>bl", "<Cmd>BufferOrderByLanguage<CR>" },
-      { "<Leader>bw", "<Cmd>BufferOrderByWindowNumber<CR>" },
-    },
-    config = function()
-      local icons = require("lazyvim.config").icons
-      local my_icons = require("config.icons")
-      local barbar = require("barbar")
-      local opts = {
-        -- Enable highlighting visible buffers
-        highlight_visible = true,
-        -- Disable highlighting alternate buffers
-        highlight_alternate = false,
-        icons = {
-          pinned = { button = "", filename = true },
-          button = "",
-          -- Configure the base icons on the bufferline.
-          -- Valid options to display the buffer index and -number are `true`, 'superscript' and 'subscript'
-          buffer_index = false,
-          buffer_number = false,
-          -- Enables / disables diagnostic symbols
-          diagnostics = {
-            [vim.diagnostic.severity.ERROR] = { enabled = true, icon = icons.diagnostics.error },
-            [vim.diagnostic.severity.WARN] = { enabled = true, icon = icons.diagnostics.warn },
-            [vim.diagnostic.severity.INFO] = { enabled = true, icon = icons.diagnostics.info },
-            [vim.diagnostic.severity.HINT] = { enabled = true, icon = icons.diagnostics.hint },
-          },
-          gitsigns = {
-            added = { enabled = true, icon = my_icons.git.added },
-            changed = { enabled = true, icon = my_icons.git.modified },
-            deleted = { enabled = true, icon = my_icons.git.deleted },
-          },
-        },
-      }
-      barbar.setup(opts)
-    end,
-  },
-  {
     "lewis6991/hover.nvim",
     keys = {
       "<Leader>K",
@@ -352,6 +302,7 @@ return {
       "nvim-telescope/telescope.nvim",
       "nvim-tree/nvim-web-devicons",
     },
+    cmd = "Oct",
     config = function()
       require("octo").setup()
     end,
@@ -425,6 +376,37 @@ return {
           -- Quote character in a block quote
           quote = "@markup.quote",
         },
+      })
+    end,
+  },
+  -- filename
+  {
+    "b0o/incline.nvim",
+    dependencies = { "craftzdog/solarized-osaka.nvim" },
+    event = "BufReadPre",
+    priority = 1200,
+    config = function()
+      local colors = require("solarized-osaka.colors").setup()
+      require("incline").setup({
+        highlight = {
+          groups = {
+            InclineNormal = { guibg = colors.magenta500, guifg = colors.base04 },
+            InclineNormalNC = { guifg = colors.violet500, guibg = colors.base03 },
+          },
+        },
+        window = { margin = { vertical = 0, horizontal = 1 } },
+        hide = {
+          cursorline = true,
+        },
+        render = function(props)
+          local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
+          if vim.bo[props.buf].modified then
+            filename = "[+] " .. filename
+          end
+
+          local icon, color = require("nvim-web-devicons").get_icon_color(filename)
+          return { { icon, guifg = color }, { " " }, { filename } }
+        end,
       })
     end,
   },

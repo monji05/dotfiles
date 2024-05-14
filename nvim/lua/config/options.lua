@@ -42,10 +42,13 @@ vim.opt.laststatus = 3
 vim.opt.iskeyword:append("-")
 vim.opt.shada = ""
 vim.opt.swapfile = false
-vim.opt.showtabline = 2
+-- vim.opt.showtabline = 2
 vim.opt.shell = "fish"
 vim.opt.splitbelow = true -- Put new windows below current
 vim.opt.splitright = true -- Put new windows right of current
+vim.opt.wildignore:append({ "*/node_modules/*" })
+vim.opt.splitkeep = "cursor"
+vim.opt.mouse = ""
 
 -- highlight
 vim.opt.background = "dark"
