@@ -3,6 +3,9 @@
 -- Add any additional keymaps here
 
 -- vim.keymap.setは複数のモードを指定できる {"i", "n"}
+local discipline = require("myConfig.discipline")
+discipline.cowboy()
+
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
@@ -14,9 +17,6 @@ vim.keymap.del("n", "<leader>qd")
 vim.keymap.del("n", "<leader>ql")
 vim.keymap.del("n", "<leader>qq")
 vim.keymap.del("n", "<leader>qs")
-
-keymap("n", "j", "gj", opts)
-keymap("n", "k", "gk", opts)
 
 -- save on <Space> w
 keymap("n", "<leader>w", ":w<CR>", { callback = true, noremap = false, desc = "save current file" })
@@ -88,5 +88,5 @@ keymap("i", "˚", "<ESC>:m .-2<CR>==gi", opts)
 keymap("v", "∆", ":m '>+1<CR>gv=gv", opts)
 keymap("v", "˚", ":m '<-2<CR>gv=gv", opts)
 
-keymap("n", "<Tab>", ":tabNext<CR>", opts)
-keymap("n", "<S-Tab>", ":tabPrevious<CR>", opts)
+-- keymap("n", "<Tab>", ":tabNext<CR>", opts)
+-- keymap("n", "<S-Tab>", ":tabPrevious<CR>", opts)
