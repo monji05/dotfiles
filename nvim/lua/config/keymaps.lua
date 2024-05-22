@@ -3,8 +3,6 @@
 -- Add any additional keymaps here
 
 -- vim.keymap.setは複数のモードを指定できる {"i", "n"}
-local discipline = require("myConfig.discipline")
-discipline.cowboy()
 
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
