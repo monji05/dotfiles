@@ -153,10 +153,4 @@ return {
       vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
     end,
   },
-  {
-    "m4xshen/hardtime.nvim",
-    event = "VeryLazy",
-    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-    opts = {},
-  },
 }
