@@ -16,6 +16,9 @@ vim.keymap.del("n", "<leader>ql")
 vim.keymap.del("n", "<leader>qq")
 vim.keymap.del("n", "<leader>qs")
 
+-- jj is enable to move to normal mode
+keymap("i", "jj", "<ESC><CR>", opts)
+
 -- save on <Space> w
 keymap("n", "<leader>w", ":w<CR>", { noremap = false, desc = "save current file" })
 
