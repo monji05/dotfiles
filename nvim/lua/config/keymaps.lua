@@ -28,9 +28,6 @@ keymap("n", "<leader>q", ":q<CR>", { noremap = false, desc = "quit current file"
 -- cc to :nohl
 keymap("n", "cc", ":nohl<CR>", opts)
 
--- <C-r> to :source %
-keymap("n", "<C-r>", ":source %<CR>", opts)
-
 -- increment / decrement
 keymap("n", "-", "<C-x>", opts)
 keymap("n", "+", "<C-a>", opts)
