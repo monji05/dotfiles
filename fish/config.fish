@@ -1,10 +1,12 @@
 set fish_greeting ""
-set -gx TERM xterm-256color
+# set -gx TERM xterm-256color
+set -gx TERM wezterm
 
 fish_add_path /opt/homebrew/bin
 fish_add_path $HOME/.cargo/bin
 fish_add_path /usr/bin/java
 set -gx PROFILE $HOME/.config/fish/config.fish
+fish_add_path $HOME/.deno/bin
 
 alias g='git'
 alias v='nvim'
