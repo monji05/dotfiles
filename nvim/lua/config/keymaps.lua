@@ -85,6 +85,3 @@ keymap("i", "∆", "<ESC>:m .+1<CR>==gi", opts)
 keymap("i", "˚", "<ESC>:m .-2<CR>==gi", opts)
 keymap("v", "∆", ":m '>+1<CR>gv=gv", opts)
 keymap("v", "˚", ":m '<-2<CR>gv=gv", opts)
-
--- keymap("n", "<Tab>", ":tabNext<CR>", opts)
--- keymap("n", "<S-Tab>", ":tabPrevious<CR>", opts)
