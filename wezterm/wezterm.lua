@@ -15,7 +15,6 @@ config.window_background_opacity = 0.95 -- for solarized
 -- config.window_background_opacity = 0.95 -- for solarized-osaka
 config.send_composed_key_when_left_alt_is_pressed = true
 config.send_composed_key_when_right_alt_is_pressed = false
-config.disable_default_key_bindings = true
 config.cell_width = 0.95
 -- config.line_height = 1.0
 
