@@ -1,0 +1,15 @@
+session_name: dev-sample
+windows:
+  - window_name: nvim
+    layout: tiled
+    panes:
+        - z nvim |clear
+  - window_name: tmux
+    panes:
+        - z tmux |clear
+  - window_name: fish
+    panes:
+        - z fish |clear
+  - window_name: wezterm
+    panes:
+        - z wezterm |clear
