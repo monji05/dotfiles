@@ -1,15 +1,12 @@
 set fish_greeting ""
-# set -gx TERM wezterm
-set -gx TERM xterm-256color
+set -gx TERM wezterm
+# set -gx TERM xterm-256color
 fish_add_path /opt/homebrew/bin
 fish_add_path $HOME/.cargo/bin
 fish_add_path /usr/bin/java
 fish_add_path $HOME/www/offerbox/public_html/vendor/bin/
 # for gulp
 fish_add_path $HOME/www/offerbox/public_html/node_modules/.bin
-# it's too slow when start up terminal.
-# anyenvの用途は主にgulp sass がnode 9.4.0が必要だから
-# eval (anyenv init - fish| source)
 set -gx PROFILE $HOME/.config/fish/config.fish
 fish_add_path $HOME/.deno/bin
 
@@ -30,8 +27,10 @@ alias cd4='cd ../../../../'
 alias cd5='cd ../../../../../'
 alias php_container='INIT=true docker compose exec php bash'
 alias v2php_container='INIT=true docker compose exec v2_php bash'
-# alias docker_up='cd ~/www/common_on_local && docker-compose up -d && cd ~/www/offerbox/public_html && docker-compose up -d'
-# alias docker_down='cd ~/www/offerbox/public_html && docker-compose down && cd ~/www/common_on_local && docker-compose down'
+alias docker_up='cd ~/www/common_on_local && docker-compose up -d && cd ~/www/offerbox/public_html && docker-compose up -d'
+alias docker_down='cd ~/www/offerbox/public_html && docker-compose down && cd ~/www/common_on_local && docker-compose down'
+# anyenvの用途は主にgulp sass がnode 9.4.0が必要だから
+alias anyenv_init='eval (anyenv init - fish| source)'
 
 #theme
 set -g theme_color_scheme terminal-dark

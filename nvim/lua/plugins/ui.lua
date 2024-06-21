@@ -336,6 +336,11 @@ return {
     init = function()
       -- Your DBUI configuration
       vim.g.db_ui_use_nerd_fonts = 1
+      -- https://neovim.discourse.group/t/nvim-cmp-configuration-for-auto-completion/1045/4
+      vim.cmd(
+        [[ autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })]],
+        false
+      )
     end,
   },
   {

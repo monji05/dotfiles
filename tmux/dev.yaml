@@ -1,5 +1,17 @@
 session_name: dev-sample
 windows:
+  - window_name: public_html
+    panes:
+      - z public_html |clear
+  - window_name: logs
+    panes:
+      - z logs |clear
+  - window_name: DBeaver
+    panes:
+      - cd ~/Library/DBeaverData/workspace6/General/Scripts |clear
+  - window_name: neorg_notes
+    panes:
+      - z neorg_notes |clear
   - window_name: nvim
     layout: tiled
     panes:

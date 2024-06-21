@@ -17,6 +17,8 @@ config.send_composed_key_when_right_alt_is_pressed = false
 config.cell_width = 0.95
 -- config.line_height = 1.0
 
+-- config.disable_default_key_bindings = true
+
 -- solarized-osaka night colorscheme
 config.colors = {
 	foreground = "#c0caf5",
@@ -71,6 +73,11 @@ config.keys = {
 	{
 		key = "t",
 		mods = "CMD",
+		action = wezterm.action.DisableDefaultAssignment,
+	},
+	{
+		key = "Enter",
+		mods = "ALT",
 		action = wezterm.action.DisableDefaultAssignment,
 	},
 }

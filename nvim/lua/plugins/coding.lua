@@ -91,12 +91,20 @@ return {
     dependencies = {
       "hrsh7th/cmp-cmdline",
       "lukas-reineke/cmp-rg",
+      "kristijanhusak/vim-dadbod-completion",
     },
     opts = function()
       require("cmp").setup({
         sources = {
           {
+            name = "cmp-cmdline",
+          },
+          {
             name = "rg",
+          },
+          {
+            name = "vim-dadbod-completion",
+            priority = 700,
           },
         },
       })
