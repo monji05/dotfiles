@@ -33,10 +33,10 @@ return {
       }
 
       vim.cmd([[" Set the *.blade.php file to be filetype of blade
-        augroup BladeFiletypeRelated
-          au BufNewFile,BufRead *.blade.php set ft=blade
-        augroup END
-      ]])
+          augroup BladeFiletypeRelated
+            au BufNewFile,BufRead *.blade.php set ft=blade
+          augroup END
+        ]])
     end,
   },
 }
