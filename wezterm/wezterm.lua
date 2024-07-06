@@ -8,7 +8,7 @@ local config = wezterm.config_builder()
 
 -- For example, changing the color scheme:
 config.font = wezterm.font("PlemolJP35 Console NF")
-config.font_size = 21
+config.font_size = 20.5
 config.default_prog = { "/opt/homebrew/bin/fish" }
 config.window_background_opacity = 0.9
 config.send_composed_key_when_left_alt_is_pressed = true
