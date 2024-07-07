@@ -198,17 +198,6 @@ return {
     end,
   },
   {
-    "nvim-tree/nvim-web-devicons",
-    require("nvim-web-devicons").setup({
-      override = {
-        toml = {
-          icon = "",
-          name = "Toml",
-        },
-      },
-    }),
-  },
-  {
     "kristijanhusak/vim-dadbod-ui",
     dependencies = {
       { "tpope/vim-dadbod", lazy = true },
