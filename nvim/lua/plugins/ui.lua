@@ -191,7 +191,6 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim",
-      "nvim-tree/nvim-web-devicons",
     },
     cmd = "Oct",
     config = function()
@@ -318,10 +317,34 @@ return {
             filename = "[+] " .. filename
           end
 
-          local icon, color = require("nvim-web-devicons").get_icon_color(filename)
-          return { { icon, guifg = color }, { " " }, { filename } }
+          local miniIcons = require("mini.icons")
+          local icon = miniIcons.get("file", filename)
+          local devicons = require("nvim-web-devicons")
+          local _icon, color = devicons.get_icon_color(filename)
+          return { { icon, guifg = color }, { " " }, { filename, gui = "bold,italic" } }
         end,
       })
     end,
+  },
+  -- icons
+  {
+    "echasnovski/mini.icons",
+    lazy = true,
+    opts = {
+      extension = {
+        ["php"] = {
+          glyph = "",
+          hl = "MiniIconsPurple",
+        },
+        ["blade.php"] = {
+          glyph = "󰫐",
+          hl = "MiniIconsRed",
+        },
+        ["composer.lock"] = {
+          glyph = "",
+          hl = "MiniIconsRed",
+        },
+      },
+    },
   },
 }
