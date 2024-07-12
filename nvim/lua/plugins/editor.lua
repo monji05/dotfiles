@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 return {
   {
     "nvim-telescope/telescope.nvim",
@@ -265,7 +266,6 @@ return {
       dependencies = {
         "nvim-lua/plenary.nvim",
       },
-      event = "VeryLazy",
       keys = {
         -- 👇 in this section, choose your own keymappings!
         {
