@@ -8,5 +8,5 @@ return {
   { "echasnovski/mini.ai", enabled = false },
   { "echasnovski/mini.pairs", enabled = false },
   { "rafamadriz/friendly-snippets", enabled = false },
-  { "'petertriho/cmp-git'", enabled = false },
+  { "petertriho/cmp-git", enabled = false },
 }
