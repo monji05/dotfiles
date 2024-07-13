@@ -181,7 +181,7 @@ return {
       { "<Leader><left>", "<Cmd>BufferMovePrevious<CR>" },
       { "<Leader><right>", "<Cmd>BufferMoveNext<CR>" },
       { "<Leader>P", "<Cmd>BufferPin<CR>" },
-      { "<Leader>x", "<Cmd>BufferClose<CR>" },
+      { "<C-x>", "<Cmd>BufferClose<CR>" },
       { "<S-x>", "<Cmd>BufferRestore<CR>" },
       { "<Leader>p", "<Cmd>BufferPick<CR>" },
       { "<Leader>bb", "<Cmd>BufferOrderByBufferNumber<CR>" },
@@ -191,32 +191,34 @@ return {
     },
     config = function()
       local icons = require("lazyvim.config").icons
-      local my_icons = require("config.icons")
       local barbar = require("barbar")
       local opts = {
         -- Enable highlighting visible buffers
-        highlight_visible = true,
+        highlight_visible = false,
         -- Disable highlighting alternate buffers
         highlight_alternate = false,
         icons = {
+          -- modified = {
+          --   button = "[+]",
+          -- },
           pinned = { button = "", filename = true },
           button = "",
           -- Configure the base icons on the bufferline.
           -- Valid options to display the buffer index and -number are `true`, 'superscript' and 'subscript'
-          buffer_index = false,
+          buffer_index = true,
           buffer_number = false,
           -- Enables / disables diagnostic symbols
           diagnostics = {
-            [vim.diagnostic.severity.ERROR] = { enabled = true, icon = icons.diagnostics.error },
-            [vim.diagnostic.severity.WARN] = { enabled = true, icon = icons.diagnostics.warn },
-            [vim.diagnostic.severity.INFO] = { enabled = true, icon = icons.diagnostics.info },
-            [vim.diagnostic.severity.HINT] = { enabled = true, icon = icons.diagnostics.hint },
+            [vim.diagnostic.severity.ERROR] = { enabled = false, icon = icons.diagnostics.error },
+            [vim.diagnostic.severity.WARN] = { enabled = false, icon = icons.diagnostics.warn },
+            [vim.diagnostic.severity.INFO] = { enabled = false, icon = icons.diagnostics.info },
+            [vim.diagnostic.severity.HINT] = { enabled = false, icon = icons.diagnostics.hint },
           },
-          gitsigns = {
-            added = { enabled = true, icon = my_icons.git.added },
-            changed = { enabled = true, icon = my_icons.git.modified },
-            deleted = { enabled = true, icon = my_icons.git.deleted },
-          },
+          -- gitsigns = {
+          --   added = { enabled = true, icon = icons.git.added },
+          --   changed = { enabled = true, icon = icons.git.modified },
+          --   deleted = { enabled = true, icon = icons.git.deleted },
+          -- },
         },
       }
       barbar.setup(opts)
