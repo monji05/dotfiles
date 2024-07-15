@@ -1,5 +1,5 @@
 return {
-  { "akinsho/bufferline.nvim", enabled = true },
+  { "akinsho/bufferline.nvim", enabled = false },
   { "nvim-neo-tree/neo-tree.nvim", enabled = false },
   { "catppuccin/nvim", enabled = false },
   { "folke/flash.nvim", enabled = false },
@@ -7,4 +7,6 @@ return {
   { "echasnovski/mini.surround", enabled = false },
   { "echasnovski/mini.ai", enabled = false },
   { "echasnovski/mini.pairs", enabled = false },
+  { "rafamadriz/friendly-snippets", enabled = false },
+  { "petertriho/cmp-git", enabled = false },
 }
