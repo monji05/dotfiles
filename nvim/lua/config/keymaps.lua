@@ -7,15 +7,6 @@
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
-vim.keymap.del("n", "<leader>ww")
-vim.keymap.del("n", "<leader>wd")
-vim.keymap.del("n", "<leader>w-")
-vim.keymap.del("n", "<leader>w|")
-vim.keymap.del("n", "<leader>qd")
-vim.keymap.del("n", "<leader>ql")
-vim.keymap.del("n", "<leader>qq")
-vim.keymap.del("n", "<leader>qs")
-
 -- jj is enable to move to normal mode
 keymap("i", "jj", "<ESC><CR>", opts)
 
