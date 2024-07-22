@@ -31,6 +31,7 @@ alias docker_up='cd ~/www/common_on_local && docker-compose up -d && cd ~/www/of
 alias docker_down='cd ~/www/offerbox/public_html && docker-compose down && cd ~/www/common_on_local && docker-compose down'
 # anyenvの用途は主にgulp sass がnode 9.4.0が必要だから
 alias anyenv_init='eval (anyenv init - fish| source)'
+alias tmuxp='tmuxp load ~/.config/tmux/dev.yaml'
 
 #theme
 set -g theme_color_scheme terminal-dark

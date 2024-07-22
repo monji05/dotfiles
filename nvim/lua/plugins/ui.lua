@@ -136,6 +136,8 @@ return {
       })
       vim.api.nvim_set_keymap("n", "<leader>tu", "<Cmd>lua require('dapui').toggle()<CR>", { silent = true })
     end,
+  },
+  {
     "nvimdev/dashboard-nvim",
     opts = {
       config = {
