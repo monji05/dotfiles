@@ -7,13 +7,17 @@ local config = wezterm.config_builder()
 -- This is where you actually apply your config choices
 -- For example, changing the color scheme:
 config.font = wezterm.font("PlemolJP35 Console NF")
-config.font_size = 20.5
+
 config.default_prog = { "/opt/homebrew/bin/fish" }
-config.window_background_opacity = 0.9
+
+config.font_size = 20.5
+config.window_background_opacity = 0.8
+config.macos_window_background_blur = 40
+config.window_decorations = "RESIZE"
+config.enable_tab_bar = false
+
 config.send_composed_key_when_left_alt_is_pressed = true
 config.send_composed_key_when_right_alt_is_pressed = false
-config.cell_width = 0.95
--- config.line_height = 1.0
 
 -- config.disable_default_key_bindings = true
 
@@ -41,6 +45,19 @@ config.colors = {
 	brights = { "#414868", "#f7768e", "#9ece6a", "#e0af68", "#7aa2f7", "#bb9af7", "#7dcfff", "#c0caf5" },
 }
 
+-- tokyonight
+-- config.colors = {
+-- 	foreground = "#CBE0F0",
+-- 	background = "#011423",
+-- 	cursor_bg = "#47FF9C",
+-- 	cursor_border = "#47FF9C",
+-- 	cursor_fg = "#011423",
+-- 	selection_bg = "#033259",
+-- 	selection_fg = "#CBE0F0",
+-- 	ansi = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#0FC5ED", "#a277ff", "#24EAF7", "#24EAF7" },
+-- 	brights = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#A277FF", "#a277ff", "#24EAF7", "#24EAF7" },
+-- }
+
 config.keys = {
 	-- disabled to cmd+t is create new tab.
 	{
@@ -49,8 +66,8 @@ config.keys = {
 		action = wezterm.action.DisableDefaultAssignment,
 	},
 	{
-		key = "Enter",
-		mods = "ALT",
+		key = "w",
+		mods = "CTRL",
 		action = wezterm.action.DisableDefaultAssignment,
 	},
 }
