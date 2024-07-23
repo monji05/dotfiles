@@ -1,49 +1,25 @@
 return {
   {
-    -- "nvimtools/none-ls.nvim",
-    -- config = function()
-    --   local null_ls = require("null-ls")
-    --   local sources = {
-    --     null_ls.builtins.diagnostics.phpcs.with({
-    --       extra_args = {
-    --         "--standard=./phpcs_ruleset.xml",
-    --       },
-    --     }),
-    --     null_ls.builtins.formatting.sql_formatter.with({
-    --       extra_args = {
-    --         "--config=/Users/erikomishina/.config/dotfiles/nvim/lua/plugins/sql_formatter/config.json",
-    --       },
-    --     }),
-    --   }
-    --
-    --   null_ls.setup({
-    --     sources = sources,
-    --   })
-    -- end,
-  },
-  {
-    -- "mfussenegger/nvim-lint",
-    -- opts = {
-    --   linters_by_ft = {
-    --     -- php = { "phpstan" },
-    --     php = { "phpcs" },
-    --   },
-    -- },
-    -- config = function()
-    --   local lint = require("lint")
-    --   lint.linters.phpcs = {
-    --     args = {
-    --       "--standard=./phpcs_ruleset.xml",
-    --       "-s",
-    --       "-p",
-    --     },
-    --   }
-    --   -- lint.linters.phpstan = {
-    --   --   args = {
-    --   --     "analyze",
-    --   --     "--memory-limit=2G",
-    --   --   },
-    --   -- }
-    -- end,
+    "mfussenegger/nvim-lint",
+    config = function()
+      local lint = require("lint")
+      local phpcs = lint.linters.phpcs
+      phpcs.cmd = "phpcs"
+      phpcs.stdin = true
+      phpcs.args = {
+        "--standard=/Users/erikomishina/www/offerbox/public_html/phpcs_ruleset.xml",
+        "--report=json",
+      }
+
+      lint.linters_by_ft = {
+        php = { "phpcs" },
+      }
+
+      vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave", "TextChanged" }, {
+        callback = function()
+          lint.try_lint()
+        end,
+      })
+    end,
   },
 }
