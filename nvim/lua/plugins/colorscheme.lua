@@ -140,7 +140,4 @@ return {
       end,
     },
   },
-  -- {
-  --   "Mofiqul/vscode.nvim",
-  -- },
 }
