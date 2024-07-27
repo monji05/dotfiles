@@ -10,12 +10,6 @@ local opts = { noremap = true, silent = true }
 -- jj is enable to move to normal mode
 keymap("i", "jj", "<ESC><CR>", opts)
 
--- save on <Space> w
-keymap("n", "<leader>w", ":w<CR>", { noremap = false, desc = "save current file" })
-
--- close current file on <Space> x
-keymap("n", "<leader>q", ":q<CR>", { noremap = false, desc = "quit current file" })
-
 -- cc to :nohl
 keymap("n", "cc", ":nohl<CR>", opts)
 
