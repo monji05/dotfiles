@@ -1,5 +1,57 @@
----@diagnostic disable: missing-fields
 return {
+  {
+    "ibhagwan/fzf-lua",
+    -- optional for icon support
+    dependencies = { "echasnovski/mini.icons" },
+    keys = {
+      {
+        ";f",
+        "<Cmd>FzfLua files<CR>",
+      },
+      {
+        ";r",
+        "<Cmd>FzfLua live_grep_glob<CR>",
+      },
+      {
+        ";g",
+        "<Cmd>FzfLua git_status<CR>",
+      },
+      {
+        "gh",
+        "<Cmd>:lua require('fzf-lua').lsp_references({ includeDeclaration = false, ignore_current_line = true })<CR>",
+      },
+      {
+        "gd",
+        "<Cmd>FzfLua lsp_definitions<CR>",
+      },
+      -- {
+      --   "<leader>j",
+      --   "<Cmd>lua require('fzf-lua').lsp_code_actions({ sync = true })<CR>",
+      -- },
+    },
+    config = function()
+      -- calling `setup` is optional for customization
+      require("fzf-lua").setup({
+        grep = {
+          rg_glob = true,
+          -- first returned string is the new search query
+          -- second returned string are (optional) additional rg flags
+          -- @return string, string?
+          rg_glob_fn = function(query, opts)
+            local regex, flags = query:match("^(.-)%s%-%-(.*)$")
+            -- If no separator is detected will return the original query
+            return (regex or query), flags
+          end,
+        },
+      })
+    end,
+  },
+  {
+    "stevearc/oil.nvim",
+    opts = {},
+    -- Optional dependencies
+    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+  },
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
@@ -11,14 +63,14 @@ return {
       "nvim-telescope/telescope-live-grep-args.nvim",
     },
     keys = {
-      {
-        ";f",
-        "<Cmd>Telescope find_files<CR>",
-      },
-      {
-        ";r",
-        "<Cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
-      },
+      -- {
+      --   ";f",
+      --   "<Cmd>Telescope find_files<CR>",
+      -- },
+      -- {
+      --   ";r",
+      --   "<Cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
+      -- },
       {
         "<leader>f",
         ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
