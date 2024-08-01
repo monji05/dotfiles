@@ -68,9 +68,9 @@ return {
       format = {
         formatting_options = nil,
         timeout_ms = nil,
-        filter = function(client)
-          return client.name ~= "intelephense"
-        end,
+        -- filter = function(client)
+        --   return client.name ~= "intelephense"
+        -- end,
       },
       -- return true if you don't want this server to be setup with lspconfig
       ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
