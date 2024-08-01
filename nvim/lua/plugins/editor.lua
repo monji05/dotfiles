@@ -17,6 +17,11 @@ return {
         "<Cmd>FzfLua git_status<CR>",
       },
       {
+
+        ";G",
+        "<Cmd>FzfLua git_commits<CR>",
+      },
+      {
         "gh",
         "<Cmd>:lua require('fzf-lua').lsp_references({ includeDeclaration = false, ignore_current_line = true })<CR>",
       },
@@ -24,10 +29,10 @@ return {
         "gd",
         "<Cmd>FzfLua lsp_definitions<CR>",
       },
-      -- {
-      --   "<leader>j",
-      --   "<Cmd>lua require('fzf-lua').lsp_code_actions({ sync = true })<CR>",
-      -- },
+      {
+        ";;",
+        "<Cmd>FzfLua resume<CR>",
+      },
     },
     config = function()
       -- calling `setup` is optional for customization
@@ -48,105 +53,9 @@ return {
   },
   {
     "stevearc/oil.nvim",
-    opts = {},
     -- Optional dependencies
     dependencies = { { "echasnovski/mini.icons", opts = {} } },
-  },
-  {
-    "nvim-telescope/telescope.nvim",
-    dependencies = {
-      "nvim-telescope/telescope-file-browser.nvim",
-      "nvim-telescope/telescope-z.nvim",
-      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-      "dawsers/telescope-file-history.nvim",
-      "smartpde/telescope-recent-files",
-      "nvim-telescope/telescope-live-grep-args.nvim",
-    },
-    keys = {
-      -- {
-      --   ";f",
-      --   "<Cmd>Telescope find_files<CR>",
-      -- },
-      -- {
-      --   ";r",
-      --   "<Cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
-      -- },
-      {
-        "<leader>f",
-        ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
-      },
-      {
-        ";;",
-        "<Cmd>Telescope resume<CR>",
-      },
-    },
-    config = function(_, opts)
-      local telescope = require("telescope")
-      local fb_actions = telescope.extensions.file_browser.actions
-      local actions = require("telescope.actions")
-      local lga_actions = require("telescope-live-grep-args.actions")
-      local my_icons = require("config.icons")
-      opts = {
-        defaults = {
-          prompt_prefix = my_icons.telescope.prompt,
-          selection_caret = my_icons.telescope.selection_caret,
-          mappings = {
-            i = {
-              ["<C-o>"] = actions.select_tab,
-              ["<C-q>"] = actions.close,
-            },
-            n = {
-              ["o"] = actions.select_tab,
-              ["q"] = actions.close,
-            },
-          },
-        },
-        extensions = {
-          live_grep_args = {
-            auto_quoting = true,
-            mappings = { -- extend mappings
-              i = {
-                ["<C-k>"] = lga_actions.quote_prompt(),
-                ["<C-i>"] = lga_actions.quote_prompt({ postfix = " -ig !**/tests/**" }),
-              },
-              n = {
-                ["i"] = lga_actions.quote_prompt({ postfix = " -ig !**/tests/**" }),
-              },
-            },
-          },
-          file_browser = {
-            initial_mode = "normal",
-            theme = "ivy",
-            display_stat = { date = false, size = false },
-            -- disables netrw and use telescope-file-browser in its place
-            hijack_netrw = true,
-            prompt_path = true,
-            mappings = {
-              -- your custom insert mode mappings
-              ["i"] = {
-                ["<C-w>"] = function()
-                  vim.cmd("normal vbd")
-                end,
-                ["<C-o>"] = actions.select_tab,
-              },
-              ["n"] = {
-                -- your custom normal mode mappings
-                ["n"] = fb_actions.create,
-                ["o"] = actions.select_tab,
-                ["h"] = fb_actions.goto_parent_dir,
-                ["H"] = fb_actions.toggle_hidden,
-                ["/"] = function()
-                  vim.cmd("startinsert")
-                end,
-              },
-            },
-          },
-        },
-      }
-      telescope.setup(opts)
-      telescope.load_extension("fzf")
-      telescope.load_extension("file_browser")
-    end,
+    opts = {},
   },
   {
     "sindrets/diffview.nvim",

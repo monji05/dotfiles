@@ -56,7 +56,7 @@ return {
       vim.keymap.set("n", "gD", "<CMD>lua vim.lsp.buf.declaration()<CR>", opt)
       -- vim.keymap.set("n", "gh", "<CMD>Lspsaga hover_doc<CR>", opt)
       vim.keymap.set("n", "gf", "<CMD>Lspsaga finder<Cr>", opt)
-      -- vim.keymap.set("n", "<leader>j", "<CMD>Lspsaga diagnostic_jump_next<CR>", opt)
+      vim.keymap.set("n", "<leader>j", "<CMD>Lspsaga diagnostic_jump_next<CR>", opt)
     end,
   },
   {
