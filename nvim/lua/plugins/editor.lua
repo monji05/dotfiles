@@ -263,4 +263,13 @@ return {
       },
     },
   },
+  {
+    "nvim-telescope/telescope.nvim",
+    keys = {
+      { "<leader>ff", false },
+      { "<leader>fF", false },
+      { "<leader><leader>", false },
+      -- add a keymap to browse plugin files
+    },
+  },
 }
