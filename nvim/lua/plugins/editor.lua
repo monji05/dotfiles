@@ -287,4 +287,21 @@ return {
       },
     },
   },
+  {
+    "echasnovski/mini.files",
+    version = "*",
+    keys = { "<leader>f" },
+    config = function()
+      vim.keymap.set("n", "<leader>f", ":lua require('mini.files').open()<CR>")
+    end,
+  },
+  {
+    "nvim-telescope/telescope.nvim",
+    keys = {
+      { "<leader>ff", false },
+      { "<leader>fF", false },
+      { "<leader><leader>", false },
+      -- add a keymap to browse plugin files
+    },
+  },
 }

@@ -166,12 +166,12 @@ return {
           [[                                                ]],
         },
         center = {
-          { action = "Telescope find_files", desc = " Find file", icon = " ", key = "f" },
+          { action = [[lua require("fzf-lua").files()]], desc = " Find file", icon = " ", key = "f" },
           { action = "ene | startinsert", desc = " New file", icon = " ", key = "n" },
-          { action = "Telescope oldfiles", desc = " Recent files", icon = " ", key = "r" },
-          { action = "Telescope live_grep", desc = " Find text", icon = " ", key = "g" },
+          { action = [[lua require("fzf-lua").oldfiles()]], desc = " Recent files", icon = " ", key = "r" },
+          { action = [[lua require("fzf-lua").live_grep_native()]], desc = " Find text", icon = " ", key = "g" },
           {
-            action = [[lua require("lazyvim.util").telescope.config_files()()]],
+            action = [[lua require("fzf-lua").profiles()]],
             desc = " Config",
             icon = " ",
             key = "c",
@@ -216,7 +216,7 @@ return {
     "pwntester/octo.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
+      "ibhagwan/fzf-lua",
     },
     cmd = "Oct",
     config = function()

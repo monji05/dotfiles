@@ -12,7 +12,7 @@ config.default_prog = { "/opt/homebrew/bin/fish" }
 
 config.font_size = 20.5
 config.window_background_opacity = 0.8
-config.macos_window_background_blur = 40
+config.macos_window_background_blur = 50
 config.window_decorations = "RESIZE"
 config.enable_tab_bar = false
 
