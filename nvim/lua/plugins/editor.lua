@@ -266,10 +266,13 @@ return {
   {
     "echasnovski/mini.files",
     version = "*",
-    keys = { "<leader>f" },
-    config = function()
-      vim.keymap.set("n", "<leader>f", ":lua require('mini.files').open()<CR>")
-    end,
+    opts = {
+      windows = {
+        preview = true,
+        width_focus = 80,
+        width_preview = 80,
+      },
+    },
   },
   {
     "nvim-telescope/telescope.nvim",
