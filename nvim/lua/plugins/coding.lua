@@ -134,4 +134,9 @@ return {
     --   { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     -- },
   },
+  {
+    "m-demare/hlargs.nvim",
+    -- opts = {},
+    init = function(_) end, --  .enable function locates here by default
+  },
 }
