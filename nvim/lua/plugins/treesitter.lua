@@ -13,7 +13,6 @@ return {
         "scss",
         "sql",
       },
-      ranbow = true,
     },
     textobjects = {
       goto_next_start = { ["]f"] = "@function.outer" },
