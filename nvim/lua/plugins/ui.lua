@@ -434,4 +434,16 @@ return {
       },
     },
   },
+  {
+    "m-demare/hlargs.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require("hlargs").setup({
+        hl_priority = 10000,
+      })
+      vim.api.nvim_command([[highlight Hlargs guifg=#c94c16]])
+    end,
+  },
 }

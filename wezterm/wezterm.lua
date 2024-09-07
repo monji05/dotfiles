@@ -11,7 +11,7 @@ config.font = wezterm.font("PlemolJP35 Console NF")
 config.default_prog = { "/opt/homebrew/bin/fish" }
 
 config.font_size = 20
-config.window_background_opacity = 0.8
+config.window_background_opacity = 0.9
 config.macos_window_background_blur = 50
 config.window_decorations = "RESIZE"
 config.enable_tab_bar = false
@@ -29,8 +29,8 @@ config.colors = {
 	-- background = "#1f2335",
 
 	-- solarized-osaka
-	-- background = "#00181a",
-	background = "#001011",
+	background = "#00181a",
+	-- background = "#001011",
 
 	-- solarized
 	-- background = "#002B36",
