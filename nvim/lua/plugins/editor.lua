@@ -52,12 +52,6 @@ return {
     end,
   },
   {
-    "stevearc/oil.nvim",
-    -- Optional dependencies
-    dependencies = { { "echasnovski/mini.icons", opts = {} } },
-    opts = {},
-  },
-  {
     "sindrets/diffview.nvim",
     keys = {
       {
