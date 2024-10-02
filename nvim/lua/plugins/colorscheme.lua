@@ -58,86 +58,21 @@ return {
       vim.cmd("colorscheme tokyonight")
     end,
   },
-  {
-    {
-      "maxmx03/solarized.nvim",
-      config = function()
-        vim.o.background = "dark" -- or 'light'
-
-        require("solarized").setup({
-          styles = {
-            comments = { italic = true, bold = false },
-            functions = { italic = false, bold = false },
-            variables = { italic = false, bold = false },
-          },
-          transparent = true,
-          theme = "default", -- or 'neo'
-          colors = function(colors, colorhelper)
-            local darken = colorhelper.darken
-
-            return {
-              bg = darken(colors.base03, 70),
-            }
-          end,
-          highlights = function(c, colorhelper)
-            local darken = colorhelper.darken
-            return {
-              Number = { fg = c.cyan },
-              CursorLineNr = { fg = c.yellow },
-              keyword = { fg = c.green, bold = false },
-              Function = { italic = false },
-              Identifier = { fg = c.base0 },
-              ["@variable"] = { fg = c.base0 }, -- Any variable name that does not have another highlight.
-
-              -- DiffViewSidebar
-              diffAdded = { fg = c.green },
-              diffRemoved = { fg = c.red },
-              diffChanged = { fg = c.yellow },
-              diffOldFile = { fg = c.violet },
-              diffNewFile = { fg = c.orange },
-              diffFile = { fg = c.blue },
-              diffLine = { fg = c.base01 },
-              diffIndexLine = { fg = c.magenta },
-              ["@punctuation.bracket"] = { fg = c.base0 }, -- For brackets and parens.
-              -- WhichKey
-              WhichKey = { fg = c.cyan },
-              WhichKeyGroup = { fg = c.blue },
-              WhichKeyDesc = { fg = c.magenta },
-              WhichKeySeparator = { fg = c.base1 },
-              WhichKeyFloat = { bg = c.bg_sidebar },
-              WhichKeyValue = { fg = c.violet },
-
-              -- Barbar
-              BufferCurrent = { bg = c.bg, fg = c.base2 },
-              BufferCurrentERROR = { bg = c.bg, fg = c.error },
-              BufferCurrentHINT = { bg = c.bg, fg = c.hint },
-              BufferCurrentINFO = { bg = c.bg, fg = c.info },
-              BufferCurrentWARN = { bg = c.bg, fg = c.warning },
-              BufferCurrentIndex = { bg = c.bg, fg = c.info },
-              BufferCurrentMod = { bg = c.bg, fg = c.warning },
-              BufferCurrentSign = { bg = c.bg, fg = c.hint },
-              BufferCurrentTarget = { bg = c.bg, fg = c.red },
-              BufferCurrentADDED = { fg = c.hint, bg = c.bg },
-              BufferCurrentCHANGED = { fg = c.warning, bg = c.bg },
-              BufferCurrentDELETED = { fg = c.warning, bg = c.bg },
-              BufferAlternate = { bg = c.fg_gutter, fg = c.fg },
-              BufferAlternateERROR = { bg = c.fg_gutter, fg = c.error },
-              BufferAlternateHINT = { bg = c.fg_gutter, fg = c.hint },
-
-              -- indent-blankline
-              IblINdent = { fg = darken(c.base01, 40) },
-
-              -- Markdown
-              ["@markup.list.markdown"] = { fg = c.red, bold = true },
-              ["@markup.heading.1.markdown"] = { fg = c.green, bold = true },
-              ["@markup.heading.2.markdown"] = { fg = c.yellow, bold = true },
-              ["@markup.heading.3.markdown"] = { fg = c.cyan, bold = true },
-              ["@markup.heading.5.markdown"] = { fg = c.blue, bold = true },
-              ["@markup.heading.6.markdown"] = { fg = c.magenta, bold = true },
-            }
-          end,
-        })
-      end,
-    },
-  },
+  -- {
+  --   "Mofiqul/vscode.nvim",
+  --   config = function()
+  --     vim.cmd([[colorscheme vscode]])
+  --   end,
+  -- },
+  -- {
+  --   "neanias/everforest-nvim",
+  --   config = function(opts)
+  --     require("everforest").setup({
+  --       background = "hard",
+  --       transparent_background_level = 1,
+  --       italic = true,
+  --     })
+  --     vim.cmd([[colorscheme everforest]])
+  --   end,
+  -- },
 }
