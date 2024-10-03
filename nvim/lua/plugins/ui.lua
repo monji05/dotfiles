@@ -1,142 +1,102 @@
 return {
-  {
-    "lewis6991/hover.nvim",
-    keys = {
-      "<Leader>K",
-      "<Leader>gK",
-    },
-    config = function()
-      require("hover").setup({
-        init = function()
-          -- Require providers
-          -- require("hover.providers.lsp")
-          -- require("hover.providers.gh")
-          -- require("hover.providers.gh_user")
-          -- require('hover.providers.jira')
-          -- require("hover.providers.man")
-          require("hover.providers.dictionary")
-        end,
-        preview_opts = {
-          border = nil,
-        },
-        -- Whether the contents of a currently open hover window should be moved
-        -- to a :h preview-window when pressing the hover keymap.
-        preview_window = false,
-        title = true,
-      })
-
-      -- Setup keymaps
-      vim.keymap.set("n", "<Leader>K", require("hover").hover, { desc = "hover.nvim" })
-      vim.keymap.set("n", "<Leader>gK", require("hover").hover_select, { desc = "hover.nvim (select)" })
-    end,
-  },
-  {
-    "folke/noice.nvim",
-    event = "BufEnter",
-    module = "noice",
-    dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
-    opts = {
-      lsp = {
-        signature = {
-          enabled = false,
-        },
-      },
-      cmdline = {
-        format = {
-          search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex" },
-          search_up = { kind = "search", pattern = "^%?", icon = " ", lang = "regex" },
-        },
-      },
-    },
-  },
-  {
-    "mfussenegger/nvim-dap",
-    event = "VeryLazy",
-    dependencies = {
-      "rcarriga/nvim-dap-ui",
-      "theHamsta/nvim-dap-virtual-text",
-      "folke/neodev.nvim",
-    },
-    keys = {
-      "<F5>",
-      "<F6>",
-      "<F10>",
-      "<F12>",
-      "<leader>db",
-      "<leader>dr",
-      "<leader>dl",
-      "<leader>tu",
-    },
-    config = function()
-      local dap = require("dap")
-      dap.adapters.php = {
-        type = "executable",
-        command = "node",
-        args = { os.getenv("HOME") .. "/vscode-php-debug/out/phpDebug.js" },
-      }
-
-      dap.configurations.php = {
-        {
-          name = "OfferBox v1",
-          type = "php",
-          request = "launch",
-          port = 9000,
-          pathMappings = {
-            ["/var/www/offerbox"] = "${workspaceFolder}",
-          },
-        },
-        {
-          name = "OfferBox v2",
-          type = "php",
-          request = "launch",
-          port = 9000,
-          pathMappings = {
-            ["/var/www/offerbox/offerbox-v2"] = "${workspaceFolder}/offerbox-v2",
-          },
-        },
-      }
-
-      vim.api.nvim_set_keymap("n", "<F5>", ":DapContinue<CR>", { silent = true })
-      vim.api.nvim_set_keymap("n", "<F6>", ":DapStepInto<CR>", { silent = true })
-      vim.api.nvim_set_keymap("n", "<F10>", ":DapStepOver<CR>", { silent = true })
-      vim.api.nvim_set_keymap("n", "<F12>", ":DapStepOut<CR>", { silent = true })
-      vim.api.nvim_set_keymap("n", "<leader>db", ":DapToggleBreakpoint<CR>", { silent = true })
-      vim.api.nvim_set_keymap("n", "<leader>dr", ':lua require("dap").repl.open()<CR>', { silent = true })
-      vim.api.nvim_set_keymap("n", "<leader>dl", ':lua require("dap").run_last()<CR>', { silent = true })
-    end,
-  },
-  {
-    "rcarriga/nvim-dap-ui",
-    event = "VeryLazy",
-    config = function()
-      ---@diagnostic disable-next-line: missing-fields
-      require("dapui").setup({
-        ---@diagnostic disable-next-line: missing-fields
-        icons = { expanded = "", collapsed = "" },
-        layouts = {
-          {
-            elements = {
-              { id = "watches", size = 0.20 },
-              { id = "stacks", size = 0.20 },
-              { id = "breakpoints", size = 0.20 },
-              { id = "scopes", size = 0.40 },
-            },
-            size = 50,
-            position = "right",
-          },
-          {
-            elements = {
-              "repl",
-              "console",
-            },
-            size = 0.20,
-            position = "bottom",
-          },
-        },
-      })
-      vim.api.nvim_set_keymap("n", "<leader>tu", "<Cmd>lua require('dapui').toggle()<CR>", { silent = true })
-    end,
-  },
+  -- {
+  --   "mfussenegger/nvim-dap",
+  --   event = "VeryLazy",
+  --   dependencies = {
+  --     "rcarriga/nvim-dap-ui",
+  --     "theHamsta/nvim-dap-virtual-text",
+  --     "folke/neodev.nvim",
+  --   },
+  --   keys = {
+  --     "<F5>",
+  --     "<F6>",
+  --     "<F10>",
+  --     "<F12>",
+  --     "<leader>db",
+  --     "<leader>dr",
+  --     "<leader>dl",
+  --     "<leader>tu",
+  --   },
+  --   config = function()
+  --     local dap = require("dap")
+  --     dap.adapters.php = {
+  --       type = "executable",
+  --       command = "node",
+  --       args = { os.getenv("HOME") .. "/vscode-php-debug/out/phpDebug.js" },
+  --     }
+  --
+  --     dap.configurations.php = {
+  --       {
+  --         name = "OfferBox v1",
+  --         type = "php",
+  --         request = "launch",
+  --         port = 9000,
+  --         pathMappings = {
+  --           ["/var/www/offerbox"] = "${workspaceFolder}",
+  --         },
+  --       },
+  --       {
+  --         name = "OfferBox v2",
+  --         type = "php",
+  --         request = "launch",
+  --         port = 9000,
+  --         pathMappings = {
+  --           ["/var/www/offerbox/offerbox-v2"] = "${workspaceFolder}/offerbox-v2",
+  --         },
+  --       },
+  --     }
+  --
+  --     vim.api.nvim_set_keymap("n", "<F5>", ":DapContinue<CR>", { silent = true })
+  --     vim.api.nvim_set_keymap("n", "<F6>", ":DapStepInto<CR>", { silent = true })
+  --     vim.api.nvim_set_keymap("n", "<F10>", ":DapStepOver<CR>", { silent = true })
+  --     vim.api.nvim_set_keymap("n", "<F12>", ":DapStepOut<CR>", { silent = true })
+  --     vim.api.nvim_set_keymap("n", "<leader>db", ":DapToggleBreakpoint<CR>", { silent = true })
+  --     vim.api.nvim_set_keymap("n", "<leader>dr", ':lua require("dap").repl.open()<CR>', { silent = true })
+  --     vim.api.nvim_set_keymap("n", "<leader>dl", ':lua require("dap").run_last()<CR>', { silent = true })
+  --   end,
+  -- },
+  -- {
+  --   "rcarriga/nvim-dap-ui",
+  --   event = "VeryLazy",
+  --   keys = {
+  --     "<F5>",
+  --     "<F6>",
+  --     "<F10>",
+  --     "<F12>",
+  --     "<leader>db",
+  --     "<leader>dr",
+  --     "<leader>dl",
+  --     "<leader>tu",
+  --   },
+  --   config = function()
+  --     ---@diagnostic disable-next-line: missing-fields
+  --     require("dapui").setup({
+  --       ---@diagnostic disable-next-line: missing-fields
+  --       icons = { expanded = "", collapsed = "" },
+  --       layouts = {
+  --         {
+  --           elements = {
+  --             { id = "watches", size = 0.20 },
+  --             { id = "stacks", size = 0.20 },
+  --             { id = "breakpoints", size = 0.20 },
+  --             { id = "scopes", size = 0.40 },
+  --           },
+  --           size = 50,
+  --           position = "right",
+  --         },
+  --         {
+  --           elements = {
+  --             "repl",
+  --             "console",
+  --           },
+  --           size = 0.20,
+  --           position = "bottom",
+  --         },
+  --       },
+  --     })
+  --     vim.api.nvim_set_keymap("n", "<leader>tu", "<Cmd>lua require('dapui').toggle()<CR>", { silent = true })
+  --   end,
+  -- },
   {
     "nvimdev/dashboard-nvim",
     opts = {
@@ -186,6 +146,7 @@ return {
   },
   {
     "NvChad/nvim-colorizer.lua",
+    ft = { "css", "lua", "tsx", "jsx", "js" },
     event = { "BufReadPre", "BufNewFile" },
     opts = {
       user_default_options = {
@@ -225,6 +186,7 @@ return {
   },
   {
     "kristijanhusak/vim-dadbod-ui",
+    ft = { "sql" },
     dependencies = {
       { "tpope/vim-dadbod", lazy = true },
       { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
@@ -289,23 +251,6 @@ return {
       })
     end,
   },
-  -- buffer line
-  -- {
-  --   "akinsho/bufferline.nvim",
-  --   event = "VeryLazy",
-  --   keys = {
-  --     { "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next tab" },
-  --     { "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev tab" },
-  --   },
-  --   opts = {
-  --     options = {
-  --       mode = "tabs",
-  --       -- separator_style = "slant",
-  --       show_buffer_close_icons = false,
-  --       show_close_icon = false,
-  --     },
-  --   },
-  -- },
   {
     "romgrk/barbar.nvim",
     event = "InsertLeave",
@@ -440,7 +385,10 @@ return {
       require("hlargs").setup({
         hl_priority = 10000,
       })
+      -- solarized-osaka
       vim.api.nvim_command([[highlight Hlargs guifg=#c94c16]])
+      -- everforest
+      -- vim.api.nvim_command([[highlight Hlargs guifg=#dbbc7f]])
     end,
   },
 }
