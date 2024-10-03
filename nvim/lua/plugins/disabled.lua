@@ -9,4 +9,7 @@ return {
   { "echasnovski/mini.pairs", enabled = false },
   { "rafamadriz/friendly-snippets", enabled = false },
   { "petertriho/cmp-git", enabled = false },
+  { "folke/noice.nvim", enabled = false },
+  { "rcarriga/nvim-notify", enabled = false },
+  { "nvim-lualine/lualine.nvim", enabled = false },
 }
