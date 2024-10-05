@@ -1,58 +1,5 @@
 return {
   {
-    "ibhagwan/fzf-lua",
-    -- optional for icon support
-    dependencies = { "echasnovski/mini.icons" },
-    keys = {
-      -- {
-      --   ";f",
-      --   "<Cmd>FzfLua files<CR>",
-      -- },
-      -- {
-      --   ";r",
-      --   "<Cmd>FzfLua live_grep_glob<CR>",
-      -- },
-      {
-        ";g",
-        "<Cmd>FzfLua git_status<CR>",
-      },
-      {
-
-        ";G",
-        "<Cmd>FzfLua git_commits<CR>",
-      },
-      -- {
-      --   "gh",
-      --   "<Cmd>:lua require('fzf-lua').lsp_references({ includeDeclaration = false, ignore_current_line = true })<CR>",
-      -- },
-      -- {
-      --   "gd",
-      --   "<Cmd>FzfLua lsp_definitions<CR>",
-      -- },
-      -- {
-      --   ";;",
-      --   "<Cmd>FzfLua resume<CR>",
-      -- },
-    },
-    config = function()
-      -- calling `setup` is optional for customization
-      require("fzf-lua").setup({
-        git_icons = false,
-        grep = {
-          rg_glob = true,
-          -- first returned string is the new search query
-          -- second returned string are (optional) additional rg flags
-          -- @return string, string?
-          rg_glob_fn = function(query, opts)
-            local regex, flags = query:match("^(.-)%s%-%-(.*)$")
-            -- If no separator is detected will return the original query
-            return (regex or query), flags
-          end,
-        },
-      })
-    end,
-  },
-  {
     "telescope.nvim",
     dependencies = {
       {
@@ -93,14 +40,6 @@ return {
         desc = "Search for a string in your current working directory and get results live as you type, respects .gitignore",
       },
       {
-        "\\\\",
-        function()
-          local builtin = require("telescope.builtin")
-          builtin.buffers()
-        end,
-        desc = "Lists open buffers",
-      },
-      {
         ";t",
         function()
           local builtin = require("telescope.builtin")
@@ -133,6 +72,22 @@ return {
         desc = "Lists Function names, variables, from Treesitter",
       },
       {
+        ";g",
+        function()
+          local builtin = require("telescope.builtin")
+          builtin.git_status()
+        end,
+        desc = "Lists current changes per file with diff preview and add action. (Multi-selection still WIP)",
+      },
+      {
+        ";b",
+        function()
+          local builtin = require("telescope.builtin")
+          builtin.buffers()
+        end,
+        desc = "Lists open buffers in current neovim instance",
+      },
+      {
         "<leader>f",
         function()
           local telescope = require("telescope")
@@ -149,7 +104,6 @@ return {
             grouped = true,
             previewer = false,
             initial_mode = "normal",
-            layout_config = { height = 40 },
           })
         end,
         desc = "Open File Browser with the path of the current buffer",
@@ -251,7 +205,7 @@ return {
   },
   {
     "shellRaining/hlchunk.nvim",
-    event = { "BufReadPre", "BufNewFile" },
+    event = { "BufEnter" },
     opts = {
       chunk = {
         enable = true,
@@ -296,24 +250,6 @@ return {
   --     },
   --   },
   -- },
-  {
-    "echasnovski/mini.indentscope",
-    config = function()
-      require("mini.indentscope").setup({
-        symbol = "▏",
-        -- Module mappings. Use `''` (empty string) to disable one.
-        mappings = {
-          -- Textobjects
-          object_scope = "ii",
-          object_scope_with_border = "ai",
-
-          -- Motions (jump to respective border line; if not present - body line)
-          goto_top = "[i",
-          goto_bottom = "]i",
-        },
-      })
-    end,
-  },
   {
     "lewis6991/gitsigns.nvim",
     on_attach = function(buffer)

@@ -126,16 +126,15 @@ return {
           [[                                                ]],
         },
         center = {
-          { action = [[lua require("fzf-lua").files()]], desc = " Find file", icon = " ", key = "f" },
+          { action = [[lua require("telescope.builtin").find_files()]], desc = " Find file", icon = " ", key = "f" },
           { action = "ene | startinsert", desc = " New file", icon = " ", key = "n" },
-          { action = [[lua require("fzf-lua").oldfiles()]], desc = " Recent files", icon = " ", key = "r" },
-          { action = [[lua require("fzf-lua").live_grep_native()]], desc = " Find text", icon = " ", key = "g" },
           {
-            action = [[lua require("fzf-lua").profiles()]],
-            desc = " Config",
-            icon = " ",
-            key = "c",
+            action = [[lua require("telescope.builtin").oldfiles()]],
+            desc = " Recent files",
+            icon = " ",
+            key = "r",
           },
+          { action = [[lua require("telescope.builtin").live_grep()]], desc = " Find text", icon = " ", key = "g" },
           { action = 'lua require("persistence").load()', desc = " Restore Session", icon = " ", key = "s" },
           { action = "LazyExtras", desc = " Lazy Extras", icon = " ", key = "x" },
           { action = "Lazy", desc = " Lazy", icon = "󰒲 ", key = "l" },
@@ -148,6 +147,11 @@ return {
     "NvChad/nvim-colorizer.lua",
     ft = { "css", "lua", "tsx", "jsx", "js" },
     event = { "BufReadPre", "BufNewFile" },
+    ft = {
+      "css",
+      "jsx",
+      "tsx",
+    },
     opts = {
       user_default_options = {
         RGB = true, -- #RGB hex codes
@@ -172,40 +176,6 @@ return {
         always_update = false,
       },
     },
-  },
-  {
-    "pwntester/octo.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "ibhagwan/fzf-lua",
-    },
-    cmd = "Oct",
-    config = function()
-      require("octo").setup()
-    end,
-  },
-  {
-    "kristijanhusak/vim-dadbod-ui",
-    ft = { "sql" },
-    dependencies = {
-      { "tpope/vim-dadbod", lazy = true },
-      { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
-    },
-    cmd = {
-      "DBUI",
-      "DBUIToggle",
-      "DBUIAddConnection",
-      "DBUIFindBuffer",
-    },
-    init = function()
-      -- Your DBUI configuration
-      vim.g.db_ui_use_nerd_fonts = 1
-      -- https://neovim.discourse.group/t/nvim-cmp-configuration-for-auto-completion/1045/4
-      vim.cmd(
-        [[ autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })]],
-        false
-      )
-    end,
   },
   {
     "MeanderingProgrammer/markdown.nvim",
@@ -251,78 +221,78 @@ return {
       })
     end,
   },
-  {
-    "romgrk/barbar.nvim",
-    event = "InsertLeave",
-    keys = {
-      { "<Tab>", "<Cmd>BufferNext<CR>" },
-      { "<S-Tab>", "<Cmd>BufferPrevious<CR>" },
-      { "<Leader><left>", "<Cmd>BufferMovePrevious<CR>" },
-      { "<Leader><right>", "<Cmd>BufferMoveNext<CR>" },
-      { "<Leader>P", "<Cmd>BufferPin<CR>" },
-      { "<C-x>", "<Cmd>BufferClose<CR>" },
-      { "<S-x>", "<Cmd>BufferRestore<CR>" },
-      { "<Leader>p", "<Cmd>BufferPick<CR>" },
-      { "<Leader>bb", "<Cmd>BufferOrderByBufferNumber<CR>" },
-      { "<Leader>bd", "<Cmd>BufferOrderByDirectory<CR>" },
-      { "<Leader>bl", "<Cmd>BufferOrderByLanguage<CR>" },
-      { "<Leader>bw", "<Cmd>BufferOrderByWindowNumber<CR>" },
-    },
-    config = function()
-      local icons = require("lazyvim.config").icons
-      local barbar = require("barbar")
-      local opts = {
-        -- Enable highlighting visible buffers
-        highlight_visible = false,
-        -- Disable highlighting alternate buffers
-        highlight_alternate = false,
-        icons = {
-          -- modified = {
-          --   button = "[+]",
-          -- },
-          pinned = { button = "", filename = true },
-          button = "",
-          -- Configure the base icons on the bufferline.
-          -- Valid options to display the buffer index and -number are `true`, 'superscript' and 'subscript'
-          buffer_index = true,
-          buffer_number = false,
-          -- Enables / disables diagnostic symbols
-          diagnostics = {
-            [vim.diagnostic.severity.ERROR] = { enabled = false, icon = icons.diagnostics.error },
-            [vim.diagnostic.severity.WARN] = { enabled = false, icon = icons.diagnostics.warn },
-            [vim.diagnostic.severity.INFO] = { enabled = false, icon = icons.diagnostics.info },
-            [vim.diagnostic.severity.HINT] = { enabled = false, icon = icons.diagnostics.hint },
-          },
-          gitsigns = {
-            added = { enabled = true, icon = icons.git.added },
-            changed = { enabled = true, icon = icons.git.modified },
-            deleted = { enabled = true, icon = icons.git.deleted },
-          },
-        },
-      }
-
-      -- vim.api.nvim_command([[highlight BufferCurrent  guifg=#002d38 guibg=#d33682]])
-      vim.api.nvim_command([[highlight BufferCurrent  guifg=#dadada]])
-      vim.api.nvim_command([[highlight BufferCurrentHint  guifg=#2aa198]])
-      vim.api.nvim_command([[highlight BufferCurrentADDED  guifg=#719e07]])
-      vim.api.nvim_command([[highlight BufferCurrentCHANGED  guifg=#b58900]])
-      vim.api.nvim_command([[highlight BufferCurrentDELETED guifg=#b2555b]])
-      vim.api.nvim_command([[highlight BufferCurrentSign  guifg=#719e07]])
-      vim.api.nvim_command([[highlight BufferInactive guibg=#002b36]])
-      vim.api.nvim_command([[highlight BufferInactiveMod guifg=#6d72c5  guibg=#002b36]])
-      vim.api.nvim_command([[highlight BufferInactiveADDED guifg=#6d72c5 guibg=#002b36]])
-      vim.api.nvim_command([[highlight BufferInactiveCHANGED guifg=#6d72c5 guibg=#002b36]])
-      vim.api.nvim_command([[highlight BufferInactiveDELETED guifg=#6d72c5 guibg=#002b36]])
-      vim.api.nvim_command([[highlight BufferInactiveSign guibg=#002b36]])
-      vim.api.nvim_command([[highlight BufferInactiveERROR guibg=#002b36]])
-      vim.api.nvim_command([[highlight BufferInactiveWARN guibg=#002b36]])
-      vim.api.nvim_command([[highlight BufferInactiveINFO guibg=#002b36]])
-      vim.api.nvim_command([[highlight BufferInactiveHINT guibg=#002b36]])
-      vim.api.nvim_command([[highlight BufferInactiveIndex guibg=#002b36]])
-
-      barbar.setup(opts)
-    end,
-  },
+  -- {
+  --   "romgrk/barbar.nvim",
+  --   event = "InsertLeave",
+  --   keys = {
+  --     { "<Tab>", "<Cmd>BufferNext<CR>" },
+  --     { "<S-Tab>", "<Cmd>BufferPrevious<CR>" },
+  --     { "<Leader><left>", "<Cmd>BufferMovePrevious<CR>" },
+  --     { "<Leader><right>", "<Cmd>BufferMoveNext<CR>" },
+  --     { "<Leader>P", "<Cmd>BufferPin<CR>" },
+  --     { "<C-x>", "<Cmd>BufferClose<CR>" },
+  --     { "<S-x>", "<Cmd>BufferRestore<CR>" },
+  --     { "<Leader>p", "<Cmd>BufferPick<CR>" },
+  --     { "<Leader>bb", "<Cmd>BufferOrderByBufferNumber<CR>" },
+  --     { "<Leader>bd", "<Cmd>BufferOrderByDirectory<CR>" },
+  --     { "<Leader>bl", "<Cmd>BufferOrderByLanguage<CR>" },
+  --     { "<Leader>bw", "<Cmd>BufferOrderByWindowNumber<CR>" },
+  --   },
+  --   config = function()
+  --     local icons = require("lazyvim.config").icons
+  --     local barbar = require("barbar")
+  --     local opts = {
+  --       -- Enable highlighting visible buffers
+  --       highlight_visible = false,
+  --       -- Disable highlighting alternate buffers
+  --       highlight_alternate = false,
+  --       icons = {
+  --         -- modified = {
+  --         --   button = "[+]",
+  --         -- },
+  --         pinned = { button = "", filename = true },
+  --         button = "",
+  --         -- Configure the base icons on the bufferline.
+  --         -- Valid options to display the buffer index and -number are `true`, 'superscript' and 'subscript'
+  --         buffer_index = true,
+  --         buffer_number = false,
+  --         -- Enables / disables diagnostic symbols
+  --         diagnostics = {
+  --           [vim.diagnostic.severity.ERROR] = { enabled = false, icon = icons.diagnostics.error },
+  --           [vim.diagnostic.severity.WARN] = { enabled = false, icon = icons.diagnostics.warn },
+  --           [vim.diagnostic.severity.INFO] = { enabled = false, icon = icons.diagnostics.info },
+  --           [vim.diagnostic.severity.HINT] = { enabled = false, icon = icons.diagnostics.hint },
+  --         },
+  --         gitsigns = {
+  --           added = { enabled = true, icon = icons.git.added },
+  --           changed = { enabled = true, icon = icons.git.modified },
+  --           deleted = { enabled = true, icon = icons.git.deleted },
+  --         },
+  --       },
+  --     }
+  --
+  --     -- vim.api.nvim_command([[highlight BufferCurrent  guifg=#002d38 guibg=#d33682]])
+  --     vim.api.nvim_command([[highlight BufferCurrent  guifg=#dadada]])
+  --     vim.api.nvim_command([[highlight BufferCurrentHint  guifg=#2aa198]])
+  --     vim.api.nvim_command([[highlight BufferCurrentADDED  guifg=#719e07]])
+  --     vim.api.nvim_command([[highlight BufferCurrentCHANGED  guifg=#b58900]])
+  --     vim.api.nvim_command([[highlight BufferCurrentDELETED guifg=#b2555b]])
+  --     vim.api.nvim_command([[highlight BufferCurrentSign  guifg=#719e07]])
+  --     vim.api.nvim_command([[highlight BufferInactive guibg=#002b36]])
+  --     vim.api.nvim_command([[highlight BufferInactiveMod guifg=#6d72c5  guibg=#002b36]])
+  --     vim.api.nvim_command([[highlight BufferInactiveADDED guifg=#6d72c5 guibg=#002b36]])
+  --     vim.api.nvim_command([[highlight BufferInactiveCHANGED guifg=#6d72c5 guibg=#002b36]])
+  --     vim.api.nvim_command([[highlight BufferInactiveDELETED guifg=#6d72c5 guibg=#002b36]])
+  --     vim.api.nvim_command([[highlight BufferInactiveSign guibg=#002b36]])
+  --     vim.api.nvim_command([[highlight BufferInactiveERROR guibg=#002b36]])
+  --     vim.api.nvim_command([[highlight BufferInactiveWARN guibg=#002b36]])
+  --     vim.api.nvim_command([[highlight BufferInactiveINFO guibg=#002b36]])
+  --     vim.api.nvim_command([[highlight BufferInactiveHINT guibg=#002b36]])
+  --     vim.api.nvim_command([[highlight BufferInactiveIndex guibg=#002b36]])
+  --
+  --     barbar.setup(opts)
+  --   end,
+  -- },
 
   -- filename
   {
