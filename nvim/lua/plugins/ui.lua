@@ -257,10 +257,7 @@ return {
       require("hlargs").setup({
         hl_priority = 10000,
       })
-      -- for solarized-osaka
-      -- vim.api.nvim_command([[highlight Hlargs guifg=#c94c16]])
-      -- everforest
-      vim.api.nvim_command([[highlight Hlargs guifg=#E69875]])
+      vim.api.nvim_command([[highlight Hlargs guifg=#c94c16]])
     end,
   },
 }
