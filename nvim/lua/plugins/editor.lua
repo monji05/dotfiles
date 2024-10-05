@@ -1,54 +1,171 @@
 return {
   {
-    "ibhagwan/fzf-lua",
-    -- optional for icon support
-    dependencies = { "echasnovski/mini.icons" },
+    "telescope.nvim",
+    dependencies = {
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "make",
+      },
+      "nvim-telescope/telescope-file-browser.nvim",
+    },
     keys = {
       {
+        "<leader>fP",
+        function()
+          require("telescope.builtin").find_files({
+            cwd = require("lazy.core.config").options.root,
+          })
+        end,
+        desc = "Find Plugin File",
+      },
+      {
         ";f",
-        "<Cmd>FzfLua files<CR>",
+        function()
+          local builtin = require("telescope.builtin")
+          builtin.find_files({
+            no_ignore = false,
+            hidden = true,
+          })
+        end,
+        desc = "Lists files in your current working directory, respects .gitignore",
       },
       {
         ";r",
-        "<Cmd>FzfLua live_grep_glob<CR>",
+        function()
+          local builtin = require("telescope.builtin")
+          builtin.live_grep({
+            additional_args = { "--hidden" },
+          })
+        end,
+        desc = "Search for a string in your current working directory and get results live as you type, respects .gitignore",
       },
       {
-        ";g",
-        "<Cmd>FzfLua git_status<CR>",
-      },
-      {
-
-        ";G",
-        "<Cmd>FzfLua git_commits<CR>",
-      },
-      {
-        "gh",
-        "<Cmd>:lua require('fzf-lua').lsp_references({ includeDeclaration = false, ignore_current_line = true })<CR>",
-      },
-      {
-        "gd",
-        "<Cmd>FzfLua lsp_definitions<CR>",
+        ";t",
+        function()
+          local builtin = require("telescope.builtin")
+          builtin.help_tags()
+        end,
+        desc = "Lists available help tags and opens a new window with the relevant help info on <cr>",
       },
       {
         ";;",
-        "<Cmd>FzfLua resume<CR>",
+        function()
+          local builtin = require("telescope.builtin")
+          builtin.resume()
+        end,
+        desc = "Resume the previous telescope picker",
+      },
+      {
+        ";e",
+        function()
+          local builtin = require("telescope.builtin")
+          builtin.diagnostics()
+        end,
+        desc = "Lists Diagnostics for all open buffers or a specific buffer",
+      },
+      {
+        ";s",
+        function()
+          local builtin = require("telescope.builtin")
+          builtin.treesitter()
+        end,
+        desc = "Lists Function names, variables, from Treesitter",
+      },
+      {
+        ";g",
+        function()
+          local builtin = require("telescope.builtin")
+          builtin.git_status()
+        end,
+        desc = "Lists current changes per file with diff preview and add action. (Multi-selection still WIP)",
+      },
+      {
+        ";b",
+        function()
+          local builtin = require("telescope.builtin")
+          builtin.buffers()
+        end,
+        desc = "Lists open buffers in current neovim instance",
+      },
+      {
+        "<leader>f",
+        function()
+          local telescope = require("telescope")
+
+          local function telescope_buffer_dir()
+            return vim.fn.expand("%:p:h")
+          end
+
+          telescope.extensions.file_browser.file_browser({
+            path = "%:p:h",
+            cwd = telescope_buffer_dir(),
+            respect_gitignore = false,
+            hidden = true,
+            grouped = true,
+            previewer = false,
+            initial_mode = "normal",
+          })
+        end,
+        desc = "Open File Browser with the path of the current buffer",
       },
     },
-    config = function()
-      -- calling `setup` is optional for customization
-      require("fzf-lua").setup({
-        grep = {
-          rg_glob = true,
-          -- first returned string is the new search query
-          -- second returned string are (optional) additional rg flags
-          -- @return string, string?
-          rg_glob_fn = function(query, opts)
-            local regex, flags = query:match("^(.-)%s%-%-(.*)$")
-            -- If no separator is detected will return the original query
-            return (regex or query), flags
-          end,
+    config = function(_, opts)
+      local telescope = require("telescope")
+      local actions = require("telescope.actions")
+      local fb_actions = require("telescope").extensions.file_browser.actions
+
+      opts.defaults = vim.tbl_deep_extend("force", opts.defaults, {
+        wrap_results = true,
+        layout_strategy = "horizontal",
+        layout_config = { prompt_position = "top" },
+        sorting_strategy = "ascending",
+        winblend = 0,
+        mappings = {
+          n = {},
         },
       })
+      opts.pickers = {
+        diagnostics = {
+          theme = "ivy",
+          initial_mode = "normal",
+          layout_config = {
+            preview_cutoff = 9999,
+          },
+        },
+      }
+      opts.extensions = {
+        file_browser = {
+          theme = "dropdown",
+          -- disables netrw and use telescope-file-browser in its place
+          hijack_netrw = true,
+          mappings = {
+            -- your custom insert mode mappings
+            ["n"] = {
+              -- your custom normal mode mappings
+              ["N"] = fb_actions.create,
+              ["h"] = fb_actions.goto_parent_dir,
+              ["/"] = function()
+                vim.cmd("startinsert")
+              end,
+              ["<C-u>"] = function(prompt_bufnr)
+                for i = 1, 10 do
+                  actions.move_selection_previous(prompt_bufnr)
+                end
+              end,
+              ["<C-d>"] = function(prompt_bufnr)
+                for i = 1, 10 do
+                  actions.move_selection_next(prompt_bufnr)
+                end
+              end,
+              ["<PageUp>"] = actions.preview_scrolling_up,
+              ["<PageDown>"] = actions.preview_scrolling_down,
+            },
+          },
+        },
+      }
+      telescope.setup(opts)
+      require("telescope").load_extension("fzf")
+      require("telescope").load_extension("file_browser")
     end,
   },
   {
@@ -87,57 +204,17 @@ return {
     end,
   },
   {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    lazy = true,
-    ft = { "lua", "php", "html", "css", "js", "jsx", "ts", "tsx" },
+    "shellRaining/hlchunk.nvim",
+    event = { "BufEnter" },
     opts = {
+      chunk = {
+        enable = true,
+      },
       indent = {
-        char = "▏",
-        tab_char = "▏",
-      },
-      whitespace = {
-        -- remove_blankline_trail = false,
-        remove_blankline_trail = true,
-      },
-      scope = {
-        -- don't be true! tree-sitter cause error!
-        enabled = false,
-      },
-      exclude = {
-        filetypes = {
-          "help",
-          "startify",
-          "dashboard",
-          "packer",
-          "neogitstatus",
-          "NvimTree",
-          "Trouble",
-        },
-        buftypes = {
-          "terminal",
-          "nofile",
-        },
+        enable = true,
+        -- ...
       },
     },
-  },
-  {
-    "echasnovski/mini.indentscope",
-    config = function()
-      require("mini.indentscope").setup({
-        symbol = "▏",
-        -- Module mappings. Use `''` (empty string) to disable one.
-        mappings = {
-          -- Textobjects
-          object_scope = "ii",
-          object_scope_with_border = "ai",
-
-          -- Motions (jump to respective border line; if not present - body line)
-          goto_top = "[i",
-          goto_bottom = "]i",
-        },
-      })
-    end,
   },
   {
     "kdheepak/lazygit.nvim",
@@ -266,15 +343,6 @@ return {
         width_focus = 80,
         width_preview = 80,
       },
-    },
-  },
-  {
-    "nvim-telescope/telescope.nvim",
-    keys = {
-      { "<leader>ff", false },
-      { "<leader>fF", false },
-      { "<leader><leader>", false },
-      -- add a keymap to browse plugin files
     },
   },
 }
