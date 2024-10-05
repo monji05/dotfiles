@@ -64,15 +64,4 @@ return {
   --     vim.cmd([[colorscheme vscode]])
   --   end,
   -- },
-  -- {
-  --   "neanias/everforest-nvim",
-  --   config = function(opts)
-  --     require("everforest").setup({
-  --       background = "hard",
-  --       transparent_background_level = 1,
-  --       italic = true,
-  --     })
-  --     vim.cmd([[colorscheme everforest]])
-  --   end,
-  -- },
 }
