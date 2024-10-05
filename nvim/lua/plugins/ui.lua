@@ -1,55 +1,5 @@
 return {
   {
-    "lewis6991/hover.nvim",
-    keys = {
-      "<Leader>K",
-      "<Leader>gK",
-    },
-    config = function()
-      require("hover").setup({
-        init = function()
-          -- Require providers
-          -- require("hover.providers.lsp")
-          -- require("hover.providers.gh")
-          -- require("hover.providers.gh_user")
-          -- require('hover.providers.jira')
-          -- require("hover.providers.man")
-          require("hover.providers.dictionary")
-        end,
-        preview_opts = {
-          border = nil,
-        },
-        -- Whether the contents of a currently open hover window should be moved
-        -- to a :h preview-window when pressing the hover keymap.
-        preview_window = false,
-        title = true,
-      })
-
-      -- Setup keymaps
-      vim.keymap.set("n", "<Leader>K", require("hover").hover, { desc = "hover.nvim" })
-      vim.keymap.set("n", "<Leader>gK", require("hover").hover_select, { desc = "hover.nvim (select)" })
-    end,
-  },
-  {
-    "folke/noice.nvim",
-    event = "BufEnter",
-    module = "noice",
-    dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
-    opts = {
-      lsp = {
-        signature = {
-          enabled = false,
-        },
-      },
-      cmdline = {
-        format = {
-          search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex" },
-          search_up = { kind = "search", pattern = "^%?", icon = " ", lang = "regex" },
-        },
-      },
-    },
-  },
-  {
     "nvimdev/dashboard-nvim",
     opts = {
       config = {
@@ -99,6 +49,11 @@ return {
   {
     "NvChad/nvim-colorizer.lua",
     event = { "BufReadPre", "BufNewFile" },
+    ft = {
+      "css",
+      "jsx",
+      "tsx",
+    },
     opts = {
       user_default_options = {
         RGB = true, -- #RGB hex codes
@@ -123,17 +78,6 @@ return {
         always_update = false,
       },
     },
-  },
-  {
-    "pwntester/octo.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "ibhagwan/fzf-lua",
-    },
-    cmd = "Oct",
-    config = function()
-      require("octo").setup()
-    end,
   },
   {
     "MeanderingProgrammer/markdown.nvim",
@@ -179,23 +123,6 @@ return {
       })
     end,
   },
-  -- buffer line
-  -- {
-  --   "akinsho/bufferline.nvim",
-  --   event = "VeryLazy",
-  --   keys = {
-  --     { "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next tab" },
-  --     { "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev tab" },
-  --   },
-  --   opts = {
-  --     options = {
-  --       mode = "tabs",
-  --       -- separator_style = "slant",
-  --       show_buffer_close_icons = false,
-  --       show_close_icon = false,
-  --     },
-  --   },
-  -- },
   {
     "romgrk/barbar.nvim",
     event = "InsertLeave",
@@ -330,7 +257,10 @@ return {
       require("hlargs").setup({
         hl_priority = 10000,
       })
-      vim.api.nvim_command([[highlight Hlargs guifg=#c94c16]])
+      -- for solarized-osaka
+      -- vim.api.nvim_command([[highlight Hlargs guifg=#c94c16]])
+      -- everforest
+      vim.api.nvim_command([[highlight Hlargs guifg=#E69875]])
     end,
   },
 }
