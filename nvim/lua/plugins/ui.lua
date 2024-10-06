@@ -361,4 +361,19 @@ return {
       -- vim.api.nvim_command([[highlight Hlargs guifg=#dbbc7f]])
     end,
   },
+  {
+    "nvim-lualine/lualine.nvim",
+    opts = {
+      sections = {
+        lualine_c = {
+          { "diff" },
+          { "diagnostics" },
+          { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+          { LazyVim.lualine.pretty_path() },
+        },
+        lualine_x = {},
+        lualine_z = {},
+      },
+    },
+  },
 }
