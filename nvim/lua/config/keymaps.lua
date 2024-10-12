@@ -19,12 +19,8 @@ keymap("n", "<leader>q", ":q<CR>", { noremap = false, desc = "quit current file"
 -- cc to :nohl
 keymap("n", "cc", ":nohl<CR>", opts)
 
--- increment / decrement
-keymap("n", "-", "<C-x>", opts)
-keymap("n", "+", "<C-a>", opts)
-
 -- Select all
-keymap("n", "<C-a>", "gg<S-v>G", opts)
+-- keymap("n", "<C-a>", "gg<S-v>G", opts)
 
 -- New tab
 keymap("n", "te", ":tabedit<CR>", opts)
