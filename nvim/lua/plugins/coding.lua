@@ -56,6 +56,7 @@ return {
     dependencies = {
       "hrsh7th/cmp-cmdline",
       "lukas-reineke/cmp-rg",
+      "f3fora/cmp-spell",
     },
     opts = function()
       require("cmp").setup({
