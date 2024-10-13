@@ -54,9 +54,6 @@ keymap("n", "s", '"_s', opts)
 -- ビジュアルモードでヤンクしたワードを連続でペーストできるように(最高)
 keymap("v", "p", '"_xP', opts)
 
--- automatically create PHP Doc
--- keymap("i", "/*", " /**\n *\n*\n*\n*/<left><left><left><left>", opts)
-
 -- replace current cursor word
 keymap("v", "<leader>r", '"hy:%s/<C-r>h//g<left><left>', opts)
 
