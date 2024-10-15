@@ -212,6 +212,9 @@ return {
       },
       indent = {
         enable = true,
+        -- chars = { "▏" },
+        chars = { "│" },
+        style = "#383c3d",
       },
     },
   },
