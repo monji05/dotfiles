@@ -3,15 +3,18 @@ windows:
   - window_name: public_html
     panes:
       - z public_html |clear
+  - window_name: admin-frontend/application
+    panes:
+      - cd ~/www/offerbox-admin-frontend/application |clear
   - window_name: logs
     panes:
       - z logs |clear
   - window_name: DBeaver
     panes:
       - cd ~/Library/DBeaverData/workspace6/General/Scripts |clear
-  - window_name: neorg_notes
+  - window_name: weekly
     panes:
-      - z neorg_notes |clear
+      - z weekly |clear
   - window_name: nvim
     layout: tiled
     panes:

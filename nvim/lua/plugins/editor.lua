@@ -87,27 +87,27 @@ return {
         end,
         desc = "Lists open buffers in current neovim instance",
       },
-      {
-        "<leader>f",
-        function()
-          local telescope = require("telescope")
-
-          local function telescope_buffer_dir()
-            return vim.fn.expand("%:p:h")
-          end
-
-          telescope.extensions.file_browser.file_browser({
-            path = "%:p:h",
-            cwd = telescope_buffer_dir(),
-            respect_gitignore = false,
-            hidden = true,
-            grouped = true,
-            previewer = false,
-            initial_mode = "normal",
-          })
-        end,
-        desc = "Open File Browser with the path of the current buffer",
-      },
+      -- {
+      -- "<leader>f",
+      -- function()
+      --   local telescope = require("telescope")
+      --
+      --   local function telescope_buffer_dir()
+      --     return vim.fn.expand("%:p:h")
+      --   end
+      --
+      --   telescope.extensions.file_browser.file_browser({
+      --     path = "%:p:h",
+      --     cwd = telescope_buffer_dir(),
+      --     respect_gitignore = false,
+      --     hidden = true,
+      --     grouped = true,
+      --     previewer = false,
+      --     initial_mode = "normal",
+      --   })
+      -- end,
+      -- desc = "Open File Browser with the path of the current buffer",
+      -- },
     },
     config = function(_, opts)
       local telescope = require("telescope")
@@ -372,6 +372,15 @@ return {
         preview = true,
         width_focus = 80,
         width_preview = 80,
+      },
+    },
+    keys = {
+      {
+        "<leader>fm",
+        function()
+          require("mini.files").open(vim.api.nvim_buf_get_name(0), true)
+        end,
+        desc = "Open mini.files (Directory of Current File)",
       },
     },
   },
