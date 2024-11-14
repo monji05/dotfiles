@@ -32,6 +32,8 @@ alias docker_down='cd ~/www/offerbox/public_html && docker-compose down && cd ~/
 # anyenvの用途は主にgulp sass がnode 9.4.0が必要だから
 alias anyenv_init='eval (anyenv init - fish| source)'
 alias tmuxp='tmuxp load ~/.config/tmux/dev.yaml'
+alias admin_fe_node='docker exec -i -t node /bin/sh'
+alias admin_fe_playwright='docker exec -i -t playwright /bin/sh'
 
 #theme
 set -g theme_color_scheme terminal-dark
