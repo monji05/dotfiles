@@ -24,10 +24,10 @@ keymap("n", "ss", ":split<Return><C-w>w", opts)
 keymap("n", "sv", ":vsplit<Return><C-w>w", opts)
 
 -- Move window
-keymap("", "sh", "<C-w>h", opts)
-keymap("", "sk", "<C-w>k", opts)
-keymap("", "sj", "<C-w>j", opts)
-keymap("", "sl", "<C-w>l", opts)
+-- keymap("", "sh", "<C-w>h", opts)
+-- keymap("", "sk", "<C-w>k", opts)
+-- keymap("", "sj", "<C-w>j", opts)
+-- keymap("", "sl", "<C-w>l", opts)
 
 -- Resize window
 keymap("n", "<C-w><left>", ":vertical resize +3<CR>", opts)
