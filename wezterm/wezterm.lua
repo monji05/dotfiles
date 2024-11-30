@@ -12,7 +12,7 @@ config.font = wezterm.font("PlemolJP35 Console NF")
 config.default_prog = { "/opt/homebrew/bin/fish" }
 
 config.font_size = 16.5
-config.window_background_opacity = 0.7
+config.window_background_opacity = 0.9
 config.macos_window_background_blur = 30
 config.window_decorations = "RESIZE"
 config.enable_tab_bar = false
@@ -22,18 +22,10 @@ config.send_composed_key_when_right_alt_is_pressed = false
 
 -- solarized-osaka night colorscheme
 config.colors = {
-	-- tokyonight night
-	-- background = "#011423",
-	-- tokyonight storm
-	-- background = "#1f2335",
-
 	-- solarized-osaka
 	background = "#00181a",
 	-- background = "#001011",
 
-	-- solarized
-	-- background = "#002B36",
-	-- background = "#01222b",
 	cursor_bg = "#47FF9C",
 	cursor_border = "#c0caf5",
 	cursor_fg = "#1a1b26",
