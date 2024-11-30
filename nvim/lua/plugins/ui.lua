@@ -293,9 +293,7 @@ return {
   {
     "m-demare/hlargs.nvim",
     config = function()
-      require("hlargs").setup({
-        hl_priority = 10000,
-      })
+      require("hlargs").setup({})
       vim.api.nvim_command([[highlight Hlargs guifg=#c94c16]])
     end,
   },
