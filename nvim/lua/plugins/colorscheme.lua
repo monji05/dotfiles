@@ -29,6 +29,9 @@ return {
           hl.LineNr = {
             fg = c.base01,
           }
+          hl.CursorLineNr = {
+            fg = c.yellow500,
+          }
         end,
       })
       vim.cmd([[colorscheme solarized-osaka]])
