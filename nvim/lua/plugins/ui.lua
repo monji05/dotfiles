@@ -392,13 +392,9 @@ return {
   {
     "m-demare/hlargs.nvim",
     config = function()
-      require("hlargs").setup({
-        hl_priority = 10000,
-      })
       -- solarized-osaka
+      require("hlargs").setup({})
       vim.api.nvim_command([[highlight Hlargs guifg=#c94c16]])
-      -- everforest
-      -- vim.api.nvim_command([[highlight Hlargs guifg=#dbbc7f]])
     end,
   },
   {
