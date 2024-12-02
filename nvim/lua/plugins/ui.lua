@@ -404,6 +404,13 @@ return {
         lualine_c = {
           { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
           { LazyVim.lualine.pretty_path() },
+          {
+            require("lazy.status").updates,
+            cond = require("lazy.status").has_updates,
+            color = function()
+              return LazyVim.ui.fg("Special")
+            end,
+          },
         },
         lualine_x = {},
         lualine_z = {},
