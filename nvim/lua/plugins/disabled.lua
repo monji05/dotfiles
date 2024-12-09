@@ -7,6 +7,7 @@ return {
   { "echasnovski/mini.surround", enabled = false },
   { "echasnovski/mini.ai", enabled = false },
   { "echasnovski/mini.pairs", enabled = false },
-  { "rafamadriz/friendly-snippets", enabled = false },
   { "petertriho/cmp-git", enabled = false },
+  { "nvim-lualine/lualine.nvim", enabled = false },
+  { "folke/which-key.nvim", enabled = false },
 }
