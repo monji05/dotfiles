@@ -177,4 +177,12 @@ return {
       })
     end,
   },
+  {
+    ---@class wk.Opts
+    "folke/which-key.nvim",
+    opts = {
+      ---@type false | "classic" | "modern" | "helix"
+      preset = "helix",
+    },
+  },
 }
