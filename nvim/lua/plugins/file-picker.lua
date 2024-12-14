@@ -215,10 +215,11 @@ return {
       --   "<leader>j",
       --   "<Cmd>lua require('fzf-lua').lsp_code_actions({ sync = true })<CR>",
       -- },
-      {
-        ";b",
-        "<Cmd>FzfLua buffers<CR>",
-      },
+      -- will use snipe.nvim for pick buffers
+      -- {
+      --   ";b",
+      --   "<Cmd>FzfLua buffers<CR>",
+      -- },
       {
         ";;",
         "<Cmd>FzfLua resume<CR>",
