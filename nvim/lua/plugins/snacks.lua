@@ -89,6 +89,9 @@ return {
         wo = { wrap = true }, -- Wrap notifications
       },
     },
+    indent = {
+      enabled = false,
+    },
   },
   keys = {
     {
