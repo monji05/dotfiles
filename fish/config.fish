@@ -64,3 +64,5 @@ alias rest="timer 5m && terminal-notifier -message 'Pomodoro'\
         -title 'Break is over! Get back to work 😬'\
         -appIcon '~/Pictures/pumpkin.png'\
         -sound Crystal"
+
+export XDG_CONFIG_HOME="$HOME/.config"

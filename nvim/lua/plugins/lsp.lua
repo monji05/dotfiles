@@ -61,30 +61,50 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
+    setup = {
+      -- example to setup with typescript.nvim
+      -- tsserver = function(_, opts)
+      --   require("typescript").setup({ server = opts })
+      --   return true
+      -- end,
+      -- Specify * to use this function as a fallback for any server
+      -- ["*"] = function(server, opts) end,
+      intelephense = function(_, opts) end,
+      typo_ls = function(_, opts) end,
+    },
+    dependencies = { "saghen/blink.cmp" },
     opts = {
-      -- options for vim.lsp.buf.format
-      -- `bufnr` and `filter` is handled by the LazyVim formatter,
-      -- but can be also overridden when specified
-      format = {
-        formatting_options = nil,
-        timeout_ms = nil,
-        -- filter = function(client)
-        --   return client.name ~= "intelephense"
-        -- end,
+      servers = {
+        lua_ls = {},
       },
-      -- return true if you don't want this server to be setup with lspconfig
-      ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
-      setup = {
-        -- example to setup with typescript.nvim
-        -- tsserver = function(_, opts)
-        --   require("typescript").setup({ server = opts })
-        --   return true
-        -- end,
-        -- Specify * to use this function as a fallback for any server
-        -- ["*"] = function(server, opts) end,
-        intelephense = function(_, opts) end,
-        typo_ls = function(_, opts) end,
+    },
+    confpig = function(_, opts)
+      local lspconfig = require("lspconfig")
+      for server, config in pairs(opts.servers) do
+        config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+        lspconfig[server].setup(config)
+      end
+    end,
+  },
+  {
+    {
+      "saghen/blink.cmp",
+      dependencies = "rafamadriz/friendly-snippets",
+
+      version = "*",
+      opts = {
+        keymap = { preset = "default" },
+
+        appearance = {
+          use_nvim_cmp_as_default = true,
+          nerd_font_variant = "mono",
+        },
+
+        sources = {
+          default = { "lsp", "path", "snippets", "buffer" },
+        },
       },
+      opts_extend = { "sources.default" },
     },
   },
 }
