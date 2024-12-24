@@ -62,13 +62,6 @@ return {
   {
     "neovim/nvim-lspconfig",
     setup = {
-      -- example to setup with typescript.nvim
-      -- tsserver = function(_, opts)
-      --   require("typescript").setup({ server = opts })
-      --   return true
-      -- end,
-      -- Specify * to use this function as a fallback for any server
-      -- ["*"] = function(server, opts) end,
       intelephense = function(_, opts) end,
       typo_ls = function(_, opts) end,
     },
@@ -76,35 +69,46 @@ return {
     opts = {
       servers = {
         lua_ls = {},
+        intelephense = {},
       },
     },
-    confpig = function(_, opts)
+    config = function(_, opts)
       local lspconfig = require("lspconfig")
       for server, config in pairs(opts.servers) do
         config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
         lspconfig[server].setup(config)
       end
+      lspconfig.typos_lsp.setup({
+        -- Logging level of the language server. Logs appear in :LspLog. Defaults to error.
+        cmd_env = { RUST_LOG = "error" },
+        init_options = {
+          -- Custom config. Used together with a config file found in the workspace or its parents,
+          -- taking precedence for settings declared in both.
+          -- Equivalent to the typos `--config` cli argument.
+          config = "~/code/typos-lsp/crates/typos-lsp/tests/typos.toml",
+          -- How typos are rendered in the editor, can be one of an Error, Warning, Info or Hint.
+          -- Defaults to error.
+          diagnosticSeverity = "Error",
+        },
+      })
     end,
   },
   {
-    {
-      "saghen/blink.cmp",
-      dependencies = "rafamadriz/friendly-snippets",
+    "saghen/blink.cmp",
+    dependencies = "rafamadriz/friendly-snippets",
 
-      version = "*",
-      opts = {
-        keymap = { preset = "default" },
-
-        appearance = {
-          use_nvim_cmp_as_default = true,
-          nerd_font_variant = "mono",
-        },
-
-        sources = {
-          default = { "lsp", "path", "snippets", "buffer" },
-        },
+    version = "*",
+    opts = {
+      -- keymap = { preset = "default" },
+      appearance = {
+        use_nvim_cmp_as_default = true,
+        nerd_font_variant = "mono",
       },
-      opts_extend = { "sources.default" },
+
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+      },
     },
+    opts_extend = { "sources.default" },
   },
 }
