@@ -63,13 +63,14 @@ return {
     "neovim/nvim-lspconfig",
     setup = {
       intelephense = function(_, opts) end,
-      typo_ls = function(_, opts) end,
+      -- tsserver = function(_, opts) end,
     },
     dependencies = { "saghen/blink.cmp" },
     opts = {
       servers = {
         lua_ls = {},
         intelephense = {},
+        -- tsserver = {},
       },
     },
     config = function(_, opts)
@@ -110,5 +111,21 @@ return {
       },
     },
     opts_extend = { "sources.default" },
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    config = function()
+      local lspconfig = require("lspconfig")
+      require("mason-lspconfig").setup_handlers({
+        ts_ls = function()
+          lspconfig.tsserver.setup({
+            on_attach = function(client, bufnr)
+              client.server_capabilities.documentFormattingProvider = false
+              client.server_capabilities.documentRangeFormattingProvider = false
+            end,
+          })
+        end,
+      })
+    end,
   },
 }
