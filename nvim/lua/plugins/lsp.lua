@@ -77,23 +77,21 @@ return {
     end,
   },
   {
-    {
-      "saghen/blink.cmp",
-      dependencies = "rafamadriz/friendly-snippets",
+    "saghen/blink.cmp",
+    dependencies = "rafamadriz/friendly-snippets",
 
-      version = "*",
-      opts = {
+    version = "*",
+    opts = {
 
-        appearance = {
-          use_nvim_cmp_as_default = true,
-          nerd_font_variant = "mono",
-        },
-
-        sources = {
-          default = { "lsp", "path", "snippets", "buffer" },
-        },
+      appearance = {
+        use_nvim_cmp_as_default = true,
+        nerd_font_variant = "mono",
       },
-      opts_extend = { "sources.default" },
+
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+      },
     },
+    opts_extend = { "sources.default" },
   },
 }
