@@ -248,7 +248,18 @@ return {
     "m-demare/hlargs.nvim",
     config = function()
       require("hlargs").setup({})
+      -- solarized-osaka
       vim.api.nvim_command([[highlight Hlargs guifg=#c94c16]])
     end,
+    -- vscode
+    -- config = function()
+    --   require("hlargs").setup({
+    --     color = "#9CDCFE",
+    --   })
+    -- end,
+  },
+  {
+    -- for vscode
+    -- "HiPhish/rainbow-delimiters.nvim",
   },
 }
