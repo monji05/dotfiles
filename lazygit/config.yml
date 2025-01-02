@@ -15,3 +15,8 @@ customCommands:
     context: "files"
     description: 'create empty commit'
     loadingText: "creating empty commit"
+
+git:
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never

@@ -92,6 +92,7 @@ return {
     indent = {
       enabled = false,
     },
+    lazygit = { enabled = true },
   },
   keys = {
     {
