@@ -20,7 +20,7 @@ keymap("n", "<leader>q", ":q<CR>", { noremap = false, desc = "quit current file"
 keymap("n", "cc", ":nohl<CR>", opts)
 
 -- Select all
--- keymap("n", "<C-a>", "gg<S-v>G", opts)
+keymap("n", "<C-a>", "gg<S-v>G", opts)
 
 -- New tab
 keymap("n", "te", ":tabedit<CR>", opts)
