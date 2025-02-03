@@ -134,13 +134,13 @@ return {
     "monaqa/dial.nvim",
     keys = {
       {
-        "<C-a>",
+        "g+",
         function()
           require("dial.map").manipulate("increment", "normal")
         end,
       },
       {
-        "<C-x>",
+        "g-",
         function()
           require("dial.map").manipulate("decrement", "normal")
         end,

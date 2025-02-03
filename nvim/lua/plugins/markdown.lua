@@ -1,5 +1,10 @@
 return {
   {
+    "OXY2DEV/markview.nvim",
+    lazy = false,
+    ft = "markdown",
+  },
+  {
     "mpas/marp-nvim",
     config = function()
       require("marp").setup({
