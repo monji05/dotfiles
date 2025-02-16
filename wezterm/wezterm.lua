@@ -24,8 +24,10 @@ config.send_composed_key_when_right_alt_is_pressed = false
 -- solarized-osaka night colorscheme
 config.colors = {
 	-- solarized-osaka
-	background = "#00181a",
+	-- background = "#00181a",
 	-- background = "#001011",
+	-- darker #002B36
+	background = "#001b22",
 
 	-- solarized
 	-- background = "#002B36",
@@ -35,6 +37,9 @@ config.colors = {
 	-- background = "1E2326",
 	-- background = "272e33",
 
+	-- vscode
+	-- background = "#1F1F1F",
+	-- background = "#1E1E1E",
 	cursor_bg = "#47FF9C",
 	cursor_border = "#c0caf5",
 	cursor_fg = "#1a1b26",

@@ -6,8 +6,11 @@ return {
     event = { "BufReadPost", "BufAdd", "BufNewFile" },
     config = function()
       require("solarized-osaka").setup({
-        comments = { italic = true },
-        keywords = { italic = true },
+        styles = {
+          comments = { italic = true },
+          keywords = { italic = true },
+          functions = { italic = true },
+        },
 
         on_colors = function(colors)
           colors.base0 = colors.base1
