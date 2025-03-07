@@ -44,8 +44,8 @@ return {
       require("incline").setup({
         highlight = {
           groups = {
-            InclineNormalNC = { guibg = colors.base04, guifg = colors.base00 },
-            InclineNormal = { guibg = colors.magenta900, guifg = colors.violet500 },
+            InclineNormal = { guibg = colors.magenta500, guifg = colors.base04 },
+            InclineNormalNC = { guifg = colors.violet500, guibg = colors.base03 },
           },
         },
         window = { margin = { vertical = 0, horizontal = 1 } },
@@ -58,51 +58,8 @@ return {
             filename = "[+] " .. filename
           end
 
-          local function get_git_diff()
-            local icons = { removed = " ", changed = " ", added = " " }
-            local signs = vim.b[props.buf].gitsigns_status_dict
-            local labels = {}
-            if signs == nil then
-              return labels
-            end
-            for name, icon in pairs(icons) do
-              if tonumber(signs[name]) and signs[name] > 0 then
-                table.insert(labels, { icon .. signs[name] .. " ", group = "Diff" .. name })
-              end
-            end
-            if #labels > 0 then
-              table.insert(labels, { "┊ " })
-            end
-            return labels
-          end
-
-          local function get_diagnostic_label()
-            local icons = { error = " ", warn = " ", info = " ", hint = " " }
-            local label = {}
-
-            for severity, icon in pairs(icons) do
-              local n = #vim.diagnostic.get(props.buf, { severity = vim.diagnostic.severity[string.upper(severity)] })
-              if n > 0 then
-                table.insert(label, { icon .. n .. " ", group = "DiagnosticSign" .. severity })
-              end
-            end
-            if #label > 0 then
-              table.insert(label, { "┊ " })
-            end
-            return label
-          end
-
-          local miniIcons = require("mini.icons")
-          local icon = miniIcons.get("file", filename)
-          local devicons = require("nvim-web-devicons")
-          local _icon, color = devicons.get_icon_color(filename)
-          return {
-            { get_git_diff() },
-            { get_diagnostic_label() },
-            { icon, guifg = color },
-            { " " },
-            { filename, gui = "bold,italic" },
-          }
+          local icon, color = require("nvim-web-devicons").get_icon_color(filename)
+          return { { icon, guifg = color }, { " " }, { filename } }
         end,
       })
     end,
