@@ -1,6 +1,7 @@
 return {
   {
     "romgrk/barbar.nvim",
+    event = "BufReadPre",
     keys = {
       { "<Tab>", "<Cmd>BufferNext<CR>" },
       { "<S-Tab>", "<Cmd>BufferPrevious<CR>" },
