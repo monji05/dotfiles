@@ -1,20 +1,19 @@
 return {
   {
     "nvim-lualine/lualine.nvim",
-    opts = {
-      sections = {
-        lualine_a = { "mode" },
-        lualine_b = { "branch" },
-        lualine_c = {
-          { "filetype", icon_only = true, separator = "", padding = { left = 1, right = -1 } },
-          LazyVim.lualine.pretty_path(),
-          "diff",
-          "diagnostics",
-        },
-        lualine_x = { "encoding", "fileformat", "filetype" },
-        lualine_y = { "progress" },
-        lualine_z = { "location" },
-      },
-    },
+    opts = function(_, opts)
+      local LazyVim = require("lazyvim.util")
+      opts.sections.lualine_c[4] = {
+        LazyVim.lualine.pretty_path({
+          length = 0,
+          relative = "cwd",
+          modified_hl = "MatchParen",
+          directory_hl = "",
+          filename_hl = "Bold",
+          modified_sign = "",
+          readonly_icon = " 󰌾 ",
+        }),
+      }
+    end,
   },
 }
