@@ -1,13 +1,10 @@
 return {
   {
-    "OXY2DEV/markview.nvim",
-    lazy = false,
-    ft = "markdown",
-    opts = {
-      code_blocks = {
-        label_direction = "left",
-      },
-    },
+    "MeanderingProgrammer/render-markdown.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" },
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    opts = {},
   },
   {
     "mpas/marp-nvim",
