@@ -1,15 +1,5 @@
 return {
   {
-    "OXY2DEV/markview.nvim",
-    lazy = false,
-    ft = "markdown",
-    opts = {
-      code_blocks = {
-        label_direction = "left",
-      },
-    },
-  },
-  {
     "mpas/marp-nvim",
     config = function()
       require("marp").setup({
