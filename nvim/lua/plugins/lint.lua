@@ -26,4 +26,21 @@ return {
       end,
     })
   end,
+  {
+    "nvimtools/none-ls.nvim",
+    config = function()
+      local null_ls = require("null-ls")
+      local phpstan = null_ls.builtins.diagnostics.phpstan
+      phpstan.command = "..." --  fullpath phpstan command
+      phpstan.args = {
+        "analyse",
+        "--memory-limit=2G",
+        "-l",
+        "9",
+        "-c",
+        "neon.dist", -- full path neon or neon.dist
+        "$FILENAME",
+      }
+    end,
+  },
 }
