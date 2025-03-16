@@ -4,6 +4,7 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
+    explore = { enbale = true },
     bigfile = { enabled = true },
     dashboard = {
       preset = {
@@ -74,7 +75,7 @@ return {
       },
       git = {
         -- patterns to match Git signs
-        patterns = { "GitSign", "MiniDiffSign" },
+        patterns = { "GitSign" },
       },
       refresh = 50, -- refresh at most every 50ms
     },
@@ -197,6 +198,20 @@ return {
             conceallevel = 3,
           },
         })
+      end,
+    },
+    {
+      ";f",
+      desc = "File Picker",
+      function()
+        Snacks.explorer.open()
+      end,
+    },
+    {
+      ";b",
+      desc = "Open Buffer",
+      function()
+        Snacks.explorer.reveal()
       end,
     },
   },
