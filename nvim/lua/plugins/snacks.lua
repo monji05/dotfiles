@@ -229,6 +229,20 @@ return {
         Snacks.picker.git_diff()
       end,
     },
+    {
+      "<leader>sb",
+      function()
+        Snacks.picker.lines()
+      end,
+      desc = "Buffer Lines",
+    },
+    {
+      "<leader>sB",
+      function()
+        Snacks.picker.grep_buffers()
+      end,
+      desc = "Grep Open Buffers",
+    },
   },
   init = function()
     vim.api.nvim_create_autocmd("User", {
