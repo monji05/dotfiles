@@ -7,8 +7,6 @@ return {
         "gitcommit",
         "gitignore",
         "http",
-        "norg",
-        "norg_meta",
         "php",
         "scss",
         "sql",

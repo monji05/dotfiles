@@ -5,6 +5,7 @@ return {
   ---@type snacks.Config
   opts = {
     explore = { enbale = true },
+    picker = { enable = true },
     bigfile = { enabled = true },
     dashboard = {
       preset = {
@@ -204,14 +205,28 @@ return {
       ";f",
       desc = "File Picker",
       function()
-        Snacks.explorer.open()
+        Snacks.picker.files()
+      end,
+    },
+    {
+      ";r",
+      desc = "Grep source",
+      function()
+        Snacks.picker.grep()
       end,
     },
     {
       ";b",
-      desc = "Open Buffer",
+      desc = "Buffers",
       function()
-        Snacks.explorer.reveal()
+        Snacks.picker.buffers()
+      end,
+    },
+    {
+      "<leader>gd",
+      desc = "Git Diff (hunk)",
+      function()
+        Snacks.picker.git_diff()
       end,
     },
   },
