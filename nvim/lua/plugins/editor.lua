@@ -173,41 +173,4 @@ return {
       end,
     },
   },
-  {
-    "echasnovski/mini.files",
-    version = "*",
-    opts = {
-      windows = {
-        preview = true,
-        width_focus = 80,
-        width_preview = 80,
-      },
-    },
-    keys = {
-      {
-        "<leader>fm",
-        function()
-          require("mini.files").open(vim.api.nvim_buf_get_name(0), true)
-        end,
-        desc = "Open mini.files (Directory of Current File)",
-      },
-    },
-  },
-  {
-    "leath-dub/snipe.nvim",
-    keys = {
-      {
-        ";b",
-        function()
-          require("snipe").open_buffer_menu()
-        end,
-        desc = "Open Snipe buffer menu",
-      },
-    },
-    opts = {
-      ui = {
-        position = "center",
-      },
-    },
-  },
 }

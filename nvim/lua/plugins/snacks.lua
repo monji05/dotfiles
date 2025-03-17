@@ -4,6 +4,8 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
+    explore = { enbale = true },
+    picker = { enable = true },
     bigfile = { enabled = true },
     dashboard = {
       preset = {
@@ -74,7 +76,7 @@ return {
       },
       git = {
         -- patterns to match Git signs
-        patterns = { "GitSign", "MiniDiffSign" },
+        patterns = { "GitSign" },
       },
       refresh = 50, -- refresh at most every 50ms
     },
@@ -198,6 +200,48 @@ return {
           },
         })
       end,
+    },
+    {
+      ";f",
+      desc = "File Picker",
+      function()
+        Snacks.picker.files()
+      end,
+    },
+    {
+      ";r",
+      desc = "Grep source",
+      function()
+        Snacks.picker.grep()
+      end,
+    },
+    {
+      ";b",
+      desc = "Buffers",
+      function()
+        Snacks.picker.buffers()
+      end,
+    },
+    {
+      "<leader>gd",
+      desc = "Git Diff (hunk)",
+      function()
+        Snacks.picker.git_diff()
+      end,
+    },
+    {
+      "<leader>sb",
+      function()
+        Snacks.picker.lines()
+      end,
+      desc = "Buffer Lines",
+    },
+    {
+      "<leader>sB",
+      function()
+        Snacks.picker.grep_buffers()
+      end,
+      desc = "Grep Open Buffers",
     },
   },
   init = function()
