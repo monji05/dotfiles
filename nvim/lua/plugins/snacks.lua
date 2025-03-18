@@ -243,6 +243,13 @@ return {
       end,
       desc = "Grep Open Buffers",
     },
+    {
+      "<leader>f",
+      desc = "Open file explorer",
+      function()
+        Snacks.explorer.open()
+      end,
+    },
   },
   init = function()
     vim.api.nvim_create_autocmd("User", {
