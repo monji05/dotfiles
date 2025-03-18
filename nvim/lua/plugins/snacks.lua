@@ -4,8 +4,8 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
-    explore = { enbale = true },
-    picker = { enable = true },
+    explore = { enabled = true },
+    picker = { enabled = true },
     bigfile = { enabled = true },
     dashboard = {
       preset = {
