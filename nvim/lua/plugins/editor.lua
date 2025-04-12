@@ -56,25 +56,6 @@ return {
     cmd = { "LazyGit" },
   },
   {
-    "f-person/git-blame.nvim",
-    cmd = { "GitBlameCopyCommitURL", "GitBlameOpenCommitURL", "GitBlameCopyFileURL", "GitBlameToggle" },
-    keys = {
-      {
-        "<leader>gu",
-        "<CMD>GitBlameCopyCommitURL<CR>",
-        desc = "copy commit URL",
-      },
-      {
-        "<leader>bf",
-        "<CMD>GitBlameCopyFileURL<CR>",
-        desc = "copy file URL",
-      },
-    },
-    opts = {
-      enabled = false,
-    },
-  },
-  {
     -- very useful join, split word in bracket, function
     "Wansmer/treesj",
     desc = "Toggle Treesitter Join",
