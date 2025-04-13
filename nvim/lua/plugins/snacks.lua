@@ -243,6 +243,45 @@ return {
         Snacks.explorer.open()
       end,
     },
+    {
+      "<leader>cl",
+      desc = "Open clip history",
+      function()
+        Snacks.picker.cliphist()
+      end,
+    },
+    {
+      ";g",
+      desc = "Open git branches",
+      function()
+        Snacks.picker.git_branches()
+      end,
+    },
+    {
+      ";w",
+      desc = "Grep word",
+      function()
+        Snacks.picker.grep_word()
+      end,
+    },
+    -- {
+    --   show syntax highlights
+    --   :lua Snacks.picker.highlights()
+    -- },
+    {
+      "<leader>n",
+      desc = "Open notifications",
+      function()
+        Snacks.picker.notifications()
+      end,
+    },
+    {
+      ";;",
+      desc = "Open last picker",
+      function()
+        Snacks.picker.resume()
+      end,
+    },
   },
   init = function()
     vim.api.nvim_create_autocmd("User", {
