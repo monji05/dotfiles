@@ -19,4 +19,7 @@ return {
       goto_previous_end = { ["[F"] = "@function.outer", ["[C"] = "@class.outer" },
     },
   },
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+  },
 }
