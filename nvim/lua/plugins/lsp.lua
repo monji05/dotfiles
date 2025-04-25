@@ -209,4 +209,44 @@ return {
       })
     end,
   },
+  {
+    "bassamsdata/namu.nvim",
+    config = function()
+      require("namu").setup({
+        movement = {
+          next = { "<C-n>", "<DOWN>" }, -- Support multiple keys
+          previous = { "<C-p>", "<UP>" }, -- Support multiple keys
+          close = { "<ESC>" }, -- close mapping
+          select = { "<CR>" }, -- select mapping
+          delete_word = {}, -- delete word mapping
+          clear_line = {}, -- clear line mapping
+        },
+        -- Enable the modules you want
+        namu_symbols = {
+          enable = true,
+          options = {}, -- here you can configure namu
+        },
+        -- Optional: Enable other modules if needed
+        ui_select = { enable = false }, -- vim.ui.select() wrapper
+      })
+      -- === Suggested Keymaps: ===
+      vim.keymap.set("n", "<leader>ss", ":Namu symbols<cr>", {
+        desc = "Jump to LSP symbol",
+        silent = true,
+      })
+      vim.keymap.set("n", "<leader>sw", ":Namu workspace<cr>", {
+        desc = "LSP Symbols - Workspace",
+        silent = true,
+      })
+    end,
+  },
+  {
+    "rachartier/tiny-inline-diagnostic.nvim",
+    event = "VeryLazy", -- Or `LspAttach`
+    priority = 1000,
+    config = function()
+      require("tiny-inline-diagnostic").setup()
+      vim.diagnostic.config({ virtual_text = false }) -- Only if needed in your configuration, if you already have native LSP diagnostics
+    end,
+  },
 }
