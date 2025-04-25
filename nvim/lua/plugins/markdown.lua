@@ -8,6 +8,7 @@ return {
   },
   {
     "mpas/marp-nvim",
+    ft = "markdown",
     config = function()
       require("marp").setup({
         port = 8080,
