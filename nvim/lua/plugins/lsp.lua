@@ -123,6 +123,9 @@ return {
             fallbacks = { "lsp" },
           },
         },
+        per_filetype = {
+          codecompanion = { "codecompanion" },
+        },
       },
       completion = {
         menu = {
