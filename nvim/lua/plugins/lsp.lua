@@ -5,6 +5,10 @@ return {
       local icons = require("lazyvim.config").icons
 
       require("lspsaga").setup({
+        symbol_in_winbar = {
+          enable = false,
+        },
+        show_code_action = true,
         debug = false,
         -- for disable phpactor code_action
         lightbulb = {
