@@ -8,6 +8,8 @@ return {
         php = { "phpcbf" },
         typescript = { "prettier" },
         javascript = { "prettier" },
+        typescriptreact = { "prettierd" },
+        javascriptreact = { "prettierd" },
       },
       formatters = {
         phpcbf = {
