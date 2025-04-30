@@ -1,6 +1,7 @@
 return {
   {
     "nvimdev/lspsaga.nvim",
+    event = "BufReadPre",
     config = function()
       local icons = require("lazyvim.config").icons
 
@@ -61,6 +62,7 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
+    event = "BufReadPre",
     setup = {
       intelephense = function(_, opts) end,
       -- tsserver = function(_, opts) end,
@@ -242,7 +244,7 @@ return {
   },
   {
     "rachartier/tiny-inline-diagnostic.nvim",
-    event = "VeryLazy", -- Or `LspAttach`
+    event = "LspAttach", -- Or `LspAttach`
     priority = 1000,
     config = function()
       require("tiny-inline-diagnostic").setup()
