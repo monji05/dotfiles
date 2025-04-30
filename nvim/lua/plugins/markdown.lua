@@ -9,7 +9,7 @@ return {
   },
   {
     "mpas/marp-nvim",
-    keys = { "<leader>mt", "<leader>ms" },
+    ft = "markdown",
     config = function()
       require("marp").setup({
         port = 8081,

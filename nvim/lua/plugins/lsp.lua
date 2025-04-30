@@ -6,6 +6,10 @@ return {
       local icons = require("lazyvim.config").icons
 
       require("lspsaga").setup({
+        symbol_in_winbar = {
+          enable = false,
+        },
+        show_code_action = true,
         debug = false,
         -- for disable phpactor code_action
         lightbulb = {
@@ -58,42 +62,6 @@ return {
       vim.keymap.set("n", "gh", "<CMD>Lspsaga hover_doc<CR>", opt)
       vim.keymap.set("n", "gf", "<CMD>Lspsaga finder<Cr>", opt)
       vim.keymap.set("n", "<leader>j", "<CMD>Lspsaga diagnostic_jump_next<CR>", opt)
-    end,
-  },
-  {
-    "neovim/nvim-lspconfig",
-    event = "BufReadPre",
-    setup = {
-      intelephense = function(_, opts) end,
-      -- tsserver = function(_, opts) end,
-    },
-    dependencies = { "saghen/blink.cmp" },
-    opts = {
-      servers = {
-        lua_ls = {},
-        intelephense = {},
-        -- tsserver = {},
-      },
-    },
-    config = function(_, opts)
-      local lspconfig = require("lspconfig")
-      for server, config in pairs(opts.servers) do
-        config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-        lspconfig[server].setup(config)
-      end
-      lspconfig.typos_lsp.setup({
-        -- Logging level of the language server. Logs appear in :LspLog. Defaults to error.
-        cmd_env = { RUST_LOG = "error" },
-        init_options = {
-          -- Custom config. Used together with a config file found in the workspace or its parents,
-          -- taking precedence for settings declared in both.
-          -- Equivalent to the typos `--config` cli argument.
-          config = "~/code/typos-lsp/crates/typos-lsp/tests/typos.toml",
-          -- How typos are rendered in the editor, can be one of an Error, Warning, Info or Hint.
-          -- Defaults to error.
-          diagnosticSeverity = "Error",
-        },
-      })
     end,
   },
   {
@@ -244,7 +212,7 @@ return {
   },
   {
     "rachartier/tiny-inline-diagnostic.nvim",
-    event = "LspAttach", -- Or `LspAttach`
+    event = "LspAttach",
     priority = 1000,
     config = function()
       require("tiny-inline-diagnostic").setup()
