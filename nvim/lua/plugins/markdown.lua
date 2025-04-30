@@ -1,6 +1,7 @@
 return {
   {
     "MeanderingProgrammer/render-markdown.nvim",
+    ft = "markdown",
     dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" },
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
@@ -8,6 +9,7 @@ return {
   },
   {
     "mpas/marp-nvim",
+    keys = { "<leader>mt", "<leader>ms" },
     config = function()
       require("marp").setup({
         port = 8081,
