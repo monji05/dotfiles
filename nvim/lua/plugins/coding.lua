@@ -110,11 +110,24 @@ return {
       "antoinemadec/FixCursorHold.nvim",
       "nvim-treesitter/nvim-treesitter",
       "olimorris/neotest-phpunit",
+      "praem90/neotest-docker-phpunit.nvim",
     },
     config = function()
       require("neotest").setup({
         adapters = {
-          require("neotest-phpunit"),
+          require("neotest-docker-phpunit").setup({
+            phpunit_cmd = "neotest-docker-phpunit",
+            docker_phpunit = {
+              default = {
+                container = "v2_php",
+                volume = "/Users/erikomishina/www/offerbox/public_html/offerbox-v2/:/var/www/offerbox-v2/",
+                standalone = false,
+              },
+            },
+          }),
+        },
+        diagnostic = {
+          enabled = true,
         },
       })
     end,
