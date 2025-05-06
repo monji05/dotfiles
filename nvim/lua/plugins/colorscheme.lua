@@ -31,10 +31,28 @@ return {
           }
           hl.LineNr = {
             fg = c.base01,
+            bg = c.base02,
           }
           hl.CursorLineNr = {
             fg = c.yellow500,
+            bg = c.base02,
           }
+          hl.GitSignsAdd = {
+            fg = c.green500,
+            bg = c.base02,
+          }
+          hl.GitSignsChange = {
+            fg = c.yellow500,
+            bg = c.base02,
+          }
+          hl.GitSignsDelete = {
+            fg = c.red500,
+            bg = c.base02,
+          }
+          -- hl.DiagnosticHint = {
+          --   bg = c.green900,
+          --   fg = c.green500,
+          -- }
         end,
       })
       vim.cmd([[colorscheme solarized-osaka]])
