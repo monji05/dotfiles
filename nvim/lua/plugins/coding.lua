@@ -40,6 +40,7 @@ return {
   },
   {
     "williamboman/mason.nvim",
+    version = "^1.0.0",
     keys = { "Mason", "MaonsInstall" },
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
