@@ -128,6 +128,7 @@ return {
   {
     ---@class wk.Opts
     "folke/which-key.nvim",
+    keys = { "<leader>" },
     opts = {
       ---@type false | "classic" | "modern" | "helix"
       preset = "helix",
