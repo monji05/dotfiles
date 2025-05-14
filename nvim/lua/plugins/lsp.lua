@@ -65,8 +65,6 @@ return {
   },
   {
     "saghen/blink.cmp",
-    { "rafamadriz/friendly-snippets", lazy = true },
-    { "folke/snacks.nvim", lazy = true },
 
     version = "*",
     opts = {
