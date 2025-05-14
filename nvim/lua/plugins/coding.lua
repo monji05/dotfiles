@@ -34,21 +34,6 @@ return {
     end,
   },
   {
-    "hrsh7th/nvim-cmp",
-    { "hrsh7th/cmp-cmdline", lazy = true },
-    { "lukas-reineke/cmp-rg", lazy = true },
-    { "f3fora/cmp-spell", lazy = true },
-    opts = function()
-      require("cmp").setup({
-        sources = {
-          {
-            name = "rg",
-          },
-        },
-      })
-    end,
-  },
-  {
     "altermo/ultimate-autopair.nvim",
     event = { "InsertEnter", "CmdlineEnter" },
     branch = "v0.6", --recommended as each new version will have breaking changes
