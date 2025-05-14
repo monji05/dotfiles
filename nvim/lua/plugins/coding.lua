@@ -62,6 +62,14 @@ return {
   },
   {
     "akinsho/git-conflict.nvim",
+    keys = {
+      "co",
+      "ct",
+      "cb",
+      "c0",
+      "]x",
+      "[x",
+    },
     -- co — choose ours
     -- ct — choose theirs
     -- cb — choose both
