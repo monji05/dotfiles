@@ -36,7 +36,7 @@ return {
   },
   {
     "shellRaining/hlchunk.nvim",
-    event = { "BufEnter" },
+    event = { "UIEnter" },
     opts = {
       chunk = {
         enable = true,
@@ -52,7 +52,6 @@ return {
   },
   {
     "kdheepak/lazygit.nvim",
-    lazy = true,
     cmd = { "LazyGit" },
   },
   {
