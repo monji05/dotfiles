@@ -66,10 +66,7 @@ return {
   },
   {
     "saghen/blink.cmp",
-    dependencies = {
-      "rafamadriz/friendly-snippets",
-      "folke/snacks.nvim",
-    },
+    event = { "InsertEnter" },
 
     version = "*",
     opts = {
@@ -137,78 +134,46 @@ return {
   },
   {
     "xzbdmw/colorful-menu.nvim",
-    config = function()
-      require("colorful-menu").setup({
-        ls = {
-          lua_ls = {
-            arguments_hl = "@comment",
-          },
-          gopls = {
-            align_type_to_right = true,
-            add_colon_before_type = false,
-          },
-          ts_ls = {
-            extra_info_hl = "@comment",
-          },
-          vtsls = {
-            extra_info_hl = "@comment",
-          },
-          ["rust-analyzer"] = {
-            extra_info_hl = "@comment",
-            align_type_to_right = true,
-          },
-          clangd = {
-            extra_info_hl = "@comment",
-            align_type_to_right = true,
-            import_dot_hl = "@comment",
-          },
-          zls = {
-            align_type_to_right = true,
-          },
-          roslyn = {
-            extra_info_hl = "@comment",
-          },
-          basedpyright = {
-            extra_info_hl = "@comment",
-          },
+    lazy = true,
+    opts = {
+      ls = {
+        lua_ls = {
+          arguments_hl = "@comment",
+        },
+        gopls = {
+          align_type_to_right = true,
+          add_colon_before_type = false,
+        },
+        ts_ls = {
+          extra_info_hl = "@comment",
+        },
+        vtsls = {
+          extra_info_hl = "@comment",
+        },
+        ["rust-analyzer"] = {
+          extra_info_hl = "@comment",
+          align_type_to_right = true,
+        },
+        clangd = {
+          extra_info_hl = "@comment",
+          align_type_to_right = true,
+          import_dot_hl = "@comment",
+        },
+        zls = {
+          align_type_to_right = true,
+        },
+        roslyn = {
+          extra_info_hl = "@comment",
+        },
+        basedpyright = {
+          extra_info_hl = "@comment",
+        },
 
-          fallback = true,
-        },
-        fallback_highlight = "@variable",
-        max_width = 60,
-      })
-    end,
-  },
-  {
-    "bassamsdata/namu.nvim",
-    config = function()
-      require("namu").setup({
-        movement = {
-          next = { "<C-n>", "<DOWN>" }, -- Support multiple keys
-          previous = { "<C-p>", "<UP>" }, -- Support multiple keys
-          close = { "<ESC>" }, -- close mapping
-          select = { "<CR>" }, -- select mapping
-          delete_word = {}, -- delete word mapping
-          clear_line = {}, -- clear line mapping
-        },
-        -- Enable the modules you want
-        namu_symbols = {
-          enable = true,
-          options = {}, -- here you can configure namu
-        },
-        -- Optional: Enable other modules if needed
-        ui_select = { enable = false }, -- vim.ui.select() wrapper
-      })
-      -- === Suggested Keymaps: ===
-      vim.keymap.set("n", "<leader>ss", ":Namu symbols<cr>", {
-        desc = "Jump to LSP symbol",
-        silent = true,
-      })
-      vim.keymap.set("n", "<leader>sw", ":Namu workspace<cr>", {
-        desc = "LSP Symbols - Workspace",
-        silent = true,
-      })
-    end,
+        fallback = true,
+      },
+      fallback_highlight = "@variable",
+      max_width = 60,
+    },
   },
   {
     "rachartier/tiny-inline-diagnostic.nvim",

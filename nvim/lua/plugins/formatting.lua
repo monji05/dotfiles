@@ -1,7 +1,10 @@
 return {
   {
     "stevearc/conform.nvim",
-    dependencies = { "mason.nvim", keys = { "Mason", "MaonsInstall" } },
+    { "mason.nvim", lazy = true, keys = {
+      "Mason",
+      "MaonsInstall",
+    } },
     opts = {
       formatters_by_ft = {
         json = { "jq" },

@@ -12,29 +12,9 @@ return {
     end,
   },
   {
-    -- Convenience file operations for neovim
-    "chrisgrieser/nvim-genghis",
-    dependencies = "stevearc/dressing.nvim",
-    config = function()
-      local keymap = vim.keymap.set
-      local genghis = require("genghis")
-      keymap("n", "<leader>yp", genghis.copyFilepath)
-      keymap("n", "<leader>yn", genghis.copyFilename)
-      -- keymap("n", "<leader>cx", genghis.chmodx)
-      keymap("n", "<leader>rf", genghis.renameFile)
-      keymap("n", "<leader>mf", genghis.moveAndRenameFile)
-      keymap("n", "<leader>nf", genghis.createNewFile)
-      keymap("n", "<leader>yf", genghis.duplicateFile)
-      -- keymap("n", "<leader>df", function() genghis.trashFile { trashLocation = "your/path" } end) -- default: "$HOME/.Trash".
-      -- keymap("x", "<leader>x", genghis.moveSelectionToNewFile)
-    end,
-  },
-  {
     "weirongxu/plantuml-previewer.vim",
-    dependencies = {
-      "tyru/open-browser.vim",
-      "aklt/plantuml-syntax",
-    },
+    { "tyru/open-browser.vim", lazy = true },
+    { "aklt/plantuml-syntax", lazy = true },
     ft = "plantuml",
     cmd = { "PlantumlOpen", "PlantumlStart", "PlantumlSave" },
   },
@@ -55,7 +35,6 @@ return {
   },
   {
     "williamboman/mason.nvim",
-    version = "^1.0.0",
     keys = { "Mason", "MaonsInstall" },
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
@@ -65,30 +44,6 @@ return {
         "intelephense",
         "lua-language-server",
         "tailwindcss-language-server",
-      })
-    end,
-  },
-  {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      "hrsh7th/cmp-cmdline",
-      "lukas-reineke/cmp-rg",
-      "f3fora/cmp-spell",
-    },
-    opts = function()
-      require("cmp").setup({
-        sources = {
-          {
-            name = "cmp-cmdline",
-          },
-          {
-            name = "rg",
-          },
-          {
-            name = "vim-dadbod-completion",
-            priority = 700,
-          },
-        },
       })
     end,
   },
@@ -106,14 +61,11 @@ return {
   {
     "nvim-neotest/neotest",
     cmd = { "Neotest" },
-    dependencies = {
-      "nvim-neotest/nvim-nio",
-      "nvim-lua/plenary.nvim",
-      "antoinemadec/FixCursorHold.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "olimorris/neotest-phpunit",
-      "praem90/neotest-docker-phpunit.nvim",
-    },
+    { "nvim-neotest/nvim-nio", lazy = true },
+    { "nvim-lua/plenary.nvim", lazy = true },
+    { "antoinemadec/FixCursorHold.nvim", lazy = true },
+    { "nvim-treesitter/nvim-treesitter", lazy = true },
+    { "olimorris/neotest-phpunit", lazy = true },
     config = function()
       require("neotest").setup({
         adapters = {
@@ -136,6 +88,14 @@ return {
   },
   {
     "akinsho/git-conflict.nvim",
+    keys = {
+      "co",
+      "ct",
+      "cb",
+      "c0",
+      "]x",
+      "[x",
+    },
     -- co — choose ours
     -- ct — choose theirs
     -- cb — choose both
@@ -195,6 +155,7 @@ return {
   {
     ---@class wk.Opts
     "folke/which-key.nvim",
+    keys = { "<leader>" },
     opts = {
       ---@type false | "classic" | "modern" | "helix"
       preset = "helix",
