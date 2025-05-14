@@ -65,10 +65,8 @@ return {
   },
   {
     "saghen/blink.cmp",
-    dependencies = {
-      "rafamadriz/friendly-snippets",
-      "folke/snacks.nvim",
-    },
+    { "rafamadriz/friendly-snippets", lazy = true },
+    { "folke/snacks.nvim", lazy = true },
 
     version = "*",
     opts = {

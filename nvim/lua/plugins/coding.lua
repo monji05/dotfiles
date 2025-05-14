@@ -14,7 +14,7 @@ return {
   {
     -- Convenience file operations for neovim
     "chrisgrieser/nvim-genghis",
-    dependencies = "stevearc/dressing.nvim",
+    { "stevearc/dressing.nvim", lazy = true },
     config = function()
       local keymap = vim.keymap.set
       local genghis = require("genghis")
@@ -31,10 +31,8 @@ return {
   },
   {
     "weirongxu/plantuml-previewer.vim",
-    dependencies = {
-      "tyru/open-browser.vim",
-      "aklt/plantuml-syntax",
-    },
+    { "tyru/open-browser.vim", lazy = true },
+    { "aklt/plantuml-syntax", lazy = true },
     ft = "plantuml",
     cmd = { "PlantumlOpen", "PlantumlStart", "PlantumlSave" },
   },
@@ -55,11 +53,9 @@ return {
   },
   {
     "hrsh7th/nvim-cmp",
-    dependencies = {
-      "hrsh7th/cmp-cmdline",
-      "lukas-reineke/cmp-rg",
-      "f3fora/cmp-spell",
-    },
+    { "hrsh7th/cmp-cmdline", lazy = true },
+    { "lukas-reineke/cmp-rg", lazy = true },
+    { "f3fora/cmp-spell", lazy = true },
     opts = function()
       require("cmp").setup({
         sources = {
@@ -84,13 +80,11 @@ return {
   {
     "nvim-neotest/neotest",
     cmd = { "Neotest" },
-    dependencies = {
-      "nvim-neotest/nvim-nio",
-      "nvim-lua/plenary.nvim",
-      "antoinemadec/FixCursorHold.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "olimorris/neotest-phpunit",
-    },
+    { "nvim-neotest/nvim-nio", lazy = true },
+    { "nvim-lua/plenary.nvim", lazy = true },
+    { "antoinemadec/FixCursorHold.nvim", lazy = true },
+    { "nvim-treesitter/nvim-treesitter", lazy = true },
+    { "olimorris/neotest-phpunit", lazy = true },
     config = function()
       require("neotest").setup({
         adapters = {
