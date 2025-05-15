@@ -36,7 +36,7 @@ return {
   -- filename
   {
     "b0o/incline.nvim",
-    { "craftzdog/solarized-osaka.nvim", lazy = true },
+    { "craftzdog/solarized-osaka.nvim" },
     event = "BufReadPre",
     priority = 1200,
     config = function()
