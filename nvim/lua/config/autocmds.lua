@@ -153,3 +153,59 @@ vim.api.nvim_create_user_command("ArchiveTask", function()
     print("Task archived to: " .. misc_file_path .. " and removed from original file")
   end
 end, {})
+
+-- create php file
+vim.api.nvim_create_user_command("CreatePhp", function()
+  local file_name = vim.fn.input("What is your file name: ")
+  if file_name == "" then
+    print("File name cannot be empty.")
+    return
+  end
+
+  local current_dir = vim.fn.expand("%:p:h")
+  local project_root = vim.fn.getcwd() -- プロジェクトのルートディレクトリを取得
+
+  -- プロジェクトルートからの相対パスを計算
+  local relative_path = string.sub(current_dir, #project_root + 14) -- +14は最初のofferbox-v2\を排除するため
+
+  -- relative_path の各ディレクトリ名の頭文字を大文字にする関数
+  local function capitalize_first_letter(str)
+    return (str:gsub("^%l", string.upper))
+  end
+
+  -- namespaceを生成 (ディレクトリ区切りを '\' に置換し、頭文字を大文字にする)
+  local namespace_parts = {}
+  for part in string.gmatch(relative_path, "[^/]+") do
+    table.insert(namespace_parts, capitalize_first_letter(part))
+  end
+  local namespace = table.concat(namespace_parts, "\\")
+
+  local class_name = string.gsub(file_name, "[^a-zA-Z0-9_]", "") -- クラス名として安全な文字列に変換
+  local file_path = current_dir .. "/" .. file_name .. ".php" -- ファイルパスはそのまま
+
+  local lines = {
+    "<?php",
+    "",
+    "declare(strict_types=1);",
+    "",
+    "namespace " .. namespace .. ";", -- namespace を追記 (末尾に ';' を追加)
+    "",
+    "final class " .. class_name,
+    "{",
+    "  public function __construct()",
+    "  {",
+    "  }",
+    "}",
+  }
+
+  local file = io.open(file_path, "w")
+  if file then
+    for _, line in ipairs(lines) do
+      file:write(line .. "\n")
+    end
+    file:close()
+    vim.cmd("edit " .. vim.fn.fnameescape(file_path)) -- 作成したファイルを開く
+  else
+    print("Failed to create file: " .. file_path)
+  end
+end, {})

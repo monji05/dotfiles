@@ -66,3 +66,6 @@ keymap("i", "∆", "<ESC>:m .+1<CR>==gi", opts)
 keymap("i", "˚", "<ESC>:m .-2<CR>==gi", opts)
 keymap("v", "∆", ":m '>+1<CR>gv=gv", opts)
 keymap("v", "˚", ":m '<-2<CR>gv=gv", opts)
+
+-- create php file
+keymap("n", ";c", ":CreatePhp<CR>", opts)
