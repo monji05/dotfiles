@@ -118,18 +118,38 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
+    -- config = function()
+    -- local lspconfig = require("lspconfig")
+    -- require("mason-lspconfig").setup_handlers({
+    --   ts_ls = function()
+    --     lspconfig.tsserver.setup({
+    --       on_attach = function(client, bufnr)
+    --         client.server_capabilities.documentFormattingProvider = false
+    --         client.server_capabilities.documentRangeFormattingProvider = false
+    --       end,
+    --     })
+    --   end,
+    -- })
+    -- end,
+  },
+  {
+    "neovim/nvim-lspconfig",
     config = function()
-      -- local lspconfig = require("lspconfig")
-      -- require("mason-lspconfig").setup_handlers({
-      --   ts_ls = function()
-      --     lspconfig.tsserver.setup({
-      --       on_attach = function(client, bufnr)
-      --         client.server_capabilities.documentFormattingProvider = false
-      --         client.server_capabilities.documentRangeFormattingProvider = false
-      --       end,
-      --     })
-      --   end,
-      -- })
+      local lspconfig = require("lspconfig")
+      lspconfig.intelephense.setup({
+        -- Server-specific settings. See `:help lspconfig-setup`
+        settings = {
+          ["intelephense"] = {
+            servers = {
+              intelephense = {
+                init_options = {
+                  provideFormatter = false,
+                },
+              },
+            },
+          },
+        },
+      })
     end,
   },
   {
