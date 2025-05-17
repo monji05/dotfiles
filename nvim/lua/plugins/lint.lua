@@ -1,7 +1,7 @@
 return {
   {
     "mfussenegger/nvim-lint",
-    config = function()
+    init = function()
       local lint = require("lint")
       local phpcs = lint.linters.phpcs
       phpcs.cmd = "phpcs"
@@ -11,8 +11,16 @@ return {
         "--report=json",
       }
 
+      local phpstan = lint.linters.phpstan
+      phpstan.cmd = "./offerbox-v2/vendor/bin/phpstan"
+      phpstan.args = {
+        "analyse",
+        "--level=9",
+        "--memory-limit=2G",
+      }
+
       lint.linters_by_ft = {
-        php = { "phpcs" },
+        php = { "phpcs", "phpstan" },
         javascript = { "eslint_d" },
         typescript = { "eslint_d" },
         javascriptreact = { "eslint_d" },
