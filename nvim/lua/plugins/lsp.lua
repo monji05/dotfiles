@@ -157,6 +157,7 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
+    cmd = { "Mason", "MasonInstall" },
     -- config = function()
     -- local lspconfig = require("lspconfig")
     -- require("mason-lspconfig").setup_handlers({
@@ -204,7 +205,7 @@ return {
   },
   {
     "xzbdmw/colorful-menu.nvim",
-    lazy = true,
+    event = "InsertEnter",
     opts = {
       ls = {
         lua_ls = {
