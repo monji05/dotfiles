@@ -133,6 +133,7 @@ return {
     -- end,
   },
   {
+    -- 自動フォーマットは無効にできたけど、diagnostic iconがE,I,Wになっちゃう
     "neovim/nvim-lspconfig",
     config = function()
       local lspconfig = require("lspconfig")
