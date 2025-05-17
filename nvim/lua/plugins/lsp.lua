@@ -98,7 +98,7 @@ return {
         preset = "default",
         ["<Up>"] = {},
         ["<Down>"] = {},
-        ["<Tab>"] = {
+        ["<CR>"] = {
           function(cmp)
             if cmp.snippet_active() then
               return cmp.accept()
@@ -109,6 +109,8 @@ return {
           "snippet_forward",
           "fallback",
         },
+
+        ["<Tab>"] = { "select_next", "fallback" },
         ["<S-Tab>"] = { "select_prev", "fallback" },
         ["<C-j>"] = { "select_next", "fallback" },
         ["<C-k>"] = { "select_prev", "fallback" },
