@@ -2,6 +2,7 @@
 return {
   {
     "numToStr/Comment.nvim",
+    keys = { "<leader>u", "gc" },
     config = function()
       require("Comment").setup({
         toggler = {
