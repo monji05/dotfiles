@@ -74,6 +74,24 @@ return {
         use_nvim_cmp_as_default = true,
         nerd_font_variant = "mono",
       },
+      keymap = {
+        ["<Up>"] = {},
+        ["<Down>"] = {},
+
+        ["<CR>"] = {
+          function(cmp)
+            if cmp.snippet_active() then
+              return cmp.accept()
+            else
+              return cmp.select_and_accept()
+            end
+          end,
+          "snippet_forward",
+          "fallback",
+       },
+        ["<Tab>"] = { "select_next", "fallback" },
+        ["<S-Tab>"] = { "select_prev", "fallback" },
+      },
 
       sources = {
         default = {
@@ -120,7 +138,7 @@ return {
           draw = {
             -- We don't need label_description now because label and label_description are already
             -- combined together in label by colorful-menu.nvim.
-            columns = { { "label", "label_description" }, { gap = 1, "kind_icon", "kind" } },
+            columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
             components = {
               kind_icon = {
                 text = function(ctx)
