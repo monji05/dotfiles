@@ -36,7 +36,7 @@ return {
   },
   {
     "shellRaining/hlchunk.nvim",
-    event = { "UIEnter" },
+    event = { "BufEnter" },
     opts = {
       chunk = {
         enable = true,
