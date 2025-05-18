@@ -63,6 +63,7 @@ return {
   },
   {
     "lewis6991/gitsigns.nvim",
+    event = { "BufEnter", "InsertEnter" },
     opts = {
       signs = {
         add = { text = "▎" },
