@@ -1,6 +1,6 @@
 customCommands:
   - key: "C"
-    command: "git cz"
+    command: "czg"
     description: "commit with commitizen"
     context: "files"
     loadingText: "opening commitizen commit tool"
@@ -9,7 +9,7 @@ customCommands:
   - key: "E"
     prompts:
     - type: "input"
-      title: "Epmty commit message"
+      title: "Empty commit message"
       initialValue: ""
     command: "git commit --allow-empty -m {{index .PromptResponses 0 | quote}}"
     context: "files"
