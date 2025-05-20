@@ -133,13 +133,6 @@ return {
                   return hl
                 end,
               },
-              kind = {
-                -- (optional) use highlights from mini.icons
-                highlight = function(ctx)
-                  local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
-                  return hl
-                end,
-              },
               label = {
                 text = function(ctx)
                   return require("colorful-menu").blink_components_text(ctx)
