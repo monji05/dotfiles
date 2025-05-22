@@ -165,6 +165,21 @@ return {
     -- end,
   },
   {
+    "williamboman/mason.nvim",
+    cmd = { "Mason" },
+    opts = function(_, opts)
+      vim.list_extend(opts.ensure_installed, {
+        "cspell",
+        "markdownlint",
+        "markdown-toc",
+        -- "intelephense",
+        "phpactor",
+        "lua-language-server",
+        "tailwindcss-language-server",
+      })
+    end,
+  },
+  {
     "neovim/nvim-lspconfig",
     config = function()
       local lspconfig = require("lspconfig")

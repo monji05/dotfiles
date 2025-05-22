@@ -35,20 +35,6 @@ return {
     opts = { use_default_keymaps = false },
   },
   {
-    "williamboman/mason.nvim",
-    keys = { "Mason", "MaonsInstall" },
-    opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed, {
-        "cspell",
-        "markdownlint",
-        "markdown-toc",
-        "intelephense",
-        "lua-language-server",
-        "tailwindcss-language-server",
-      })
-    end,
-  },
-  {
     "altermo/ultimate-autopair.nvim",
     event = { "InsertEnter", "CmdlineEnter" },
     branch = "v0.6", --recommended as each new version will have breaking changes
