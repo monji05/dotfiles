@@ -89,7 +89,7 @@ return {
           end,
           "snippet_forward",
           "fallback",
-       },
+        },
         ["<Tab>"] = { "select_next", "fallback" },
         ["<S-Tab>"] = { "select_prev", "fallback" },
       },
@@ -176,7 +176,6 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    cmd = { "Mason", "MasonInstall" },
     -- config = function()
     -- local lspconfig = require("lspconfig")
     -- require("mason-lspconfig").setup_handlers({
