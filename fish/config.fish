@@ -75,3 +75,8 @@ alias rest="timer 5m && terminal-notifier -message 'Pomodoro'\
         -sound Crystal"
 
 export XDG_CONFIG_HOME="$HOME/.config"
+
+# fzf.fish consig
+# Need to execute `fisher install PatrickF1/fzf.fish`
+# Search directory keymap to Ctrl+f
+fzf_configure_bindings --directory=\cf
