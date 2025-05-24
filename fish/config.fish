@@ -25,15 +25,24 @@ alias cd2='cd ../../'
 alias cd3='cd ../../../'
 alias cd4='cd ../../../../'
 alias cd5='cd ../../../../../'
-alias php_container='INIT=true docker exec php bash'
-alias v2php_container='docker compose -f docker-compose-arm64.yml exec -it v2_php bash'
+alias php_container='INIT=true docker compose exec php bash'
+alias v2php_container='cd ~/www/offerbox/public_html && docker compose exec -it v2_php bash'
+alias nginx_v2='cd ~/www/offerbox/public_html && docker compose exec -it v2_nginx bash'
 alias docker_up='cd ~/www/common_on_local && docker-compose up -d && cd ~/www/offerbox/public_html && docker-compose up -d'
 alias docker_down='cd ~/www/offerbox/public_html && docker-compose down && cd ~/www/common_on_local && docker-compose down'
+alias docker_stop='cd ~/www/offerbox/public_html && docker compose stop && cd ~/www/common_on_local && docker compose stop'
 # anyenvの用途は主にgulp sass がnode 9.4.0が必要だから
+# nodenvでnodeのバージョンを切り替える
+# nodenvで使いたいバージョンがなかったら、最新をpullする-> git -C /Users/erikomishina/.anyenv/envs/nodenv/plugins/node-build pull
 alias anyenv_init='eval (anyenv init - fish| source)'
 alias tmuxp='tmuxp load ~/.config/tmux/dev.yaml'
 alias admin_fe_node='docker exec -i -t node /bin/sh'
 alias admin_fe_playwright='docker exec -i -t playwright /bin/sh'
+alias admin_fe_up='cd ~/www/offerbox-admin-frontend && docker compose -f compose.local-ofb.yml up -d'
+
+# anyenv setup
+# It's too slow below
+# source (anyenv init -|psub)
 
 #theme
 set -g theme_color_scheme terminal-dark

@@ -62,6 +62,7 @@ return {
       vim.keymap.set("n", "gh", "<CMD>Lspsaga hover_doc<CR>", opt)
       vim.keymap.set("n", "gf", "<CMD>Lspsaga finder<Cr>", opt)
       vim.keymap.set("n", "<leader>j", "<CMD>Lspsaga diagnostic_jump_next<CR>", opt)
+      vim.keymap.set("n", "<leader>ca", "<CMD>Lspsaga code_action<CR>", opt)
     end,
   },
   {
@@ -194,14 +195,29 @@ return {
     "neovim/nvim-lspconfig",
     config = function()
       local lspconfig = require("lspconfig")
-      lspconfig.intelephense.setup({
+      lspconfig.phpactor.setup({
         -- Server-specific settings. See `:help lspconfig-setup`
         settings = {
-          ["intelephense"] = {
+          ["phpactor"] = {
             servers = {
-              intelephense = {
+              phpactor = {
                 init_options = {
                   provideFormatter = false,
+                  -- doc https://phpactor.readthedocs.io/en/master/lsp/vim.html
+                  -- phpstan config
+                  -- NOTE: phpactorのphpstanが動いていない
+                  -- ["language_server_phpstan.enabled"] = true,
+                  -- ["language_server_phpstan.bin"] = "%project_root%/offerbox-v2/vendor/bin/phpstan",
+                  -- ["language_server_phpstan.level"] = 9,
+                  -- ["language_server_phpstan.config"] = "./offerbox-v2/phpstan.neon.dist",
+                  -- ["language_server_phpstan.mem_limit"] = "2G",
+
+                  ["language_server.diagnostic_exclude_paths"] = {
+                    "node_modules/**/*",
+                    ".git/**/*",
+                    "vendor/**/*",
+                    "tests/**/*",
+                  },
                 },
               },
             },

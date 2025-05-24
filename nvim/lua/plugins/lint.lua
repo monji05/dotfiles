@@ -17,10 +17,14 @@ return {
         "analyse",
         "--level=9",
         "--memory-limit=2G",
+        "--error-format=json",
+        -- "-c",
+        -- "./phpstan.neon.dist",
       }
 
       lint.linters_by_ft = {
         php = { "phpcs", "phpstan" },
+        -- php = { "phpcs" },
         javascript = { "eslint_d" },
         typescript = { "eslint_d" },
         javascriptreact = { "eslint_d" },

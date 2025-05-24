@@ -64,12 +64,6 @@ config.colors = {
 -- }
 
 config.keys = {
-	-- disabled to cmd+t is create new tab.
-	{
-		key = "t",
-		mods = "CMD",
-		action = wezterm.action.DisableDefaultAssignment,
-	},
 	{
 		key = "w",
 		mods = "CTRL",
