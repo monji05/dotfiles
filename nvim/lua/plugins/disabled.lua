@@ -9,4 +9,5 @@ return {
   { "echasnovski/mini.pairs", enabled = false },
   { "petertriho/cmp-git", enabled = false },
   { "norcalli/nvim-colorizer.lua", enabled = false },
+  { "nvim-lualine/lualine.nvim", enabled = false },
 }
