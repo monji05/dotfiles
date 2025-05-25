@@ -4,6 +4,7 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
+    terminal = { enable = true },
     explore = { enable = true },
     picker = { enable = true },
     bigfile = { enabled = true },
@@ -280,6 +281,21 @@ return {
       desc = "Open last picker",
       function()
         Snacks.picker.resume()
+      end,
+    },
+    {
+      ";n",
+      desc = "Rename file",
+      function()
+        Snacks.rename.rename_file(opts)
+      end,
+    },
+    {
+      ";t",
+      desc = "toggle terminal",
+      function()
+        -- How to toggle Normal mode is to press 'Ctrl+\ Ctrl+n'
+        Snacks.terminal.toggle(cmd, opts)
       end,
     },
   },
