@@ -10,6 +10,7 @@ return {
         "php",
         "scss",
         "sql",
+        'diff',
       },
     },
   },
