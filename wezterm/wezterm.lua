@@ -18,6 +18,8 @@ config.window_decorations = "RESIZE"
 
 config.send_composed_key_when_left_alt_is_pressed = true
 config.send_composed_key_when_right_alt_is_pressed = false
+config.initial_cols = 200 -- 横のサイズ
+config.initial_rows = 65 -- 縦のサイズ
 
 -- tabが一つしかない場合はtab barを非表示
 config.hide_tab_bar_if_only_one_tab = true
