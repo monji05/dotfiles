@@ -45,6 +45,7 @@
   "nvim-treesitter-textobjects": { "branch": "master", "commit": "89ebe73cd2836db80a22d9748999ace0241917a5" },
   "nvim-ts-autotag": { "branch": "main", "commit": "a1d526af391f6aebb25a8795cbc05351ed3620b5" },
   "open-browser.vim": { "branch": "master", "commit": "7d4c1d8198e889d513a030b5a83faa07606bac27" },
+  "overseer.nvim": { "branch": "master", "commit": "72c68aab0358c92f451168b704c411c4a3e3410e" },
   "persistence.nvim": { "branch": "main", "commit": "166a79a55bfa7a4db3e26fc031b4d92af71d0b51" },
   "plantuml-previewer.vim": { "branch": "master", "commit": "368a1f331c1ff29f6a3ee76facfca39a7f374b13" },
   "plantuml-syntax": { "branch": "master", "commit": "9d4900aa16674bf5bb8296a72b975317d573b547" },
