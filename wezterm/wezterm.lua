@@ -17,8 +17,8 @@ config.window_decorations = "RESIZE"
 
 config.send_composed_key_when_left_alt_is_pressed = true
 config.send_composed_key_when_right_alt_is_pressed = false
-config.initial_cols = 200 -- 横のサイズ
-config.initial_rows = 65 -- 縦のサイズ
+config.initial_cols = 220 -- 横のサイズ
+config.initial_rows = 60 -- 縦のサイズ
 
 -- tabが一つしかない場合はtab barを非表示
 config.hide_tab_bar_if_only_one_tab = true
@@ -30,6 +30,7 @@ config.window_frame = {
 }
 
 -- tab barを背景色と同色にする
+-- 背景色を変えたい場合はここで
 config.window_background_gradient = {
 	-- solarized-osaka
 	-- colors = { "#001b22" }, -- stronger than #002b36
@@ -79,8 +80,6 @@ end)
 -- solarized-osaka night colorscheme
 config.colors = {
 	-- solarized-osaka
-	-- darker #002B36
-	background = "#001b22",
 
 	cursor_bg = "#47FF9C",
 	cursor_border = "#c0caf5",

@@ -67,6 +67,9 @@ return {
   },
   {
     "saghen/blink.cmp",
+    depenedencies = {
+      "Kaiser-Yang/blink-cmp-dictionary",
+    },
     event = { "InsertEnter" },
 
     version = "*",
@@ -88,6 +91,16 @@ return {
             name = "RenderMarkdown",
             module = "render-markdown.integ.blink",
             fallbacks = { "lsp" },
+          },
+          dictionary = {
+            module = "blink-cmp-dictionary",
+            name = "Dict",
+            -- Make sure this is at least 2.
+            -- 3 is recommended
+            min_keyword_length = 3,
+            opts = {
+              -- options for blink-cmp-dictionary
+            },
           },
         },
         per_filetype = {
@@ -172,8 +185,7 @@ return {
         "cspell",
         "markdownlint",
         "markdown-toc",
-        -- "intelephense",
-        "phpactor",
+        "intelephense",
         "lua-language-server",
         "tailwindcss-language-server",
       })
@@ -183,31 +195,39 @@ return {
     "neovim/nvim-lspconfig",
     config = function()
       local lspconfig = require("lspconfig")
-      lspconfig.phpactor.setup({
+      lspconfig.intelephense.setup({
         -- Server-specific settings. See `:help lspconfig-setup`
         settings = {
-          ["phpactor"] = {
+          -- ["phpactor"] = {
+          --   servers = {
+          --     phpactor = {
+          --       init_options = {
+          --         provideFormatter = false,
+          --         -- doc https://phpactor.readthedocs.io/en/master/lsp/vim.html
+          --         -- phpstan config
+          --         -- NOTE: phpactorのphpstanが動いていない
+          --         -- ["language_server_phpstan.enabled"] = true,
+          --         -- ["language_server_phpstan.bin"] = "%project_root%/offerbox-v2/vendor/bin/phpstan",
+          --         -- ["language_server_phpstan.level"] = 9,
+          --         -- ["language_server_phpstan.config"] = "./offerbox-v2/phpstan.neon.dist",
+          --         -- ["language_server_phpstan.mem_limit"] = "2G",
+          --
+          --         --  phpactor のconfig file: .phpactor.json
+          --         --  ここでfalseを指定しても無効にならない
+          --         ["php_code_sniffer.enabled"] = false,
+          --         ["language_server.diagnostic_exclude_paths"] = {
+          --           "node_modules/**/*",
+          --           ".git/**/*",
+          --           "vendor/**/*",
+          --           "tests/**/*",
+          --         },
+          --       },
+          --     },
+          --   },
+          -- },
+          ["intelephense"] = {
             servers = {
-              phpactor = {
-                init_options = {
-                  provideFormatter = false,
-                  -- doc https://phpactor.readthedocs.io/en/master/lsp/vim.html
-                  -- phpstan config
-                  -- NOTE: phpactorのphpstanが動いていない
-                  -- ["language_server_phpstan.enabled"] = true,
-                  -- ["language_server_phpstan.bin"] = "%project_root%/offerbox-v2/vendor/bin/phpstan",
-                  -- ["language_server_phpstan.level"] = 9,
-                  -- ["language_server_phpstan.config"] = "./offerbox-v2/phpstan.neon.dist",
-                  -- ["language_server_phpstan.mem_limit"] = "2G",
-
-                  ["language_server.diagnostic_exclude_paths"] = {
-                    "node_modules/**/*",
-                    ".git/**/*",
-                    "vendor/**/*",
-                    "tests/**/*",
-                  },
-                },
-              },
+              provideFormatter = false,
             },
           },
         },
@@ -223,6 +243,7 @@ return {
           },
         },
       })
+      lspconfig.typos_lsp.setup({})
     end,
   },
   {

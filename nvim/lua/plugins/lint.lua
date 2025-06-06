@@ -23,8 +23,8 @@ return {
       }
 
       lint.linters_by_ft = {
-        php = { "phpcs", "phpstan" },
-        -- php = { "phpcs" },
+        -- php = { "phpcs", "phpstan" },
+        php = { "phpcs" }, -- プロジェクトのneon.distが読み込めないせいで、無駄なエラーがでてノイズなので一旦ストップ
         javascript = { "eslint_d" },
         typescript = { "eslint_d" },
         javascriptreact = { "eslint_d" },

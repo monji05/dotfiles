@@ -4,7 +4,7 @@
   "LazyVim": { "branch": "main", "commit": "25abbf546d564dc484cf903804661ba12de45507" },
   "blink.cmp": { "branch": "main", "commit": "9bcb14b43852a6f2bfd5ac9ef29cb5cf09b1b39b" },
   "bufferline.nvim": { "branch": "main", "commit": "aa16dafdc642594c7ade7e88d31a6119feb189d6" },
-  "codecompanion.nvim": { "branch": "main", "commit": "8965fdfa7691ad4246fda6e0ffed9a63c5ebed99" },
+  "codecompanion.nvim": { "branch": "main", "commit": "fee2dd137b515b779c57c915ca031921e6591d85" },
   "colorful-menu.nvim": { "branch": "master", "commit": "bc3e82609f2fcf7dad7ca87c20e65e51d5d9d87c" },
   "conform.nvim": { "branch": "master", "commit": "8132ec733eed3bf415b97b76797ca41b59f51d7d" },
   "dial.nvim": { "branch": "master", "commit": "2c7e2750372918f072a20f3cf754d845e143d7c9" },

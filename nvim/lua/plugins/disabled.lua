@@ -8,6 +8,7 @@ return {
   { "echasnovski/mini.ai", enabled = false },
   { "echasnovski/mini.pairs", enabled = false },
   { "petertriho/cmp-git", enabled = false },
+  -- don't change enabled for causing error
   { "norcalli/nvim-colorizer.lua", enabled = false },
   { "nvim-lualine/lualine.nvim", enabled = false },
 }

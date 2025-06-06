@@ -262,11 +262,10 @@ return {
     --   :lua Snacks.picker.highlights()
     -- },
     {
+      -- 本来noiceに書くべきだけど、noiceのセットアップを書いていないのでここに
       "<leader>n",
-      desc = "Open notifications",
-      function()
-        Snacks.picker.notifications()
-      end,
+      desc = "Open Error notifications",
+      "<Cmd>NoiceErrors<CR>",
     },
     {
       ";;",
