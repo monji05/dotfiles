@@ -53,7 +53,7 @@ return {
         server_filetype_map = {},
         diagnostic_prefix_format = "%d. ",
         diagnostic_message_format = "%m %c",
-        highlight_prefix = false,
+        highlight_prefix = true,
       })
 
       local opt = { silent = true, noremap = true }
@@ -161,78 +161,44 @@ return {
     },
     opts_extend = { "sources.default" },
   },
+  { "mason-org/mason.nvim", lazy = true, opts = {} },
+  { "neovim/nvim-lspconfig", lazy = true },
   {
     "williamboman/mason-lspconfig.nvim",
-    -- config = function()
-    -- local lspconfig = require("lspconfig")
-    -- require("mason-lspconfig").setup_handlers({
-    --   ts_ls = function()
-    --     lspconfig.tsserver.setup({
-    --       on_attach = function(client, bufnr)
-    --         client.server_capabilities.documentFormattingProvider = false
-    --         client.server_capabilities.documentRangeFormattingProvider = false
-    --       end,
-    --     })
-    --   end,
-    -- })
-    -- end,
-  },
-  {
-    "williamboman/mason.nvim",
-    cmd = { "Mason" },
-    opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed, {
-        "cspell",
-        "markdownlint",
-        "markdown-toc",
-        "intelephense",
-        "lua-language-server",
-        "tailwindcss-language-server",
-      })
-    end,
-  },
-  {
-    "neovim/nvim-lspconfig",
     config = function()
       local lspconfig = require("lspconfig")
-      lspconfig.intelephense.setup({
-        -- Server-specific settings. See `:help lspconfig-setup`
-        settings = {
-          -- ["phpactor"] = {
-          --   servers = {
-          --     phpactor = {
-          --       init_options = {
-          --         provideFormatter = false,
-          --         -- doc https://phpactor.readthedocs.io/en/master/lsp/vim.html
-          --         -- phpstan config
-          --         -- NOTE: phpactorのphpstanが動いていない
-          --         -- ["language_server_phpstan.enabled"] = true,
-          --         -- ["language_server_phpstan.bin"] = "%project_root%/offerbox-v2/vendor/bin/phpstan",
-          --         -- ["language_server_phpstan.level"] = 9,
-          --         -- ["language_server_phpstan.config"] = "./offerbox-v2/phpstan.neon.dist",
-          --         -- ["language_server_phpstan.mem_limit"] = "2G",
-          --
-          --         --  phpactor のconfig file: .phpactor.json
-          --         --  ここでfalseを指定しても無効にならない
-          --         ["php_code_sniffer.enabled"] = false,
-          --         ["language_server.diagnostic_exclude_paths"] = {
-          --           "node_modules/**/*",
-          --           ".git/**/*",
-          --           "vendor/**/*",
-          --           "tests/**/*",
-          --         },
-          --       },
-          --     },
-          --   },
-          -- },
-          ["intelephense"] = {
-            servers = {
-              provideFormatter = false,
-            },
-          },
-        },
+      require("mason-lspconfig").setup_handlers({
+        intelephense = function()
+          lspconfig.intelephense.setup({})
+        end,
+        lua_ls = function()
+          lspconfig.lua_ls.setup({})
+        end,
+        ts_ls = function()
+          lspconfig.ts_ls.setup({
+            on_attach = function(client, bufnr)
+              client.server_capabilities.documentFormattingProvider = false
+              client.server_capabilities.documentRangeFormattingProvider = false
+            end,
+          })
+        end,
+        -- NOTE: typosだとあまり検知してくれない inedx(index), hllo(hello) etc ので、cspellにする
+        -- typos_lsp = function()
+        --   lspconfig.typos_lsp.setup({
+        --     -- Logging level of the language server. Logs appear in :LspLog. Defaults to error.
+        --     cmd_env = { RUST_LOG = "error" },
+        --     init_options = {
+        --       -- Custom config. Used together with a config file found in the workspace or its parents,
+        --       -- taking precedence for settings declared in both.
+        --       -- Equivalent to the typos `--config` cli argument.
+        --       -- config = "~/code/typos-lsp/crates/typos-lsp/tests/typos.toml",
+        --       -- How typos are rendered in the editor, can be one of an Error, Warning, Info or Hint.
+        --       -- Defaults to error.
+        --       diagnosticSeverity = "Info",
+        --     },
+        --   })
+        -- end,
       })
-      lspconfig.lua_ls.setup({})
       vim.diagnostic.config({
         signs = {
           text = {
@@ -243,7 +209,6 @@ return {
           },
         },
       })
-      lspconfig.typos_lsp.setup({})
     end,
   },
   {
