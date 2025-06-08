@@ -10,5 +10,4 @@ return {
   { "petertriho/cmp-git", enabled = false },
   -- don't change enabled for causing error
   { "norcalli/nvim-colorizer.lua", enabled = false },
-  { "nvim-lualine/lualine.nvim", enabled = false },
 }
