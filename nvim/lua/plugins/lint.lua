@@ -24,11 +24,11 @@ return {
 
       lint.linters_by_ft = {
         -- php = { "phpcs", "phpstan" },
-        php = { "phpcs" }, -- プロジェクトのneon.distが読み込めないせいで、無駄なエラーがでてノイズなので一旦ストップ
-        javascript = { "eslint_d" },
-        typescript = { "eslint_d" },
-        javascriptreact = { "eslint_d" },
-        typescriptreact = { "eslint_d" },
+        php = { "phpcs", "cspell" }, -- プロジェクトのneon.distが読み込めないせいで、無駄なエラーがでてノイズなので一旦ストップ
+        javascript = { "eslint_d", "cspell" },
+        typescript = { "eslint_d", "cspell" },
+        javascriptreact = { "eslint_d", "cspell" },
+        typescriptreact = { "eslint_d", "cspell" },
       }
 
       vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave", "TextChanged" }, {
