@@ -80,3 +80,10 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # Need to execute `fisher install PatrickF1/fzf.fish`
 # Search directory keymap to Ctrl+f
 fzf_configure_bindings --directory=\cf
+
+function ps9
+    if test (count $argv) -eq 0
+        return 1
+    end
+    cd ~/www/offerbox/public_html/offerbox-v2 && APP_ENV=local ./vendor/bin/phpstan analyse --level=9 -c ./phpstan.neon.dist --memory-limit=2G $argv
+end
