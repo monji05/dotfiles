@@ -37,6 +37,10 @@ config.window_background_gradient = {
 -- tab barの+を非表示にする
 config.show_new_tab_button_in_tab_bar = false
 
+-- NOTE: pane間を移動する際はCtrl+Shift+{Left, Right, Up, Down}
+-- NOTE: split vertical pane key is Ctrl+Shift+Alt+"
+-- NOTE: split horizon pane key is Ctrl+Shift+Alt+%
+
 -- tabの形を変更
 -- アクティブtabに色をつける
 local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_lower_right_triangle
@@ -97,11 +101,33 @@ config.colors = {
 -- 	brights = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#A277FF", "#a277ff", "#24EAF7", "#24EAF7" },
 -- }
 
+local act = wezterm.action
 config.keys = {
+	-- NOTE: modsに複数のkeyを定義したいときはCTRL|SHIFTでCtrl+Shiftとなる
 	{
 		key = "w",
-		mods = "CTRL",
-		action = wezterm.action.DisableDefaultAssignment,
+		mods = "CTRL|SHIFT",
+		action = act.DisableDefaultAssignment,
+	},
+	{
+		key = "h",
+		mods = "CTRL|SHIFT",
+		action = act.ActivatePaneDirection("Left"),
+	},
+	{
+		key = "l",
+		mods = "CTRL|SHIFT",
+		action = act.ActivatePaneDirection("Right"),
+	},
+	{
+		key = "k",
+		mods = "CTRL|SHIFT",
+		action = act.ActivatePaneDirection("Up"),
+	},
+	{
+		key = "j",
+		mods = "CTRL|SHIFT",
+		action = act.ActivatePaneDirection("Down"),
 	},
 }
 -- and finally, return the configuration to wezterm
