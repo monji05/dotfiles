@@ -285,7 +285,7 @@ return {
       ";t",
       desc = "toggle terminal",
       function()
-        -- How to toggle Normal mode is to press 'Ctrl+\ Ctrl+n'
+        -- How to toggle Normal mode is to press 'Ctrl + [ * 2'
         Snacks.terminal.toggle(cmd, opts)
       end,
     },
