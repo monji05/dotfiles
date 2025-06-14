@@ -244,13 +244,6 @@ return {
       end,
     },
     {
-      ";g",
-      desc = "Open git branches",
-      function()
-        Snacks.picker.git_branches()
-      end,
-    },
-    {
       ";w",
       desc = "Grep word",
       function()
