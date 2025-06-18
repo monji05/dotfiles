@@ -103,6 +103,16 @@ config.colors = {
 
 local act = wezterm.action
 config.keys = {
+	{
+		key = "\\",
+		mods = "CTRL",
+		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+	},
+	{
+		key = "-",
+		mods = "CTRL",
+		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
+	},
 	-- NOTE: modsに複数のkeyを定義したいときはCTRL|SHIFTでCtrl+Shiftとなる
 	{
 		key = "w",
