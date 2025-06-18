@@ -9,6 +9,7 @@ fish_add_path $HOME/www/offerbox/public_html/vendor/bin/
 fish_add_path $HOME/www/offerbox/public_html/node_modules/.bin
 set -gx PROFILE $HOME/.config/fish/config.fish
 fish_add_path $HOME/.deno/bin
+fish_add_path $HOME/.npm-global/bin
 
 alias g='git'
 alias v='nvim'
