@@ -32,7 +32,11 @@ config.window_frame = {
 
 -- tab barを背景色と同色にする
 config.window_background_gradient = {
-	colors = { "#001b22" },
+	-- solarized-osaka
+	-- colors = { "#001b22" }, -- stronger than #002b36
+
+	-- vague
+	colors = { "#141415" }, -- stronger than #002b36
 }
 
 -- tab barの+を非表示にする
