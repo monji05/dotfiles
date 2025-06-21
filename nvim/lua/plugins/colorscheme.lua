@@ -10,6 +10,7 @@ return {
           comments = { italic = true },
           keywords = { italic = true },
           functions = { italic = true },
+          floats = "transparent",
         },
 
         on_colors = function(colors)
