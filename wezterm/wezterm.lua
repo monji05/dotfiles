@@ -11,7 +11,7 @@ config.font = wezterm.font("PlemolJP35 Console NF")
 config.default_prog = { "/opt/homebrew/bin/fish" }
 
 config.font_size = 17
-config.window_background_opacity = 0.95
+config.window_background_opacity = 0.9
 config.macos_window_background_blur = 30
 config.window_decorations = "RESIZE"
 
@@ -32,12 +32,12 @@ config.window_frame = {
 -- tab barを背景色と同色にする
 config.window_background_gradient = {
 	-- solarized-osaka
-	-- colors = { "#001b22" }, -- stronger than #002b36
+	colors = { "#001b22" }, -- stronger than #002b36
 
 	-- vague
 	-- colors = { "#141415" },
 	-- colors = { "#202022" }, -- more weak than #141415
-	colors = { "#1e1e1f " }, -- more weak than #141415
+	-- colors = { "#1e1e1f " }, -- more weak than #141415
 }
 
 -- tab barの+を非表示にする
