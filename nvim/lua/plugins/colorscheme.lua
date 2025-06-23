@@ -59,15 +59,15 @@ return {
       vim.cmd([[colorscheme solarized-osaka]])
     end,
   },
-  {
-    "vague2k/vague.nvim",
-    config = function(_, opts)
-      require("vague").setup({
-        transparent = true,
-        bold = false,
-        italic = true,
-      })
-      vim.cmd([[colorscheme vague]])
-    end,
-  },
+  -- {
+  --   "vague2k/vague.nvim",
+  --   config = function(_, opts)
+  --     require("vague").setup({
+  --       transparent = true,
+  --       bold = false,
+  --       italic = true,
+  --     })
+  --     vim.cmd([[colorscheme vague]])
+  --   end,
+  -- },
 }
