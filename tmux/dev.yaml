@@ -3,15 +3,9 @@ windows:
   - window_name: public_html
     panes:
       - z public_html |clear
-  - window_name: admin-frontend/application
+  - window_name: public_html
     panes:
-      - cd ~/www/offerbox-admin-frontend/application |clear
-  - window_name: logs
-    panes:
-      - z logs |clear
-  - window_name: DBeaver
-    panes:
-      - cd ~/Library/DBeaverData/workspace6/General/Scripts |clear
+      - z public_html |clear
   - window_name: weekly
     panes:
       - z weekly |clear
