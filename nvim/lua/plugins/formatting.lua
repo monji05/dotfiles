@@ -5,10 +5,11 @@ return {
       formatters_by_ft = {
         json = { "jq" },
         php = { "phpcbf" },
-        typescript = { "prettier" },
-        javascript = { "prettier" },
-        typescriptreact = { "prettierd" },
-        javascriptreact = { "prettierd" },
+        -- NOTE: AdminFEのときはコメント解除
+        -- typescript = { "prettier" },
+        -- javascript = { "prettier" },
+        -- typescriptreact = { "prettierd" },
+        -- javascriptreact = { "prettierd" },
       },
       formatters = {
         phpcbf = {
