@@ -237,13 +237,6 @@ return {
       desc = "Grep Open Buffers",
     },
     {
-      "<leader>f",
-      desc = "Open file explorer",
-      function()
-        Snacks.explorer.open()
-      end,
-    },
-    {
       "<leader>cl",
       desc = "Open clip history",
       function()
