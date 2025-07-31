@@ -190,7 +190,11 @@ return {
       -- solarized-osaka
       require("hlargs").setup({})
       -- solarized-osaka
-      vim.api.nvim_command([[highlight Hlargs guifg=#c94c16]])
+      -- vim.api.nvim_command([[highlight Hlargs guifg=#c94c16]])
+
+      -- tokyonight
+      -- That is the same phpDoc argment color
+      vim.api.nvim_command([[highlight Hlargs guifg=#e0af68]])
     end,
   },
 }
