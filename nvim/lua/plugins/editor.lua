@@ -110,10 +110,6 @@ return {
     end,
   },
   {
-    "kdheepak/lazygit.nvim",
-    cmd = { "LazyGit" },
-  },
-  {
     -- very useful join, split word in bracket, function
     "Wansmer/treesj",
     desc = "Toggle Treesitter Join",
