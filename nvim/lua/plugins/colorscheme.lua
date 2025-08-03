@@ -167,6 +167,15 @@ return {
         telescope = true,
         lazy = true,
       },
+      on_highlights = function(colors, color)
+        ---@type solarized.highlights
+        local groups = {
+          CursorLineNr = {
+            bg = colors.mix_red,
+          },
+        }
+        return groups
+      end,
     },
     config = function(_, opts)
       vim.o.termguicolors = true
