@@ -78,13 +78,14 @@ vim.g.gitblame_enabled = 0
 -- Undercurl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
+-- "maxmx03/solarized.nvim"を使用するときは以下をコメントしないとタイポと判定されるコメントがすべて横線が入る
 -- vim.cmd([[let &t_Cs = "\e[60m"]])
 -- vim.cmd([[let &t_Ce = "\e[24m"]])
-vim.cmd([[hi SpellBad   guisp=red    gui=undercurl term=underline cterm=undercurl]])
-vim.cmd([[hi SpellCap   guisp=yellow gui=undercurl term=underline cterm=undercurl]])
-vim.cmd([[hi SpellRare  guisp=blue   gui=undercurl term=underline cterm=undercurl]])
-vim.cmd([[hi SpellLocal guisp=orange gui=undercurl term=underline cterm=undercurl]])
-vim.cmd([[set spell]])
+-- vim.cmd([[hi SpellBad   guisp=red    gui=undercurl term=underline cterm=undercurl]])
+-- vim.cmd([[hi SpellCap   guisp=yellow gui=undercurl term=underline cterm=undercurl]])
+-- vim.cmd([[hi SpellRare  guisp=blue   gui=undercurl term=underline cterm=undercurl]])
+-- vim.cmd([[hi SpellLocal guisp=orange gui=undercurl term=underline cterm=undercurl]])
+-- vim.cmd([[set spell]])
 
 -- Add asterisks in block comments
 vim.opt.formatoptions:append({ "r" })
