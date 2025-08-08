@@ -98,6 +98,13 @@ return {
   },
   keys = {
     {
+      "<leader>f",
+      function()
+        Snacks.picker.explorer()
+      end,
+      desc = "File Explorer",
+    },
+    {
       "<leader>un",
       function()
         Snacks.notifier.hide()
