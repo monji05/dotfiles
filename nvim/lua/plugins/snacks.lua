@@ -265,9 +265,7 @@ return {
     {
       "<leader>n",
       desc = "Open notifications",
-      function()
-        Snacks.picker.notifications()
-      end,
+      ":NoiceAll<CR>",
     },
     {
       ";;",
