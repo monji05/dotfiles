@@ -264,8 +264,8 @@ return {
     {
       -- 本来noiceに書くべきだけど、noiceのセットアップを書いていないのでここに
       "<leader>n",
-      desc = "Open Error notifications",
-      "<Cmd>NoiceErrors<CR>",
+      desc = "Open notifications",
+      ":NoiceAll<CR>",
     },
     {
       ";;",
