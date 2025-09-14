@@ -62,6 +62,7 @@ return {
       vim.keymap.set("n", "gh", "<CMD>Lspsaga hover_doc<CR>", opt)
       vim.keymap.set("n", "gf", "<CMD>Lspsaga finder<Cr>", opt)
       vim.keymap.set("n", "<leader>j", "<CMD>Lspsaga diagnostic_jump_next<CR>", opt)
+      vim.keymap.set("n", "<leader>k", "<CMD>Lspsaga diagnostic_jump_prev<CR>", opt)
       vim.keymap.set("n", "<leader>ca", "<CMD>Lspsaga code_action<CR>", opt)
     end,
   },
@@ -317,23 +318,130 @@ return {
             end,
           })
         end,
-        -- NOTE: typosだとあまり検知してくれない inedx(index), hllo(hello) etc ので、cspellにする
-        -- typos_lsp = function()
-        --   lspconfig.typos_lsp.setup({
-        --     -- Logging level of the language server. Logs appear in :LspLog. Defaults to error.
-        --     cmd_env = { RUST_LOG = "error" },
-        --     init_options = {
-        --       -- Custom config. Used together with a config file found in the workspace or its parents,
-        --       -- taking precedence for settings declared in both.
-        --       -- Equivalent to the typos `--config` cli argument.
-        --       -- config = "~/code/typos-lsp/crates/typos-lsp/tests/typos.toml",
-        --       -- How typos are rendered in the editor, can be one of an Error, Warning, Info or Hint.
-        --       -- Defaults to error.
-        --       diagnosticSeverity = "Info",
-        --     },
-        --   })
-        -- end,
+        pyright = function()
+          lspconfig.pyright.setup({})
+        end,
+        efm = function()
+          lspconfig.efm.setup({
+            filetypes = { "php" },
+            single_file_support = true,
+            on_attach = function(client, bufnr)
+              print("EFM attached to buffer: " .. bufnr)
+
+              -- PHPファイルがアタッチされたらすぐにphpstanを実行
+              local function run_phpstan()
+                local filename = vim.api.nvim_buf_get_name(bufnr)
+
+                -- PHPファイル以外は処理しない
+                if not filename:match("%.php$") then
+                  return
+                end
+
+                print("DEBUG: Starting phpstan run for " .. filename)
+                -- フルパスから相対パスに変換
+                local relative_path = filename:gsub("/Users/erikomishina/www/offerbox/public_html/offerbox%-v2/", "")
+                print("Running phpstan for: " .. relative_path)
+
+                local cmd = string.format(
+                  "cd ~/www/offerbox/public_html/offerbox-v2 && docker compose exec -w /var/www/offerbox-v2 -T v2_php ./vendor/bin/phpstan analyse -l 9 -c phpstan.neon.dist --memory-limit=2G --no-progress --error-format=raw %s 2>/dev/null",
+                  relative_path
+                )
+
+                vim.fn.jobstart(cmd, {
+                  stdout_buffered = true,
+                  stderr_buffered = true,
+                  on_stdout = function(_, data)
+                    local diagnostics = {}
+
+                    print("PHPStan stdout data received:")
+                    if data then
+                      for i, line in ipairs(data) do
+                        print(string.format("  [%d]: %q", i, line))
+                        if line ~= "" and not line:match("^Note:") and not line:match("^$") then
+                          -- PHPStanのraw形式をパース: file:line:message
+                          local file, line_num, message = line:match("^([^:]+):(%d+):(.+)$")
+
+                          if file and line_num and message then
+                            print(string.format("Parsed - file: %s, line: %s, message: %s", file, line_num, message))
+                            -- パスを正規化
+                            local normalized_file = file:gsub(
+                              "^/var/www/offerbox%-v2",
+                              "/Users/erikomishina/www/offerbox/public_html/offerbox-v2"
+                            )
+                            print(string.format("Normalized file: %s", normalized_file))
+                            print(string.format("Current filename: %s", filename))
+
+                            -- 現在のファイルの診断のみ処理
+                            if normalized_file == filename then
+                              print("File matches! Adding diagnostic")
+                              table.insert(diagnostics, {
+                                lnum = tonumber(line_num) - 1, -- 0-based
+                                col = 0,
+                                severity = vim.diagnostic.severity.ERROR,
+                                source = "phpstan",
+                                message = "phpstan: " .. message:gsub("^%s*", ""), -- 先頭の空白を削除してプレフィックス追加
+                              })
+                            else
+                              print("File does not match current buffer")
+                            end
+                          else
+                            print("Could not parse line: " .. line)
+                          end
+                        end
+                      end
+                    end
+
+                    print(string.format("Setting %d diagnostics", #diagnostics))
+                    -- 診断を設定
+                    vim.diagnostic.set(vim.api.nvim_create_namespace("phpstan"), bufnr, diagnostics)
+                  end,
+                  on_stderr = function(_, data)
+                    -- Docker compose警告は無視
+                    if data then
+                      for _, line in ipairs(data) do
+                        if line ~= "" and not line:match("MOCK.*variable") and not line:match("version.*obsolete") then
+                          print("PHPStan Error: " .. line)
+                        end
+                      end
+                    end
+                  end,
+                  on_exit = function(_, exit_code)
+                    if exit_code == 0 then
+                      -- エラーがない場合は診断をクリア
+                      vim.diagnostic.set(vim.api.nvim_create_namespace("phpstan"), bufnr, {})
+                      print("PHPStan: No issues found!")
+                    end
+                  end,
+                })
+              end
+
+              -- 関数を実行
+              run_phpstan()
+
+              -- 保存時にも実行
+              vim.api.nvim_create_autocmd("BufWritePost", {
+                buffer = bufnr,
+                callback = run_phpstan,
+              })
+            end,
+            init_options = { documentFormatting = true },
+            settings = {
+              languages = {
+                php = {
+                  lintCommand = "cd ~/www/offerbox/public_html/offerbox-v2 && docker compose exec -w /var/www/offerbox-v2 -T v2_php ./vendor/bin/phpstan analyse -l 9 -c phpstan.neon.dist --memory-limit=2G --no-progress --error-format=raw ${INPUT} | sed 's|/var/www/offerbox-v2|/Users/erikomishina/www/offerbox/public_html/offerbox-v2|g'",
+                  lintStdin = false,
+                  lintFormats = { "%f:%l:%m" },
+                  lintIgnoreExitCode = true,
+                  lintSource = "phpstan",
+                },
+              },
+            },
+          })
+        end,
+        -- NOTE: typosだとあまり検知してくれない
+        -- inedx(index), hllo(hello) etc ので、cspellにする
       })
+
       vim.diagnostic.config({
         signs = {
           text = {
