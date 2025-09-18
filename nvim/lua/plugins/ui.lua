@@ -165,7 +165,7 @@ return {
   },
   -- icons
   {
-    "echasnovski/mini.icons",
+    "nvim-mini/mini.icons",
     lazy = true,
     opts = {
       extension = {
