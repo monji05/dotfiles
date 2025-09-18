@@ -300,7 +300,7 @@ return {
   { "mason-org/mason.nvim", lazy = true, opts = {} },
   { "neovim/nvim-lspconfig", lazy = true },
   {
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason-lspconfig.nvim",
     config = function()
       local lspconfig = require("lspconfig")
       require("mason-lspconfig").setup_handlers({
