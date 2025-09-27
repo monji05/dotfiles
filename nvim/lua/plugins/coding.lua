@@ -61,25 +61,6 @@ return {
     end,
   },
   {
-    "akinsho/git-conflict.nvim",
-    keys = {
-      "co",
-      "ct",
-      "cb",
-      "c0",
-      "]x",
-      "[x",
-    },
-    -- co — choose ours
-    -- ct — choose theirs
-    -- cb — choose both
-    -- c0 — choose none
-    -- ]x — move to previous conflict
-    -- [x — move to next conflict
-    version = "*",
-    config = true,
-  },
-  {
     "monaqa/dial.nvim",
     keys = {
       {
