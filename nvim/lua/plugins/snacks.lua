@@ -209,6 +209,13 @@ return {
       end,
     },
     {
+      "<leader>f",
+      function()
+        Snacks.explorer()
+      end,
+      desc = "File Explorer",
+    },
+    {
       ";r",
       desc = "Grep source",
       function()
