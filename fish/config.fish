@@ -86,5 +86,5 @@ function ps9
     if test (count $argv) -eq 0
         return 1
     end
-    cd ~/www/offerbox/public_html/offerbox-v2 && APP_ENV=local ./vendor/bin/phpstan analyse --level=9 -c ./phpstan.neon.dist --memory-limit=2G $argv
+    docker compose exec -w /var/www/offerbox-v2 -it v2_php ./vendor/bin/phpstan analyse -l 9 -c phpstan.neon.dist --memory-limit=2G $argv
 end
