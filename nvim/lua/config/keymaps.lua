@@ -69,3 +69,15 @@ keymap("i", "∆", "<ESC>:m .+1<CR>==gi", opts)
 keymap("i", "˚", "<ESC>:m .-2<CR>==gi", opts)
 keymap("v", "∆", ":m '>+1<CR>gv=gv", opts)
 keymap("v", "˚", ":m '<-2<CR>gv=gv", opts)
+
+keymap("n", "<C-h>", "<C-w>h", opts)
+keymap("n", "<C-j>", "<C-w>j", opts)
+keymap("n", "<C-k>", "<C-w>k", opts)
+keymap("n", "<C-l>", "<C-w>l", opts)
+
+keymap("n", "<C-d>", "<C-d>zz", opts)
+keymap("n", "<C-u>", "<C-u>zz", opts)
+keymap("n", "<C-f>", "<C-f>zz", opts)
+keymap("n", "<C-b>", "<C-b>zz", opts)
+
+keymap("n", "Y", "yy", opts)
