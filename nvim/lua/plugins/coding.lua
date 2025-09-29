@@ -46,6 +46,10 @@ return {
     },
   },
   {
+    "nvim-mini/mini.surround",
+    -- change html tag command is gsrtt"
+  },
+  {
     "nvim-neotest/neotest",
     cmd = { "Neotest" },
     { "nvim-neotest/nvim-nio", lazy = true },

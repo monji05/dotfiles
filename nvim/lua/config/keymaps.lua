@@ -36,7 +36,7 @@ keymap("n", "<C-w><up>", "<C-w>+", opts)
 keymap("n", "<C-w><down>", "<C-w>-", opts)
 
 -- レジスタを上書きせずに現在行を下にコピーする :t
-keymap("n", "t", ":t.<CR>", opts)
+keymap("n", "T", ":t.<CR>", opts)
 
 -- use x, s command not using register
 keymap("n", "x", '"_x', opts)
@@ -47,9 +47,6 @@ keymap("n", "s", '"_s', opts)
 
 -- ビジュアルモードでヤンクしたワードを連続でペーストできるように(最高)
 keymap("v", "p", '"_xP', opts)
-
--- automatically create PHP Doc
--- keymap("i", "/*", " /**\n *\n*\n*\n*/<left><left><left><left>", opts)
 
 -- replace current cursor word
 keymap("v", "<leader>r", '"hy:%s/<C-r>h//g<left><left>', opts)
@@ -69,3 +66,15 @@ keymap("v", "˚", ":m '<-2<CR>gv=gv", opts)
 
 -- create php file
 keymap("n", ";c", ":CreatePhp<CR>", opts)
+
+keymap("n", "<C-h>", "<C-w>h", opts)
+keymap("n", "<C-j>", "<C-w>j", opts)
+keymap("n", "<C-k>", "<C-w>k", opts)
+keymap("n", "<C-l>", "<C-w>l", opts)
+
+keymap("n", "<C-d>", "<C-d>zz", opts)
+keymap("n", "<C-u>", "<C-u>zz", opts)
+keymap("n", "<C-f>", "<C-f>zz", opts)
+keymap("n", "<C-b>", "<C-b>zz", opts)
+
+keymap("n", "Y", "yy", opts)
