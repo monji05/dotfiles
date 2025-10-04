@@ -42,7 +42,7 @@ keymap("n", "<C-w><up>", "<C-w>+", opts)
 keymap("n", "<C-w><down>", "<C-w>-", opts)
 
 -- レジスタを上書きせずに現在行を下にコピーする :t
-keymap("n", "T", ":t.<CR>", opts)
+keymap("n", "t", ":t.<CR>", opts)
 
 -- use x, s command not using register
 keymap("n", "x", '"_x', opts)
