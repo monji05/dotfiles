@@ -67,7 +67,6 @@ return {
   {
     "saghen/blink.cmp",
     event = { "InsertEnter" },
-
     version = "*",
     opts = {
       appearance = {
@@ -101,7 +100,6 @@ return {
           "snippets",
           "buffer",
           "markdown",
-          "ripgrep",
         },
         providers = {
           markdown = {
@@ -183,6 +181,19 @@ return {
     config = function()
       require("tiny-inline-diagnostic").setup()
       vim.diagnostic.config({ virtual_text = false }) -- Only if needed in your configuration, if you already have native LSP diagnostics
+    end,
+  },
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      local lsp = require("lspconfig")
+      lsp.lua_ls.setup({})
+      lsp.intelephense.setup({
+        settings = {
+          ["intelephense"] = {},
+        },
+      })
+      lsp.ts_ls.setup({})
     end,
   },
 }
