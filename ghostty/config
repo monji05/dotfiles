@@ -1,0 +1,18 @@
+# config reload = shift + command + ,
+# pane move = cmd + alt + left right up down
+background = "#001b22"
+background-blur-radius = 15
+background-opacity = 0.9
+command = /opt/homebrew/bin/fish
+cursor-color = "#47FF9C"
+font-family = "PlemolJP35 Console NF"
+font-size = 17
+keybind = global:cmd+s=toggle_quick_terminal
+keybind = unconsumed:ctrl+h=goto_split:left
+keybind = unconsumed:ctrl+j=goto_split:bottom
+keybind = unconsumed:ctrl+k=goto_split:top
+keybind = unconsumed:ctrl+l=goto_split:right
+theme = "Ayu Mirage"
+copy-on-select = true
+window-padding-y = 0
+window-padding-x = 0
