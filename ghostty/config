@@ -1,6 +1,7 @@
 # config reload = shift + command + ,
 # pane move = cmd + alt + left right up down
-background = "#001b22"
+# background = #001b22
+background = 16161D
 background-blur-radius = 15
 background-opacity = 0.9
 command = /opt/homebrew/bin/fish
