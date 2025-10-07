@@ -174,7 +174,7 @@ return {
     "mason-org/mason-lspconfig.nvim",
     config = function()
       local lspconfig = require("lspconfig")
-      require("mason-lspconfig").setup_handlers({
+      require("mason-lspconfig").setup({
         intelephense = function()
           lspconfig.intelephense.setup({})
         end,

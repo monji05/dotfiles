@@ -43,8 +43,8 @@ return {
       },
       indent = {
         enable = true,
-        -- chars = { "▏" },
-        chars = { "│" },
+        chars = { "▏" },
+        -- chars = { "│" },
         -- style = "#383c3d",
         style = "#073642",
       },

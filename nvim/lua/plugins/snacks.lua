@@ -208,13 +208,13 @@ return {
         Snacks.picker.files()
       end,
     },
-    {
-      "<leader>f",
-      function()
-        Snacks.explorer()
-      end,
-      desc = "File Explorer",
-    },
+    -- {
+    --   "<leader>f",
+    --   function()
+    --     Snacks.explorer()
+    --   end,
+    --   desc = "File Explorer",
+    -- },
     {
       ";r",
       desc = "Grep source",
