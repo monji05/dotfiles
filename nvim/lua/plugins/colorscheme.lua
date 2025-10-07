@@ -138,52 +138,52 @@ return {
   --     })
   --   end,
   -- },
-  {
-    "maxmx03/solarized.nvim",
-    lazy = false,
-    priority = 1000,
-    ---@type solarized.config
-    opts = {
-      variant = "autumn",
-      styles = {
-        enabled = true,
-        types = {},
-        functions = { italic = true },
-        parameters = {},
-        comments = { italic = true },
-        strings = {},
-        keywords = { italic = true },
-        variables = {},
-        constants = {},
-      },
-      transparent = {
-        enabled = true,
-        pmenu = true,
-        normal = true,
-        normalfloat = true,
-        neotree = true,
-        nvimtree = true,
-        whichkey = true,
-        telescope = true,
-        lazy = true,
-      },
-      on_highlights = function(colors, color)
-        ---@type solarized.highlights
-        local groups = {
-          CursorLineNr = {
-            bg = colors.mix_red,
-          },
-        }
-        return groups
-      end,
-    },
-    config = function(_, opts)
-      vim.o.termguicolors = true
-      vim.o.background = "dark"
-      require("solarized").setup(opts)
-      vim.cmd.colorscheme("solarized")
-    end,
-  },
+  -- {
+  --   "maxmx03/solarized.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   ---@type solarized.config
+  --   opts = {
+  --     variant = "autumn",
+  --     styles = {
+  --       enabled = true,
+  --       types = {},
+  --       functions = { italic = true },
+  --       parameters = {},
+  --       comments = { italic = true },
+  --       strings = {},
+  --       keywords = { italic = true },
+  --       variables = {},
+  --       constants = {},
+  --     },
+  --     transparent = {
+  --       enabled = true,
+  --       pmenu = true,
+  --       normal = true,
+  --       normalfloat = true,
+  --       neotree = true,
+  --       nvimtree = true,
+  --       whichkey = true,
+  --       telescope = true,
+  --       lazy = true,
+  --     },
+  --     on_highlights = function(colors, color)
+  --       ---@type solarized.highlights
+  --       local groups = {
+  --         CursorLineNr = {
+  --           bg = colors.mix_red,
+  --         },
+  --       }
+  --       return groups
+  --     end,
+  --   },
+  --   config = function(_, opts)
+  --     vim.o.termguicolors = true
+  --     vim.o.background = "dark"
+  --     require("solarized").setup(opts)
+  --     vim.cmd.colorscheme("solarized")
+  --   end,
+  -- },
   {
     "m-demare/hlargs.nvim",
     config = function()
@@ -193,13 +193,54 @@ return {
 
       -- tokyonight
       -- That is the same phpDoc argment color
-      -- vim.api.nvim_command([[highlight Hlargs guifg=#e0af68]])
+      vim.api.nvim_command([[highlight Hlargs guifg=#e0af68]])
 
       -- nightfox (duskfox)
       -- vim.api.nvim_command([[highlight Hlargs guifg=#9ccfd8]])
 
       -- solarized
-      vim.api.nvim_command([[highlight Hlargs guifg=#268BD2]])
+      -- vim.api.nvim_command([[highlight Hlargs guifg=#268BD2]])
+
+      -- kanagawa-dragon
+      vim.api.nvim_command([[highlight Hlargs guifg=#957FB8]])
     end,
+  },
+  {
+    "rebelot/kanagawa.nvim",
+    opts = {
+      statementStyle = { bold = false },
+      fuctionStyle = { italic = true },
+      transparent = true,
+      colors = {
+        theme = {
+          wave = {},
+          lotus = {},
+          dragon = {},
+          all = {
+            ui = {
+              bg_gutter = "none", -- 行番号の背景を透過にするため
+            },
+          },
+        },
+      },
+      overrides = function(colors)
+        local theme = colors.theme
+        return {
+          NormalFloat = { bg = "none" },
+          FloatBorder = { bg = "none" },
+          FloatTitle = { bg = "none" },
+
+          -- Save an hlgroup with dark background and dimmed foreground
+          -- so that you can use it where your still want darker windows.
+          -- E.g.: autocmd TermOpen * setlocal winhighlight=Normal:NormalDark
+          NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
+
+          -- Popular plugins that open floats will link to NormalFloat by default;
+          -- set their background accordingly if you wish to keep them dark and borderless
+          LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+          MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+        }
+      end,
+    },
   },
 }
