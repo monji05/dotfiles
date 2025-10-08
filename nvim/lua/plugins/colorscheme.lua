@@ -205,42 +205,68 @@ return {
       vim.api.nvim_command([[highlight Hlargs guifg=#957FB8]])
     end,
   },
+  -- {
+  --   "rebelot/kanagawa.nvim",
+  --   opts = {
+  --     statementStyle = { bold = false },
+  --     fuctionStyle = { italic = true },
+  --     transparent = true,
+  --     colors = {
+  --       theme = {
+  --         wave = {},
+  --         lotus = {},
+  --         dragon = {},
+  --         all = {
+  --           ui = {
+  --             bg_gutter = "none", -- 行番号の背景を透過にするため
+  --           },
+  --         },
+  --       },
+  --     },
+  --     overrides = function(colors)
+  --       local theme = colors.theme
+  --       return {
+  --         NormalFloat = { bg = "none" },
+  --         FloatBorder = { bg = "none" },
+  --         FloatTitle = { bg = "none" },
+  --
+  --         -- Save an hlgroup with dark background and dimmed foreground
+  --         -- so that you can use it where your still want darker windows.
+  --         -- E.g.: autocmd TermOpen * setlocal winhighlight=Normal:NormalDark
+  --         NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
+  --
+  --         -- Popular plugins that open floats will link to NormalFloat by default;
+  --         -- set their background accordingly if you wish to keep them dark and borderless
+  --         LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+  --         MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+  --       }
+  --     end,
+  --   },
+  -- },
+
   {
-    "rebelot/kanagawa.nvim",
+    "AlexvZyl/nordic.nvim",
+    lazy = false,
+    priority = 1000,
     opts = {
-      statementStyle = { bold = false },
-      fuctionStyle = { italic = true },
-      transparent = true,
-      colors = {
-        theme = {
-          wave = {},
-          lotus = {},
-          dragon = {},
-          all = {
-            ui = {
-              bg_gutter = "none", -- 行番号の背景を透過にするため
-            },
-          },
-        },
-      },
-      overrides = function(colors)
-        local theme = colors.theme
-        return {
-          NormalFloat = { bg = "none" },
-          FloatBorder = { bg = "none" },
-          FloatTitle = { bg = "none" },
-
-          -- Save an hlgroup with dark background and dimmed foreground
-          -- so that you can use it where your still want darker windows.
-          -- E.g.: autocmd TermOpen * setlocal winhighlight=Normal:NormalDark
-          NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
-
-          -- Popular plugins that open floats will link to NormalFloat by default;
-          -- set their background accordingly if you wish to keep them dark and borderless
-          LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
-          MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+      -- float border
+      bright_border = true,
+      -- This callback can be used to override highlights before they are applied.
+      on_highlight = function(highlights, palette)
+        highlights.Comment = {
+          fg = palette.gray5,
+          italic = true,
+        }
+        highlights.Delimiter = {
+          fg = palette.blue1,
         }
       end,
+      transparent = {
+        -- Enable transparent background.
+        bg = true,
+        -- Enable transparent background for floating windows.
+        float = true,
+      },
     },
   },
 }
