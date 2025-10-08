@@ -193,7 +193,7 @@ return {
 
       -- tokyonight
       -- That is the same phpDoc argment color
-      vim.api.nvim_command([[highlight Hlargs guifg=#e0af68]])
+      -- vim.api.nvim_command([[highlight Hlargs guifg=#e0af68]])
 
       -- nightfox (duskfox)
       -- vim.api.nvim_command([[highlight Hlargs guifg=#9ccfd8]])
@@ -202,7 +202,10 @@ return {
       -- vim.api.nvim_command([[highlight Hlargs guifg=#268BD2]])
 
       -- kanagawa-dragon
-      vim.api.nvim_command([[highlight Hlargs guifg=#957FB8]])
+      -- vim.api.nvim_command([[highlight Hlargs guifg=#957FB8]])
+
+      -- nordic
+      vim.api.nvim_command([[highlight Hlargs guifg=#E7C173]])
     end,
   },
   -- {
@@ -246,11 +249,14 @@ return {
 
   {
     "AlexvZyl/nordic.nvim",
-    lazy = false,
-    priority = 1000,
     opts = {
       -- float border
       bright_border = true,
+      after_palette = function(palette)
+        local U = require("nordic.utils")
+        palette.bg_visual = U.blend(palette.black0, palette.gray2, 0.3)
+        -- palette.bg_visual = palette.gray4
+      end,
       -- This callback can be used to override highlights before they are applied.
       on_highlight = function(highlights, palette)
         highlights.Comment = {
@@ -260,12 +266,24 @@ return {
         highlights.Delimiter = {
           fg = palette.blue1,
         }
+        highlights.bg_visual = {
+          fg = palette.gray3,
+          bg = palette.gray3,
+        }
+        highlights.fg_selected = {
+          fg = palette.gray3,
+          bg = palette.gray3,
+        }
+        highlights.bg_selected = {
+          fg = palette.gray3,
+          bg = palette.gray3,
+        }
       end,
       transparent = {
         -- Enable transparent background.
         bg = true,
         -- Enable transparent background for floating windows.
-        float = true,
+        float = false,
       },
     },
   },
