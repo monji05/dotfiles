@@ -138,52 +138,53 @@ return {
   --     })
   --   end,
   -- },
-  -- {
-  --   "maxmx03/solarized.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   ---@type solarized.config
-  --   opts = {
-  --     variant = "autumn",
-  --     styles = {
-  --       enabled = true,
-  --       types = {},
-  --       functions = { italic = true },
-  --       parameters = {},
-  --       comments = { italic = true },
-  --       strings = {},
-  --       keywords = { italic = true },
-  --       variables = {},
-  --       constants = {},
-  --     },
-  --     transparent = {
-  --       enabled = true,
-  --       pmenu = true,
-  --       normal = true,
-  --       normalfloat = true,
-  --       neotree = true,
-  --       nvimtree = true,
-  --       whichkey = true,
-  --       telescope = true,
-  --       lazy = true,
-  --     },
-  --     on_highlights = function(colors, color)
-  --       ---@type solarized.highlights
-  --       local groups = {
-  --         CursorLineNr = {
-  --           bg = colors.mix_red,
-  --         },
-  --       }
-  --       return groups
-  --     end,
-  --   },
-  --   config = function(_, opts)
-  --     vim.o.termguicolors = true
-  --     vim.o.background = "dark"
-  --     require("solarized").setup(opts)
-  --     vim.cmd.colorscheme("solarized")
-  --   end,
-  -- },
+  {
+    "maxmx03/solarized.nvim",
+    lazy = true,
+    --   lazy = false,
+    --   priority = 1000,
+    --   ---@type solarized.config
+    --   opts = {
+    --     variant = "autumn",
+    --     styles = {
+    --       enabled = true,
+    --       types = {},
+    --       functions = { italic = true },
+    --       parameters = {},
+    --       comments = { italic = true },
+    --       strings = {},
+    --       keywords = { italic = true },
+    --       variables = {},
+    --       constants = {},
+    --     },
+    --     transparent = {
+    --       enabled = true,
+    --       pmenu = true,
+    --       normal = true,
+    --       normalfloat = true,
+    --       neotree = true,
+    --       nvimtree = true,
+    --       whichkey = true,
+    --       telescope = true,
+    --       lazy = true,
+    --     },
+    --     on_highlights = function(colors, color)
+    --       ---@type solarized.highlights
+    --       local groups = {
+    --         CursorLineNr = {
+    --           bg = colors.mix_red,
+    --         },
+    --       }
+    --       return groups
+    --     end,
+    --   },
+    --   config = function(_, opts)
+    --     vim.o.termguicolors = true
+    --     vim.o.background = "dark"
+    --     require("solarized").setup(opts)
+    --     vim.cmd.colorscheme("solarized")
+    --   end,
+  },
   {
     "m-demare/hlargs.nvim",
     config = function()
