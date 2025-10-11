@@ -34,6 +34,7 @@ return {
         ["<Tab>"] = "Select",
         ["v"] = "SelectVSplit",
         ["s"] = "SelectSplit",
+        ["<BS>"] = "GotoParent",
       },
 
       win = {

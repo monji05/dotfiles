@@ -1,64 +1,62 @@
 return {
-  -- {
-  --   "craftzdog/solarized-osaka.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   event = { "BufReadPost", "BufAdd", "BufNewFile" },
-  --   config = function()
-  --     require("solarized-osaka").setup({
-  --       styles = {
-  --         comments = { italic = true },
-  --         keywords = { italic = true },
-  --         functions = { italic = true },
-  --         floats = "transparent",
-  --       },
-  --
-  --       on_colors = function(colors)
-  --         colors.base0 = colors.base1
-  --       end,
-  --       on_highlights = function(hl, c)
-  --         local number_fg = c.violet500
-  --         hl["@number"] = {
-  --           fg = number_fg,
-  --         }
-  --         hl.Number = {
-  --           fg = number_fg,
-  --         }
-  --         hl["@lsp.type.number"] = {
-  --           fg = number_fg,
-  --         }
-  --         hl.LspKindNumber = {
-  --           fg = number_fg,
-  --         }
-  --         hl.LineNr = {
-  --           fg = c.base01,
-  --           -- bg = c.base02,
-  --         }
-  --         hl.CursorLineNr = {
-  --           fg = c.yellow500,
-  --           bg = c.base02,
-  --         }
-  --         -- hl.GitSignsAdd = {
-  --         --   fg = c.green500,
-  --         --   bg = c.base02,
-  --         -- }
-  --         -- hl.GitSignsChange = {
-  --         --   fg = c.yellow500,
-  --         --   bg = c.base02,
-  --         -- }
-  --         -- hl.GitSignsDelete = {
-  --         --   fg = c.red500,
-  --         --   bg = c.base02,
-  --         -- }
-  --         -- hl.DiagnosticHint = {
-  --         --   bg = c.green900,
-  --         --   fg = c.green500,
-  --         -- }
-  --       end,
-  --     })
-  --     vim.cmd([[colorscheme solarized-osaka]])
-  --   end,
-  -- },
+  {
+    "craftzdog/solarized-osaka.nvim",
+    lazy = false,
+    priority = 1000,
+    event = { "BufReadPost", "BufAdd", "BufNewFile" },
+    opts = {
+      day_brightness = 0.5,
+      styles = {
+        comments = { italic = true },
+        keywords = { italic = true },
+        functions = { italic = true },
+        floats = "transparent",
+      },
+
+      on_colors = function(colors)
+        colors.base0 = "#92a0a0"
+      end,
+      on_highlights = function(hl, c)
+        local number_fg = c.violet500
+        hl["@number"] = {
+          fg = number_fg,
+        }
+        hl.Number = {
+          fg = number_fg,
+        }
+        hl["@lsp.type.number"] = {
+          fg = number_fg,
+        }
+        hl.LspKindNumber = {
+          fg = number_fg,
+        }
+        hl.LineNr = {
+          fg = c.base01,
+          -- bg = c.base02,
+        }
+        hl.CursorLineNr = {
+          fg = c.yellow500,
+          bg = c.base02,
+        }
+        -- hl.GitSignsAdd = {
+        --   fg = c.green500,
+        --   bg = c.base02,
+        -- }
+        -- hl.GitSignsChange = {
+        --   fg = c.yellow500,
+        --   bg = c.base02,
+        -- }
+        -- hl.GitSignsDelete = {
+        --   fg = c.red500,
+        --   bg = c.base02,
+        -- }
+        -- hl.DiagnosticHint = {
+        --   bg = c.green900,
+        --   fg = c.green500,
+        -- }
+      end,
+    },
+  },
   -- {
   --   "vague2k/vague.nvim",
   --   config = function(_, opts)
@@ -138,59 +136,59 @@ return {
   --     })
   --   end,
   -- },
-  {
-    "maxmx03/solarized.nvim",
-    lazy = true,
-    --   lazy = false,
-    --   priority = 1000,
-    --   ---@type solarized.config
-    --   opts = {
-    --     variant = "autumn",
-    --     styles = {
-    --       enabled = true,
-    --       types = {},
-    --       functions = { italic = true },
-    --       parameters = {},
-    --       comments = { italic = true },
-    --       strings = {},
-    --       keywords = { italic = true },
-    --       variables = {},
-    --       constants = {},
-    --     },
-    --     transparent = {
-    --       enabled = true,
-    --       pmenu = true,
-    --       normal = true,
-    --       normalfloat = true,
-    --       neotree = true,
-    --       nvimtree = true,
-    --       whichkey = true,
-    --       telescope = true,
-    --       lazy = true,
-    --     },
-    --     on_highlights = function(colors, color)
-    --       ---@type solarized.highlights
-    --       local groups = {
-    --         CursorLineNr = {
-    --           bg = colors.mix_red,
-    --         },
-    --       }
-    --       return groups
-    --     end,
-    --   },
-    --   config = function(_, opts)
-    --     vim.o.termguicolors = true
-    --     vim.o.background = "dark"
-    --     require("solarized").setup(opts)
-    --     vim.cmd.colorscheme("solarized")
-    --   end,
-  },
+  -- {
+  --   "maxmx03/solarized.nvim",
+  --   -- lazy = true,
+  --   lazy = false,
+  --   priority = 1000,
+  --   ---@type solarized.config
+  --   opts = {
+  --     variant = "autumn",
+  --     styles = {
+  --       enabled = true,
+  --       types = {},
+  --       functions = { italic = true },
+  --       parameters = {},
+  --       comments = { italic = true },
+  --       strings = {},
+  --       keywords = { italic = true },
+  --       variables = {},
+  --       constants = {},
+  --     },
+  --     transparent = {
+  --       enabled = true,
+  --       pmenu = true,
+  --       normal = true,
+  --       normalfloat = true,
+  --       neotree = true,
+  --       nvimtree = true,
+  --       whichkey = true,
+  --       telescope = true,
+  --       lazy = true,
+  --     },
+  --     on_highlights = function(colors, color)
+  --       ---@type solarized.highlights
+  --       local groups = {
+  --         CursorLineNr = {
+  --           bg = colors.mix_red,
+  --         },
+  --       }
+  --       return groups
+  --     end,
+  --   },
+  --   config = function(_, opts)
+  --     vim.o.termguicolors = true
+  --     vim.o.background = "dark"
+  --     require("solarized").setup(opts)
+  --     vim.cmd.colorscheme("solarized")
+  --   end,
+  -- },
   {
     "m-demare/hlargs.nvim",
     config = function()
       require("hlargs").setup({})
       -- solarized-osaka
-      -- vim.api.nvim_command([[highlight Hlargs guifg=#c94c16]])
+      vim.api.nvim_command([[highlight Hlargs guifg=#c94c16]])
 
       -- tokyonight
       -- That is the same phpDoc argment color
@@ -206,7 +204,7 @@ return {
       -- vim.api.nvim_command([[highlight Hlargs guifg=#957FB8]])
 
       -- nordic
-      vim.api.nvim_command([[highlight Hlargs guifg=#E7C173]])
+      -- vim.api.nvim_command([[highlight Hlargs guifg=#E7C173]])
     end,
   },
   -- {
@@ -248,44 +246,44 @@ return {
   --   },
   -- },
 
-  {
-    "AlexvZyl/nordic.nvim",
-    opts = {
-      -- float border
-      bright_border = true,
-      after_palette = function(palette)
-        local U = require("nordic.utils")
-        palette.bg_visual = U.blend(palette.black0, palette.gray2, 0.3)
-        -- palette.bg_visual = palette.gray4
-      end,
-      -- This callback can be used to override highlights before they are applied.
-      on_highlight = function(highlights, palette)
-        highlights.Comment = {
-          fg = palette.gray5,
-          italic = true,
-        }
-        highlights.Delimiter = {
-          fg = palette.blue1,
-        }
-        highlights.bg_visual = {
-          fg = palette.gray3,
-          bg = palette.gray3,
-        }
-        highlights.fg_selected = {
-          fg = palette.gray3,
-          bg = palette.gray3,
-        }
-        highlights.bg_selected = {
-          fg = palette.gray3,
-          bg = palette.gray3,
-        }
-      end,
-      transparent = {
-        -- Enable transparent background.
-        bg = true,
-        -- Enable transparent background for floating windows.
-        float = false,
-      },
-    },
-  },
+  -- {
+  --   "AlexvZyl/nordic.nvim",
+  --   opts = {
+  --     -- float border
+  --     bright_border = true,
+  --     after_palette = function(palette)
+  --       local U = require("nordic.utils")
+  --       palette.bg_visual = U.blend(palette.black0, palette.gray2, 0.3)
+  --       -- palette.bg_visual = palette.gray4
+  --     end,
+  --     -- This callback can be used to override highlights before they are applied.
+  --     on_highlight = function(highlights, palette)
+  --       highlights.Comment = {
+  --         fg = palette.gray5,
+  --         italic = true,
+  --       }
+  --       highlights.Delimiter = {
+  --         fg = palette.blue1,
+  --       }
+  --       highlights.bg_visual = {
+  --         fg = palette.gray3,
+  --         bg = palette.gray3,
+  --       }
+  --       highlights.fg_selected = {
+  --         fg = palette.gray3,
+  --         bg = palette.gray3,
+  --       }
+  --       highlights.bg_selected = {
+  --         fg = palette.gray3,
+  --         bg = palette.gray3,
+  --       }
+  --     end,
+  --     transparent = {
+  --       -- Enable transparent background.
+  --       bg = true,
+  --       -- Enable transparent background for floating windows.
+  --       float = false,
+  --     },
+  --   },
+  -- },
 }
