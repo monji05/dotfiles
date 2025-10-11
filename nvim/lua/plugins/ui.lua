@@ -138,8 +138,7 @@ return {
     event = "BufReadPre",
     priority = 900,
     config = function()
-      local parret = require("solarized.palette")
-      local colors = parret.solarized
+      local colors = require("solarized-osaka.colors").setup()
       require("incline").setup({
         highlight = {
           groups = {
