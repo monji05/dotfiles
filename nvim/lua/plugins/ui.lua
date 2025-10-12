@@ -138,6 +138,7 @@ return {
     event = "BufReadPre",
     priority = 900,
     config = function()
+      ---@class solarized.palette
       local colors = require("solarized-osaka.colors").setup()
       require("incline").setup({
         highlight = {
