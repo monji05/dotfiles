@@ -289,14 +289,14 @@ return {
         Snacks.rename.rename_file(opts)
       end,
     },
-    -- { use floatterm.nvim
-    --   ";t",
-    --   desc = "toggle terminal",
-    --   function()
-    --     -- How to toggle Normal mode is to press 'Ctrl + [ * 2'
-    --     Snacks.terminal.toggle(cmd, opts)
-    --   end,
-    -- },
+    {
+      ";t",
+      desc = "toggle terminal",
+      function()
+        -- How to toggle Normal mode is to press 'Ctrl + [ * 2'
+        Snacks.terminal.toggle(cmd, opts)
+      end,
+    },
   },
   init = function()
     vim.api.nvim_create_autocmd("User", {
