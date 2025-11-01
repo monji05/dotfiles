@@ -202,13 +202,14 @@ return {
         Snacks.picker.files()
       end,
     },
-    -- {
-    --   "<leader>f",
-    --   function()
-    --     Snacks.explorer()
-    --   end,
-    --   desc = "File Explorer",
-    -- },
+    {
+      -- <S-i> toggle ignored file in git
+      "<leader>f",
+      function()
+        Snacks.explorer()
+      end,
+      desc = "File Explorer",
+    },
     {
       ";r",
       desc = "Grep source",
