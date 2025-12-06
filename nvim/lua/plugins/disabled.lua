@@ -8,4 +8,5 @@ return {
   { "nvim-mini/mini.ai", enabled = false },
   { "nvim-mini/mini.pairs", enabled = false },
   { "petertriho/cmp-git", enabled = false },
+  { "folke/which-key.nvim", enabled = false },
 }
