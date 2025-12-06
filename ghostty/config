@@ -17,3 +17,7 @@ theme = "Ayu Mirage"
 copy-on-select = true
 window-padding-y = 0
 window-padding-x = 0
+gtk-titlebar-hide-when-maximized = true
+window-height = 62
+window-width = 222
+quit-after-last-window-closed = true
