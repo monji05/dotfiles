@@ -54,6 +54,25 @@ return {
         --   bg = c.green900,
         --   fg = c.green500,
         -- }
+        --
+        -- word_diff
+        hl.GitSignsAddLnInline = {
+          bg = c.green700,
+          -- fg = c.base01,
+        }
+        hl.GitSignsAddLn = {
+          bg = c.green700,
+        }
+        hl.GitSignsUntrackedLn = {
+          bg = c.magenta,
+        }
+        hl.GitSignsChangeLn = {
+          bg = c.yellow900,
+          -- fg = c.base01,
+        }
+        hl.GitSignsChangeLnInline = {
+          bg = c.yellow700,
+        }
       end,
     },
   },
