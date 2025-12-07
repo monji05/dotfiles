@@ -38,23 +38,18 @@ return {
     "b0o/incline.nvim",
     config = function()
       local colors = require("solarized-osaka.colors").setup()
+      local devicons = require("nvim-web-devicons")
       require("incline").setup({
         highlight = {
           groups = {
-            InclineNormal = { guifg = colors.magenta500, guibg = colors.base02 },
+            InclineNormal = { guifg = colors.magenta500, guibg = colors.blue900 },
             InclineNormalNC = { guifg = colors.base00, guibg = colors.base03 },
           },
         },
 
         render = function(props)
-          local devicons = require("mini.icons")
-
           local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
-          if vim.bo[props.buf].modified then
-            filename = "[+] " .. filename
-          end
-
-          local ft_icon, ft_color = devicons.get("file", filename)
+          local ft_icon, ft_color = devicons.get_icon_color(filename)
 
           local function get_git_diff()
             local icons = { removed = "-", changed = "~", added = "+" }
@@ -90,11 +85,16 @@ return {
             return label
           end
 
+          local is_modified = {}
+          if vim.bo[props.buf].modified then
+            table.insert(is_modified, { " ", guifg = colors.yellow })
+          end
           return {
             { get_diagnostic_label() },
             { get_git_diff() },
             { (ft_icon or "") .. " ", guifg = ft_color, guibg = "none" },
-            { filename .. " ", gui = vim.bo[props.buf].modified and "bold,italic" or "bold" },
+            { filename, gui = vim.bo[props.buf].modified and "bold,italic" or "bold" },
+            { is_modified },
           }
         end,
       })
@@ -120,5 +120,9 @@ return {
         },
       },
     },
+  },
+  {
+    "nvim-tree/nvim-web-devicons",
+    lazy = true,
   },
 }
