@@ -77,4 +77,34 @@ return {
       end,
     },
   },
+  {
+    "m-demare/hlargs.nvim",
+    config = function()
+      require("hlargs").setup({})
+      -- vague
+      -- vim.api.nvim_command([[highlight Hlargs guifg=#bb9dbd]])
+
+      -- rusty
+      -- vim.api.nvim_command([[highlight Hlargs guifg=#b5bd68]])
+
+      -- solarized-osaka
+      vim.api.nvim_command([[highlight Hlargs guifg=#c94c16]])
+
+      -- tokyonight
+      -- That is the same phpDoc argment color
+      -- vim.api.nvim_command([[highlight Hlargs guifg=#e0af68]])
+
+      -- nightfox (duskfox)
+      -- vim.api.nvim_command([[highlight Hlargs guifg=#9ccfd8]])
+
+      -- solarized
+      -- vim.api.nvim_command([[highlight Hlargs guifg=#268BD2]])
+
+      -- kanagawa-dragon
+      -- vim.api.nvim_command([[highlight Hlargs guifg=#957FB8]])
+
+      -- nordic
+      -- vim.api.nvim_command([[highlight Hlargs guifg=#E7C173]])
+    end,
+  },
 }
