@@ -9,7 +9,6 @@ cursor-color = "#47FF9C"
 # font-family = "PlemolJP35 Console NF"
 font-family = "PlemolJP Console NF"
 font-size = 18
-keybind = global:cmd+s=toggle_quick_terminal
 keybind = unconsumed:ctrl+h=goto_split:left
 keybind = unconsumed:ctrl+j=goto_split:bottom
 keybind = unconsumed:ctrl+k=goto_split:top
