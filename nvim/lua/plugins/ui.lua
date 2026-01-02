@@ -63,6 +63,7 @@ return {
                 table.insert(labels, { icon .. signs[name] .. " ", group = "Diff" .. name })
               end
             end
+
             if #labels > 0 then
               table.insert(labels, { "┊ " })
             end
@@ -85,11 +86,26 @@ return {
             return label
           end
 
+          local function show_git_branch()
+            local label = {}
+            local git_branch = (vim.b[props.buf].gitsigns_head or "")
+            if git_branch ~= "" then
+              table.insert(label, { "  " .. git_branch .. " ", guifg = colors.red300 })
+            end
+
+            if #label > 0 then
+              table.insert(label, { "┊ " })
+            end
+
+            return label
+          end
+
           local is_modified = {}
           if vim.bo[props.buf].modified then
             table.insert(is_modified, { " ", guifg = colors.yellow })
           end
           return {
+            { show_git_branch() },
             { get_diagnostic_label() },
             { get_git_diff() },
             { (ft_icon or "") .. " ", guifg = ft_color, guibg = "none" },
