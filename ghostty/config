@@ -8,7 +8,7 @@ background-opacity = 0.9
 command = /opt/homebrew/bin/fish
 cursor-color = "#47FF9C"
 font-family = "PlemolJP Console NF"
-font-size = 18
+font-size = 14
 keybind = unconsumed:ctrl+h=goto_split:left
 keybind = unconsumed:ctrl+j=goto_split:bottom
 keybind = unconsumed:ctrl+k=goto_split:top
