@@ -88,7 +88,7 @@ return {
       -- vim.api.nvim_command([[highlight Hlargs guifg=#b5bd68]])
 
       -- solarized-osaka
-      vim.api.nvim_command([[highlight Hlargs guifg=#c94c16]])
+      -- vim.api.nvim_command([[highlight Hlargs guifg=#c94c16]])
 
       -- tokyonight
       -- That is the same phpDoc argment color
@@ -101,7 +101,7 @@ return {
       -- vim.api.nvim_command([[highlight Hlargs guifg=#268BD2]])
 
       -- kanagawa-dragon
-      -- vim.api.nvim_command([[highlight Hlargs guifg=#957FB8]])
+      vim.api.nvim_command([[highlight Hlargs guifg=#957FB8]])
 
       -- nordic
       -- vim.api.nvim_command([[highlight Hlargs guifg=#E7C173]])
