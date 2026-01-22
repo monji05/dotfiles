@@ -63,3 +63,51 @@ set_hl("@type.builtin", { fg = colors.blue })
 set_hl("@tag", { fg = colors.blue })
 set_hl("@tag.attribute", { fg = colors.cyan })
 set_hl("@tag.delimiter", { fg = colors.gray })
+
+-- 9. snacks.nvim (Picker / Explorer)
+
+-- パス（ディレクトリ）を控えめなグレーにして、ファイル名を目立たせる
+set_hl("SnacksPickerDir", { fg = colors.gray })
+set_hl("SnacksPickerPath", { fg = colors.gray })
+set_hl("SnacksPickerFileName", { fg = colors.fg })
+
+-- 入力した文字と一致する部分（マッチング）
+set_hl("SnacksPickerMatch", { fg = colors.yellow, bold = true })
+
+-- 枠線とプロンプト
+set_hl("SnacksPickerBorder", { fg = colors.blue })
+set_hl("SnacksPickerPrompt", { fg = colors.blue, bold = true })
+
+-- 選択されている行（カーソル位置）
+set_hl("SnacksPickerSelected", { bg = colors.selection, fg = colors.cyan })
+
+-- ダッシュボード（snacks.dashboard）を使う場合
+set_hl("SnacksDashboardHeader", { fg = colors.blue })
+set_hl("SnacksDashboardFooter", { fg = colors.gray })
+set_hl("SnacksDashboardDesc", { fg = colors.cyan })
+set_hl("SnacksDashboardKey", { fg = colors.magenta })
+
+local function set_transparent()
+  -- 背景を透明にする（bg = "NONE" または nil）
+  local transparent_groups = {
+    "Normal",
+    "NormalFloat",
+    "NormalNC", -- 非アクティブなウィンドウ
+    "Folded",
+    "NonText",
+    "SpecialKey",
+    "SignColumn",
+    "EndOfBuffer",
+  }
+
+  for _, group in ipairs(transparent_groups) do
+    set_hl(group, { fg = nil, bg = "NONE" }) -- bgをNONEに設定
+  end
+
+  -- snacks.nvim の背景も透明に合わせる場合
+  set_hl("SnacksPicker", { bg = "NONE" })
+  set_hl("SnacksNormal", { bg = "NONE" })
+end
+
+-- 透過設定を有効にする
+set_transparent()
