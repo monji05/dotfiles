@@ -101,7 +101,10 @@ return {
       -- vim.api.nvim_command([[highlight Hlargs guifg=#268BD2]])
 
       -- kanagawa-dragon
-      vim.api.nvim_command([[highlight Hlargs guifg=#957FB8]])
+      -- vim.api.nvim_command([[highlight Hlargs guifg=#957FB8]])
+
+      -- iceberg
+      vim.api.nvim_command([[highlight Hlargs guifg=#a093c7]])
 
       -- nordic
       -- vim.api.nvim_command([[highlight Hlargs guifg=#E7C173]])

@@ -111,3 +111,19 @@ end
 
 -- 透過設定を有効にする
 set_transparent()
+
+-- 11. コメントの視認性調整 (透過用)
+-- 元の gray (#6b7089) よりも少し明るい色を定義
+local bright_comment = "#7a819d"
+
+-- コメントのハイライトを上書き
+set_hl("Comment", { fg = bright_comment, italic = true })
+
+-- ついでに PHPDoc の説明文も同じ色にして読みやすくする
+set_hl("@text.phpdoc", { fg = bright_comment })
+
+-- Tree-sitterのconfig nvim/after/queries/php/highlights.scmで新しく定義した @variable.sigil($) に色を付ける
+set_hl("@variable.sigil", { fg = colors.blue })
+
+-- PHPDoc 内の変数名を、hlargs.nvimで設定しているハイライトと同じ色に設定
+set_hl("@variable.parameter.phpdoc", { fg = colors.magenta })
