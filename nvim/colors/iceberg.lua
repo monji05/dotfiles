@@ -127,3 +127,9 @@ set_hl("@variable.sigil", { fg = colors.blue })
 
 -- PHPDoc 内の変数名を、hlargs.nvimで設定しているハイライトと同じ色に設定
 set_hl("@variable.parameter.phpdoc", { fg = colors.magenta })
+
+-- Undercurl（波線の下線）の設定
+set_hl("DiagnosticUnderlineError", { undercurl = true, sp = colors.red })
+set_hl("DiagnosticUnderlineWarn", { undercurl = true, sp = colors.yellow })
+set_hl("DiagnosticUnderlineInfo", { undercurl = true, sp = colors.blue })
+set_hl("DiagnosticUnderlineHint", { undercurl = true, sp = colors.cyan })
