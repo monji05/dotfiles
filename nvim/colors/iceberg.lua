@@ -133,3 +133,27 @@ set_hl("DiagnosticUnderlineError", { undercurl = true, sp = colors.red })
 set_hl("DiagnosticUnderlineWarn", { undercurl = true, sp = colors.yellow })
 set_hl("DiagnosticUnderlineInfo", { undercurl = true, sp = colors.blue })
 set_hl("DiagnosticUnderlineHint", { undercurl = true, sp = colors.cyan })
+
+-- Diff ハイライト (Git差分など)
+-- ファイル比較 (diffモード) 用
+set_hl("DiffAdd", { fg = colors.green })
+set_hl("DiffChange", { fg = colors.yellow })
+set_hl("DiffAdded", { fg = colors.green })
+set_hl("DiffDelete", { fg = colors.red })
+set_hl("DiffText", { fg = colors.bg })
+
+-- for incline
+set_hl("DiffAdded", { fg = colors.green })
+set_hl("DiffChanged", { fg = colors.yellow })
+set_hl("DiffRemoved", { fg = colors.red })
+set_hl("DiffText", { fg = colors.bg })
+
+-- Gitsigns (エディタ左側の記号)
+set_hl("GitSignsAdd", { fg = colors.green, bg = "NONE" })
+set_hl("GitSignsChange", { fg = colors.yellow, bg = "NONE" })
+set_hl("GitSignsDelete", { fg = colors.red, bg = "NONE" })
+
+-- Snacks.nvim の Git 差分表示を使っている場合
+set_hl("SnacksPickerGitStatusAdded", { fg = colors.green })
+set_hl("SnacksPickerGitStatusModified", { fg = colors.yellow })
+set_hl("SnacksPickerGitStatusDeleted", { fg = colors.red })

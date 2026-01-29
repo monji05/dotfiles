@@ -37,19 +37,35 @@ return {
   {
     "b0o/incline.nvim",
     config = function()
-      local colors = require("solarized-osaka.colors").setup()
+      local colors = {
+        bg = "#161821",
+        fg = "#d2d4de",
+        black = "#161821",
+        red = "#e27878",
+        green = "#b4be82",
+        yellow = "#e2a478",
+        blue = "#84a0c6",
+        magenta = "#a093c7",
+        cyan = "#89b8c2",
+        white = "#c6c8d1",
+        -- 明るい色や特殊な色
+        gray = "#6b7089",
+        l_gray = "#444b71",
+        selection = "#1e2132",
+      }
       local devicons = require("nvim-web-devicons")
       require("incline").setup({
         highlight = {
           groups = {
-            InclineNormal = { guifg = colors.magenta500, guibg = colors.blue900 },
-            InclineNormalNC = { guifg = colors.base00, guibg = colors.base03 },
+            InclineNormal = { guifg = colors.magenta, guibg = colors.l_gray },
+            InclineNormalNC = { guifg = colors.gray, guibg = colors.bg },
           },
         },
 
         render = function(props)
           local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
           local ft_icon, ft_color = devicons.get_icon_color(filename)
+          local separator = { "┊ ", guifg = colors.blue }
 
           local function get_git_diff()
             local icons = { removed = "-", changed = "~", added = "+" }
@@ -65,7 +81,7 @@ return {
             end
 
             if #labels > 0 then
-              table.insert(labels, { "┊ " })
+              table.insert(labels, separator)
             end
             return labels
           end
@@ -81,7 +97,7 @@ return {
               end
             end
             if #label > 0 then
-              table.insert(label, { "┊ " })
+              table.insert(label, separator)
             end
             return label
           end
@@ -90,11 +106,11 @@ return {
             local label = {}
             local git_branch = (vim.b[props.buf].gitsigns_head or "")
             if git_branch ~= "" then
-              table.insert(label, { "  " .. git_branch .. " ", guifg = colors.red300 })
+              table.insert(label, { "  " .. git_branch .. " ", guifg = colors.red })
             end
 
             if #label > 0 then
-              table.insert(label, { "┊ " })
+              table.insert(label, separator)
             end
 
             return label
