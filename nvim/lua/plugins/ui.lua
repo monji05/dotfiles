@@ -37,22 +37,7 @@ return {
   {
     "b0o/incline.nvim",
     config = function()
-      local colors = {
-        bg = "#161821",
-        fg = "#d2d4de",
-        black = "#161821",
-        red = "#e27878",
-        green = "#b4be82",
-        yellow = "#e2a478",
-        blue = "#84a0c6",
-        magenta = "#a093c7",
-        cyan = "#89b8c2",
-        white = "#c6c8d1",
-        -- 明るい色や特殊な色
-        gray = "#6b7089",
-        l_gray = "#444b71",
-        selection = "#1e2132",
-      }
+      local colors = require("iceberg_palette").colors
       local devicons = require("nvim-web-devicons")
       require("incline").setup({
         highlight = {
