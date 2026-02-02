@@ -38,7 +38,7 @@ vim.opt.breakindent = true
 vim.opt.wrap = false -- No Wrap lines
 vim.opt.backspace = { "start", "eol", "indent" }
 vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders
-vim.opt.laststatus = 3
+vim.opt.laststatus = 0
 vim.opt.iskeyword:append("-")
 vim.opt.shada = ""
 vim.opt.swapfile = false
