@@ -48,7 +48,7 @@ return {
         },
 
         render = function(props)
-          local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
+          local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":.:~")
           local ft_icon, ft_color = devicons.get_icon_color(filename)
           local separator = { "┊ ", guifg = colors.blue }
 
