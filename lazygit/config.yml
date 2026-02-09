@@ -4,18 +4,16 @@ customCommands:
     description: "commit with commitizen"
     context: "files"
     loadingText: "opening commitizen commit tool"
-    subprocess: true
-
+    output: terminal
   - key: "E"
     prompts:
-    - type: "input"
-      title: "Empty commit message"
-      initialValue: ""
+      - type: "input"
+        title: "Empty commit message"
+        initialValue: ""
     command: "git commit --allow-empty -m {{index .PromptResponses 0 | quote}}"
     context: "files"
     description: 'create empty commit'
     loadingText: "creating empty commit"
-
 git:
   # %C(カラー指定)
   # %h 短いcommit hash
