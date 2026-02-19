@@ -209,6 +209,7 @@ return {
       end,
     },
     -- {
+    --   -- <S-i> toggle ignored file in git
     --   "<leader>f",
     --   function()
     --     Snacks.explorer()
