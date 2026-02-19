@@ -37,13 +37,21 @@ return {
   {
     "b0o/incline.nvim",
     config = function()
-      local colors = require("iceberg_palette").colors
+      -- local colors = require("iceberg_palette").colors
+      local colors = require("solarized-osaka.colors").setup()
       local devicons = require("nvim-web-devicons")
       require("incline").setup({
         highlight = {
           groups = {
-            InclineNormal = { guifg = colors.magenta, guibg = colors.l_gray },
-            InclineNormalNC = { guifg = colors.gray, guibg = colors.bg },
+            -- iceberg
+            -- InclineNormal = { guifg = colors.magenta, guibg = colors.l_gray },
+            -- InclineNormalNC = { guifg = colors.gray, guibg = colors.bg },
+
+            -- solarized-osaka
+            -- active
+            InclineNormal = { guifg = colors.magenta, guibg = colors.violet900 },
+            -- inactive
+            InclineNormalNC = { guifg = colors.base00, guibg = colors.bg },
           },
         },
 
