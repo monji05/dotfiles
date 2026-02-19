@@ -1,10 +1,10 @@
 # config reload = shift + command + ,
 # pane move = cmd + alt + left right up down
-# background = #031219
-background = #161821
+background = #031219
+# background = #13151D
 
 background-blur-radius = 30
-background-opacity = 0.8
+background-opacity = 0.9
 command = /opt/homebrew/bin/fish
 cursor-color = "#47FF9C"
 font-family = "PlemolJP Console NF"
