@@ -19,26 +19,26 @@ return {
       end,
       on_highlights = function(hl, c)
         local number_fg = c.violet500
-        hl["@number"] = {
-          fg = number_fg,
-        }
-        hl.Number = {
-          fg = number_fg,
-        }
-        hl["@lsp.type.number"] = {
-          fg = number_fg,
-        }
-        hl.LspKindNumber = {
-          fg = number_fg,
-        }
-        hl.LineNr = {
-          fg = c.base01,
-          -- bg = c.base02,
-        }
-        hl.CursorLineNr = {
-          fg = c.yellow300,
-          bg = c.yellow700,
-        }
+        -- hl["@number"] = {
+        --   fg = number_fg,
+        -- }
+        -- hl.Number = {
+        --   fg = number_fg,
+        -- }
+        -- hl["@lsp.type.number"] = {
+        --   fg = number_fg,
+        -- }
+        -- hl.LspKindNumber = {
+        --   fg = number_fg,
+        -- }
+        -- hl.LineNr = {
+        --   fg = c.base01,
+        --   -- bg = c.base02,
+        -- }
+        -- hl.CursorLineNr = {
+        --   fg = c.yellow300,
+        --   bg = c.yellow700,
+        -- }
         -- hl.GitSignsAdd = {
         --   fg = c.green500,
         --   bg = c.base02,
@@ -88,7 +88,7 @@ return {
       -- vim.api.nvim_command([[highlight Hlargs guifg=#b5bd68]])
 
       -- solarized-osaka
-      -- vim.api.nvim_command([[highlight Hlargs guifg=#c94c16]])
+      vim.api.nvim_command([[highlight Hlargs guifg=#c94c16]])
 
       -- tokyonight
       -- That is the same phpDoc argment color
@@ -104,7 +104,7 @@ return {
       -- vim.api.nvim_command([[highlight Hlargs guifg=#957FB8]])
 
       -- iceberg
-      vim.api.nvim_command([[highlight Hlargs guifg=#a093c7]])
+      -- vim.api.nvim_command([[highlight Hlargs guifg=#a093c7]])
 
       -- nordic
       -- vim.api.nvim_command([[highlight Hlargs guifg=#E7C173]])
