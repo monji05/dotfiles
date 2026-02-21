@@ -21,10 +21,3 @@ keymap("n", "<Space>k", erase_all_lines, { desc = "Erase all" })
 
 -- To describe the group of mappings under <Space>g, use key-menu.set.
 key_menu.set("n", "<Space>g", { desc = "Git" })
-
--- The function key-menu.set is just a thin wrapper around vim.keymap.set, and
--- is provided for convenience so that you don't have to type the key sequence
--- twice. The above call to key-menu.set is equivalent to this:
-keymap("n", "<Space>g", function()
-  key_menu().open_window("<Space>g")
-end, { desc = "Git" })
