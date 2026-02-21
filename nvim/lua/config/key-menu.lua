@@ -28,7 +28,3 @@ key_menu.set("n", "<Space>g", { desc = "Git" })
 keymap("n", "<Space>g", function()
   key_menu().open_window("<Space>g")
 end, { desc = "Git" })
-
-keymap("n", "<Space>S", function()
-  key_menu.open_window("s")
-end, { desc = "mini.surround" })
