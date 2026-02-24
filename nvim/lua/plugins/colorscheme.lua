@@ -14,9 +14,12 @@ return {
         sidebars = "transparent",
       },
 
+      ---@param colors ColorScheme
       on_colors = function(colors)
         colors.base0 = "#92a0a0"
       end,
+      ---@param highlights Highlights
+      ---@param colors ColorScheme
       on_highlights = function(hl, c)
         local number_fg = c.violet500
         -- hl["@number"] = {
