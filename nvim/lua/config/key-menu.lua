@@ -7,6 +7,8 @@ local key_menu = require("key-menu")
 -- If you use <Space> as your mapping prefix, then this will make the key-menu
 -- popup appear in Normal mode, after you press <Space>, after timeoutlen.
 key_menu.set("n", "<leader>")
+key_menu.set("n", ";")
+key_menu.set("n", "[")
 
 -- Use the desc option to Vim's built-in vim.keymap.set to describe mappings.
 keymap("n", "<Space>w", "<Cmd>w<CR>", { desc = "Save" })
