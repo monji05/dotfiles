@@ -4,19 +4,23 @@ customCommands:
     description: "commit with commitizen"
     context: "files"
     loadingText: "opening commitizen commit tool"
-    subprocess: true
-
+    output: terminal
   - key: "E"
     prompts:
-    - type: "input"
-      title: "Empty commit message"
-      initialValue: ""
+      - type: "input"
+        title: "Empty commit message"
+        initialValue: ""
     command: "git commit --allow-empty -m {{index .PromptResponses 0 | quote}}"
     context: "files"
     description: 'create empty commit'
     loadingText: "creating empty commit"
-
 git:
+  # %C(カラー指定)
+  # %h 短いcommit hash
+  # %d branchName
+  # %s コミットの題
+  allBranchesLogCmd: git log --graph --color=always --date=format:'%Y-%m-%d %H:%M' --pretty=format:'%C(yellow)%h%Creset %C(cyan)%ad%Creset %C(#dd4814)%an%Creset %C(auto)%d%Creset%n%n%C(white bold)%s%Creset%n' --
+  branchLogCmd: git log --graph --color=always --date=format:'%Y-%m-%d %H:%M' --pretty=format:'%C(yellow)%h%Creset %C(cyan)%ad%Creset %C(#dd4814)%an%Creset %C(auto)%d%Creset%n%n%C(white bold)%s%Creset%n' {{branchName}} --
   paging:
     colorArg: always
     pager: delta --dark --paging=never

@@ -1,51 +1,19 @@
 return {
   {
-    "nvim-mini/mini.icons",
-    lazy = true,
+
+    "stevearc/oil.nvim",
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {
+      view_options = {
+        show_hidden = true,
+      },
+    },
+    -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+    lazy = false,
   },
   {
-    "A7Lavinraj/fyler.nvim",
-    branch = "stable",
-    keys = {
-      {
-        "<leader>f",
-        ":Fyler<CR>",
-      },
-    },
-    opts = {
-      indentscope = {
-        enabled = true,
-        group = "FylerIndentMarker",
-        marker = "▏",
-      },
-
-      git_status = {
-        enabled = true,
-        symbols = {
-          Modified = "●",
-          Added = "✚",
-          Deleted = "✖",
-          Untracked = "?",
-        },
-      },
-
-      mappings = {
-        ["<C-c>"] = "CloseView",
-        ["<Tab>"] = "Select",
-        ["v"] = "SelectVSplit",
-        ["s"] = "SelectSplit",
-        ["<BS>"] = "GotoParent",
-      },
-
-      win = {
-        border = "single",
-        kind = "float",
-        kind_presets = {
-          my_layout = {
-            width = "1rel",
-          },
-        },
-      },
-    },
+    "nvim-mini/mini.icons",
+    lazy = true,
   },
 }
