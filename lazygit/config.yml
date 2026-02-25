@@ -17,6 +17,12 @@ customCommands:
     loadingText: "creating empty commit"
 
 git:
+  # %C(カラー指定)
+  # %h 短いcommit hash
+  # %d branchName
+  # %s コミットの題
+  allBranchesLogCmd: git log --graph --color=always --date=format:'%Y-%m-%d %H:%M' --pretty=format:'%C(yellow)%h%Creset %C(cyan)%ad%Creset %C(#dd4814)%an%Creset %C(auto)%d%Creset%n%n%C(white bold)%s%Creset%n' --
+  branchLogCmd: git log --graph --color=always --date=format:'%Y-%m-%d %H:%M' --pretty=format:'%C(yellow)%h%Creset %C(cyan)%ad%Creset %C(#dd4814)%an%Creset %C(auto)%d%Creset%n%n%C(white bold)%s%Creset%n' {{branchName}} --
   paging:
     colorArg: always
     pager: delta --dark --paging=never
