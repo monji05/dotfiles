@@ -19,19 +19,20 @@ return {
       desc = "Add file",
       ft = { "NvimTree", "neo-tree", "oil", "minifiles" },
     },
-    -- Diff management
     { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
     { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
   },
   opts = {
     terminal = {
-      ---@module "snacks"
-      ---@type snacks.win.Config|{}
+      provider = "snacks",
       snacks_win_opts = {
         position = "float",
         border = "rounded",
         width = 0.9,
         height = 0.9,
+        wo = {
+          scrolloff = 0,
+        },
         keys = {
           claude_hide = {
             toggle_key,
@@ -40,6 +41,45 @@ return {
             end,
             mode = "t",
             desc = "Hide",
+          },
+          -- ターミナルモードでのスクロール
+          scroll_up = {
+            "<C-u>",
+            function()
+              -- ノーマルモードに切替 → スクロール → ターミナルモードに戻る
+              local keys = vim.api.nvim_replace_termcodes("<C-\\><C-n><C-u>", true, false, true)
+              vim.api.nvim_feedkeys(keys, "n", false)
+            end,
+            mode = "t",
+            desc = "Scroll up",
+          },
+          scroll_down = {
+            "<C-d>",
+            function()
+              local keys = vim.api.nvim_replace_termcodes("<C-\\><C-n><C-d>", true, false, true)
+              vim.api.nvim_feedkeys(keys, "n", false)
+            end,
+            mode = "t",
+            desc = "Scroll down",
+          },
+          -- マウスホイールでのスクロール
+          mouse_scroll_up = {
+            "<ScrollWheelUp>",
+            function()
+              local keys = vim.api.nvim_replace_termcodes("<C-\\><C-n><ScrollWheelUp>", true, false, true)
+              vim.api.nvim_feedkeys(keys, "n", false)
+            end,
+            mode = "t",
+            desc = "Mouse scroll up",
+          },
+          mouse_scroll_down = {
+            "<ScrollWheelDown>",
+            function()
+              local keys = vim.api.nvim_replace_termcodes("<C-\\><C-n><ScrollWheelDown>", true, false, true)
+              vim.api.nvim_feedkeys(keys, "n", false)
+            end,
+            mode = "t",
+            desc = "Mouse scroll down",
           },
         },
       },
