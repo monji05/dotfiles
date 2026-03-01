@@ -272,8 +272,10 @@ return {
     -- },
     {
       "<leader>n",
-      desc = "Open notifications",
-      ":NoiceAll<CR>",
+      function()
+        Snacks.notifier.show_history()
+      end,
+      desc = "Open notifications history",
     },
     {
       ";;",
