@@ -194,6 +194,7 @@ return {
         },
       })
       lsp.ts_ls.setup({})
+      lsp.gopls.setup({})
     end,
   },
 }
