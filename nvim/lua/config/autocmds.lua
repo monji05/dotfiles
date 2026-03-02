@@ -154,219 +154,25 @@ vim.api.nvim_create_user_command("ArchiveTask", function()
   end
 end, {})
 
--- create php file
-vim.api.nvim_create_user_command("CreatePhp", function()
-  local file_name = vim.fn.input("What is your file name: ")
-  if file_name == "" then
-    print("File name cannot be empty.")
-    return
-  end
+-- swtching between camel case and snake case
+vim.api.nvim_create_user_command("SwitchCase", function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  local word = vim.fn.expand("<cword>")
+  local word_start = vim.fn.matchstrpos(vim.fn.getline("."), "\\k*\\%" .. (col + 1) .. "c\\k*")[2]
 
-  local current_dir = vim.fn.expand("%:p:h")
-  local project_root = vim.fn.getcwd() -- プロジェクトのルートディレクトリを取得
-
-  -- プロジェクトルートからの相対パスを計算
-  local relative_path = string.sub(current_dir, #project_root + 14) -- +14は最初のofferbox-v2\を排除するため
-
-  -- relative_path の各ディレクトリ名の頭文字を大文字にする関数
-  local function capitalize_first_letter(str)
-    return (str:gsub("^%l", string.upper))
-  end
-
-  -- namespaceを生成 (ディレクトリ区切りを '\' に置換し、頭文字を大文字にする)
-  local namespace_parts = {}
-  for part in string.gmatch(relative_path, "[^/]+") do
-    table.insert(namespace_parts, capitalize_first_letter(part))
-  end
-  local namespace = table.concat(namespace_parts, "\\")
-
-  local class_name = string.gsub(file_name, "[^a-zA-Z0-9_]", "") -- クラス名として安全な文字列に変換
-  local file_path = current_dir .. "/" .. file_name .. ".php" -- ファイルパスはそのまま
-
-  local lines = {
-    "<?php",
-    "",
-    "declare(strict_types=1);",
-    "",
-    "namespace " .. namespace .. ";", -- namespace を追記 (末尾に ';' を追加)
-    "",
-    "final class " .. class_name,
-    "{",
-    "  public function __construct()",
-    "  {",
-    "  }",
-    "}",
-  }
-
-  local file = io.open(file_path, "w")
-  if file then
-    for _, line in ipairs(lines) do
-      file:write(line .. "\n")
-    end
-    file:close()
-    vim.cmd("edit " .. vim.fn.fnameescape(file_path)) -- 作成したファイルを開く
+  -- Detect camelCase
+  if word:find("[a-z][A-Z]") then
+    -- Convert camelCase to snake_case
+    local snake_case_word = word:gsub("([a-z])([A-Z])", "%1_%2"):lower()
+    vim.api.nvim_buf_set_text(0, line - 1, word_start, line - 1, word_start + #word, { snake_case_word })
+  -- Detect snake_case
+  elseif word:find("_[a-z]") then
+    -- Convert snake_case to camelCase
+    local camel_case_word = word:gsub("(_)([a-z])", function(_, l)
+      return l:upper()
+    end)
+    vim.api.nvim_buf_set_text(0, line - 1, word_start, line - 1, word_start + #word, { camel_case_word })
   else
-    print("Failed to create file: " .. file_path)
+    print("Not a snake_case or camelCase word")
   end
 end, {})
-
--- PHPStan integration
--- local phpstan_timers = {} -- デバウンス用のタイマーを管理
--- local phpstan_jobs = {}   -- 実行中のジョブを管理
---
--- local function run_phpstan(bufnr, delay)
---   delay = delay or 0 -- デフォルトは即座に実行
---
---   local filename = vim.api.nvim_buf_get_name(bufnr)
---
---   -- PHPファイル以外は処理しない
---   if not filename:match("%.php$") then
---     return
---   end
---
---   -- プロジェクト内のPHPファイルのみ処理
---   if not filename:match("/Users/erikomishina/www/offerbox/public_html/offerbox%-v2/") then
---     return
---   end
---
---   -- 既存のタイマーをキャンセル
---   if phpstan_timers[bufnr] then
---     vim.fn.timer_stop(phpstan_timers[bufnr])
---     phpstan_timers[bufnr] = nil
---   end
---
---   -- 既存のジョブをキャンセル
---   if phpstan_jobs[bufnr] then
---     vim.fn.jobstop(phpstan_jobs[bufnr])
---     phpstan_jobs[bufnr] = nil
---   end
---
---   local function execute_phpstan()
---     print("DEBUG: Starting phpstan run for " .. filename)
---     -- フルパスから相対パスに変換
---     local relative_path = filename:gsub("/Users/erikomishina/www/offerbox/public_html/offerbox%-v2/", "")
---     print("Running phpstan for: " .. relative_path)
---
---     local cmd = string.format(
---       "cd ~/www/offerbox/public_html/offerbox-v2 && docker compose exec -w /var/www/offerbox-v2 -T v2_php ./vendor/bin/phpstan analyse -l 9 -c phpstan.neon.dist --memory-limit=2G --no-progress --error-format=raw %s 2>/dev/null",
---       relative_path
---     )
---
---     local job_id = vim.fn.jobstart(cmd, {
---       stdout_buffered = true,
---       stderr_buffered = true,
---       on_stdout = function(_, data)
---         local diagnostics = {}
---
---         print("PHPStan stdout data received:")
---         if data then
---           for i, line in ipairs(data) do
---             print(string.format("  [%d]: %q", i, line))
---             if line ~= "" and not line:match("^Note:") and not line:match("^$") then
---               -- PHPStanのraw形式をパース: file:line:message
---               local file, line_num, message = line:match("^([^:]+):(%d+):(.+)$")
---
---               if file and line_num and message then
---                 print(string.format("Parsed - file: %s, line: %s, message: %s", file, line_num, message))
---                 -- パスを正規化
---                 local normalized_file =
---                   file:gsub("^/var/www/offerbox%-v2", "/Users/erikomishina/www/offerbox/public_html/offerbox-v2")
---                 print(string.format("Normalized file: %s", normalized_file))
---                 print(string.format("Current filename: %s", filename))
---
---                 -- 現在のファイルの診断のみ処理
---                 if normalized_file == filename then
---                   print("File matches! Adding diagnostic")
---                   table.insert(diagnostics, {
---                     lnum = tonumber(line_num) - 1, -- 0-based
---                     col = 0,
---                     severity = vim.diagnostic.severity.ERROR,
---                     source = "phpstan",
---                     message = "phpstan: " .. message:gsub("^%s*", ""), -- 先頭の空白を削除してプレフィックス追加
---                   })
---                 else
---                   print("File does not match current buffer")
---                 end
---               else
---                 print("Could not parse line: " .. line)
---               end
---             end
---           end
---         end
---
---         print(string.format("Setting %d diagnostics", #diagnostics))
---         -- 診断を設定
---         vim.diagnostic.set(vim.api.nvim_create_namespace("phpstan"), bufnr, diagnostics)
---       end,
---       on_stderr = function(_, data)
---         -- Docker compose警告は無視
---         if data then
---           for _, line in ipairs(data) do
---             if line ~= "" and not line:match("MOCK.*variable") and not line:match("version.*obsolete") then
---               print("PHPStan Error: " .. line)
---             end
---           end
---         end
---       end,
---       on_exit = function(_, exit_code)
---         -- ジョブ完了時にリストから削除
---         phpstan_jobs[bufnr] = nil
---
---         if exit_code == 0 then
---           -- エラーがない場合は診断をクリア
---           vim.diagnostic.set(vim.api.nvim_create_namespace("phpstan"), bufnr, {})
---           print("PHPStan: No issues found!")
---         end
---       end,
---     })
---
---     -- ジョブIDを保存
---     phpstan_jobs[bufnr] = job_id
---   end
---
---   -- デバウンス機能：指定された遅延後に実行
---   if delay > 0 then
---     phpstan_timers[bufnr] = vim.fn.timer_start(delay, function()
---       phpstan_timers[bufnr] = nil
---       execute_phpstan()
---     end)
---   else
---     execute_phpstan()
---   end
--- end
---
--- -- PHPファイルが開かれた時にphpstanを実行
--- vim.api.nvim_create_autocmd("FileType", {
---   pattern = "php",
---   callback = function(ev)
---     local bufnr = ev.buf
---     print("PHP FileType detected for buffer: " .. bufnr)
---
---     -- すぐに実行
---     run_phpstan(bufnr)
---
---     -- 保存時に即座に実行
---     vim.api.nvim_create_autocmd("BufWritePost", {
---       buffer = bufnr,
---       callback = function()
---         run_phpstan(bufnr) -- 即座に実行
---       end,
---     })
---
---     -- テキスト変更時にデバウンス付きで実行（2秒後）
---     vim.api.nvim_create_autocmd({"TextChanged", "TextChangedI"}, {
---       buffer = bufnr,
---       callback = function()
---         run_phpstan(bufnr, 2000) -- 2秒のデバウンス
---       end,
---     })
---
---     -- インサートモードを出た時に短いデバウンス付きで実行（500ms後）
---     vim.api.nvim_create_autocmd("InsertLeave", {
---       buffer = bufnr,
---       callback = function()
---         run_phpstan(bufnr, 500) -- 500msのデバウンス
---       end,
---     })
---   end,
--- })

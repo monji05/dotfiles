@@ -1,19 +1,27 @@
 # config reload = shift + command + ,
 # pane move = cmd + alt + left right up down
-# background = #001b22
-background = 16161D
-background-blur-radius = 15
+background = #031219
+# background = #13151D
+
+background-blur-radius = 20
 background-opacity = 0.9
 command = /opt/homebrew/bin/fish
 cursor-color = "#47FF9C"
-font-family = "PlemolJP35 Console NF"
-font-size = 16
-keybind = global:cmd+s=toggle_quick_terminal
+font-family = "PlemolJP Console NF"
+font-size = 18
 keybind = unconsumed:ctrl+h=goto_split:left
 keybind = unconsumed:ctrl+j=goto_split:bottom
 keybind = unconsumed:ctrl+k=goto_split:top
 keybind = unconsumed:ctrl+l=goto_split:right
-theme = "Ayu Mirage"
+theme = "Solarized Darcula"
 copy-on-select = true
-window-padding-y = 0
+window-padding-y = 1
 window-padding-x = 0
+window-position-x = 0
+window-position-y = 0
+gtk-titlebar-hide-when-maximized = true
+window-height = 62
+window-width = 127
+quit-after-last-window-closed = true
+macos-titlebar-style = tabs
+mouse-hide-while-typing = true

@@ -209,6 +209,7 @@ return {
       end,
     },
     -- {
+    --   -- <S-i> toggle ignored file in git
     --   "<leader>f",
     --   function()
     --     Snacks.explorer()
@@ -271,8 +272,10 @@ return {
     {
       -- 本来noiceに書くべきだけど、noiceのセットアップを書いていないのでここに
       "<leader>n",
-      desc = "Open notifications",
-      ":NoiceAll<CR>",
+      function()
+        Snacks.notifier.show_history()
+      end,
+      desc = "Open notifications history",
     },
     {
       ";;",
