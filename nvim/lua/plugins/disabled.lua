@@ -10,5 +10,4 @@ return {
   { "petertriho/cmp-git", enabled = false },
   { "folke/which-key.nvim", enabled = false },
   { "nvim-lualine/lualine.nvim", enabled = false },
-  { "folke/noice.nvim", enabled = false },
 }
