@@ -64,3 +64,22 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # Need to execute `fisher install PatrickF1/fzf.fish`
 # Search directory keymap to Ctrl+f
 fzf_configure_bindings --directory=\cf
+
+# tmuxのpopup window
+function tmuxpopup -d "toggle tmux popup window"
+    set width '80%'
+    set height '80%'
+
+    # 現在のセッション名とカレントディレクトリを取得
+    set session (tmux display-message -p -F "#{session_name}")
+    set current_dir (basename (tmux display-message -p -F "#{pane_current_path}"))
+    set popup_session "popup_$current_dir"
+
+    # すでに popup セッション内にいる場合はデタッチ（閉じる）
+    if string match -q "popup_*" $session
+        tmux detach-client
+    else
+        # popup を表示。セッションがなければ新規作成、あればアタッチ
+        tmux display-popup -d '#{pane_current_path}' -xC -yC -w$width -h$height -E "tmux attach -t $popup_session || tmux new -s $popup_session"
+    end
+end
