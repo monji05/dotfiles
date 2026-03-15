@@ -56,7 +56,11 @@ set -g theme_hostname always
 set -g fish_key_bindings fish_vi_key_bindings
 bind -M insert \cc 'clear; commandline -f repaint'
 
+# tide config
 set -U tide_git_icon 
+set -U tide_pwd_icon 
+set -U tide_os_icon 
+set tide_left_prompt_items os pwd git newline time character
 
 #set nightflyTheme
 # source $HOME/.config/fish/themes/nightfly.fish
@@ -82,9 +86,21 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # Search directory keymap to Ctrl+f
 fzf_configure_bindings --directory=\cf
 
-function ps9
-    if test (count $argv) -eq 0
-        return 1
+# tmuxのpopup window
+function tmuxpopup -d "toggle tmux popup window"
+    set width '80%'
+    set height '80%'
+
+    # 現在のセッション名とカレントディレクトリを取得
+    set session (tmux display-message -p -F "#{session_name}")
+    set current_dir (basename (tmux display-message -p -F "#{pane_current_path}"))
+    set popup_session "popup_$current_dir"
+
+    # すでに popup セッション内にいる場合はデタッチ（閉じる）
+    if string match -q "popup_*" $session
+        tmux detach-client
+    else
+        # popup を表示。セッションがなければ新規作成、あればアタッチ
+        tmux display-popup -d '#{pane_current_path}' -xC -yC -w$width -h$height -E "tmux attach -t $popup_session || tmux new -s $popup_session"
     end
-    docker compose exec -w /var/www/offerbox-v2 -it v2_php ./vendor/bin/phpstan analyse -l 9 -c phpstan.neon.dist --memory-limit=2G $argv
 end
