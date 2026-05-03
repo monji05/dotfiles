@@ -4,8 +4,15 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
-    terminal = { enable = true },
-    explore = { enable = true },
+    terminal = {
+      win = {
+        position = "float",
+        border = "rounded", -- Options: "none", "single", "double", "rounded", etc.
+        width = 0.8, -- 80% of screen width
+        height = 0.8, -- 80% of screen height
+      },
+    },
+    explore = { enable = false },
     picker = { enable = true },
     bigfile = { enabled = true },
     dashboard = {
@@ -296,7 +303,9 @@ return {
       desc = "toggle terminal",
       function()
         -- How to toggle Normal mode is to press 'Ctrl+\ Ctrl+n'
-        Snacks.terminal.toggle(cmd, opts)
+        vim.keymap.set({ "n", "t" }, ";t", function()
+          Snacks.terminal.toggle(cmd, opts)
+        end)
       end,
     },
   },
