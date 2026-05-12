@@ -56,7 +56,11 @@ set -g theme_hostname always
 set -g fish_key_bindings fish_vi_key_bindings
 bind -M insert \cc 'clear; commandline -f repaint'
 
+# tide config
 set -U tide_git_icon 
+set -U tide_pwd_icon 
+set -U tide_os_icon 
+set tide_left_prompt_items os pwd git newline time character
 
 #set nightflyTheme
 # source $HOME/.config/fish/themes/nightfly.fish

@@ -3,8 +3,15 @@ return {
   event = "BufReadPre",
   ---@type snacks.Config
   opts = {
-    terminal = { enable = true },
-    explore = { enable = true },
+    terminal = {
+      win = {
+        position = "float",
+        border = "rounded", -- Options: "none", "single", "double", "rounded", etc.
+        width = 0.8, -- 80% of screen width
+        height = 0.8, -- 80% of screen height
+      },
+    },
+    explore = { enable = false },
     picker = { enable = true },
     bigfile = { enabled = true },
     dashboard = {
@@ -209,6 +216,7 @@ return {
       end,
     },
     -- {
+    --   -- <S-i> toggle ignored file in git
     --   "<leader>f",
     --   function()
     --     Snacks.explorer()
@@ -271,8 +279,10 @@ return {
     {
       -- 本来noiceに書くべきだけど、noiceのセットアップを書いていないのでここに
       "<leader>n",
-      desc = "Open notifications",
-      ":NoiceAll<CR>",
+      function()
+        Snacks.notifier.show_history()
+      end,
+      desc = "Open notifications history",
     },
     {
       ";;",
@@ -288,14 +298,16 @@ return {
         Snacks.rename.rename_file(opts)
       end,
     },
-    -- { use floatterm.nvim
-    --   ";t",
-    --   desc = "toggle terminal",
-    --   function()
-    --     -- How to toggle Normal mode is to press 'Ctrl + [ * 2'
-    --     Snacks.terminal.toggle(cmd, opts)
-    --   end,
-    -- },
+    {
+      ";t",
+      desc = "toggle terminal",
+      function()
+        -- How to toggle Normal mode is to press 'Ctrl+\ Ctrl+n'
+        vim.keymap.set({ "n", "t" }, ";t", function()
+          Snacks.terminal.toggle(cmd, opts)
+        end)
+      end,
+    },
   },
   init = function()
     vim.api.nvim_create_autocmd("User", {
