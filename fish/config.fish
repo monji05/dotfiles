@@ -41,8 +41,6 @@ set -U tide_pwd_icon 
 set -U tide_os_icon 
 set tide_left_prompt_items os pwd git newline time character
 
-#set nightflyTheme
-source $HOME/.config/fish/themes/nightfly.fish
 
 # Mac setup for pomo
 # Requires https://github.com/caarlos0/timer to be installed
