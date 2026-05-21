@@ -13,13 +13,6 @@ return {
     end,
   },
   {
-    "weirongxu/plantuml-previewer.vim",
-    { "tyru/open-browser.vim", lazy = true },
-    { "aklt/plantuml-syntax", lazy = true },
-    ft = "plantuml",
-    cmd = { "PlantumlOpen", "PlantumlStart", "PlantumlSave" },
-  },
-  {
     "altermo/ultimate-autopair.nvim",
     event = { "InsertEnter", "CmdlineEnter" },
     branch = "v0.6", --recommended as each new version will have breaking changes
