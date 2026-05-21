@@ -41,33 +41,33 @@ return {
       },
     },
   },
-  {
-    "nvim-neotest/neotest",
-    cmd = { "Neotest" },
-    { "nvim-neotest/nvim-nio", lazy = true },
-    { "nvim-lua/plenary.nvim", lazy = true },
-    { "nvim-treesitter/nvim-treesitter", lazy = true },
-    { "olimorris/neotest-phpunit", lazy = true },
-    config = function()
-      require("neotest").setup({
-        adapters = {
-          require("neotest-docker-phpunit").setup({
-            phpunit_cmd = "neotest-docker-phpunit",
-            docker_phpunit = {
-              default = {
-                container = "v2_php",
-                volume = "/Users/erikomishina/www/offerbox/public_html/offerbox-v2/:/var/www/offerbox-v2/",
-                standalone = false,
-              },
-            },
-          }),
-        },
-        diagnostic = {
-          enabled = true,
-        },
-      })
-    end,
-  },
+  -- {
+  --   "nvim-neotest/neotest",
+  --   cmd = { "Neotest" },
+  --   { "nvim-neotest/nvim-nio", lazy = true },
+  --   { "nvim-lua/plenary.nvim", lazy = true },
+  --   { "nvim-treesitter/nvim-treesitter", lazy = true },
+  --   { "olimorris/neotest-phpunit", lazy = true },
+  --   config = function()
+  --     require("neotest").setup({
+  --       adapters = {
+  --         require("neotest-docker-phpunit").setup({
+  --           phpunit_cmd = "neotest-docker-phpunit",
+  --           docker_phpunit = {
+  --             default = {
+  --               container = "v2_php",
+  --               volume = "/Users/erikomishina/www/offerbox/public_html/offerbox-v2/:/var/www/offerbox-v2/",
+  --               standalone = false,
+  --             },
+  --           },
+  --         }),
+  --       },
+  --       diagnostic = {
+  --         enabled = true,
+  --       },
+  --     })
+  --   end,
+  -- },
   {
     "monaqa/dial.nvim",
     keys = {
