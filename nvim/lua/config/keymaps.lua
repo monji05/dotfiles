@@ -83,3 +83,5 @@ keymap("n", "<C-b>", "<C-b>zz", opts)
 keymap("n", "Y", "yy", opts)
 keymap("n", "<Leader>s", "<cmd>SwitchCase<CR>", { noremap = true, silent = true })
 keymap("n", "<Leader>f", "<cmd>Oil<CR>", { noremap = true, silent = true })
+
+keymap("n", "<leader>R", "<cmd>restart<CR>", opts)

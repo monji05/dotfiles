@@ -3,7 +3,7 @@ return {
     "craftzdog/solarized-osaka.nvim",
     lazy = true,
     priority = 1000,
-    event = { "BufReadPost", "BufAdd", "BufNewFile" },
+    event = { "BufReadPre", "BufReadPost", "BufAdd", "BufNewFile" },
     opts = {
       day_brightness = 0.5,
       styles = {
@@ -79,6 +79,9 @@ return {
         }
       end,
     },
+    config = function()
+      vim.cmd([[colorscheme solarized-osaka]])
+    end
   },
   {
     "m-demare/hlargs.nvim",

@@ -2,7 +2,7 @@ return {
   {
     "nvimdev/lspsaga.nvim",
     config = function()
-      local icons = require("lazyvim.config").icons
+      local icons = require("config.icons")
 
       require("lspsaga").setup({
         symbol_in_winbar = {
@@ -184,16 +184,16 @@ return {
     end,
   },
   {
+   "mason-org/mason.nvim",
+
+   opts = {},
+   keys = {"Mason", "MasonInstall"},
+   event = { "BufReadPre", "BufNewFile" },
+  },
+  {"mason-org/mason-lspconfig.nvim", opts = {}},
+  {
     "neovim/nvim-lspconfig",
-    config = function()
-      local lsp = require("lspconfig")
-      lsp.lua_ls.setup({})
-      lsp.intelephense.setup({
-        settings = {
-          ["intelephense"] = {},
-        },
-      })
-      lsp.ts_ls.setup({})
-    end,
+    -- Bufferが読み込まれるときをトリガーに遅延ロードする
+    event = { "BufReadPre", "BufNewFile" },
   },
 }
