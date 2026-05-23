@@ -148,13 +148,6 @@ return {
       desc = "Lazygit Log (cwd)",
     },
     {
-      "<leader>cR",
-      function()
-        Snacks.rename()
-      end,
-      desc = "Rename File",
-    },
-    {
       "<c-/>",
       function()
         Snacks.terminal()
@@ -289,13 +282,6 @@ return {
       desc = "Open last picker",
       function()
         Snacks.picker.resume()
-      end,
-    },
-    {
-      ";n",
-      desc = "Rename file",
-      function()
-        Snacks.rename.rename_file(opts)
       end,
     },
     {
