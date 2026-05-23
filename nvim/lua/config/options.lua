@@ -98,3 +98,7 @@ vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
 -- クリップボード
 vim.opt.clipboard:append({ "unnamed", "unnamedplus" })
+
+-- 現在行をハイライト
+vim.opt.cursorline = true
+
