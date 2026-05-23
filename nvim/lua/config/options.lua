@@ -95,3 +95,6 @@ vim.g.gitblame_enabled = 0
 -- アンダーカール（波線の下線）を有効にするためのターミナルエスケープシーケンス設定
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
+
+-- クリップボード
+vim.opt.clipboard:append({ "unnamed", "unnamedplus" })
