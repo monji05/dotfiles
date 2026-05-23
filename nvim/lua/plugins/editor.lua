@@ -93,10 +93,6 @@ return {
     },
   },
   {
-    "stevearc/dressing.nvim",
-    lazy = true,
-  },
-  {
     -- Convenience file operations for neovim
     "chrisgrieser/nvim-genghis",
     config = function()
