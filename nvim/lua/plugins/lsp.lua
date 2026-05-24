@@ -110,7 +110,16 @@ return {
         },
       },
       completion = {
+        signature = {
+          window = {
+            border = "rounded",
+            -- 透過
+            winblend = 15
+          }
+        },
         menu = {
+          border = "rounded",
+          winblend = 15,
           draw = {
             -- We don't need label_description now because label and label_description are already
             -- combined together in label by colorful-menu.nvim.
