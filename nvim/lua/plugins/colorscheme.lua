@@ -1,5 +1,50 @@
 return {
   {
+    "https://github.com/vague-theme/vague.nvim",
+    config = function ()
+      require('vague').setup({
+       transparent = true,
+       bold = false,
+       italic = true,
+       colors = {
+        bg = '#031219',
+        inactiveBg = '#1c1c24',
+        fg = '#cdcdcd',
+        floatBorder = '#878787',
+        line = '#252530',
+        comment = '#606079',
+        builtin = '#b4d4cf',
+        func = '#c48282',
+        string = '#e8b589',
+        number = '#e0a363',
+        property = '#c3c3d5',
+        constant = '#aeaed1',
+        parameter = '#bb9dbd',
+        visual = '#333738',
+        error = '#d8647e',
+        warning = '#f3be7c',
+        hint = '#7e98e8',
+        operator = '#90a0b5',
+        keyword = '#6e94b2',
+        type = '#9bb4bc',
+        search = '#405065',
+        plus = '#7fa563',
+        delta = '#f3be7c',
+      },
+      on_highlights = function (hl, c)
+        hl.BlinkCmpMenuSelection = {
+          -- darken color.comment
+          bg ="#383848",
+        }
+        hl.CursorLineNr = {
+          fg = c.number
+        }
+      end,
+      })
+      vim.cmd([[colorscheme vague]])
+    end
+  },
+  {
     "craftzdog/solarized-osaka.nvim",
     lazy = true,
     priority = 1000,
@@ -79,22 +124,22 @@ return {
         }
       end,
     },
-    config = function()
-      vim.cmd([[colorscheme solarized-osaka]])
-    end
+    -- config = function()
+    --   vim.cmd([[colorscheme solarized-osaka]])
+    -- end
   },
   {
     "m-demare/hlargs.nvim",
     config = function()
       require("hlargs").setup({})
       -- vague
-      -- vim.api.nvim_command([[highlight Hlargs guifg=#bb9dbd]])
+      vim.api.nvim_command([[highlight Hlargs guifg=#bb9dbd]])
 
       -- rusty
       -- vim.api.nvim_command([[highlight Hlargs guifg=#b5bd68]])
 
       -- solarized-osaka
-      vim.api.nvim_command([[highlight Hlargs guifg=#c94c16]])
+      -- vim.api.nvim_command([[highlight Hlargs guifg=#c94c16]])
 
       -- tokyonight
       -- That is the same phpDoc argment color
