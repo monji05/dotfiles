@@ -46,7 +46,10 @@ return {
         chars = { "▏" },
         -- chars = { "│" },
         -- style = "#383c3d",
+        -- solarized-osaka
         style = "#073642",
+        -- vague
+        style = "#405065",
       },
     },
   },
