@@ -194,12 +194,10 @@ return {
   },
   {
    "mason-org/mason.nvim",
-
    opts = {},
    keys = {"Mason", "MasonInstall"},
    event = { "BufReadPre", "BufNewFile" },
   },
-  {"mason-org/mason-lspconfig.nvim", opts = {}},
   {
     "neovim/nvim-lspconfig",
     -- Bufferが読み込まれるときをトリガーに遅延ロードする

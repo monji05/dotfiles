@@ -18,7 +18,7 @@ vim.lsp.config('intelephense', {
           }
         })
       end
-      
+
       -- 例: 特定のプロジェクトでPHPのバージョンを動的に切り替える
       -- if vim.uv.fs_stat(path .. '/.php-version') then
       --   -- ファイルからバージョンを読み取って設定する処理などをここに書く
