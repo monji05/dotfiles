@@ -57,6 +57,12 @@ return {
         hl.CursorLineNr = {
           fg = c.number
         }
+
+        -- 関数呼び出し(@function.call)を、関数定義(@function)の色にリンク
+        hl["@function.call"] = { link = "@function" }
+
+        -- メソッド呼び出し(@function.method.call)も、メソッド定義(@function.method)にリンク
+        hl["@function.method.call"] = { link = "@function.method" }
       end,
       })
       -- vim.cmd([[colorscheme vague]])
