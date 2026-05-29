@@ -87,6 +87,3 @@ keymap("n", "<leader>R", "<cmd>restart<CR>", opts)
 -- open lazy.nvim
 keymap("n", "<leader>l", "<cmd>Lazy<CR>", opts)
 
--- relaod session
-keymap("n", ";s", function() require("persistence").load() end)
-
