@@ -177,46 +177,6 @@ return {
     },
     opts_extend = { "sources.default" },
   },
-  { "mason-org/mason.nvim", lazy = true, opts = {} },
-  { "neovim/nvim-lspconfig", lazy = true },
-  {
-    "mason-org/mason-lspconfig.nvim",
-    config = function()
-      local lspconfig = require("lspconfig")
-      require("mason-lspconfig").setup({
-        intelephense = function()
-          lspconfig.intelephense.setup({})
-        end,
-        lua_ls = function()
-          lspconfig.lua_ls.setup({})
-        end,
-        ts_ls = function()
-          lspconfig.ts_ls.setup({
-            on_attach = function(client, bufnr)
-              client.server_capabilities.documentFormattingProvider = false
-              client.server_capabilities.documentRangeFormattingProvider = false
-            end,
-          })
-        end,
-        pyright = function()
-          lspconfig.pyright.setup({})
-        end,
-        -- NOTE: typosだとあまり検知してくれない
-        -- inedx(index), hllo(hello) etc ので、cspellにする
-      })
-
-      vim.diagnostic.config({
-        signs = {
-          text = {
-            [vim.diagnostic.severity.ERROR] = LazyVim.config.icons.diagnostics.Error,
-            [vim.diagnostic.severity.WARN] = LazyVim.config.icons.diagnostics.Warn,
-            [vim.diagnostic.severity.HINT] = LazyVim.config.icons.diagnostics.Hint,
-            [vim.diagnostic.severity.INFO] = LazyVim.config.icons.diagnostics.Info,
-          },
-        },
-      })
-    end,
-  },
   {
     "xzbdmw/colorful-menu.nvim",
     event = "InsertEnter",
