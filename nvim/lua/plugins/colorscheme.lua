@@ -1,13 +1,31 @@
 return {
   {
+    "HoNamDuong/hybrid.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function ()
+      require('hybrid').setup({
+        transparent = true,
+        bold = false,
+         italic = {
+          strings = false,
+          emphasis = true,
+          comments = true,
+          folds = true,
+        },
+      })
+      vim.cmd([[colorscheme hybrid]])
+    end
+  },
+  {
     "https://github.com/vague-theme/vague.nvim",
     config = function ()
       require('vague').setup({
        transparent = true,
        bold = false,
-       italic = true,
+       italic = false,
        colors = {
-        bg = '#031219',
+        bg = '#141415',
         inactiveBg = '#1c1c24',
         fg = '#cdcdcd',
         floatBorder = '#878787',
@@ -41,7 +59,7 @@ return {
         }
       end,
       })
-      vim.cmd([[colorscheme vague]])
+      -- vim.cmd([[colorscheme vague]])
     end
   },
   {
@@ -133,7 +151,7 @@ return {
     config = function()
       require("hlargs").setup({})
       -- vague
-      vim.api.nvim_command([[highlight Hlargs guifg=#bb9dbd]])
+      -- vim.api.nvim_command([[highlight Hlargs guifg=#bb9dbd]])
 
       -- rusty
       -- vim.api.nvim_command([[highlight Hlargs guifg=#b5bd68]])
