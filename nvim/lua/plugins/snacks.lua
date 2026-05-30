@@ -13,7 +13,21 @@ return {
       },
     },
     explore = { enable = false },
-    picker = { enable = true },
+    picker = {
+      enable = true,
+      ui_select = true,
+      sources = {
+        files = {
+          hidden = true,
+          cmd = "fd"
+        },
+        grep = {
+          hidden = true,
+          cmd = "rg",
+          regex = true,
+        }
+      }
+    },
     bigfile = { enabled = true },
 --     dashboard = {
 --       enable = false,
