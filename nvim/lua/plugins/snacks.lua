@@ -13,52 +13,67 @@ return {
       },
     },
     explore = { enable = false },
-    picker = { enable = true },
-    bigfile = { enabled = true },
-    dashboard = {
-      preset = {
-        header = [[
-         ⣠⣤⣤⣄⡀⠀
-        ⢰⣿⣿⣿⣿⡏⠀
-⠀⠀⠀⠀⠀   ⣀⣤⣴⣖⠺⣦⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀    ⣼⣿⣿⣿⣿⣿⣿⣿⣿⣶⣦⡀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀     ⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢟⠁⠀⠀⠀⣀⠸⣯⠉⠉⠙⠿⡃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-     ⠰⣿⣯⠎⠙⢿⣿⣿⠿⣿⣿⣿⣿⡷⠀⠀⣾⠻⣄⣿⣤⣴⣶⢠⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-   ⢀⣤⣾⡛⠉⠀⠀⠀⠀⠀⠀⢸⠿⠋⠁⠀⠀⠀⣿⠀⢸⣿⣿⣿⣿⣿⣿⠷⠀⠀⠀⠀⠀⠠⣆⣸⣷⣦⡀⠀⠀⠀⠀⠀⠀
-⠀⠀⣠⣚⠉⠉⠛⠦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⡀⠈⢿⣿⣿⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠋⠉⠀⠀⠀⠀⠀⠀⠀
-⢠⡾⠛⠻⠿⢶⡤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢷⡄⢸⣿⣿⣿⣆⠀⢀⣠⣴⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢻⣾⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢙⣿⣿⣿⣿⣿⣿⣿⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⠀⠀⠀⠀⢸⣿⣿⣿⠋⠀⠀⠀⡅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⠀⣿⣿⣿⣿⣷⣶⣶⡛⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⢰⣿⣿⣿⡟⢿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⠀⠀⠀⢻⣿⣿⣿⡌⠻⠿⠿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀     ⢀⠀⠀⠹⣿⣿⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀     ⠀⢸⣇⠀⠀⠸⠟⢉⣳⢀⡺⢷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀      ⢸⣿⣆⠀⠀⠀⠙⢿⡿⠟⠀⠀⠀]],
-      },
-      sections = {
-        { section = "header" },
-        { pane = 2, section = "keys", gap = 1, padding = 1 },
-        -- { pane = 2, icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
-        -- { pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
-        {
-          pane = 2,
-          icon = " ",
-          title = "Git Status",
-          section = "terminal",
-          enabled = function()
-            return Snacks.git.get_root() ~= nil
-          end,
-          cmd = "hub status --short --branch --renames",
-          height = 5,
-          padding = 1,
-          ttl = 5 * 60,
-          indent = 3,
+    picker = {
+      enable = true,
+      ui_select = true,
+      sources = {
+        files = {
+          hidden = true,
+          cmd = "fd"
         },
-        { section = "startup" },
-      },
+        grep = {
+          hidden = true,
+          cmd = "rg",
+          regex = true,
+        }
+      }
     },
+    bigfile = { enabled = true },
+--     dashboard = {
+--       enable = false,
+--       preset = {
+--         header = [[
+--          ⣠⣤⣤⣄⡀⠀
+--         ⢰⣿⣿⣿⣿⡏⠀
+-- ⠀⠀⠀⠀⠀   ⣀⣤⣴⣖⠺⣦⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+-- ⠀⠀⠀    ⣼⣿⣿⣿⣿⣿⣿⣿⣿⣶⣦⡀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+-- ⠀     ⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢟⠁⠀⠀⠀⣀⠸⣯⠉⠉⠙⠿⡃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+--      ⠰⣿⣯⠎⠙⢿⣿⣿⠿⣿⣿⣿⣿⡷⠀⠀⣾⠻⣄⣿⣤⣴⣶⢠⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+--    ⢀⣤⣾⡛⠉⠀⠀⠀⠀⠀⠀⢸⠿⠋⠁⠀⠀⠀⣿⠀⢸⣿⣿⣿⣿⣿⣿⠷⠀⠀⠀⠀⠀⠠⣆⣸⣷⣦⡀⠀⠀⠀⠀⠀⠀
+-- ⠀⠀⣠⣚⠉⠉⠛⠦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⡀⠈⢿⣿⣿⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠋⠉⠀⠀⠀⠀⠀⠀⠀
+-- ⢠⡾⠛⠻⠿⢶⡤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢷⡄⢸⣿⣿⣿⣆⠀⢀⣠⣴⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+-- ⠸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢻⣾⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+-- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢙⣿⣿⣿⣿⣿⣿⣿⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+-- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⠀⠀⠀⠀⢸⣿⣿⣿⠋⠀⠀⠀⡅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+-- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⠀⣿⣿⣿⣿⣷⣶⣶⡛⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+-- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⢰⣿⣿⣿⡟⢿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+-- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⠀⠀⠀⢻⣿⣿⣿⡌⠻⠿⠿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+-- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀     ⢀⠀⠀⠹⣿⣿⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+-- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀     ⠀⢸⣇⠀⠀⠸⠟⢉⣳⢀⡺⢷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+-- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀      ⢸⣿⣆⠀⠀⠀⠙⢿⡿⠟⠀⠀⠀]],
+--       },
+--       sections = {
+--         { section = "header" },
+--         { pane = 2, section = "keys", gap = 1, padding = 1 },
+--         -- { pane = 2, icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
+--         -- { pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
+--         {
+--           pane = 2,
+--           icon = " ",
+--           title = "Git Status",
+--           section = "terminal",
+--           enabled = function()
+--             return Snacks.git.get_root() ~= nil
+--           end,
+--           cmd = "hub status --short --branch --renames",
+--           height = 5,
+--           padding = 1,
+--           ttl = 5 * 60,
+--           indent = 3,
+--         },
+--         { section = "startup" },
+--       },
+--     },
     toggle = {
       map = vim.keymap.set, -- keymap.set function to use
       which_key = true, -- integrate with which-key to show enabled/disabled icons and colors
@@ -146,13 +161,6 @@ return {
         Snacks.lazygit.log()
       end,
       desc = "Lazygit Log (cwd)",
-    },
-    {
-      "<leader>cR",
-      function()
-        Snacks.rename()
-      end,
-      desc = "Rename File",
     },
     {
       "<c-/>",
@@ -289,13 +297,6 @@ return {
       desc = "Open last picker",
       function()
         Snacks.picker.resume()
-      end,
-    },
-    {
-      ";n",
-      desc = "Rename file",
-      function()
-        Snacks.rename.rename_file(opts)
       end,
     },
     {

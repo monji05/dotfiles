@@ -46,7 +46,10 @@ return {
         chars = { "▏" },
         -- chars = { "│" },
         -- style = "#383c3d",
+        -- solarized-osaka
         style = "#073642",
+        -- vague
+        style = "#405065",
       },
     },
   },
@@ -91,10 +94,6 @@ return {
         map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
       end,
     },
-  },
-  {
-    "stevearc/dressing.nvim",
-    lazy = true,
   },
   {
     -- Convenience file operations for neovim
