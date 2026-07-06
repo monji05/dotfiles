@@ -160,7 +160,7 @@ return {
       -- vim.api.nvim_command([[highlight Hlargs guifg=#b5bd68]])
 
       -- solarized-osaka
-      -- vim.api.nvim_command([[highlight Hlargs guifg=#c94c16]])
+      vim.api.nvim_command([[highlight Hlargs guifg=#c94c16]])
 
       -- tokyonight
       -- That is the same phpDoc argment color
