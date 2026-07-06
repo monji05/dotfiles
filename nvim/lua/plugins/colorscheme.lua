@@ -14,7 +14,7 @@ return {
           folds = true,
         },
       })
-      vim.cmd([[colorscheme hybrid]])
+      -- vim.cmd([[colorscheme hybrid]])
     end
   },
   {
@@ -139,6 +139,9 @@ return {
         }
         hl.GitSignsChangeLnInline = {
           bg = c.yellow700,
+        }
+        hl.OctoStatusDeleted = {
+          bg = c.green700
         }
       end,
     },
