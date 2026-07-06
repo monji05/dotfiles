@@ -64,7 +64,7 @@ return {
   },
   {
     "craftzdog/solarized-osaka.nvim",
-    lazy = true,
+    lazy = false,
     priority = 1000,
     event = { "BufReadPre", "BufReadPost", "BufAdd", "BufNewFile" },
     opts = {
@@ -142,9 +142,9 @@ return {
         }
       end,
     },
-    -- config = function()
-    --   vim.cmd([[colorscheme solarized-osaka]])
-    -- end
+    config = function()
+      vim.cmd([[colorscheme solarized-osaka]])
+    end
   },
   {
     "m-demare/hlargs.nvim",

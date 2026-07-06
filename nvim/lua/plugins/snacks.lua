@@ -309,6 +309,13 @@ return {
         end)
       end,
     },
+    {
+      "<leader>gd",
+      function()
+        Snacks.picker.git_diff()
+      end,
+      desc = "Git Diff (Hunks)",
+    },
   },
   init = function()
     vim.api.nvim_create_autocmd("User", {
