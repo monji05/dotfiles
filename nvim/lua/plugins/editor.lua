@@ -46,7 +46,10 @@ return {
         chars = { "▏" },
         -- chars = { "│" },
         -- style = "#383c3d",
+        -- solarized-osaka
         style = "#073642",
+        -- vague
+        style = "#405065",
       },
     },
   },
@@ -146,13 +149,10 @@ return {
         map("n", "<leader>h", gs.preview_hunk, "Preview Hunk")
         map("n", "<leader>ghd", gs.diffthis, "Diff This")
         map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
+        map('n', '<leader>tw', gs.toggle_word_diff)
         map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
       end,
     },
-  },
-  {
-    "stevearc/dressing.nvim",
-    lazy = true,
   },
   {
     -- Convenience file operations for neovim

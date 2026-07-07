@@ -22,21 +22,6 @@ return {
   {
     "altermo/ultimate-autopair.nvim",
     event = { "InsertEnter", "CmdlineEnter" },
-    branch = "v0.6", --recomended as each new version will have breaking changes
-    config = function()
-      require("ultimate-autopair").setup({
-        --Config goes here
-      })
-    end,
-  },
-  {
-    "Wansmer/treesj",
-    cmd = { "TSJToggle", "TSJSplit", "TSJJoin" },
-    opts = { use_default_keymaps = false },
-  },
-  {
-    "altermo/ultimate-autopair.nvim",
-    event = { "InsertEnter", "CmdlineEnter" },
     branch = "v0.6", --recommended as each new version will have breaking changes
     opts = {
       bs = { -- *ultimate-autopair-map-backspace-config*
@@ -47,7 +32,21 @@ return {
   },
   {
     "nvim-mini/mini.surround",
-    -- change html tag command is gsrtt"
+    -- change html tag command is srtt"
+    -- Module mappings. Use `''` (empty string) to disable one.
+    opts = {
+      mappings = {
+        add = "sa", -- Add surrounding in Normal and Visual modes
+        delete = "sd", -- Delete surrounding
+        find = "sf", -- Find surrounding (to the right)
+        find_left = "sF", -- Find surrounding (to the left)
+        highlight = "sh", -- Highlight surrounding
+        replace = "sr", -- Replace surrounding
+
+        suffix_last = "l", -- Suffix to search with "prev" method
+        suffix_next = "n", -- Suffix to search with "next" method
+      },
+    },
   },
   {
     "nvim-neotest/neotest",
@@ -122,14 +121,5 @@ return {
         },
       })
     end,
-  },
-  {
-    ---@class wk.Opts
-    "folke/which-key.nvim",
-    keys = { "<leader>" },
-    opts = {
-      ---@type false | "classic" | "modern" | "helix"
-      preset = "helix",
-    },
   },
 }

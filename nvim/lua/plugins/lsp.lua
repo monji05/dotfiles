@@ -3,7 +3,7 @@ return {
     "nvimdev/lspsaga.nvim",
     event = "BufReadPre",
     config = function()
-      local icons = require("lazyvim.config").icons
+      local icons = require("config.icons")
 
       require("lspsaga").setup({
         symbol_in_winbar = {
@@ -136,7 +136,16 @@ return {
         ["<C-k>"] = { "select_prev", "fallback" },
       },
       completion = {
+        signature = {
+          window = {
+            border = "rounded",
+            -- 透過
+            winblend = 15
+          }
+        },
         menu = {
+          border = "rounded",
+          winblend = 15,
           draw = {
             -- We don't need label_description now because label and label_description are already
             -- combined together in label by colorful-menu.nvim.
@@ -261,16 +270,14 @@ return {
     end,
   },
   {
+   "mason-org/mason.nvim",
+   opts = {},
+   keys = {"Mason", "MasonInstall"},
+   event = { "BufReadPre", "BufNewFile" },
+  },
+  {
     "neovim/nvim-lspconfig",
-    config = function()
-      local lsp = require("lspconfig")
-      lsp.lua_ls.setup({})
-      lsp.intelephense.setup({
-        settings = {
-          ["intelephense"] = {},
-        },
-      })
-      lsp.ts_ls.setup({})
-    end,
+    -- Bufferが読み込まれるときをトリガーに遅延ロードする
+    event = { "BufReadPre", "BufNewFile" },
   },
 }

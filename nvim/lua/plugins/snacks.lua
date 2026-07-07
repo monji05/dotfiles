@@ -3,54 +3,76 @@ return {
   event = "BufReadPre",
   ---@type snacks.Config
   opts = {
-    terminal = { enable = true },
-    explore = { enable = true },
-    picker = { enable = true },
-    bigfile = { enabled = true },
-    dashboard = {
-      preset = {
-        header = [[
-         ⣠⣤⣤⣄⡀⠀
-        ⢰⣿⣿⣿⣿⡏⠀
-⠀⠀⠀⠀⠀   ⣀⣤⣴⣖⠺⣦⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀    ⣼⣿⣿⣿⣿⣿⣿⣿⣿⣶⣦⡀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀     ⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢟⠁⠀⠀⠀⣀⠸⣯⠉⠉⠙⠿⡃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-     ⠰⣿⣯⠎⠙⢿⣿⣿⠿⣿⣿⣿⣿⡷⠀⠀⣾⠻⣄⣿⣤⣴⣶⢠⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-   ⢀⣤⣾⡛⠉⠀⠀⠀⠀⠀⠀⢸⠿⠋⠁⠀⠀⠀⣿⠀⢸⣿⣿⣿⣿⣿⣿⠷⠀⠀⠀⠀⠀⠠⣆⣸⣷⣦⡀⠀⠀⠀⠀⠀⠀
-⠀⠀⣠⣚⠉⠉⠛⠦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⡀⠈⢿⣿⣿⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠋⠉⠀⠀⠀⠀⠀⠀⠀
-⢠⡾⠛⠻⠿⢶⡤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢷⡄⢸⣿⣿⣿⣆⠀⢀⣠⣴⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢻⣾⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢙⣿⣿⣿⣿⣿⣿⣿⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⠀⠀⠀⠀⢸⣿⣿⣿⠋⠀⠀⠀⡅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⠀⣿⣿⣿⣿⣷⣶⣶⡛⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⢰⣿⣿⣿⡟⢿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⠀⠀⠀⢻⣿⣿⣿⡌⠻⠿⠿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀     ⢀⠀⠀⠹⣿⣿⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀     ⠀⢸⣇⠀⠀⠸⠟⢉⣳⢀⡺⢷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀      ⢸⣿⣆⠀⠀⠀⠙⢿⡿⠟⠀⠀⠀]],
-      },
-      sections = {
-        { section = "header" },
-        { pane = 2, section = "keys", gap = 1, padding = 1 },
-        -- { pane = 2, icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
-        -- { pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
-        -- {
-        --   pane = 2,
-        --   icon = " ",
-        --   title = "Git Status",
-        --   section = "terminal",
-        --   enabled = function()
-        --     return Snacks.git.get_root() ~= nil
-        --   end,
-        --   cmd = "hub status --short --branch --renames",
-        --   height = 5,
-        --   padding = 1,
-        --   ttl = 5 * 60,
-        --   indent = 3,
-        -- },
-        { section = "startup" },
+    terminal = {
+      win = {
+        position = "float",
+        border = "rounded", -- Options: "none", "single", "double", "rounded", etc.
+        width = 0.8, -- 80% of screen width
+        height = 0.8, -- 80% of screen height
       },
     },
+    explore = { enable = false },
+    picker = {
+      enable = true,
+      ui_select = true,
+      sources = {
+        files = {
+          hidden = true,
+          cmd = "fd"
+        },
+        grep = {
+          hidden = true,
+          cmd = "rg",
+          regex = true,
+        }
+      }
+    },
+    bigfile = { enabled = true },
+--     dashboard = {
+--       enable = false,
+--       preset = {
+--         header = [[
+--          ⣠⣤⣤⣄⡀⠀
+--         ⢰⣿⣿⣿⣿⡏⠀
+-- ⠀⠀⠀⠀⠀   ⣀⣤⣴⣖⠺⣦⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+-- ⠀⠀⠀    ⣼⣿⣿⣿⣿⣿⣿⣿⣿⣶⣦⡀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+-- ⠀     ⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢟⠁⠀⠀⠀⣀⠸⣯⠉⠉⠙⠿⡃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+--      ⠰⣿⣯⠎⠙⢿⣿⣿⠿⣿⣿⣿⣿⡷⠀⠀⣾⠻⣄⣿⣤⣴⣶⢠⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+--    ⢀⣤⣾⡛⠉⠀⠀⠀⠀⠀⠀⢸⠿⠋⠁⠀⠀⠀⣿⠀⢸⣿⣿⣿⣿⣿⣿⠷⠀⠀⠀⠀⠀⠠⣆⣸⣷⣦⡀⠀⠀⠀⠀⠀⠀
+-- ⠀⠀⣠⣚⠉⠉⠛⠦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⡀⠈⢿⣿⣿⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠋⠉⠀⠀⠀⠀⠀⠀⠀
+-- ⢠⡾⠛⠻⠿⢶⡤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢷⡄⢸⣿⣿⣿⣆⠀⢀⣠⣴⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+-- ⠸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢻⣾⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+-- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢙⣿⣿⣿⣿⣿⣿⣿⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+-- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⠀⠀⠀⠀⢸⣿⣿⣿⠋⠀⠀⠀⡅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+-- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⠀⣿⣿⣿⣿⣷⣶⣶⡛⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+-- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⢰⣿⣿⣿⡟⢿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+-- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⠀⠀⠀⢻⣿⣿⣿⡌⠻⠿⠿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+-- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀     ⢀⠀⠀⠹⣿⣿⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+-- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀     ⠀⢸⣇⠀⠀⠸⠟⢉⣳⢀⡺⢷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+-- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀      ⢸⣿⣆⠀⠀⠀⠙⢿⡿⠟⠀⠀⠀]],
+--       },
+--       sections = {
+--         { section = "header" },
+--         { pane = 2, section = "keys", gap = 1, padding = 1 },
+--         -- { pane = 2, icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
+--         -- { pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
+--         {
+--           pane = 2,
+--           icon = " ",
+--           title = "Git Status",
+--           section = "terminal",
+--           enabled = function()
+--             return Snacks.git.get_root() ~= nil
+--           end,
+--           cmd = "hub status --short --branch --renames",
+--           height = 5,
+--           padding = 1,
+--           ttl = 5 * 60,
+--           indent = 3,
+--         },
+--         { section = "startup" },
+--       },
+--     },
     toggle = {
       map = vim.keymap.set, -- keymap.set function to use
       which_key = true, -- integrate with which-key to show enabled/disabled icons and colors
@@ -147,13 +169,6 @@ return {
       desc = "Lazygit Log (cwd)",
     },
     {
-      "<leader>cR",
-      function()
-        Snacks.rename()
-      end,
-      desc = "Rename File",
-    },
-    {
       "<c-/>",
       function()
         Snacks.terminal()
@@ -209,6 +224,7 @@ return {
       end,
     },
     -- {
+    --   -- <S-i> toggle ignored file in git
     --   "<leader>f",
     --   function()
     --     Snacks.explorer()
@@ -271,8 +287,10 @@ return {
     {
       -- 本来noiceに書くべきだけど、noiceのセットアップを書いていないのでここに
       "<leader>n",
-      desc = "Open notifications",
-      ":NoiceAll<CR>",
+      function()
+        Snacks.notifier.show_history()
+      end,
+      desc = "Open notifications history",
     },
     {
       ";;",
@@ -282,20 +300,22 @@ return {
       end,
     },
     {
-      ";n",
-      desc = "Rename file",
+      ";t",
+      desc = "toggle terminal",
       function()
-        Snacks.rename.rename_file(opts)
+        -- How to toggle Normal mode is to press 'Ctrl+\ Ctrl+n'
+        vim.keymap.set({ "n", "t" }, ";t", function()
+          Snacks.terminal.toggle(cmd, opts)
+        end)
       end,
     },
-    -- { use floatterm.nvim
-    --   ";t",
-    --   desc = "toggle terminal",
-    --   function()
-    --     -- How to toggle Normal mode is to press 'Ctrl + [ * 2'
-    --     Snacks.terminal.toggle(cmd, opts)
-    --   end,
-    -- },
+    {
+      "<leader>gd",
+      function()
+        Snacks.picker.git_diff()
+      end,
+      desc = "Git Diff (Hunks)",
+    },
   },
   init = function()
     vim.api.nvim_create_autocmd("User", {
