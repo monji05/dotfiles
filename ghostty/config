@@ -8,13 +8,10 @@ background-opacity = 0.9
 command = /opt/homebrew/bin/fish
 cursor-color = "#47FF9C"
 font-family = "PlemolJP Console NF"
-font-size = 18
+font-size = 13
 # font-family = "PlemolJP Console NF"
 font-family = "JetBrains Mono NL"
-keybind = unconsumed:ctrl+h=goto_split:left
-keybind = unconsumed:ctrl+j=goto_split:bottom
-keybind = unconsumed:ctrl+k=goto_split:top
-keybind = unconsumed:ctrl+l=goto_split:right
+
 theme = "Solarized Darcula"
 copy-on-select = true
 window-padding-y = 1
@@ -22,8 +19,14 @@ window-padding-x = 0
 window-position-x = 0
 window-position-y = 0
 gtk-titlebar-hide-when-maximized = true
-window-height = 62
-window-width = 127
+window-height = 63
+window-width = 272
 quit-after-last-window-closed = true
 macos-titlebar-style = tabs
 mouse-hide-while-typing = true
+
+# keybind
+keybind = unconsumed:ctrl+h=goto_split:left
+keybind = unconsumed:ctrl+j=goto_split:bottom
+keybind = unconsumed:ctrl+k=goto_split:top
+keybind = unconsumed:ctrl+l=goto_split:right
