@@ -14,7 +14,7 @@ return {
           folds = true,
         },
       })
-      vim.cmd([[colorscheme hybrid]])
+      -- vim.cmd([[colorscheme hybrid]])
     end
   },
   {
