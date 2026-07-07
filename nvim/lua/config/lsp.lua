@@ -3,6 +3,7 @@ vim.lsp.enable({
   "lua_ls",
   "intelephense",
   "ts_ls",
+  "pyright",
 })
 vim.diagnostic.config({ virtual_text = true })
 
