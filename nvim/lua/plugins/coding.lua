@@ -53,7 +53,6 @@ return {
     cmd = { "Neotest" },
     { "nvim-neotest/nvim-nio", lazy = true },
     { "nvim-lua/plenary.nvim", lazy = true },
-    { "antoinemadec/FixCursorHold.nvim", lazy = true },
     { "nvim-treesitter/nvim-treesitter", lazy = true },
     { "olimorris/neotest-phpunit", lazy = true },
     config = function()
