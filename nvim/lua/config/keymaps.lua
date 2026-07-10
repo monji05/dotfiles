@@ -93,3 +93,4 @@ keymap("n", "<leader>l", "<cmd>Lazy<CR>", opts)
 -- relaod session
 keymap("n", ";s", function() require("persistence").load() end)
 
+keymap({"n", "t"}, ";t", function () Snacks.terminal.toggle(cmd, opts) end)
