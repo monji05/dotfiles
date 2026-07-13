@@ -1,5 +1,14 @@
 return {
   {
+    "https://github.com/mofiqul/vscode.nvim",
+    config = function ()
+      require("vscode").setup({
+        transparent = true
+      })
+      vim.cmd([[colorscheme vscode]])
+    end
+  },
+  {
     "craftzdog/solarized-osaka.nvim",
     lazy = false,
     priority = 1000,
@@ -79,9 +88,9 @@ return {
         }
       end,
     },
-    config = function()
-      vim.cmd([[colorscheme solarized-osaka]])
-    end
+    -- config = function()
+    --   vim.cmd([[colorscheme solarized-osaka]])
+    -- end
   },
   {
     "m-demare/hlargs.nvim",
@@ -94,7 +103,7 @@ return {
       -- vim.api.nvim_command([[highlight Hlargs guifg=#b5bd68]])
 
       -- solarized-osaka
-      vim.api.nvim_command([[highlight Hlargs guifg=#c94c16]])
+      -- vim.api.nvim_command([[highlight Hlargs guifg=#c94c16]])
 
       -- tokyonight
       -- That is the same phpDoc argment color
@@ -114,6 +123,9 @@ return {
 
       -- nordic
       -- vim.api.nvim_command([[highlight Hlargs guifg=#E7C173]])
+
+      -- vscode
+      vim.api.nvim_command([[highlight Hlargs guifg=#F97583]])
     end,
   },
 }
