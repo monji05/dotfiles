@@ -295,16 +295,6 @@ return {
       end,
     },
     {
-      ";t",
-      desc = "toggle terminal",
-      function()
-        -- How to toggle Normal mode is to press 'Ctrl+\ Ctrl+n'
-        vim.keymap.set({ "n", "t" }, ";t", function()
-          Snacks.terminal.toggle(cmd, opts)
-        end)
-      end,
-    },
-    {
       "<leader>gd",
       function()
         Snacks.picker.git_diff()
