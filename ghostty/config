@@ -14,7 +14,7 @@ font-family = "Menlo"
 # fontを太くする
 font-thicken = true
 
-font-size = 18
+font-size = 14
 
 keybind = unconsumed:ctrl+h=goto_split:left
 keybind = unconsumed:ctrl+j=goto_split:bottom

@@ -16,6 +16,10 @@ return {
           prepend_args = { "--standard=/Users/erikomishina/www/offerbox/public_html/phpcs_ruleset.xml" },
         },
       },
+      format_on_save = {
+          timeout_ms = 500,
+          lsp_format = "fallback"
+      }
     },
   },
 }
