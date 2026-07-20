@@ -1,68 +1,111 @@
 return {
   {
-    "nvimdev/lspsaga.nvim",
-    config = function()
-      local icons = require("config.icons")
-
-      require("lspsaga").setup({
-        symbol_in_winbar = {
-          enable = false,
-        },
-        show_code_action = true,
-        debug = false,
-        -- for disable phpactor code_action
-        lightbulb = {
-          enable = false,
-        },
-        use_saga_diagnostic_sign = true,
-        -- diagnostic sign
-        error_sign = icons.error,
-        warn_sign = icons.warn,
-        hint_sign = icons.hint,
-        infor_sign = icons.info,
-        diagnostic_header_icon = icons.header,
-        code_action_prompt = {
-          enable = true,
-          sign = true,
-          sign_priority = 40,
-          virtual_text = true,
-        },
-        finder_definition_icon = icons.finder_definition,
-        finder_reference_icon = icons.finder_reference,
-        max_preview_lines = 10,
-        finder_action_keys = {
-          open = "o",
-          vsplit = "s",
-          split = "i",
-          quit = "q",
-          scroll_down = "<C-f>",
-          scroll_up = "<C-b>",
-        },
-        rename_action_keys = {
-          quit = "<C-c>",
-          exec = "<CR>",
-        },
-        definition_preview_icon = icons.preview,
-        border_style = "single",
-        rename_prompt_prefix = icons.rename_prompt_prefix,
-        rename_output_qflist = {
-          enable = true,
-          auto_open_qflist = true,
-        },
-        server_filetype_map = {},
-        diagnostic_prefix_format = "%d. ",
-        diagnostic_message_format = "%m %c",
-        highlight_prefix = false,
-      })
-
-      local opt = { silent = true, noremap = true }
-      vim.keymap.set("n", "gd", "<CMD>Lspsaga goto_definition<CR>", opt)
-      vim.keymap.set("n", "gD", "<CMD>lua vim.lsp.buf.declaration()<CR>", opt)
-      vim.keymap.set("n", "gh", "<CMD>Lspsaga hover_doc<CR>", opt)
-      vim.keymap.set("n", "gf", "<CMD>Lspsaga finder<Cr>", opt)
-      vim.keymap.set("n", "<leader>j", "<CMD>Lspsaga diagnostic_jump_next<CR>", opt)
-      vim.keymap.set("n", "<leader>ca", "<CMD>Lspsaga code_action<CR>", opt)
-    end,
+    "https://github.com/folke/trouble.nvim",
+    opts = {}, -- デフォルト設定で十分機能します
+    cmd = "Trouble",
+    keys = {
+      -- LSP: 定義元へのジャンプ
+      {
+        "gd",
+        "<cmd>Trouble lsp_definitions toggle focus=true auto_jump=true<cr>",
+        desc = "Go to Definition (Trouble)",
+      },
+      -- LSP: 参照の検索
+      {
+        "gr",
+        "<cmd>Trouble lsp_references toggle focus=true auto_jump=true<cr>",
+        desc = "References (Trouble)",
+      },
+      -- LSP: 実装へのジャンプ
+      {
+        "gI",
+        "<cmd>Trouble lsp_implementations toggle focus=true auto_jump=true<cr>",
+        desc = "Implementations (Trouble)",
+      },
+      -- LSP: 型定義へのジャンプ
+      {
+        "gy",
+        "<cmd>Trouble lsp_type_definitions toggle focus=true auto_jump=true<cr>",
+        desc = "Type Definition (Trouble)",
+      },
+      -- Document Symbols (Lspsagaの outline の代替)
+      {
+        "<leader>cs",
+        "<cmd>Trouble symbols toggle focus=false<cr>",
+        desc = "Document Symbols (Trouble)",
+      },
+      -- Diagnostics (診断リスト)
+      {
+        "<leader>xx",
+        "<cmd>Trouble diagnostics toggle focus=true filter.buf=0<cr>",
+        desc = "Buffer Diagnostics (Trouble)",
+      },
+    },
+  },
+  {
+    -- "nvimdev/lspsaga.nvim",
+    -- config = function()
+    --   local icons = require("config.icons")
+    --
+    --   require("lspsaga").setup({
+    --     symbol_in_winbar = {
+    --       enable = false,
+    --     },
+    --     show_code_action = true,
+    --     debug = false,
+    --     -- for disable phpactor code_action
+    --     lightbulb = {
+    --       enable = false,
+    --     },
+    --     use_saga_diagnostic_sign = true,
+    --     -- diagnostic sign
+    --     error_sign = icons.error,
+    --     warn_sign = icons.warn,
+    --     hint_sign = icons.hint,
+    --     infor_sign = icons.info,
+    --     diagnostic_header_icon = icons.header,
+    --     code_action_prompt = {
+    --       enable = true,
+    --       sign = true,
+    --       sign_priority = 40,
+    --       virtual_text = true,
+    --     },
+    --     finder_definition_icon = icons.finder_definition,
+    --     finder_reference_icon = icons.finder_reference,
+    --     max_preview_lines = 10,
+    --     finder_action_keys = {
+    --       open = "o",
+    --       vsplit = "s",
+    --       split = "i",
+    --       quit = "q",
+    --       scroll_down = "<C-f>",
+    --       scroll_up = "<C-b>",
+    --     },
+    --     rename_action_keys = {
+    --       quit = "<C-c>",
+    --       exec = "<CR>",
+    --     },
+    --     definition_preview_icon = icons.preview,
+    --     border_style = "single",
+    --     rename_prompt_prefix = icons.rename_prompt_prefix,
+    --     rename_output_qflist = {
+    --       enable = true,
+    --       auto_open_qflist = true,
+    --     },
+    --     server_filetype_map = {},
+    --     diagnostic_prefix_format = "%d. ",
+    --     diagnostic_message_format = "%m %c",
+    --     highlight_prefix = false,
+    --   })
+    --
+    --   local opt = { silent = true, noremap = true }
+    --   vim.keymap.set("n", "gd", "<CMD>Lspsaga goto_definition<CR>", opt)
+    --   vim.keymap.set("n", "gD", "<CMD>lua vim.lsp.buf.declaration()<CR>", opt)
+    --   vim.keymap.set("n", "gh", "<CMD>Lspsaga hover_doc<CR>", opt)
+    --   vim.keymap.set("n", "gf", "<CMD>Lspsaga finder<Cr>", opt)
+    --   vim.keymap.set("n", "<leader>j", "<CMD>Lspsaga diagnostic_jump_next<CR>", opt)
+    --   vim.keymap.set("n", "<leader>ca", "<CMD>Lspsaga code_action<CR>", opt)
+    -- end,
   },
   {
     "saghen/blink.cmp",
@@ -110,13 +153,6 @@ return {
         },
       },
       completion = {
-        signature = {
-          window = {
-            border = "rounded",
-            -- 透過
-            winblend = 15
-          }
-        },
         menu = {
           border = "rounded",
           winblend = 15,
@@ -193,10 +229,10 @@ return {
     end,
   },
   {
-   "mason-org/mason.nvim",
-   opts = {},
-   keys = {"Mason", "MasonInstall"},
-   event = { "BufReadPre", "BufNewFile" },
+    "mason-org/mason.nvim",
+    opts = {},
+    keys = { "Mason", "MasonInstall" },
+    event = { "BufReadPre", "BufNewFile" },
   },
   {
     "neovim/nvim-lspconfig",
