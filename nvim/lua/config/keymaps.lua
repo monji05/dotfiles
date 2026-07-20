@@ -110,5 +110,5 @@ keymap("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename" })
 keymap({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
 
 -- 診断のジャンプ (Lspsaga diagnostic_jump_next の代わり)
-keymap("n", "]d", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
-keymap("n", "[d", vim.diagnostic.goto_prev, { desc = "Prev Diagnostic" })
+keymap("n", "<leader>j", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
+keymap("n", "<leader>k", vim.diagnostic.goto_prev, { desc = "Prev Diagnostic" })
