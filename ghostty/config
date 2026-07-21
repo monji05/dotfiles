@@ -1,6 +1,8 @@
 # config reload = shift + command + ,
 # pane move = cmd + alt + left right up down
-background = #031219
+# background = #031219
+background = #002b36
+
 # background = #161821
 # background = #1F1F1F
 

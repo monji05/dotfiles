@@ -23,3 +23,4 @@ keymap("n", "<Space>k", erase_all_lines, { desc = "Erase all" })
 
 -- To describe the group of mappings under <Space>g, use key-menu.set.
 key_menu.set("n", "<Space>g", { desc = "Git" })
+key_menu.set("n", "g")
