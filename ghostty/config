@@ -14,7 +14,7 @@ font-family = "PlemolJP Console NF Text"
 # fontを太くする
 # font-thicken = true
 
-font-size = 19
+font-size = 18
 
 keybind = unconsumed:ctrl+h=goto_split:left
 keybind = unconsumed:ctrl+j=goto_split:bottom
@@ -29,7 +29,7 @@ window-padding-x = 0
 window-position-x = 0
 window-position-y = 0
 gtk-titlebar-hide-when-maximized = true
-window-height = 62
+window-height = 61
 window-width = 235
 quit-after-last-window-closed = true
 macos-titlebar-style = tabs
