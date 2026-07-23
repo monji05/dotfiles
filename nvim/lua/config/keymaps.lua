@@ -89,23 +89,25 @@ keymap("n", "<leader>l", "<cmd>Lazy<CR>", opts)
 
 -- relaod session
 keymap("n", ";s", function()
-  require("persistence").load()
+    require("persistence").load()
 end)
 
 keymap({ "n", "t" }, ";t", function()
-  Snacks.terminal.toggle(cmd, opts)
+    Snacks.terminal.toggle(cmd, opts)
 end)
 
+
+-- Lspsagaの方が快適なのでコメントアウト
 -- Lspsaga からTroubleに変えた場合、LSPの on_attach 等で以下をネイティブに設定し直す必要がある
 -- ホバー (Lspsaga hover_doc の代わり)
-keymap("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
-
--- ネーム (Lspsaga rename の代わり)
-keymap("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename" })
-
--- コードアクション (Lspsaga code_action の代わり)
-keymap({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
-
--- 診断のジャンプ (Lspsaga diagnostic_jump_next の代わり)
-keymap("n", "<leader>j", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
-keymap("n", "<leader>k", vim.diagnostic.goto_prev, { desc = "Prev Diagnostic" })
+-- keymap("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
+--
+-- -- ネーム (Lspsaga rename の代わり)
+-- keymap("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename" })
+--
+-- -- コードアクション (Lspsaga code_action の代わり)
+-- keymap({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
+--
+-- -- 診断のジャンプ (Lspsaga diagnostic_jump_next の代わり)
+-- keymap("n", "<leader>j", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
+-- keymap("n", "<leader>k", vim.diagnostic.goto_prev, { desc = "Prev Diagnostic" })
