@@ -52,7 +52,7 @@ vim.opt.path:append({ "**" }) -- `:find` コマンドなどでサブディレク
 vim.opt.iskeyword:append("-") -- ハイフン付きの単語（kebab-case）を1つの単語として扱う
 
 -- --- システム・ウィンドウ ---
-vim.opt.laststatus = 0 -- ★ステータスライン（下のバー）を非表示にする（通常は2か3）
+vim.opt.laststatus = 3 -- ★ステータスライン（下のバー）を非表示にする（通常は2か3）pane分割してもステータスラインは分割したくない場合は3
 vim.opt.shada = "" -- ★Shada（履歴やマークなどの保存）を無効化（再起動で履歴が消える設定）
 vim.opt.swapfile = false -- スワップファイル（.swp）を作成しない
 vim.opt.shell = "fish" -- Neovim内で使うシェルを `fish` に指定
@@ -101,4 +101,3 @@ vim.opt.clipboard:append({ "unnamed", "unnamedplus" })
 
 -- 現在行をハイライト
 vim.opt.cursorline = true
-

@@ -3,9 +3,9 @@ vim.lsp.enable({
   "lua_ls",
   "intelephense",
   "ts_ls",
+  "pyright",
 })
 vim.diagnostic.config({ virtual_text = true })
-
 
 -- nvim-treesitterを手動で有効化しなければいけない
 -- >> Neovim 0.11のリリースに伴ってmasterブランチは凍結され、現在はmainブランチで開発を継続しています。
@@ -21,4 +21,3 @@ vim.api.nvim_create_autocmd("FileType", {
     pcall(vim.treesitter.start)
   end,
 })
-
