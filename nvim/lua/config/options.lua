@@ -52,12 +52,12 @@ vim.opt.path:append({ "**" })                       -- `:find` コマンドな�
 vim.opt.iskeyword:append("-")                       -- ハイフン付きの単語（kebab-case）を1つの単語として扱う
 
 -- --- システム・ウィンドウ ---
-vim.opt.laststatus = 3                            -- ★ステータスライン（下のバー）を非表示にする（通常は2か3）
-vim.opt.shada = ""                                -- ★Shada（履歴やマークなどの保存）を無効化（再起動で履歴が消える設定）
-vim.opt.swapfile = false                          -- スワップファイル（.swp）を作成しない
-vim.opt.shell = "fish"                            -- Neovim内で使うシェルを `fish` に指定
-vim.opt.splitbelow = true                         -- 横分割時、新しいウィンドウを下に開く
-vim.opt.splitright = true                         -- 縦分割時、新しいウィンドウを右に開く
+vim.opt.laststatus = 3 -- ★ステータスライン（下のバー）を非表示にする（通常は2か3）pane分割してもステータスラインは分割したくない場合は3
+vim.opt.shada = "" -- ★Shada（履歴やマークなどの保存）を無効化（再起動で履歴が消える設定）
+vim.opt.swapfile = false -- スワップファイル（.swp）を作成しない
+vim.opt.shell = "fish" -- Neovim内で使うシェルを `fish` に指定
+vim.opt.splitbelow = true -- 横分割時、新しいウィンドウを下に開く
+vim.opt.splitright = true -- 縦分割時、新しいウィンドウを右に開く
 vim.opt.wildignore:append({ "*/node_modules/*" }) -- ファイル検索などで `node_modules` を無視
 vim.opt.splitkeep = "cursor"                      -- 分割時にカーソル位置がずれないように画面スクロールを維持
 vim.opt.mouse = ""                                -- ★マウス操作を無効化（LazyVimデフォルトは有効）
