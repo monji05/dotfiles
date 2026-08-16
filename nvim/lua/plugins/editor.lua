@@ -62,6 +62,13 @@ return {
   },
   {
     -- Convenience file operations for neovim
+    -- copyFilename: Copy the filename.
+    -- copyFilepath: Copy the absolute filepath.
+    -- copyFilepathWithTilde: Copy the absolute filepath, replacing the home directory with ~.
+    -- copyRelativePath: Copy the relative filepath.
+    -- copyDirectoryPath: Copy the absolute directory path.
+    -- copyRelativeDirectoryPath: Copy the relative directory path.
+    -- copyFileItself: Copies the file itself. This means you can paste it into the browser or file manager. (Currently only on macOS, PRs welcome.)
     "chrisgrieser/nvim-genghis",
     config = function()
       local keymap = vim.keymap.set
