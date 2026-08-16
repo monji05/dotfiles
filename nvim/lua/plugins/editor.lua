@@ -66,7 +66,8 @@ return {
     config = function()
       local keymap = vim.keymap.set
       local genghis = require("genghis")
-      keymap("n", "<leader>yp", genghis.copyFilepath)
+      keymap("n", "<leader>yP", genghis.copyFilePath)
+      keymap("n", "<leader>yp", genghis.copyRelativePath)
       -- keymap("n", "<leader>yn", genghis.copyFilename)
       -- keymap("n", "<leader>cx", genghis.chmodx)
       keymap("n", "<leader>rf", genghis.renameFile)
