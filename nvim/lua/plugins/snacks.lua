@@ -135,14 +135,15 @@ return {
       desc = "Lazygit",
     },
     {
-      "<leader>gb",
+      "<leader>gB",
       function()
         Snacks.git.blame_line()
       end,
       desc = "Git Blame Line",
     },
     {
-      "<leader>gB",
+      mode = { "n", "v" },
+      "<leader>gb",
       function()
         Snacks.gitbrowse()
       end,
