@@ -14,7 +14,7 @@ return {
         -- solarized-osaka
         style = "#073642",
         -- vague
-        style = "#405065",
+        -- style = "#405065",
       },
     },
   },
