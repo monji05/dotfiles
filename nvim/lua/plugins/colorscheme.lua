@@ -44,14 +44,14 @@ return {
         -- hl.LspKindNumber = {
         --   fg = number_fg,
         -- }
-        -- hl.LineNr = {
-        --   fg = c.base01,
-        --   -- bg = c.base02,
-        -- }
-        -- hl.CursorLineNr = {
-        --   fg = c.yellow300,
-        --   bg = c.yellow700,
-        -- }
+        hl.LineNr = {
+          fg = c.base01,
+          -- bg = c.base02,
+        }
+        hl.CursorLineNr = {
+          fg = c.red300,
+          bg = c.green700,
+        }
         -- hl.GitSignsAdd = {
         --   fg = c.green500,
         --   bg = c.base02,
@@ -98,6 +98,27 @@ return {
     "m-demare/hlargs.nvim",
     config = function()
       require("hlargs").setup({})
+      -- 引数（パラメータ）に使われるハイライトグループの候補（優先順）
+      local param_groups = {
+        "@variable.parameter", -- Treesitter（Neovim 0.9+ 標準）
+        "@lsp.type.parameter", -- LSP Semantic Tokens
+        "@parameter", -- 旧 Treesitter 互換用
+        "Identifier", -- Vim標準フォールバック
+      }
+
+      local fg_color = nil
+
+      for _, group_name in ipairs(param_groups) do
+        local hl = vim.api.nvim_get_hl(0, { name = group_name, link = false })
+        if hl and hl.fg then
+          fg_color = hl.fg
+          break
+        end
+      end
+
+      if fg_color then
+        vim.api.nvim_set_hl(0, "Hlargs", { fg = string.format("#%06x", fg_color) })
+      end
       -- vague
       -- vim.api.nvim_command([[highlight Hlargs guifg=#bb9dbd]])
 
@@ -105,7 +126,7 @@ return {
       -- vim.api.nvim_command([[highlight Hlargs guifg=#b5bd68]])
 
       -- solarized-osaka
-      vim.api.nvim_command([[highlight Hlargs guifg=#db4b4b]])
+      -- vim.api.nvim_command([[highlight Hlargs guifg=#db4b4b]])
 
       -- tokyonight
       -- That is the same phpDoc argment color
