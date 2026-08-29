@@ -3,15 +3,13 @@
 # background = #031219
 
 # my Solarized
-# background = #002b36
-background = #001c25
-# background = #00141d
+background = #002b36
 
 # background = #161821
 # background = #1F1F1F
 
 background-blur-radius = 20
-background-opacity = 0.9
+background-opacity = 0.85
 command = /opt/homebrew/bin/fish
 cursor-color = "#47FF9C"
 font-family = "PlemolJP Console NF Text"
