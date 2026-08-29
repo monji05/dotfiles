@@ -49,8 +49,8 @@ return {
           -- bg = c.base02,
         }
         hl.CursorLineNr = {
-          fg = c.red300,
-          bg = c.green700,
+          fg = c.green500,
+          bg = c.green900,
         }
         -- hl.GitSignsAdd = {
         --   fg = c.green500,
