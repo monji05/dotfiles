@@ -29,7 +29,7 @@ vim.api.nvim_create_user_command("SwitchCase", function()
     -- Convert camelCase to snake_case
     local snake_case_word = word:gsub("([a-z])([A-Z])", "%1_%2"):lower()
     vim.api.nvim_buf_set_text(0, line - 1, word_start, line - 1, word_start + #word, { snake_case_word })
-  -- Detect snake_case
+    -- Detect snake_case
   elseif word:find("_[a-z]") then
     -- Convert snake_case to camelCase
     local camel_case_word = word:gsub("(_)([a-z])", function(_, l)
@@ -57,4 +57,3 @@ vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
     end
   end,
 })
-
