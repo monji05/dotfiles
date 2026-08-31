@@ -31,7 +31,7 @@ return {
       ---@param highlights Highlights
       ---@param colors ColorScheme
       on_highlights = function(hl, c)
-        local number_fg = c.violet500
+        -- local number_fg = c.violet500
         -- hl["@number"] = {
         --   fg = number_fg,
         -- }
@@ -102,8 +102,8 @@ return {
       local param_groups = {
         "@variable.parameter", -- Treesitter（Neovim 0.9+ 標準）
         "@lsp.type.parameter", -- LSP Semantic Tokens
-        "@parameter", -- 旧 Treesitter 互換用
-        "Identifier", -- Vim標準フォールバック
+        "@parameter",          -- 旧 Treesitter 互換用
+        "Identifier",          -- Vim標準フォールバック
       }
 
       local fg_color = nil
@@ -122,30 +122,30 @@ return {
       -- vague
       -- vim.api.nvim_command([[highlight Hlargs guifg=#bb9dbd]])
 
-            -- solarized-osaka
-            vim.api.nvim_command([[highlight Hlargs guifg=#c94c16]])
+      -- solarized-osaka
+      -- vim.api.nvim_command([[highlight Hlargs guifg=#c94c16]])
 
-            -- solarized-osaka
-            -- vim.api.nvim_command([[highlight Hlargs guifg=#c94c16]])
+      -- solarized-osaka
+      -- vim.api.nvim_command([[highlight Hlargs guifg=#c94c16]])
 
-            -- tokyonight
-            -- That is the same phpDoc argment color
-            -- vim.api.nvim_command([[highlight Hlargs guifg=#e0af68]])
+      -- tokyonight
+      -- That is the same phpDoc argment color
+      -- vim.api.nvim_command([[highlight Hlargs guifg=#e0af68]])
 
-            -- nightfox (duskfox)
-            -- vim.api.nvim_command([[highlight Hlargs guifg=#9ccfd8]])
+      -- nightfox (duskfox)
+      -- vim.api.nvim_command([[highlight Hlargs guifg=#9ccfd8]])
 
-            -- solarized
-            -- vim.api.nvim_command([[highlight Hlargs guifg=#268BD2]])
+      -- solarized
+      -- vim.api.nvim_command([[highlight Hlargs guifg=#268BD2]])
 
-            -- kanagawa-dragon
-            -- vim.api.nvim_command([[highlight Hlargs guifg=#957FB8]])
+      -- kanagawa-dragon
+      -- vim.api.nvim_command([[highlight Hlargs guifg=#957FB8]])
 
-            -- iceberg
-            -- vim.api.nvim_command([[highlight Hlargs guifg=#a093c7]])
+      -- iceberg
+      -- vim.api.nvim_command([[highlight Hlargs guifg=#a093c7]])
 
-            -- vscode
-            -- vim.api.nvim_command([[highlight Hlargs guifg=#F97583]])
-        end,
-    },
+      -- vscode
+      -- vim.api.nvim_command([[highlight Hlargs guifg=#F97583]])
+    end,
+  },
 }
