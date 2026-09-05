@@ -13,9 +13,18 @@ return {
             InclineNormalNC = { guifg = colors.violet500, guibg = colors.base03 },
           },
         },
-        window = { margin = { vertical = 0, horizontal = 1 } },
         hide = {
           cursorline = true,
+        },
+        window = {
+          placement = {
+            horizontal = "center",
+            vertical = "top",
+          },
+          margin = {
+            vertical = 0,
+            horizontal = 0,
+          },
         },
 
         render = function(props)
