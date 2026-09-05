@@ -28,7 +28,22 @@ return {
         },
 
         render = function(props)
-          local filename = vim.fn.expand("%:.")
+          -- 現在のバッファのプロジェクトルートからの相対パスを取得
+          local bufpath = vim.api.nvim_buf_get_name(props.buf)
+          if bufpath == "" then
+            return "[No Name]"
+          end
+
+          local relpath = vim.fn.fnamemodify(bufpath, ":~:.")
+          local filename = vim.fn.fnamemodify(bufpath, ":t")
+          local dirpath = vim.fn.fnamemodify(relpath, ":h")
+
+          -- ルート直下でない場合は末尾にスラッシュを付与
+          if dirpath ~= "." then
+            dirpath = dirpath .. "/"
+          else
+            dirpath = ""
+          end
           local ft_icon, ft_color = devicons.get_icon_color(filename)
           local separator = { "┊ ", guifg = colors.blue }
 
@@ -42,7 +57,7 @@ return {
             -- { get_git_diff() },
             { is_modified },
             { (ft_icon or "") .. " ", guifg = ft_color, guibg = "none" },
-            { filename, gui = vim.bo[props.buf].modified and "bold,italic" or "bold" },
+            { dirpath .. filename, gui = vim.bo[props.buf].modified and "bold,italic" or "bold" },
           }
         end,
       })
