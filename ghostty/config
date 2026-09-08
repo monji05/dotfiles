@@ -4,7 +4,15 @@
 
 # my Solarized
 # background = #002b36
-background = #00141a
+# hsl(192, 100, 5) solarized-osaka bg color
+# background = #00141a 
+
+# hsl(192, 100, 6)
+#background = #00191f 
+
+# hsl(192, 100, 7)
+background = #001c24 
+
 
 # background = #161821
 # background = #1F1F1F
