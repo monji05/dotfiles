@@ -8,8 +8,8 @@ return {
       win = {
         position = "float",
         border = "rounded", -- Options: "none", "single", "double", "rounded", etc.
-        width = 0.8, -- 80% of screen width
-        height = 0.8, -- 80% of screen height
+        width = 0, -- full size screen width
+        height = 0, -- full size screen height
       },
     },
     explore = { enable = false },
