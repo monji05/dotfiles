@@ -9,8 +9,8 @@ return {
       win = {
         position = "float",
         border = "rounded", -- Options: "none", "single", "double", "rounded", etc.
-        width = 0.8, -- 80% of screen width
-        height = 0.8, -- 80% of screen height
+        width = 0, -- full size screen width
+        height = 0, -- full size screen height
       },
     },
     explore = { enable = false },
@@ -20,61 +20,61 @@ return {
       sources = {
         files = {
           hidden = true,
-          cmd = "fd"
+          cmd = "fd",
         },
         grep = {
           hidden = true,
           cmd = "rg",
           regex = true,
-        }
-      }
+        },
+      },
     },
     bigfile = { enabled = true },
---     dashboard = {
---       enable = false,
---       preset = {
---         header = [[
---          ⣠⣤⣤⣄⡀⠀
---         ⢰⣿⣿⣿⣿⡏⠀
--- ⠀⠀⠀⠀⠀   ⣀⣤⣴⣖⠺⣦⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
--- ⠀⠀⠀    ⣼⣿⣿⣿⣿⣿⣿⣿⣿⣶⣦⡀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
--- ⠀     ⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢟⠁⠀⠀⠀⣀⠸⣯⠉⠉⠙⠿⡃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
---      ⠰⣿⣯⠎⠙⢿⣿⣿⠿⣿⣿⣿⣿⡷⠀⠀⣾⠻⣄⣿⣤⣴⣶⢠⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
---    ⢀⣤⣾⡛⠉⠀⠀⠀⠀⠀⠀⢸⠿⠋⠁⠀⠀⠀⣿⠀⢸⣿⣿⣿⣿⣿⣿⠷⠀⠀⠀⠀⠀⠠⣆⣸⣷⣦⡀⠀⠀⠀⠀⠀⠀
--- ⠀⠀⣠⣚⠉⠉⠛⠦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⡀⠈⢿⣿⣿⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠋⠉⠀⠀⠀⠀⠀⠀⠀
--- ⢠⡾⠛⠻⠿⢶⡤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢷⡄⢸⣿⣿⣿⣆⠀⢀⣠⣴⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
--- ⠸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢻⣾⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
--- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢙⣿⣿⣿⣿⣿⣿⣿⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
--- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⠀⠀⠀⠀⢸⣿⣿⣿⠋⠀⠀⠀⡅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
--- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⠀⣿⣿⣿⣿⣷⣶⣶⡛⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
--- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⢰⣿⣿⣿⡟⢿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
--- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⠀⠀⠀⢻⣿⣿⣿⡌⠻⠿⠿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
--- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀     ⢀⠀⠀⠹⣿⣿⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
--- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀     ⠀⢸⣇⠀⠀⠸⠟⢉⣳⢀⡺⢷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
--- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀      ⢸⣿⣆⠀⠀⠀⠙⢿⡿⠟⠀⠀⠀]],
---       },
---       sections = {
---         { section = "header" },
---         { pane = 2, section = "keys", gap = 1, padding = 1 },
---         -- { pane = 2, icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
---         -- { pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
---         {
---           pane = 2,
---           icon = " ",
---           title = "Git Status",
---           section = "terminal",
---           enabled = function()
---             return Snacks.git.get_root() ~= nil
---           end,
---           cmd = "hub status --short --branch --renames",
---           height = 5,
---           padding = 1,
---           ttl = 5 * 60,
---           indent = 3,
---         },
---         { section = "startup" },
---       },
---     },
+    --     dashboard = {
+    --       enable = false,
+    --       preset = {
+    --         header = [[
+    --          ⣠⣤⣤⣄⡀⠀
+    --         ⢰⣿⣿⣿⣿⡏⠀
+    -- ⠀⠀⠀⠀⠀   ⣀⣤⣴⣖⠺⣦⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    -- ⠀⠀⠀    ⣼⣿⣿⣿⣿⣿⣿⣿⣿⣶⣦⡀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    -- ⠀     ⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢟⠁⠀⠀⠀⣀⠸⣯⠉⠉⠙⠿⡃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    --      ⠰⣿⣯⠎⠙⢿⣿⣿⠿⣿⣿⣿⣿⡷⠀⠀⣾⠻⣄⣿⣤⣴⣶⢠⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    --    ⢀⣤⣾⡛⠉⠀⠀⠀⠀⠀⠀⢸⠿⠋⠁⠀⠀⠀⣿⠀⢸⣿⣿⣿⣿⣿⣿⠷⠀⠀⠀⠀⠀⠠⣆⣸⣷⣦⡀⠀⠀⠀⠀⠀⠀
+    -- ⠀⠀⣠⣚⠉⠉⠛⠦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⡀⠈⢿⣿⣿⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠋⠉⠀⠀⠀⠀⠀⠀⠀
+    -- ⢠⡾⠛⠻⠿⢶⡤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢷⡄⢸⣿⣿⣿⣆⠀⢀⣠⣴⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    -- ⠸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢻⣾⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    -- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢙⣿⣿⣿⣿⣿⣿⣿⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    -- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⠀⠀⠀⠀⢸⣿⣿⣿⠋⠀⠀⠀⡅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    -- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⠀⣿⣿⣿⣿⣷⣶⣶⡛⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    -- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⢰⣿⣿⣿⡟⢿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    -- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⠀⠀⠀⢻⣿⣿⣿⡌⠻⠿⠿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    -- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀     ⢀⠀⠀⠹⣿⣿⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    -- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀     ⠀⢸⣇⠀⠀⠸⠟⢉⣳⢀⡺⢷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    -- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀      ⢸⣿⣆⠀⠀⠀⠙⢿⡿⠟⠀⠀⠀]],
+    --       },
+    --       sections = {
+    --         { section = "header" },
+    --         { pane = 2, section = "keys", gap = 1, padding = 1 },
+    --         -- { pane = 2, icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
+    --         -- { pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
+    --         {
+    --           pane = 2,
+    --           icon = " ",
+    --           title = "Git Status",
+    --           section = "terminal",
+    --           enabled = function()
+    --             return Snacks.git.get_root() ~= nil
+    --           end,
+    --           cmd = "hub status --short --branch --renames",
+    --           height = 5,
+    --           padding = 1,
+    --           ttl = 5 * 60,
+    --           indent = 3,
+    --         },
+    --         { section = "startup" },
+    --       },
+    --     },
     toggle = {
       map = vim.keymap.set, -- keymap.set function to use
       which_key = true, -- integrate with which-key to show enabled/disabled icons and colors
@@ -118,7 +118,9 @@ return {
     indent = {
       enabled = false,
     },
-    lazygit = { enabled = true },
+    lazygit = {
+      enabled = true,
+    },
   },
   keys = {
     {
