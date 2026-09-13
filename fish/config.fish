@@ -1,18 +1,25 @@
 set fish_greeting ""
-# set -gx TERM xterm-256color
-set -gx TERM wezterm
+set -gx TERM xterm-256color
+# set -gx TERM wezterm
 
-fish_add_path /opt/homebrew/bin
 fish_add_path $HOME/.cargo/bin
 fish_add_path /usr/bin/java
 set -gx PROFILE $HOME/.config/fish/config.fish
 fish_add_path $HOME/.deno/bin
 
+set -gx BREW /opt/homebrew/bin
+fish_add_path $BREW
+
+fish_add_path $HOME/go/bin
+
+# for building php-src
+fish_add_path /opt/homebrew/opt/bison/bin
+
 alias g='git'
 alias v='nvim'
 # alias v='fd --type f --hidden --exclude .git |fzf-tmux -p |xargs nvim'
-alias l='exa -la -g --icons --header --git'
-alias lt='exa --tree --level=2 --long --icons --git'
+alias l='eza -la -g --icons --header --git'
+alias lt='eza --tree --level=2 --long --icons --git'
 alias gl='git log --graph --all'
 alias gs='git status'
 alias gc='git commit -m'
@@ -36,48 +43,33 @@ set -g fish_key_bindings fish_vi_key_bindings
 bind -M insert \cc 'clear; commandline -f repaint'
 
 # tide config
-set -U tide_git_icon 
-set -U tide_pwd_icon 
-set -U tide_os_icon 
-set tide_left_prompt_items os pwd git newline time character
-
-
-# Mac setup for pomo
-# Requires https://github.com/caarlos0/timer to be installed
-# brew install terminal-notifier
-# brew install caarlos0/tap/timer
-alias work="timer 25m && terminal-notifier -message 'Pomodoro'\
-        -title 'Work Timer is up! Take a Break 😊'\
-        -appIcon '~/Pictures/pumpkin.png'\
-        -sound Crystal"
-
-alias rest="timer 5m && terminal-notifier -message 'Pomodoro'\
-        -title 'Break is over! Get back to work 😬'\
-        -appIcon '~/Pictures/pumpkin.png'\
-        -sound Crystal"
+# set -U tide_git_icon 
+# set -U tide_pwd_icon 
+# set -U tide_os_icon 
+set --global tide_left_prompt_items pwd git newline time character
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
-# fzf.fish consig
-# Need to execute `fisher install PatrickF1/fzf.fish`
-# Search directory keymap to Ctrl+f
-fzf_configure_bindings --directory=\cf
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-# tmuxのpopup window
-function tmuxpopup -d "toggle tmux popup window"
-    set width '80%'
-    set height '80%'
+# mkcd
+function mkcd
+    set new_dir $argv[1]
 
-    # 現在のセッション名とカレントディレクトリを取得
-    set session (tmux display-message -p -F "#{session_name}")
-    set current_dir (basename (tmux display-message -p -F "#{pane_current_path}"))
-    set popup_session "popup_$current_dir"
+    if test -d "$new_dir"
+        echo "'$new_dir' already exists."
+        return 1
+    end
 
-    # すでに popup セッション内にいる場合はデタッチ（閉じる）
-    if string match -q "popup_*" $session
-        tmux detach-client
+    mkdir "$new_dir"
+    if test $status -eq 0
+        cd "$new_dir"
     else
-        # popup を表示。セッションがなければ新規作成、あればアタッチ
-        tmux display-popup -d '#{pane_current_path}' -xC -yC -w$width -h$height -E "tmux attach -t $popup_session || tmux new -s $popup_session"
+        echo "Error creating directory '$new_dir'."
+        return 1
     end
 end
+
+# jethrokuan/fzf config instead of PatrickF1/fzf.fish
+fzf --fish | source
