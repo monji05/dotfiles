@@ -107,6 +107,7 @@ return {
     notifier = {
       enabled = true,
       timeout = 3000,
+      top_down = false, -- place notifications from top to bottom
     },
     quickfile = { enabled = true },
     words = { enabled = true },
