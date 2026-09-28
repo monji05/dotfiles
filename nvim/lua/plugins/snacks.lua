@@ -9,8 +9,8 @@ return {
       win = {
         position = "float",
         border = "rounded", -- Options: "none", "single", "double", "rounded", etc.
-        width = 0, -- full size screen width
-        height = 0, -- full size screen height
+        width = 0,          -- full size screen width
+        height = 0,         -- full size screen height
       },
     },
     explore = { enable = false },
@@ -20,13 +20,16 @@ return {
       sources = {
         files = {
           hidden = true,
+          ignored = true,
           cmd = "fd",
         },
         grep = {
           hidden = true,
+          ignored = true,
           cmd = "rg",
           regex = true,
         },
+        explorer = { hidden = false, ignored = false, exclude = { "**/.git", "**/.DS_Store" } },
       },
     },
     bigfile = { enabled = true },
@@ -77,8 +80,8 @@ return {
     --     },
     toggle = {
       map = vim.keymap.set, -- keymap.set function to use
-      which_key = true, -- integrate with which-key to show enabled/disabled icons and colors
-      notify = true, -- show a notification when toggling
+      which_key = true,     -- integrate with which-key to show enabled/disabled icons and colors
+      notify = true,        -- show a notification when toggling
       -- icons for enabled/disabled states
       icon = {
         enabled = " ",
@@ -95,8 +98,8 @@ return {
       left = { "mark", "sign" }, -- priority of signs on the left (high to low)
       right = { "fold", "git" }, -- priority of signs on the right (high to low)
       folds = {
-        open = false, -- show open fold icons
-        git_hl = false, -- use Git Signs hl for fold icons
+        open = false,            -- show open fold icons
+        git_hl = false,          -- use Git Signs hl for fold icons
       },
       git = {
         -- patterns to match Git signs
@@ -326,8 +329,8 @@ return {
         Snacks.toggle.diagnostics():map("<leader>ud")
         Snacks.toggle.line_number():map("<leader>ul")
         Snacks.toggle
-          .option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
-          :map("<leader>uc")
+            .option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
+            :map("<leader>uc")
         Snacks.toggle.treesitter():map("<leader>uT")
         Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
         Snacks.toggle.inlay_hints():map("<leader>uh")
