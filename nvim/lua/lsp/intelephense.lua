@@ -1,8 +1,11 @@
-vim.lsp.config("intelephense", {
+return {
   -- Mason等でパスが通っていればコマンド名のみでOK
   cmd = { "intelephense", "--stdio" },
   filetypes = { "php" },
   root_markers = { "composer.json", ".git" },
+  init_options = {
+    clearCache = true,
+  },
 
   settings = {
     intelephense = {
@@ -18,4 +21,4 @@ vim.lsp.config("intelephense", {
       },
     },
   },
-})
+}
