@@ -60,14 +60,15 @@ vim.pack.add({
   gh("folke/persistence.nvim"),
 
   -- treesitter
-  gh("nvim-treesitter/nvim-treesitter"),
+  -- lsp.lua starts treesitter by hand (vim.treesitter.start), i.e. the `main` branch
+  { src = gh("nvim-treesitter/nvim-treesitter"), version = "main" },
   gh("nvim-treesitter/nvim-treesitter-context"),
 
   -- LSP / completion / format / lint
   gh("mason-org/mason.nvim"),
   gh("neovim/nvim-lspconfig"),
   gh("nvimdev/lspsaga.nvim"),
-  { src = gh("saghen/blink.cmp"), version = vim.version.range("1.*") },
+  { src = gh("saghen/blink.cmp"), version = vim.version.range("*") },
   gh("stevearc/conform.nvim"),
   gh("mfussenegger/nvim-lint"),
   gh("nvimtools/none-ls.nvim"),
@@ -100,10 +101,8 @@ local setups = {
   ["mini.icons"] = {},
   ["nvim-web-devicons"] = {},
   ["incline"] = {},
-  ["tiny-inline-diagnostic"] = {},
   ["colorizer"] = {},
   ["numb"] = {},
-  ["colorful-menu"] = {},
   ["quicker"] = {},
   ["trouble"] = {},
   ["overlook"] = {},
@@ -113,9 +112,6 @@ local setups = {
   ["oil"] = {},
   ["persistence"] = {},
   ["treesitter-context"] = {},
-  ["mason"] = {},
-  ["lspsaga"] = {},
-  ["blink.cmp"] = {},
   ["conform"] = {},
   ["octo"] = {},
   ["render-markdown"] = {},
@@ -125,6 +121,7 @@ local setups = {
 require("config.plugins.ui-colorscheme")
 require("config.plugins.snacks")
 require("config.plugins.editor")
+require("config.plugins.lsp")
 
 for mod, opts in pairs(setups) do
   local ok, m = pcall(require, mod)
