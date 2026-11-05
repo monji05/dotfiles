@@ -1,7 +1,3 @@
--- Options are automatically loaded before lazy.nvim startup
--- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
--- Add any additional options here
-
 -- --- 環境設定 ---
 -- OS判定: Unix系なら英語(UTF-8)を強制。エラーメッセージの文字化け防止などに役立ちます。
 if vim.fn.has("unix") == 1 then
