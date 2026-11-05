@@ -3,7 +3,6 @@
 -- 1) PackChanged hooks   (must come BEFORE vim.pack.add)
 -- 2) vim.pack.add        (install + load, in order)
 -- 3) setup() calls       (replaces lazy's `opts` / `config`)
--- 4) colorscheme
 
 local gh = function(repo) return "https://github.com/" .. repo end
 
@@ -103,7 +102,6 @@ local setups = {
   ["incline"] = {},
   ["tiny-inline-diagnostic"] = {},
   ["hlchunk"] = {},
-  ["hlargs"] = {},
   ["colorizer"] = {},
   ["numb"] = {},
   ["colorful-menu"] = {},
@@ -126,7 +124,8 @@ local setups = {
   ["render-markdown"] = {},
 }
 
--- snacks first (it was `priority = 1000, lazy = false`); full port lives in its own file
+-- colorscheme + hlargs first (was `priority = 1000`), then snacks (also priority 1000)
+require("config.plugins.ui-colorscheme")
 require("config.plugins.snacks")
 
 for mod, opts in pairs(setups) do
@@ -143,6 +142,3 @@ end
 --   neotest (+ neotest-phpunit adapter), none-ls sources, nvim-lint
 --   linters_by_ft, dial.nvim / genghis / key-menu keymaps, github-preview,
 --   nvim-treesitter (ensure_installed / highlight)
-
--- ---------------------------------------------------------- 4) colorscheme
-pcall(vim.cmd.colorscheme, "solarized-osaka")
