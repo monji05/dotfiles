@@ -1,8 +1,15 @@
--- lua/config/plugins/editor.lua
--- Ported from lua/plugins/editor.lua: hlchunk, treesj, gitsigns, genghis.
--- Loaded from config/plugins.lua.
+require("mini.diff").setup({
+  view = {
+		-- show whole reference part above whole buffer part, as in `git diff`
+		overlay_style = "hunk",
+	},
+	mappings = {
+		-- same keymaps as codediff.nvim
+		goto_next = "]c",
+		goto_prev = "[c",
+	},
+})
 
--- ----------------------------------------------------------------- hlchunk
 require("hlchunk").setup({
   chunk = {
     enable = true,
