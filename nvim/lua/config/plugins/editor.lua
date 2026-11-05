@@ -22,18 +22,16 @@ require("hlchunk").setup({
   },
 })
 
--- ------------------------------------------------------------------ treesj
 -- very useful: join / split things in brackets, function args, ...
 -- (no default keymaps; use :TSJToggle / :TSJSplit / :TSJJoin)
 require("treesj").setup({ use_default_keymaps = false })
 
--- ---------------------------------------------------------------- gitsigns
 require("gitsigns").setup({
   signs = {
     add = { text = "▎" },
     change = { text = "▎" },
-    delete = { text = "" },
-    topdelete = { text = "" },
+    delete = { text = "▎" },
+    topdelete = { text = "▎" },
     changedelete = { text = "▎" },
     untracked = { text = "▎" },
   },
@@ -44,24 +42,12 @@ require("gitsigns").setup({
       vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
     end
 
-    -- stylua: ignore start
-    map("n", "]c", gs.next_hunk, "Next Hunk")
-    map("n", "[c", gs.prev_hunk, "Prev Hunk")
     map({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
     map({ "n", "v" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
-    map("n", "<leader>ghS", gs.stage_buffer, "Stage Buffer")
-    map("n", "<leader>ghu", gs.undo_stage_hunk, "Undo Stage Hunk")
-    map("n", "<leader>ghR", gs.reset_buffer, "Reset Buffer")
     map("n", "<leader>h", gs.preview_hunk, "Preview Hunk")
-    map("n", "<leader>ghd", gs.diffthis, "Diff This")
-    map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
-    map("n", "<leader>tw", gs.toggle_word_diff, "Toggle Word Diff")
-    map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
-    -- stylua: ignore end
   end,
 })
 
--- ----------------------------------------------------------------- genghis
 -- Convenience file operations (copy path, rename, move, create, duplicate)
 do
   local keymap = vim.keymap.set
