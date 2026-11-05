@@ -27,7 +27,6 @@ vim.api.nvim_create_autocmd("PackChanged", {
 vim.pack.add({
   -- libraries
   gh("nvim-lua/plenary.nvim"),
-  gh("nvim-neotest/nvim-nio"),
   gh("nvim-mini/mini.icons"),
   gh("nvim-tree/nvim-web-devicons"),
 
@@ -50,14 +49,15 @@ vim.pack.add({
   gh("WilliamHsieh/overlook.nvim"),
 
   -- editing
-  gh("altermo/ultimate-autopair.nvim"),
   gh("numToStr/Comment.nvim"),
   gh("nvim-mini/mini.surround"),
-  gh("monaqa/dial.nvim"),
   gh("Wansmer/treesj"),
   gh("chrisgrieser/nvim-genghis"),
   gh("stevearc/oil.nvim"),
   gh("folke/persistence.nvim"),
+  { src = gh("craftzdog/mini.diff"), version = "feat/grouping"},
+  gh("altermo/ultimate-autopair.nvim"),
+
 
   -- treesitter
   -- lsp.lua starts treesitter by hand (vim.treesitter.start), i.e. the `main` branch
@@ -80,17 +80,10 @@ vim.pack.add({
   -- TODO: mini.diff from branch feat/grouping (confirm repo, see notes)
   -- { src = gh("nvim-mini/mini.nvim"), version = "feat/grouping" },
 
-  -- test
-  gh("nvim-neotest/neotest"),
-  gh("olimorris/neotest-phpunit"),
-
   -- docs / markup / preview
   gh("MeanderingProgrammer/render-markdown.nvim"),
   gh("wallpants/github-preview.nvim"),
   gh("mpas/marp-nvim"),
-  gh("aklt/plantuml-syntax"),
-  gh("weirongxu/plantuml-previewer.vim"),
-  gh("tyru/open-browser.vim"),
   gh("kkoomen/vim-doge"),
 })
 
@@ -107,9 +100,6 @@ local setups = {
   ["quicker"] = {},
   ["trouble"] = {},
   ["overlook"] = {},
-  ["ultimate-autopair"] = {},
-  ["Comment"] = {},
-  ["mini.surround"] = {},
   ["oil"] = {},
   ["persistence"] = {},
   ["treesitter-context"] = {},
@@ -123,6 +113,7 @@ require("config.plugins.ui-colorscheme")
 require("config.plugins.snacks")
 require("config.plugins.editor")
 require("config.plugins.lsp")
+require("config.plugins.coding")
 require("config.plugins.codediff")
 
 for mod, opts in pairs(setups) do
@@ -135,7 +126,3 @@ for mod, opts in pairs(setups) do
   end
 end
 
--- Not covered above, port from your old specs by hand:
---   neotest (+ neotest-phpunit adapter), none-ls sources, nvim-lint
---   linters_by_ft, dial.nvim keymaps, github-preview,
---   nvim-treesitter (ensure_installed / highlight)
