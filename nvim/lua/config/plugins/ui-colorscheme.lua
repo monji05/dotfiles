@@ -30,7 +30,7 @@ require("solarized-osaka").setup({
 
 vim.cmd.colorscheme("solarized-osaka")
 
--- ------------------------------------------------------------------ hlargs
+-- hlargs
 -- Must run after the colorscheme: it copies the colour of the parameter group.
 require("hlargs").setup({})
 
