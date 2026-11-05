@@ -1,12 +1,5 @@
--- lua/config/plugins/lsp.lua
--- Ported from lua/plugins/lsp.lua: lspsaga, blink.cmp, colorful-menu,
--- tiny-inline-diagnostic, mason (nvim-lspconfig needs no setup).
--- Loaded from config/plugins.lua. Server enabling lives in config/lsp.lua.
-
--- ------------------------------------------------------------------ mason
 require("mason").setup({})
 
--- ----------------------------------------------------------------- lspsaga
 do
   local icons = require("config.icons")
 
@@ -67,7 +60,6 @@ do
   vim.keymap.set("n", "<leader>ca", "<CMD>Lspsaga code_action<CR>", opt)
 end
 
--- ------------------------------------------------------------ colorful-menu
 require("colorful-menu").setup({
   ls = {
     lua_ls = { arguments_hl = "@comment" },
@@ -96,7 +88,6 @@ require("colorful-menu").setup({
   max_width = 60,
 })
 
--- ---------------------------------------------------------------- blink.cmp
 require("blink.cmp").setup({
   appearance = {
     use_nvim_cmp_as_default = true,
@@ -153,7 +144,7 @@ require("blink.cmp").setup({
   },
 })
 
--- ------------------------------------------------- tiny-inline-diagnostic
+-- tiny-inline-diagnostic
 -- Original spec loaded this on `LspAttach` (after config/lsp.lua had set
 -- virtual_text = true), so it could turn virtual_text back off. Keep that
 -- ordering: do the setup on the first LspAttach, not at startup.

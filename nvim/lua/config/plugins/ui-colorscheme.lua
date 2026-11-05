@@ -1,7 +1,3 @@
--- lua/config/plugins/colorscheme.lua
--- Ported from lua/plugins/colorscheme.lua (solarized-osaka + hlargs).
--- Loaded from config/plugins.lua, before every other setup().
-
 require("solarized-osaka").setup({
   style = "vivid",
   styles = {
