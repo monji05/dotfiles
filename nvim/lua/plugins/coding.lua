@@ -13,13 +13,6 @@ return {
     end,
   },
   {
-    "weirongxu/plantuml-previewer.vim",
-    { "tyru/open-browser.vim", lazy = true },
-    { "aklt/plantuml-syntax", lazy = true },
-    ft = "plantuml",
-    cmd = { "PlantumlOpen", "PlantumlStart", "PlantumlSave" },
-  },
-  {
     "altermo/ultimate-autopair.nvim",
     event = { "InsertEnter", "CmdlineEnter" },
     branch = "v0.6", --recommended as each new version will have breaking changes
@@ -47,66 +40,5 @@ return {
         suffix_next = "n", -- Suffix to search with "next" method
       },
     },
-  },
-  {
-    "nvim-neotest/neotest",
-    cmd = { "Neotest" },
-    { "nvim-neotest/nvim-nio", lazy = true },
-    { "nvim-lua/plenary.nvim", lazy = true },
-    { "nvim-treesitter/nvim-treesitter", lazy = true },
-    { "olimorris/neotest-phpunit", lazy = true },
-    config = function()
-      require("neotest").setup({
-        adapters = {
-          require("neotest-phpunit"),
-        },
-      })
-    end,
-  },
-  {
-    "monaqa/dial.nvim",
-    keys = {
-      {
-        "g+",
-        function()
-          require("dial.map").manipulate("increment", "normal")
-        end,
-      },
-      {
-        "g-",
-        function()
-          require("dial.map").manipulate("decrement", "normal")
-        end,
-      },
-      {
-        "g<C-a>",
-        function()
-          require("dial.map").manipulate("increment", "gnormal")
-        end,
-      },
-      {
-        "g<C-x>",
-        function()
-          require("dial.map").manipulate("decrement", "gnormal")
-        end,
-      },
-    },
-    config = function()
-      local augend = require("dial.augend")
-      require("dial.config").augends:register_group({
-        -- default augends used when no group name is specified
-        default = {
-          augend.integer.alias.decimal, -- nonnegative decimal number (0, 1, 2, 3, ...)
-          augend.integer.alias.hex, -- nonnegative hex number  (0x01, 0x1a1f, etc.)
-          augend.date.alias["%Y/%m/%d"], -- date (2022/02/19, etc.)
-          augend.constant.alias.bool, -- boolean value (true <-> false)
-          augend.constant.new({ -- && <-> ||
-            elements = { "&&", "||" },
-            word = false,
-            cyclic = true,
-          }),
-        },
-      })
-    end,
   },
 }
