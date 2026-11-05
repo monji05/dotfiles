@@ -76,6 +76,7 @@ vim.pack.add({
   -- git
   gh("lewis6991/gitsigns.nvim"),
   gh("pwntester/octo.nvim"),
+  gh("esmuellert/codediff.nvim"),
   -- TODO: mini.diff from branch feat/grouping (confirm repo, see notes)
   -- { src = gh("nvim-mini/mini.nvim"), version = "feat/grouping" },
 
@@ -122,6 +123,7 @@ require("config.plugins.ui-colorscheme")
 require("config.plugins.snacks")
 require("config.plugins.editor")
 require("config.plugins.lsp")
+require("config.plugins.codediff")
 
 for mod, opts in pairs(setups) do
   local ok, m = pcall(require, mod)
