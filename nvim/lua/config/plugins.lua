@@ -100,7 +100,6 @@ local setups = {
   ["quicker"] = {},
   ["trouble"] = {},
   ["overlook"] = {},
-  ["oil"] = {},
   ["persistence"] = {},
   ["treesitter-context"] = {},
   ["conform"] = {},
@@ -115,6 +114,7 @@ require("config.plugins.editor")
 require("config.plugins.lsp")
 require("config.plugins.coding")
 require("config.plugins.codediff")
+require("config.plugins.util")
 
 for mod, opts in pairs(setups) do
   local ok, m = pcall(require, mod)
