@@ -101,7 +101,6 @@ local setups = {
   ["nvim-web-devicons"] = {},
   ["incline"] = {},
   ["tiny-inline-diagnostic"] = {},
-  ["hlchunk"] = {},
   ["colorizer"] = {},
   ["numb"] = {},
   ["colorful-menu"] = {},
@@ -111,7 +110,6 @@ local setups = {
   ["ultimate-autopair"] = {},
   ["Comment"] = {},
   ["mini.surround"] = {},
-  ["treesj"] = {},
   ["oil"] = {},
   ["persistence"] = {},
   ["treesitter-context"] = {},
@@ -119,7 +117,6 @@ local setups = {
   ["lspsaga"] = {},
   ["blink.cmp"] = {},
   ["conform"] = {},
-  ["gitsigns"] = {},
   ["octo"] = {},
   ["render-markdown"] = {},
 }
@@ -127,6 +124,7 @@ local setups = {
 -- colorscheme + hlargs first (was `priority = 1000`), then snacks (also priority 1000)
 require("config.plugins.ui-colorscheme")
 require("config.plugins.snacks")
+require("config.plugins.editor")
 
 for mod, opts in pairs(setups) do
   local ok, m = pcall(require, mod)
@@ -140,5 +138,5 @@ end
 
 -- Not covered above, port from your old specs by hand:
 --   neotest (+ neotest-phpunit adapter), none-ls sources, nvim-lint
---   linters_by_ft, dial.nvim / genghis / key-menu keymaps, github-preview,
+--   linters_by_ft, dial.nvim keymaps, github-preview,
 --   nvim-treesitter (ensure_installed / highlight)
