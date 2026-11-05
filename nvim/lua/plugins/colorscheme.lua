@@ -1,13 +1,4 @@
 return {
-  -- {
-  --   "https://github.com/mofiqul/vscode.nvim",
-  --   config = function()
-  --     require("vscode").setup({
-  --       transparent = true,
-  --     })
-  --     vim.cmd([[colorscheme vscode]])
-  --   end,
-  -- },
   {
     "craftzdog/solarized-osaka.nvim",
     lazy = false,
@@ -15,7 +6,7 @@ return {
     event = { "BufReadPre", "BufReadPost", "BufAdd", "BufNewFile" },
     opts = {
       style = "vivid",
-      vivid_brightness = 0.3,
+      -- vivid_brightness = 0.3,
       styles = {
         comments = { italic = true },
         keywords = { italic = true },
