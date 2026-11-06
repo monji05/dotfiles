@@ -1,0 +1,8 @@
+[*]
+indent_type = space
+
+[*.lua]
+indent_size = 2
+
+[*.php]
+indent_size = 4
