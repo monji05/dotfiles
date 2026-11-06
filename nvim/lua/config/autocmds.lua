@@ -17,7 +17,6 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
-
 -- swtching between camel case and snake case
 vim.api.nvim_create_user_command("SwitchCase", function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -41,8 +40,6 @@ vim.api.nvim_create_user_command("SwitchCase", function()
   end
 end, {})
 
-
-
 -- This file is automatically loaded by lazyvim.config.init.
 local function augroup(name)
   return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
@@ -57,4 +54,3 @@ vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
     end
   end,
 })
-
