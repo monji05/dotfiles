@@ -52,7 +52,6 @@ vim.pack.add({
   gh("Wansmer/treesj"),
   gh("chrisgrieser/nvim-genghis"),
   gh("stevearc/oil.nvim"),
-  gh("folke/persistence.nvim"),
   gh("kkoomen/vim-doge"),
   gh("stevearc/conform.nvim"),
 
