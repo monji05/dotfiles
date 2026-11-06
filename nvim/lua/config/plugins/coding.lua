@@ -1,8 +1,14 @@
-
 require("Comment").setup({
   toggler = {
     line = "<leader>u",
     block = "gc",
+  },
+})
+
+require("ultimate-autopair").setup({
+  bs = { -- *ultimate-autopair-map-backspace-config*
+    single_delete = true,
+    -- <!--|--> > bs > <!-|
   },
 })
 
@@ -22,8 +28,24 @@ require("mini.surround").setup({
   },
 })
 
-require("ultimate-autopair").setup({
-  bs = {
-    single_delete = true,
+require("conform").setup({
+  formatters_by_ft = {
+    json = { "fixjson", "jq" },
+    php = { "phpcbf" },
+    javascript = { "biome" }, -- faster 35x than prettier
+    typescript = { "biome" },
+    go = { "gofumpt" },
+    lua = { "stylua" },
   },
+  format_on_save = {
+    timeout_ms = 500,
+    lsp_format = "fallback",
+  },
+})
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  group = vim.api.nvim_create_augroup("conform-format-on-save", { clear = true }),
+  callback = function(args)
+    require("conform").format({ bufnr = args.buf, timeout_ms = 500, lsp_format = "fallback" })
+  end,
 })
