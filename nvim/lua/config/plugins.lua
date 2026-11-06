@@ -1,18 +1,10 @@
--- lua/config/plugins.lua -- vim.pack (Neovim 0.12+) replacement for lazy.nvim
---
--- 1) PackChanged hooks   (must come BEFORE vim.pack.add)
--- 2) vim.pack.add        (install + load, in order)
--- 3) setup() calls       (replaces lazy's `opts` / `config`)
-
 local gh = function(repo) return "https://github.com/" .. repo end
 
--- ---------------------------------------------------------------- 1) hooks
 vim.api.nvim_create_autocmd("PackChanged", {
   callback = function(ev)
     local name, kind = ev.data.spec.name, ev.data.kind
     if kind == "delete" then return end
     if name == "nvim-treesitter" then
-      -- plugin isn't on the runtimepath yet right after install/update
       if not ev.data.active then vim.cmd.packadd("nvim-treesitter") end
       vim.cmd("TSUpdate")
     elseif name == "vim-doge" then
@@ -22,8 +14,6 @@ vim.api.nvim_create_autocmd("PackChanged", {
   end,
 })
 
--- ------------------------------------------------------------- 2) install
--- Dependencies come first so they are on the runtimepath when needed.
 vim.pack.add({
   -- libraries
   gh("nvim-lua/plenary.nvim"),
@@ -55,12 +45,10 @@ vim.pack.add({
   gh("chrisgrieser/nvim-genghis"),
   gh("stevearc/oil.nvim"),
   gh("folke/persistence.nvim"),
-  { src = gh("craftzdog/mini.diff"), version = "feat/grouping"},
-  gh("altermo/ultimate-autopair.nvim"),
-
+  { src = gh("craftzdog/mini.diff"), version = "feat/grouping" },
+  { src = gh("altermo/ultimate-autopair.nvim"), version = "v0.6" },
 
   -- treesitter
-  -- lsp.lua starts treesitter by hand (vim.treesitter.start), i.e. the `main` branch
   { src = gh("nvim-treesitter/nvim-treesitter"), version = "main" },
   gh("nvim-treesitter/nvim-treesitter-context"),
 
@@ -77,8 +65,6 @@ vim.pack.add({
   gh("lewis6991/gitsigns.nvim"),
   gh("pwntester/octo.nvim"),
   gh("esmuellert/codediff.nvim"),
-  -- TODO: mini.diff from branch feat/grouping (confirm repo, see notes)
-  -- { src = gh("nvim-mini/mini.nvim"), version = "feat/grouping" },
 
   -- docs / markup / preview
   gh("MeanderingProgrammer/render-markdown.nvim"),
@@ -87,14 +73,9 @@ vim.pack.add({
   gh("kkoomen/vim-doge"),
 })
 
--- ------------------------------------------------------------- 3) setup()
--- lazy.nvim called setup() automatically for specs that had `opts`.
--- Here every plugin gets a default setup(); replace `{}` with the `opts`
--- from the old lua/plugins/*.lua spec. Missing modules are skipped silently.
 local setups = {
   ["mini.icons"] = {},
   ["nvim-web-devicons"] = {},
-  ["incline"] = {},
   ["colorizer"] = {},
   ["numb"] = {},
   ["quicker"] = {},
@@ -107,8 +88,8 @@ local setups = {
   ["render-markdown"] = {},
 }
 
--- colorscheme + hlargs first (was `priority = 1000`), then snacks (also priority 1000)
 require("config.plugins.ui-colorscheme")
+require("config.plugins.ui")
 require("config.plugins.snacks")
 require("config.plugins.editor")
 require("config.plugins.lsp")
@@ -125,4 +106,3 @@ for mod, opts in pairs(setups) do
     end
   end
 end
-
