@@ -55,6 +55,7 @@ vim.pack.add({
   gh("stevearc/oil.nvim"),
   gh("folke/persistence.nvim"),
   gh("kkoomen/vim-doge"),
+  gh("stevearc/conform.nvim"),
 
   -- treesitter
   { src = gh("nvim-treesitter/nvim-treesitter"), version = "main" },
@@ -65,7 +66,6 @@ vim.pack.add({
   gh("neovim/nvim-lspconfig"),
   gh("nvimdev/lspsaga.nvim"),
   { src = gh("saghen/blink.cmp"), version = vim.version.range("*") },
-  gh("stevearc/conform.nvim"),
   gh("mfussenegger/nvim-lint"),
   gh("nvimtools/none-ls.nvim"),
 
@@ -77,8 +77,6 @@ vim.pack.add({
 
   -- docs / markup / preview
   gh("MeanderingProgrammer/render-markdown.nvim"),
-  gh("wallpants/github-preview.nvim"),
-  gh("mpas/marp-nvim"),
 })
 
 local setups = {
@@ -90,9 +88,7 @@ local setups = {
   ["overlook"] = {},
   ["persistence"] = {},
   ["treesitter-context"] = {},
-  ["conform"] = {},
   ["octo"] = {},
-  ["render-markdown"] = {},
 }
 
 require("config.plugins.ui-colorscheme")

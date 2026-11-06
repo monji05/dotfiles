@@ -56,3 +56,5 @@ require("incline").setup({
     }
   end,
 })
+
+require("render-markdown").setup({})
