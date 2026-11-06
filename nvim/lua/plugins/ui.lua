@@ -169,3 +169,9 @@ require("mini.icons").setup({
     },
   },
 })
+
+require("tiny-cmdline").setup({
+  position = {
+    y = "20%",
+  },
+})

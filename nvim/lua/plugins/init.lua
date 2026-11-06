@@ -43,6 +43,7 @@ vim.pack.add({
   gh("emmanueltouzery/key-menu.nvim"),
   gh("folke/trouble.nvim"),
   gh("nvim-lualine/lualine.nvim"),
+  gh("rachartier/tiny-cmdline.nvim"),
 
   -- coding
   { src = gh("altermo/ultimate-autopair.nvim"), version = "v0.6" },
