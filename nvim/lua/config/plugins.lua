@@ -44,7 +44,6 @@ vim.pack.add({
   gh("kevinhwang91/nvim-bqf"),
   gh("stevearc/quicker.nvim"),
   gh("folke/trouble.nvim"),
-  gh("WilliamHsieh/overlook.nvim"),
 
   -- coding
   { src = gh("altermo/ultimate-autopair.nvim"), version = "v0.6" },
@@ -71,7 +70,6 @@ vim.pack.add({
 
   -- git
   gh("lewis6991/gitsigns.nvim"),
-  gh("pwntester/octo.nvim"),
   gh("esmuellert/codediff.nvim"),
   { src = "https://github.com/craftzdog/mini.diff", version = "feat/grouping" },
 
@@ -84,10 +82,8 @@ local setups = {
   ["nvim-web-devicons"] = {},
   ["colorizer"] = {},
   ["quicker"] = {},
-  ["overlook"] = {},
   ["persistence"] = {},
   ["treesitter-context"] = {},
-  ["octo"] = {},
 }
 
 require("config.plugins.ui-colorscheme")
