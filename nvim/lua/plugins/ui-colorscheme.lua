@@ -8,23 +8,10 @@ require("solarized-osaka").setup({
     sidebars = "transparent",
   },
 
-  ---@param colors ColorScheme
-  on_colors = function(colors)
-    -- colors.base0 = "#92a0a0"
-  end,
-
   ---@param hl Highlights
   ---@param c ColorScheme
   on_highlights = function(hl, c)
     hl.LineNr = { fg = c.base01 }
-    hl.CursorLineNr = { fg = c.green500, bg = c.green900 }
-
-    -- gitsigns word_diff
-    hl.GitSignsAddLnInline = { bg = c.green700 }
-    hl.GitSignsAddLn = { bg = c.green700 }
-    hl.GitSignsUntrackedLn = { bg = c.magenta }
-    hl.GitSignsChangeLn = { bg = c.yellow900 }
-    hl.GitSignsChangeLnInline = { bg = c.yellow700 }
   end,
 })
 
