@@ -1,7 +1,3 @@
-local gh = function(repo)
-	return "https://github.com/" .. repo
-end
-
 vim.api.nvim_create_autocmd("PackChanged", {
 	callback = function(ev)
 		local name, kind = ev.data.spec.name, ev.data.kind
@@ -24,56 +20,56 @@ vim.api.nvim_create_autocmd("PackChanged", {
 
 vim.pack.add({
 	-- libraries
-	gh("nvim-lua/plenary.nvim"),
-	gh("nvim-mini/mini.icons"),
-	gh("nvim-tree/nvim-web-devicons"),
+	"https://github.com/nvim-lua/plenary.nvim",
+	"https://github.com/nvim-mini/mini.icons",
+	"https://github.com/nvim-tree/nvim-web-devicons",
 
 	-- colorscheme
-	gh("craftzdog/solarized-osaka.nvim"),
+	"https://github.com/craftzdog/solarized-osaka.nvim",
 
 	-- UI
-	gh("folke/snacks.nvim"),
-	gh("b0o/incline.nvim"),
-	gh("rachartier/tiny-inline-diagnostic.nvim"),
-	gh("shellRaining/hlchunk.nvim"),
-	gh("m-demare/hlargs.nvim"),
-	gh("NvChad/nvim-colorizer.lua"),
-	gh("nacro90/numb.nvim"),
-	gh("xzbdmw/colorful-menu.nvim"),
-	gh("emmanueltouzery/key-menu.nvim"),
-	gh("folke/trouble.nvim"),
-	gh("nvim-lualine/lualine.nvim"),
-	gh("rachartier/tiny-cmdline.nvim"),
+	"https://github.com/folke/snacks.nvim",
+	"https://github.com/b0o/incline.nvim",
+	"https://github.com/rachartier/tiny-inline-diagnostic.nvim",
+	"https://github.com/shellRaining/hlchunk.nvim",
+	"https://github.com/m-demare/hlargs.nvim",
+	"https://github.com/NvChad/nvim-colorizer.lua",
+	"https://github.com/nacro90/numb.nvim",
+	"https://github.com/xzbdmw/colorful-menu.nvim",
+	"https://github.com/emmanueltouzery/key-menu.nvim",
+	"https://github.com/folke/trouble.nvim",
+	"https://github.com/nvim-lualine/lualine.nvim",
+	"https://github.com/rachartier/tiny-cmdline.nvim",
 
 	-- coding
-	{ src = gh("altermo/ultimate-autopair.nvim"), version = "v0.6" },
-	gh("numToStr/Comment.nvim"),
-	gh("nvim-mini/mini.surround"),
-	gh("Wansmer/treesj"),
-	gh("chrisgrieser/nvim-genghis"),
-	gh("stevearc/oil.nvim"),
-	gh("kkoomen/vim-doge"),
-	gh("stevearc/conform.nvim"),
+	{ src = "https://github.com/altermo/ultimate-autopair.nvim", version = "v0.6" },
+	"https://github.com/numToStr/Comment.nvim",
+	"https://github.com/nvim-mini/mini.surround",
+	"https://github.com/Wansmer/treesj",
+	"https://github.com/chrisgrieser/nvim-genghis",
+	"https://github.com/stevearc/oil.nvim",
+	"https://github.com/kkoomen/vim-doge",
+	"https://github.com/stevearc/conform.nvim",
 
 	-- treesitter
-	{ src = gh("nvim-treesitter/nvim-treesitter"), version = "main" },
-	gh("nvim-treesitter/nvim-treesitter-context"),
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
+	"https://github.com/nvim-treesitter/nvim-treesitter-context",
 
 	-- LSP / completion / format / lint
-	gh("mason-org/mason.nvim"),
-	gh("neovim/nvim-lspconfig"),
-	gh("nvimdev/lspsaga.nvim"),
-	{ src = gh("saghen/blink.cmp"), version = vim.version.range("*") },
-	gh("mfussenegger/nvim-lint"),
-	gh("nvimtools/none-ls.nvim"),
+	"https://github.com/mason-org/mason.nvim",
+	"https://github.com/neovim/nvim-lspconfig",
+	"https://github.com/nvimdev/lspsaga.nvim",
+	{ src = "https://github.com/saghen/blink.cmp", version = vim.version.range("*") },
+	"https://github.com/mfussenegger/nvim-lint",
+	"https://github.com/nvimtools/none-ls.nvim",
 
 	-- git
-	gh("lewis6991/gitsigns.nvim"),
-	gh("esmuellert/codediff.nvim"),
+	"https://github.com/lewis6991/gitsigns.nvim",
+	"https://github.com/esmuellert/codediff.nvim",
 	{ src = "https://github.com/craftzdog/mini.diff", version = "feat/grouping" },
 
 	-- docs / markup / preview
-	gh("MeanderingProgrammer/render-markdown.nvim"),
+	"https://github.com/MeanderingProgrammer/render-markdown.nvim",
 })
 
 require("plugins.ui")
