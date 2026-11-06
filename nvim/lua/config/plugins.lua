@@ -42,6 +42,7 @@ vim.pack.add({
   gh("xzbdmw/colorful-menu.nvim"),
   gh("emmanueltouzery/key-menu.nvim"),
   gh("folke/trouble.nvim"),
+  gh("nvim-lualine/lualine.nvim"),
 
   -- coding
   { src = gh("altermo/ultimate-autopair.nvim"), version = "v0.6" },
