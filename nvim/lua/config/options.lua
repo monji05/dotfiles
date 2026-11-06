@@ -13,6 +13,7 @@ vim.opt.shiftwidth = 2 -- Indent width
 vim.opt.softtabstop = 2 -- Soft tab stop
 vim.opt.expandtab = true -- Use spaces instead of tabs
 vim.opt.smartindent = true -- Smart auto-indenting
+vim.opt.autoindent = true -- Copy indent from current line when starting a new line
 
 -- Search settings
 vim.opt.ignorecase = true -- Case insensitive search
@@ -48,7 +49,7 @@ vim.opt.clipboard:append("unnamedplus") -- Use system clipboard
 
 -- Cursor settings
 vim.opt.guicursor =
-  "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
+	"n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
 
 -- Folding settings
 vim.opt.foldmethod = "expr" -- Use expression for folding
@@ -76,39 +77,39 @@ vim.opt.fillchars:append("diff:╱")
 
 -- For floating cmdline and messages
 require("vim._core.ui2").enable({
-  enable = true,
-  msg = {
-    targets = {
-      [""] = "msg",
-      empty = "cmd",
-      bufwrite = "msg",
-      confirm = "cmd",
-      emsg = "pager",
-      echo = "msg",
-      echomsg = "msg",
-      echoerr = "pager",
-      completion = "cmd",
-      list_cmd = "pager",
-      lua_error = "pager",
-      lua_print = "msg",
-      progress = "pager",
-      rpc_error = "pager",
-      quickfix = "msg",
-      search_cmd = "cmd",
-      search_count = "cmd",
-      shell_cmd = "pager",
-      shell_err = "pager",
-      shell_out = "pager",
-      shell_ret = "msg",
-      undo = "msg",
-      verbose = "pager",
-      wildlist = "cmd",
-      wmsg = "msg",
-      typed_cmd = "cmd",
-    },
-    cmd = { height = 0.5 },
-    dialog = { height = 0.5 },
-    msg = { height = 0.3, timeout = 5000 },
-    pager = { height = 0.5 },
-  },
+	enable = true,
+	msg = {
+		targets = {
+			[""] = "msg",
+			empty = "cmd",
+			bufwrite = "msg",
+			confirm = "cmd",
+			emsg = "pager",
+			echo = "msg",
+			echomsg = "msg",
+			echoerr = "pager",
+			completion = "cmd",
+			list_cmd = "pager",
+			lua_error = "pager",
+			lua_print = "msg",
+			progress = "pager",
+			rpc_error = "pager",
+			quickfix = "msg",
+			search_cmd = "cmd",
+			search_count = "cmd",
+			shell_cmd = "pager",
+			shell_err = "pager",
+			shell_out = "pager",
+			shell_ret = "msg",
+			undo = "msg",
+			verbose = "pager",
+			wildlist = "cmd",
+			wmsg = "msg",
+			typed_cmd = "cmd",
+		},
+		cmd = { height = 0.5 },
+		dialog = { height = 0.5 },
+		msg = { height = 0.3, timeout = 5000 },
+		pager = { height = 0.5 },
+	},
 })
