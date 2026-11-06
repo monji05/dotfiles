@@ -83,7 +83,6 @@ local setups = {
   ["mini.icons"] = {},
   ["nvim-web-devicons"] = {},
   ["colorizer"] = {},
-  ["numb"] = {},
   ["quicker"] = {},
   ["overlook"] = {},
   ["persistence"] = {},

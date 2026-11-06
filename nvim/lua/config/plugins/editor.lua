@@ -1,13 +1,13 @@
 require("mini.diff").setup({
   view = {
-		-- show whole reference part above whole buffer part, as in `git diff`
-		overlay_style = "hunk",
-	},
-	mappings = {
-		-- same keymaps as codediff.nvim
-		goto_next = "]c",
-		goto_prev = "[c",
-	},
+    -- show whole reference part above whole buffer part, as in `git diff`
+    overlay_style = "hunk",
+  },
+  mappings = {
+    -- same keymaps as codediff.nvim
+    goto_next = "]c",
+    goto_prev = "[c",
+  },
 })
 
 require("hlchunk").setup({
@@ -60,3 +60,5 @@ do
   keymap("n", "<leader>nf", genghis.createNewFile, { desc = "New file" })
   keymap("n", "<leader>yf", genghis.duplicateFile, { desc = "Duplicate file" })
 end
+
+require("numb").setup({})
