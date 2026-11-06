@@ -57,8 +57,10 @@ require("incline").setup({
   end,
 })
 
+-- render-markdown
 require("render-markdown").setup({})
 
+-- lualine
 -- 現在のバッファにアタッチされているLSPクライアント名を返す
 local function lsp_clients()
   local clients = vim.lsp.get_clients({ bufnr = 0 })
@@ -109,4 +111,17 @@ vim.api.nvim_create_autocmd("LspProgress", {
   callback = function()
     require("lualine").refresh()
   end,
+})
+
+-- treesitter
+require("nvim-treesitter").setup({})
+
+require("nvim-treesitter").install({
+  "vim",
+  "php",
+  "diff",
+  "lua",
+  "json",
+  "go",
+  "javascript",
 })

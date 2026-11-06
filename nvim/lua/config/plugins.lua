@@ -81,7 +81,6 @@ local setups = {
   ["nvim-web-devicons"] = {},
   ["colorizer"] = {},
   ["persistence"] = {},
-  ["treesitter-context"] = {},
 }
 
 require("config.plugins.ui-colorscheme")
