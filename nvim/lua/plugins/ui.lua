@@ -1,3 +1,4 @@
+local icons = require("utils.icons")
 require("solarized-osaka").setup({
   style = "vivid",
   styles = {
@@ -217,5 +218,27 @@ require("mini.icons").setup({
 require("tiny-cmdline").setup({
   position = {
     y = "20%",
+  },
+})
+
+vim.diagnostic.config({
+  underline = true,
+  update_in_insert = false,
+  virtual_text = {
+    spacing = 4,
+    source = "if_many",
+    prefix = "●",
+    format = function(diagnostic)
+      return string.format("%s (%s: %s)", diagnostic.message, diagnostic.source, diagnostic.code)
+    end,
+  },
+  severity_sort = true,
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = icons.diagnostics.Error,
+      [vim.diagnostic.severity.WARN] = icons.diagnostics.Warn,
+      [vim.diagnostic.severity.HINT] = icons.diagnostics.Hint,
+      [vim.diagnostic.severity.INFO] = icons.diagnostics.Info,
+    },
   },
 })
