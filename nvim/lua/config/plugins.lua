@@ -39,14 +39,13 @@ vim.pack.add({
   gh("WilliamHsieh/overlook.nvim"),
 
   -- editing
+  { src = gh("altermo/ultimate-autopair.nvim"), version = "v0.6" },
   gh("numToStr/Comment.nvim"),
   gh("nvim-mini/mini.surround"),
   gh("Wansmer/treesj"),
   gh("chrisgrieser/nvim-genghis"),
   gh("stevearc/oil.nvim"),
   gh("folke/persistence.nvim"),
-  { src = gh("craftzdog/mini.diff"), version = "feat/grouping" },
-  { src = gh("altermo/ultimate-autopair.nvim"), version = "v0.6" },
 
   -- treesitter
   { src = gh("nvim-treesitter/nvim-treesitter"), version = "main" },
@@ -65,6 +64,7 @@ vim.pack.add({
   gh("lewis6991/gitsigns.nvim"),
   gh("pwntester/octo.nvim"),
   gh("esmuellert/codediff.nvim"),
+  { src = "https://github.com/craftzdog/mini.diff", version = "feat/grouping" },
 
   -- docs / markup / preview
   gh("MeanderingProgrammer/render-markdown.nvim"),
@@ -79,7 +79,6 @@ local setups = {
   ["colorizer"] = {},
   ["numb"] = {},
   ["quicker"] = {},
-  ["trouble"] = {},
   ["overlook"] = {},
   ["persistence"] = {},
   ["treesitter-context"] = {},
@@ -96,6 +95,7 @@ require("config.plugins.lsp")
 require("config.plugins.coding")
 require("config.plugins.codediff")
 require("config.plugins.util")
+require("config.plugins.diagnostic")
 
 for mod, opts in pairs(setups) do
   local ok, m = pcall(require, mod)
