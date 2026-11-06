@@ -77,7 +77,6 @@ vim.pack.add({
   gh("MeanderingProgrammer/render-markdown.nvim"),
 })
 
-require("plugins.ui-colorscheme")
 require("plugins.ui")
 require("plugins.snacks")
 require("plugins.editor")
