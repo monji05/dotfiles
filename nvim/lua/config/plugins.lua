@@ -1,14 +1,22 @@
-local gh = function(repo) return "https://github.com/" .. repo end
+local gh = function(repo)
+  return "https://github.com/" .. repo
+end
 
 vim.api.nvim_create_autocmd("PackChanged", {
   callback = function(ev)
     local name, kind = ev.data.spec.name, ev.data.kind
-    if kind == "delete" then return end
+    if kind == "delete" then
+      return
+    end
     if name == "nvim-treesitter" then
-      if not ev.data.active then vim.cmd.packadd("nvim-treesitter") end
+      if not ev.data.active then
+        vim.cmd.packadd("nvim-treesitter")
+      end
       vim.cmd("TSUpdate")
     elseif name == "vim-doge" then
-      if not ev.data.active then vim.cmd.packadd("vim-doge") end
+      if not ev.data.active then
+        vim.cmd.packadd("vim-doge")
+      end
       vim.cmd("call doge#install()")
     end
   end,
