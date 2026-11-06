@@ -76,13 +76,6 @@ vim.pack.add({
   gh("MeanderingProgrammer/render-markdown.nvim"),
 })
 
-local setups = {
-  ["mini.icons"] = {},
-  ["nvim-web-devicons"] = {},
-  ["colorizer"] = {},
-  ["persistence"] = {},
-}
-
 require("config.plugins.ui-colorscheme")
 require("config.plugins.ui")
 require("config.plugins.snacks")
@@ -92,13 +85,3 @@ require("config.plugins.coding")
 require("config.plugins.codediff")
 require("config.plugins.util")
 require("config.plugins.diagnostic")
-
-for mod, opts in pairs(setups) do
-  local ok, m = pcall(require, mod)
-  if ok and type(m) == "table" and m.setup then
-    local ok2, err = pcall(m.setup, opts)
-    if not ok2 then
-      vim.notify(("setup(%s) failed: %s"):format(mod, err), vim.log.levels.WARN)
-    end
-  end
-end
