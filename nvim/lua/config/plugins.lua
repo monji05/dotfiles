@@ -38,7 +38,7 @@ vim.pack.add({
   gh("folke/trouble.nvim"),
   gh("WilliamHsieh/overlook.nvim"),
 
-  -- editing
+  -- coding
   { src = gh("altermo/ultimate-autopair.nvim"), version = "v0.6" },
   gh("numToStr/Comment.nvim"),
   gh("nvim-mini/mini.surround"),
@@ -46,6 +46,7 @@ vim.pack.add({
   gh("chrisgrieser/nvim-genghis"),
   gh("stevearc/oil.nvim"),
   gh("folke/persistence.nvim"),
+  gh("kkoomen/vim-doge"),
 
   -- treesitter
   { src = gh("nvim-treesitter/nvim-treesitter"), version = "main" },
@@ -70,7 +71,6 @@ vim.pack.add({
   gh("MeanderingProgrammer/render-markdown.nvim"),
   gh("wallpants/github-preview.nvim"),
   gh("mpas/marp-nvim"),
-  gh("kkoomen/vim-doge"),
 })
 
 local setups = {
