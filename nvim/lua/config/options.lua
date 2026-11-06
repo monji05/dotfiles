@@ -1,99 +1,114 @@
--- --- 環境設定 ---
--- OS判定: Unix系なら英語(UTF-8)を強制。エラーメッセージの文字化け防止などに役立ちます。
-if vim.fn.has("unix") == 1 then
-  vim.env.LANG = "en_US.UTF-8"
-else
-  vim.env.LANG = "en"
-end
+-- Basic settings
+vim.opt.number = true -- Line numbers
+vim.opt.relativenumber = true -- Relative line numbers
+vim.opt.title = true -- Use titlestring for window
+vim.opt.cursorline = true -- Highlight current line
+vim.opt.wrap = false -- Don't wrap lines
+vim.opt.scrolloff = 10 -- Keep 10 lines above/below cursor
+vim.opt.sidescrolloff = 8 -- Keep 8 columns left/right of cursor
 
--- 内部エンコーディングをUTF-8に設定
-vim.o.encoding = "utf-8"
+-- Indentation
+vim.opt.tabstop = 2 -- Tab width
+vim.opt.shiftwidth = 2 -- Indent width
+vim.opt.softtabstop = 2 -- Soft tab stop
+vim.opt.expandtab = true -- Use spaces instead of tabs
+vim.opt.smartindent = true -- Smart auto-indenting
 
--- --- キーマッピングの基本 ---
--- Leaderキー（プレフィックスキー）をスペースキーに設定（LazyVimの推奨設定）
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+-- Search settings
+vim.opt.ignorecase = true -- Case insensitive search
+vim.opt.smartcase = true -- Case sensitive if uppercase in search
 
--- --- 行番号と表示 ---
-vim.opt.relativenumber = true -- 相対行番号を表示（現在行からの距離がわかる）
-vim.opt.signcolumn = "yes" -- 左端のサイン列（Gitの状態やエラー表示用）を常に表示し、ガタつきを防ぐ
-vim.opt.number = true -- 現在行の行番号を表示
+-- Visual settings
+vim.opt.termguicolors = true -- Enable 24-bit colors
+vim.opt.signcolumn = "yes" -- Always show sign column
+vim.opt.showmatch = true -- Highlight matching brackets
+vim.opt.matchtime = 2 -- How long to show matching bracket
+vim.opt.cmdheight = 0 -- Command line height
+vim.opt.completeopt = "menuone,noinsert,noselect" -- Completion options
+vim.opt.pumheight = 10 -- Popup menu height
+vim.opt.pumblend = 10 -- Popup menu transparency
+vim.opt.winborder = "rounded" -- The default border style of floating windows
+vim.opt.laststatus = 3
 
-vim.opt.title = true -- ターミナルのタイトルをNeovimで編集中のファイル名に変更
+-- File handling
+vim.opt.writebackup = false -- Don't create backup before writing
+vim.opt.swapfile = false -- Don't create swap files
+vim.opt.undofile = true -- Persistent undo
+vim.opt.undodir = vim.fn.expand("~/.cache/nvim/undodir") -- Undo directory
+vim.opt.updatetime = 300 -- Faster completion
+vim.opt.timeoutlen = 500 -- Key timeout duration
+vim.opt.ttimeoutlen = 0 -- Key code timeout
 
--- --- インデント（字下げ）設定 ---
-vim.opt.autoindent = true -- 改行時に前の行のインデントを継続
-vim.opt.smartindent = true -- C言語のような構文に合わせてインデントを自動調整
-vim.opt.tabstop = 2 -- タブ文字をスペース2つ分として表示
-vim.opt.shiftwidth = 2 -- 自動インデントの幅をスペース2つ分に設定
-vim.opt.expandtab = true -- タブ入力をスペースに変換（スペース派の設定）
-vim.opt.smarttab = true -- 行頭のタブ入力をshiftwidthに合わせて調整
+-- Behavior settings
+vim.opt.iskeyword:append("-") -- Treat dash as part of word
+vim.opt.path:append("**") -- Include subdirectories in search
+vim.opt.wildignore:append({ "*/node_modules/*" }) -- Ignore node_modules
+vim.opt.mouse = "" -- Disable mouse support
+vim.opt.clipboard:append("unnamedplus") -- Use system clipboard
 
--- --- 検索・コマンドライン ---
-vim.opt.hlsearch = true -- 検索マッチ箇所をハイライト
-vim.opt.backup = false -- バックアップファイル（~付き）を作成しない
-vim.opt.showcmd = true -- 入力中のコマンドを右下に表示
-vim.opt.cmdheight = 1 -- コマンドラインの高さを1行確保
-vim.opt.inccommand = "split" -- 置換コマンド入力中に、プレビュー画面を分割してリアルタイム表示
-vim.opt.ignorecase = true -- 検索時に大文字・小文字を区別しない
--- ※スマートケース（大文字が含まれる場合のみ区別）の設定を入れる場合: vim.opt.smartcase = true
+-- Cursor settings
+vim.opt.guicursor =
+  "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
 
--- --- スクロール・ナビゲーション ---
-vim.opt.scrolloff = 30 -- ★特徴的: カーソルの上下に常に30行の余白を保つ（常に画面中央で編集するスタイル）
-vim.opt.backupskip = { "/tmp/*", "/private/tmp/*" } -- 特定のパスではバックアップを作らない
-vim.opt.breakindent = true -- 折り返された行もインデントを維持して見やすくする
-vim.opt.wrap = false -- 長い行を折り返さない（画面外へ突き抜ける）
-vim.opt.backspace = { "start", "eol", "indent" } -- Backspaceキーで何でも消せるようにする
-vim.opt.path:append({ "**" }) -- `:find` コマンドなどでサブディレクトリまで再帰的に検索
-vim.opt.iskeyword:append("-") -- ハイフン付きの単語（kebab-case）を1つの単語として扱う
+-- Folding settings
+vim.opt.foldmethod = "expr" -- Use expression for folding
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()" -- Use treesitter for folding
+vim.opt.foldlevel = 99 -- Start with all folds open
 
--- --- システム・ウィンドウ ---
-vim.opt.laststatus = 3 -- ★ステータスライン（下のバー）を非表示にする（通常は2か3）pane分割してもステータスラインは分割したくない場合は3
-vim.opt.shada = "" -- ★Shada（履歴やマークなどの保存）を無効化（再起動で履歴が消える設定）
-vim.opt.swapfile = false -- スワップファイル（.swp）を作成しない
-vim.opt.shell = "fish" -- Neovim内で使うシェルを `fish` に指定
-vim.opt.splitbelow = true -- 横分割時、新しいウィンドウを下に開く
-vim.opt.splitright = true -- 縦分割時、新しいウィンドウを右に開く
-vim.opt.wildignore:append({ "*/node_modules/*" }) -- ファイル検索などで `node_modules` を無視
-vim.opt.splitkeep = "cursor" -- 分割時にカーソル位置がずれないように画面スクロールを維持
-vim.opt.mouse = "" -- ★マウス操作を無効化（LazyVimデフォルトは有効）
+-- Split behavior
+vim.opt.splitbelow = true -- Horizontal splits go below
+vim.opt.splitright = true -- Vertical splits go right
 
--- --- 見た目・ハイライト ---
-vim.opt.background = "dark" -- 背景色をダークモード向けに設定
+-- Key mappings
+vim.g.mapleader = " " -- Set leader key to space
+vim.g.maplocalleader = " " -- Set local leader key (NEW)
 
--- UI記号のカスタマイズ（折りたたみ、Diffの表示など）
-vim.opt.fillchars = {
-  foldopen = "",
-  foldclose = "",
-  fold = " ",
-  foldsep = " ",
-  diff = "╱",
-  eob = " ", -- バッファの終わり（チルダ ~）を空白にして隠す
-}
+-- Built-in netrw
+vim.g.netrw_keepdir = 0 -- Keep the current directory and the browsing directory synced
+vim.g.netrw_localcopydircmd = "cp -r" -- Enable recursive copy of directories
 
--- --- 自動コマンド ---
--- インサートモードを抜けた時にペーストモードを解除（誤爆防止）
-vim.api.nvim_create_autocmd("InsertLeave", {
-  pattern = "*",
-  command = "set nopaste",
+-- Command-line completion
+vim.opt.wildmode = "longest:full,full"
+vim.opt.wildignore:append({ "*.o", "*.obj", "*.pyc", "*.class", "*.jar" })
+
+-- Diff view
+vim.opt.fillchars:append("diff:╱")
+
+-- For floating cmdline and messages
+require("vim._core.ui2").enable({
+  enable = true,
+  msg = {
+    targets = {
+      [""] = "msg",
+      empty = "cmd",
+      bufwrite = "msg",
+      confirm = "cmd",
+      emsg = "pager",
+      echo = "msg",
+      echomsg = "msg",
+      echoerr = "pager",
+      completion = "cmd",
+      list_cmd = "pager",
+      lua_error = "pager",
+      lua_print = "msg",
+      progress = "pager",
+      rpc_error = "pager",
+      quickfix = "msg",
+      search_cmd = "cmd",
+      search_count = "cmd",
+      shell_cmd = "pager",
+      shell_err = "pager",
+      shell_out = "pager",
+      shell_ret = "msg",
+      undo = "msg",
+      verbose = "pager",
+      wildlist = "cmd",
+      wmsg = "msg",
+      typed_cmd = "cmd",
+    },
+    cmd = { height = 0.5 },
+    dialog = { height = 0.5 },
+    msg = { height = 0.3, timeout = 5000 },
+    pager = { height = 0.5 },
+  },
 })
-
--- --- その他 ---
--- ブロックコメント内でEnterを押した時、自動でアスタリスクなどを挿入する
-vim.opt.formatoptions:append({ "r" })
-
--- Markdownプレビュープラグインのテーマ設定（Solarized Osaka）
-vim.api.nvim_command([[let g:nvim_markdown_preview_theme = 'solarized-osaka']])
-
--- Git Blameプラグインを無効化（行ごとのGit情報を出さない）
-vim.g.gitblame_enabled = 0
-
--- アンダーカール（波線の下線）を有効にするためのターミナルエスケープシーケンス設定
-vim.cmd([[let &t_Cs = "\e[4:3m"]])
-vim.cmd([[let &t_Ce = "\e[4:0m"]])
-
--- クリップボード
-vim.opt.clipboard:append({ "unnamed", "unnamedplus" })
-
--- 現在行をハイライト
-vim.opt.cursorline = true
