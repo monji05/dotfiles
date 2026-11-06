@@ -41,8 +41,6 @@ vim.pack.add({
   gh("nacro90/numb.nvim"),
   gh("xzbdmw/colorful-menu.nvim"),
   gh("emmanueltouzery/key-menu.nvim"),
-  gh("kevinhwang91/nvim-bqf"),
-  gh("stevearc/quicker.nvim"),
   gh("folke/trouble.nvim"),
 
   -- coding
@@ -81,7 +79,6 @@ local setups = {
   ["mini.icons"] = {},
   ["nvim-web-devicons"] = {},
   ["colorizer"] = {},
-  ["quicker"] = {},
   ["persistence"] = {},
   ["treesitter-context"] = {},
 }
