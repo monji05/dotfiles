@@ -23,11 +23,8 @@ vim.api.nvim_create_autocmd("VimLeavePre", {
 })
 
 vim.keymap.set("n", ";s", function()
-  local files = vim.fn.glob(dir .. "*.vim", false, true)
-  table.sort(files, function(a, b)
-    return vim.fn.getftime(a) > vim.fn.getftime(b)
-  end)
-  if files[1] then
-    vim.cmd("silent! source " .. vim.fn.fnameescape(files[1]))
-  end
-end, { desc = "Restore last session" })
+	local file = session_file()
+	if vim.fn.filereadable(file) == 1 then
+		vim.cmd("silent! source " .. vim.fn.fnameescape(file))
+	end
+end, { desc = "Restore session (cwd)" })
