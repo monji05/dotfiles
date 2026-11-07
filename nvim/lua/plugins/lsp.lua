@@ -70,6 +70,7 @@ require("colorful-menu").setup({
 		zls = { align_type_to_right = true },
 		roslyn = { extra_info_hl = "@comment" },
 		basedpyright = { extra_info_hl = "@comment" },
+		intelephense = { extra_info_hl = "@comment" },
 
 		fallback = true,
 	},
