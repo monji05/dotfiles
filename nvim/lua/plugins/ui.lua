@@ -89,15 +89,15 @@ require("incline").setup({
 
 		local is_modified = {}
 		if vim.bo[props.buf].modified then
-			table.insert(is_modified, { " ", guifg = colors.green300 })
+			table.insert(is_modified, { " " .. "[+]" })
 		end
 		return {
 			-- { show_git_branch() },
 			-- { get_diagnostic_label() },
 			-- { get_git_diff() },
-			{ is_modified },
 			{ (ft_icon or "") .. " ", guifg = ft_color, guibg = "none" },
 			{ dirpath .. filename, gui = vim.bo[props.buf].modified and "bold,italic" or "bold" },
+			{ is_modified },
 		}
 	end,
 })
