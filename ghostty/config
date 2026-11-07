@@ -18,7 +18,7 @@ background = #001c24
 # background = #1F1F1F
 
 background-blur-radius = 20
-background-opacity = 0.85
+background-opacity = 0.8
 command = /opt/homebrew/bin/fish
 cursor-color = "#47FF9C"
 font-family = "PlemolJP Console NF Text"
@@ -34,7 +34,7 @@ keybind = unconsumed:ctrl+j=goto_split:bottom
 keybind = unconsumed:ctrl+k=goto_split:top
 keybind = unconsumed:ctrl+l=goto_split:right
 
-theme = "Solarized Darcula"
+theme = "Solarized Dark - Vivid"
 
 copy-on-select = true
 window-padding-y = 1
