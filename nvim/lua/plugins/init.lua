@@ -30,7 +30,6 @@ vim.pack.add({
 	-- UI
 	"https://github.com/folke/snacks.nvim",
 	"https://github.com/b0o/incline.nvim",
-	"https://github.com/rachartier/tiny-inline-diagnostic.nvim",
 	"https://github.com/shellRaining/hlchunk.nvim",
 	"https://github.com/m-demare/hlargs.nvim",
 	"https://github.com/NvChad/nvim-colorizer.lua",

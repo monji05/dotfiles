@@ -132,16 +132,3 @@ require("blink.cmp").setup({
 		},
 	},
 })
-
--- tiny-inline-diagnostic
--- Original spec loaded this on `LspAttach` (after config/lsp.lua had set
--- virtual_text = true), so it could turn virtual_text back off. Keep that
--- ordering: do the setup on the first LspAttach, not at startup.
-vim.api.nvim_create_autocmd("LspAttach", {
-	once = true,
-	group = vim.api.nvim_create_augroup("tiny-inline-diagnostic-setup", { clear = true }),
-	callback = function()
-		require("tiny-inline-diagnostic").setup()
-		vim.diagnostic.config({ virtual_text = false })
-	end,
-})
