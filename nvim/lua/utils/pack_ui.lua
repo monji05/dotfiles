@@ -4,7 +4,8 @@ local M = {}
 local state = {
 	buf = nil,
 	win = nil,
-	plugins = {},
+	plugins = {}, -- vim.pack.get() の結果(名前順)
+	view = {}, -- 画面に表示している順序(行番号 -> プラグインの対応に使う)
 	behind = {}, -- name -> n(遅れているコミット数) / 0 / -1(失敗) / -2(version固定)
 	rev = {}, -- name -> short hash
 	checking = false,
@@ -16,11 +17,7 @@ local HEADER_LINES = 3
 
 local function load_plugins()
 	state.plugins = vim.pack.get(nil, { info = false })
-	-- 使用中を上、未使用(削除候補)を下にして、それぞれ名前順
 	table.sort(state.plugins, function(a, b)
-		if a.active ~= b.active then
-			return a.active
-		end
 		return a.spec.name:lower() < b.spec.name:lower()
 	end)
 end
@@ -33,31 +30,71 @@ local function git(path, args, cb)
 	end)
 end
 
+-- 1: 更新あり / 2: 使用中(更新なし・未判定) / 3: 未使用(削除候補)
+local function rank(p)
+	if not p.active then
+		return 3
+	end
+	if (state.behind[p.spec.name] or 0) > 0 then
+		return 1
+	end
+	return 2
+end
+
+local function build_view()
+	local view = vim.list_slice(state.plugins)
+	table.sort(view, function(a, b)
+		local ra, rb = rank(a), rank(b)
+		if ra ~= rb then
+			return ra < rb
+		end
+		if ra == 1 then
+			-- 更新あり同士は遅れているコミット数が多い順
+			local ba, bb = state.behind[a.spec.name], state.behind[b.spec.name]
+			if ba ~= bb then
+				return ba > bb
+			end
+		end
+		return a.spec.name:lower() < b.spec.name:lower()
+	end)
+	return view
+end
+
 local function render()
 	if not (state.buf and vim.api.nvim_buf_is_valid(state.buf)) then
 		return
 	end
 
-	local plugins = state.plugins
+	-- 並び替え前にカーソル下のプラグイン名を覚えておき、並び替え後も追従させる
+	local cursor_name
+	if state.win and vim.api.nvim_win_is_valid(state.win) then
+		local row = vim.api.nvim_win_get_cursor(state.win)[1]
+		local old = state.view[row - HEADER_LINES]
+		cursor_name = old and old.spec.name
+	end
+
+	local view = build_view()
+	state.view = view
+
 	local updates, unused = 0, 0
-	for _, p in ipairs(plugins) do
+	for _, p in ipairs(view) do
 		if not p.active then
 			unused = unused + 1
 		end
-		if p.active and (state.behind[p.spec.name] or 0) > 0 then
+		if rank(p) == 1 then
 			updates = updates + 1
 		end
 	end
 
 	local status = state.checking and string.format("checking... %d/%d", state.done, state.total) or ""
 	local lines = {
-		string.format(" vim.pack   Installed: %d   Updates: %d   Unused: %d   %s", #plugins, updates, unused, status),
+		string.format(" vim.pack   Installed: %d   Updates: %d   Unused: %d   %s", #view, updates, unused, status),
 		" [U] check  [u] update  [d] delete under cursor  [D] delete all unused  [r] reload  [q] close",
 		string.rep("─", 90),
 	}
 	local hls = { { 0, "Title" }, { 1, "Comment" }, { 2, "Comment" } }
 
-	for _, p in ipairs(plugins) do
+	for _, p in ipairs(view) do
 		local name = p.spec.name
 		local b = state.behind[name]
 		local text, hl
@@ -91,6 +128,16 @@ local function render()
 	vim.api.nvim_buf_clear_namespace(state.buf, ns, 0, -1)
 	for _, h in ipairs(hls) do
 		vim.api.nvim_buf_set_extmark(state.buf, ns, h[1], 0, { line_hl_group = h[2] })
+	end
+
+	-- カーソルを同じプラグインの行へ戻す
+	if cursor_name and state.win and vim.api.nvim_win_is_valid(state.win) then
+		for i, p in ipairs(view) do
+			if p.spec.name == cursor_name then
+				pcall(vim.api.nvim_win_set_cursor, state.win, { i + HEADER_LINES, 0 })
+				break
+			end
+		end
 	end
 end
 
@@ -162,6 +209,8 @@ local function delete(names, force)
 end
 
 function M.open()
+	state.view = {}
+
 	state.buf = vim.api.nvim_create_buf(false, true)
 	vim.bo[state.buf].bufhidden = "wipe"
 	vim.bo[state.buf].filetype = "packui"
@@ -204,7 +253,7 @@ function M.open()
 	-- カーソル行のプラグインを削除(使用中なら force)
 	map("d", function()
 		local row = vim.api.nvim_win_get_cursor(state.win)[1]
-		local p = state.plugins[row - HEADER_LINES]
+		local p = state.view[row - HEADER_LINES] -- 表示順で引く
 		if not p then
 			return
 		end
