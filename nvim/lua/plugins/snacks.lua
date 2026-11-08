@@ -25,11 +25,11 @@ return {
         },
         grep = {
           hidden = true,
-          ignored = true,
+          ignored = false,
           cmd = "rg",
           regex = true,
         },
-        explorer = { hidden = false, ignored = false, exclude = { "**/.git", "**/.DS_Store" } },
+        explorer = { hidden = false, ignored = true, exclude = { "**/.git", "**/.DS_Store" } },
       },
     },
     bigfile = { enabled = true },

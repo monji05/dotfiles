@@ -13,5 +13,8 @@ return {
       auto_open_debounce_ms = 80, -- debounce window (ms) for the above
       view_mode = "tree",
     },
+    diff = {
+      layout = 'inline'
+    }
   },
 }
