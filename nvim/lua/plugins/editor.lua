@@ -1,147 +1,71 @@
-return {
-  {
-    "shellRaining/hlchunk.nvim",
-    event = { "BufEnter" },
-    opts = {
-      chunk = {
-        enable = true,
-      },
-      indent = {
-        enable = true,
-        chars = { "▏" },
-        -- chars = { "│" },
-        -- style = "#383c3d",
-        -- solarized-osaka
-        style = "#073642",
-        -- vague
-        -- style = "#405065",
-      },
-    },
+require("mini.diff").setup({
+  view = {
+    -- show whole reference part above whole buffer part, as in `git diff`
+    overlay_style = "hunk",
   },
-  -- {
-  --   "lukas-reineke/indent-blankline.nvim",
-  --   main = "ibl",
-  --   lazy = true,
-  --   ft = { "lua", "php", "html", "css", "js", "jsx", "ts", "tsx" },
-  --   opts = {
-  --     indent = {
-  --       char = "▏",
-  --       tab_char = "▏",
-  --     },
-  --     whitespace = {
-  --       -- remove_blankline_trail = false,
-  --       remove_blankline_trail = true,
-  --     },
-  --     scope = {
-  --       -- don't be true! tree-sitter cause error!
-  --       enabled = false,
-  --     },
-  --     exclude = {
-  --       filetypes = {
-  --         "help",
-  --         "startify",
-  --         "dashboard",
-  --         "packer",
-  --         "neogitstatus",
-  --         "NvimTree",
-  --         "Trouble",
-  --       },
-  --       buftypes = {
-  --         "terminal",
-  --         "nofile",
-  --       },
-  --     },
-  --   },
-  -- },
-  {
-    "lewis6991/gitsigns.nvim",
-    on_attach = function(buffer)
-      local gs = package.loaded.gitsigns
+})
 
-      local function map(mode, l, r, desc)
-        vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
-      end
+require("codediff").setup({
+  explorer = {
+    auto_open_on_cursor = true, -- auto-open diff for file under cursor while moving
+    auto_open_debounce_ms = 80, -- debounce window (ms) for the above
+    view_mode = "tree",
+  },
+})
 
-      -- stylua: ignore start
-      map("n", "[c", gs.next_hunk, "Next Hunk")
-      map("n", "]c", gs.prev_hunk, "Prev Hunk")
-      map({ "n", "v" }, "<leader>gs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
-      map({ "n", "v" }, "<leader>gr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
-      -- map("n", "<leader>ghS", gs.stage_buffer, "Stage Buffer")
-      -- map("n", "<leader>ghu", gs.undo_stage_hunk, "Undo Stage Hunk")
-      -- map("n", "<leader>ghR", gs.reset_buffer, "Reset Buffer")
-      map("n", "<leader>ghp", gs.preview_hunk, "Preview Hunk")
-      map("n", "<leader>ghb", function() gs.blame_line({ full = true }) end, "Blame Line")
-      map("n", "<leader>ghd", gs.diffthis, "Diff This")
-      map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
-      map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
-    end,
-  },
-  {
-    -- very useful join, split word in bracket, function
-    "Wansmer/treesj",
-    desc = "Toggle Treesitter Join",
-    cmd = { "TSJToggle", "TSJSplit", "TSJJoin" },
-    opts = { use_default_keymaps = false },
-  },
-  {
-    "lewis6991/gitsigns.nvim",
-    event = { "BufEnter", "InsertEnter" },
-    opts = {
-      signs = {
-        add = { text = "▎" },
-        change = { text = "▎" },
-        delete = { text = "" },
-        topdelete = { text = "" },
-        changedelete = { text = "▎" },
-        untracked = { text = "▎" },
-      },
-      on_attach = function(buffer)
-        local gs = package.loaded.gitsigns
+vim.keymap.set("n", "<leader>do", "<CMD>CodeDiff<CR>", { desc = "CodeDiff" })
 
-        local function map(mode, l, r, desc)
-          vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
-        end
+require("hlchunk").setup({
+  chunk = {
+    enable = true,
+  },
+  indent = {
+    enable = true,
+    chars = { "▏" },
+    -- solarized-osaka
+    style = "#073642",
+  },
+})
 
-        -- stylua: ignore start
-        map("n", "]c", gs.next_hunk, "Next Hunk")
-        map("n", "[c", gs.prev_hunk, "Prev Hunk")
-        map({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
-        map({ "n", "v" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
-        map("n", "<leader>ghS", gs.stage_buffer, "Stage Buffer")
-        map("n", "<leader>ghu", gs.undo_stage_hunk, "Undo Stage Hunk")
-        map("n", "<leader>ghR", gs.reset_buffer, "Reset Buffer")
-        map("n", "<leader>h", gs.preview_hunk, "Preview Hunk")
-        map("n", "<leader>ghd", gs.diffthis, "Diff This")
-        map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
-        map('n', '<leader>tw', gs.toggle_word_diff)
-        map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
-      end,
-    },
+-- very useful: join / split things in brackets, function args, ...
+-- (no default keymaps; use :TSJToggle / :TSJSplit / :TSJJoin)
+require("treesj").setup({ use_default_keymaps = false })
+
+require("gitsigns").setup({
+  signs = {
+    add = { text = "▎" },
+    change = { text = "▎" },
+    delete = { text = "▎" },
+    topdelete = { text = "▎" },
+    changedelete = { text = "▎" },
+    untracked = { text = "▎" },
   },
-  {
-    -- Convenience file operations for neovim
-    -- copyFilename: Copy the filename.
-    -- copyFilepath: Copy the absolute filepath.
-    -- copyFilepathWithTilde: Copy the absolute filepath, replacing the home directory with ~.
-    -- copyRelativePath: Copy the relative filepath.
-    -- copyDirectoryPath: Copy the absolute directory path.
-    -- copyRelativeDirectoryPath: Copy the relative directory path.
-    -- copyFileItself: Copies the file itself. This means you can paste it into the browser or file manager. (Currently only on macOS, PRs welcome.)
-    "chrisgrieser/nvim-genghis",
-    config = function()
-      local keymap = vim.keymap.set
-      local genghis = require("genghis")
-      keymap("n", "<leader>yP", genghis.copyFilePath)
-      keymap("n", "<leader>yp", genghis.copyRelativePath)
-      -- keymap("n", "<leader>yn", genghis.copyFilename)
-      -- keymap("n", "<leader>cx", genghis.chmodx)
-      keymap("n", "<leader>rf", genghis.renameFile)
-      keymap("n", "<leader>mf", genghis.moveAndRenameFile)
-      keymap("n", "<leader>nf", genghis.createNewFile)
-      keymap("n", "<leader>yf", genghis.duplicateFile)
-      -- keymap("n", "<leader>df", function() genghis.trashFile { trashLocation = "your/path" } end) -- default: "$HOME/.Trash".
-      -- keymap("x", "<leader>x", genghis.moveSelectionToNewFile)
-    end,
-  },
-}
+  on_attach = function(buffer)
+    local gs = package.loaded.gitsigns
+
+    local function map(mode, l, r, desc)
+      vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
+    end
+
+    map("n", "]c", gs.next_hunk, "Next Hunk")
+    map("n", "[c", gs.prev_hunk, "Prev Hunk")
+    map({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
+    map({ "n", "v" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
+    map("n", "<leader>h", gs.preview_hunk, "Preview Hunk")
+  end,
+})
+
+-- Convenience file operations (copy path, rename, move, create, duplicate)
+do
+  local keymap = vim.keymap.set
+  local genghis = require("genghis")
+  -- the function name changed between versions (copyFilePath / copyFilepath)
+  keymap("n", "<leader>yP", genghis.copyFilepath or genghis.copyFilePath, { desc = "Copy absolute path" })
+  keymap("n", "<leader>yp", genghis.copyRelativePath, { desc = "Copy relative path" })
+  keymap("n", "<leader>rf", genghis.renameFile, { desc = "Rename file" })
+  keymap("n", "<leader>mf", genghis.moveAndRenameFile, { desc = "Move and rename file" })
+  keymap("n", "<leader>nf", genghis.createNewFile, { desc = "New file" })
+  keymap("n", "<leader>yf", genghis.duplicateFile, { desc = "Duplicate file" })
+end
+
+require("numb").setup({})

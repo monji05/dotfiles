@@ -84,18 +84,10 @@ keymap("n", "<Leader>f", "<cmd>Oil<CR>", { noremap = true, silent = true })
 -- neovim restart
 keymap("n", "<leader>R", "<cmd>restart<CR>", opts)
 
--- open lazy.nvim
-keymap("n", "<leader>l", "<cmd>Lazy<CR>", opts)
-
--- relaod session
-keymap("n", ";s", function()
-  require("persistence").load()
-end)
-
 keymap({ "n", "t" }, ";t", function()
-  Snacks.terminal.toggle(cmd, opts)
+	Snacks.terminal.toggle(cmd, opts)
 end)
 
+keymap({ "n" }, "==", "<CMD>wincmd=<CR>", opts)
 
-keymap({ "n" }, "<tab>", "<CMD>tabNext<CR>", opts)
-keymap({ "n" }, "<S-tab>", "<CMD>tabprevious<CR>", opts)
+keymap("n", "<leader>pp", "<cmd>PackUI<cr>", opts)
