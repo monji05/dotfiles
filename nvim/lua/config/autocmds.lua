@@ -55,3 +55,6 @@ vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
 	end,
 })
 
+vim.api.nvim_create_user_command("PackUI", function()
+	require("utils.pack_ui").open()
+end, {})

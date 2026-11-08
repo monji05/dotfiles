@@ -92,3 +92,5 @@ keymap({ "n", "t" }, ";t", function()
 end)
 
 keymap({ "n" }, "==", "<CMD>wincmd=<CR>", opts)
+
+keymap("n", "<leader>pp", "<cmd>PackUI<cr>", opts)
