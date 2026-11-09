@@ -67,8 +67,11 @@ vim.pack.add({
   "https://github.com/esmuellert/codediff.nvim",
   { src = "https://github.com/craftzdog/mini.diff", version = "feat/grouping" },
 
-  -- docs / markup / preview
-  "https://github.com/MeanderingProgrammer/render-markdown.nvim",
+	-- docs / markup / preview
+	"https://github.com/MeanderingProgrammer/render-markdown.nvim",
+
+	-- tmux
+	"https://github.com/christoomey/vim-tmux-navigator",
 })
 
 require("plugins.ui")
