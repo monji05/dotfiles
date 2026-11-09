@@ -69,6 +69,9 @@ vim.pack.add({
 
 	-- docs / markup / preview
 	"https://github.com/MeanderingProgrammer/render-markdown.nvim",
+
+	-- tmux
+	"https://github.com/christoomey/vim-tmux-navigator",
 })
 
 require("plugins.ui")

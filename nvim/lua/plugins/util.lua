@@ -5,6 +5,8 @@ require("oil").setup({
   keymaps = {
     ["h"] = { "actions.parent", mode = "n" },
     ["q"] = { "actions.close", mode = "n" },
+    ["<C-h>"] = false,
+    ["<C-l>"] = false,
   },
   view_options = {
     show_hidden = true,
