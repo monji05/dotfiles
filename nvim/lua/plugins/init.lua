@@ -22,7 +22,6 @@ vim.pack.add({
 	-- libraries
 	"https://github.com/nvim-lua/plenary.nvim",
 	"https://github.com/nvim-mini/mini.icons",
-	"https://github.com/nvim-tree/nvim-web-devicons",
 
 	-- colorscheme
 	"https://github.com/craftzdog/solarized-osaka.nvim",

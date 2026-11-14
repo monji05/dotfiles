@@ -44,7 +44,6 @@ if fg_color then
 end
 
 local colors = require("solarized-osaka.colors").setup()
-local devicons = require("nvim-web-devicons")
 
 require("incline").setup({
 	highlight = {
@@ -84,7 +83,7 @@ require("incline").setup({
 		else
 			dirpath = ""
 		end
-		local ft_icon, ft_color = devicons.get_icon_color(filename)
+		local ft_icon, ft_color = icons.file_icon_color(filename)
 		local separator = { "┊ ", guifg = colors.blue }
 
 		local is_modified = {}
