@@ -88,5 +88,3 @@ keymap("n", "<Leader>s", "<cmd>SwitchCase<CR>", { noremap = true, silent = true 
 keymap("n", "<leader>R", "<cmd>restart<CR>", opts)
 
 keymap({ "n" }, "==", "<CMD>wincmd=<CR>", opts)
-
-keymap("n", "<leader>pp", "<cmd>PackUI<cr>", opts)

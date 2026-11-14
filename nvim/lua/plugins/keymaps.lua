@@ -1,6 +1,7 @@
 local keymap = vim.keymap.set
 -- keymap for plugins
 keymap("n", "<Leader>f", ":Oil<CR>", { noremap = true, silent = true })
+keymap("n", "<leader>l", ":PackUI<CR>", { noremap = true, silent = true })
 
 -- key-menu.nvim
 vim.o.timeoutlen = 300
