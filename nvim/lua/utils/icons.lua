@@ -76,7 +76,7 @@ local function ch(n)
 end
 
 M.default = { ch(0xf15b), "#6d8086" } --
-M.folder = { ch(0xf07b), "#7ebae4" } --
+M.folder = { ch(0xe5ff), "#7ebae4" } --
 
 -- ファイル名が完全一致するもの(小文字で比較)
 local by_name = {
@@ -92,7 +92,9 @@ local by_name = {
 	["init.lua"] = { ch(0xe6ae), "#8dc149" },
 	["readme.md"] = { ch(0xf48a), "#ffffff" },
 	["license"] = { ch(0xf15c), "#d0bf41" },
-	[".editorconfig"] = { ch(0xe652), "#fff" },
+	[".editorconfig"] = { ch(0xe652), "#ffffff" },
+	["highlights.scm"] = { ch(0xe6b1), "#e8274b" },
+	["injections.scm"] = { ch(0xe6b1), "#e8274b" },
 }
 
 -- vim.filetype のファイルタイプごとのアイコンと色
