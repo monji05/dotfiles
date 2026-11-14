@@ -143,24 +143,6 @@ require("colorizer").setup({
 	},
 })
 
--- mini.icons
-require("mini.icons").setup({
-	extension = {
-		["php"] = {
-			glyph = "",
-			hl = "MiniIconsPurple",
-		},
-		["blade.php"] = {
-			glyph = "󰫐",
-			hl = "MiniIconsRed",
-		},
-		["composer.lock"] = {
-			glyph = "",
-			hl = "MiniIconsRed",
-		},
-	},
-})
-
 require("tiny-cmdline").setup({
 	position = {
 		y = "20%",

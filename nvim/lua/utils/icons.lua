@@ -98,8 +98,8 @@ local by_name = {
 local by_ft = {
 	lua = { ch(0xe620), "#51a0cf" },
 	vim = { ch(0xe62b), "#019833" },
-	php = { ch(0xe73d), "#a074c4" },
-	blade = { ch(0xe73d), "#f05340" },
+	php = { ch(0xf031f), "#a074c4" },
+	blade = { ch(0xf2f7), "#f05340" },
 	javascript = { ch(0xe74e), "#cbcb41" },
 	typescript = { ch(0xe628), "#519aba" },
 	javascriptreact = { ch(0xe7ba), "#20c2e3" },
@@ -211,5 +211,56 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 		hl_cache = {}
 	end,
 })
+
+-- mini.icons 代用(oil / snacks 用)
+local dir_hl_done = false
+local function dir_hl()
+	if not dir_hl_done then
+		vim.api.nvim_set_hl(0, "FileIconDir", { fg = M.folder[2] })
+		dir_hl_done = true
+	end
+	return "FileIconDir"
+end
+vim.api.nvim_create_autocmd("ColorScheme", {
+	group = vim.api.nvim_create_augroup("UtilsIconsDirHl", { clear = true }),
+	callback = function()
+		dir_hl_done = false
+	end,
+})
+
+--- package.loaded["mini.icons"] と _G.MiniIcons を差し替える
+--- oil / snacks を読み込む前に1回呼ぶ
+function M.install()
+	local shim = {}
+
+	function shim.get(category, name)
+		if category == "directory" then
+			return M.folder[1], dir_hl(), false
+		elseif category == "filetype" then
+			local icon, hl = M.file_icon_hl(nil, name)
+			return icon, hl, by_ft[name] == nil
+		elseif category == "extension" then
+			local fname = "x." .. tostring(name)
+			local icon, hl = M.file_icon_hl(fname)
+			return icon, hl, lookup(fname) == M.default
+		elseif category == "lsp" then
+			local k = M.kinds[name]
+			return k and vim.trim(k) or M.default[1], "Special", k == nil
+		elseif category == "file" then
+			local icon, hl = M.file_icon_hl(name)
+			return icon, hl, lookup(name) == M.default
+		end
+		local icon, hl = M.file_icon_hl("")
+		return icon, hl, true
+	end
+
+	-- 他のプラグインが呼んでも落ちないように空実装
+	function shim.setup() end
+	function shim.mock_nvim_web_devicons() end
+	function shim.tweak_lsp_kind() end
+
+	package.loaded["mini.icons"] = shim
+	_G.MiniIcons = shim
+end
 
 return M

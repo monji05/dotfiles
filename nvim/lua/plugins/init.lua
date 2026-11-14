@@ -21,7 +21,6 @@ vim.api.nvim_create_autocmd("PackChanged", {
 vim.pack.add({
 	-- libraries
 	"https://github.com/nvim-lua/plenary.nvim",
-	"https://github.com/nvim-mini/mini.icons",
 
 	-- colorscheme
 	"https://github.com/craftzdog/solarized-osaka.nvim",
@@ -68,7 +67,7 @@ vim.pack.add({
 	-- docs / markup / preview
 	"https://github.com/MeanderingProgrammer/render-markdown.nvim",
 })
-
+require("utils.icons").install()
 require("plugins.ui")
 require("plugins.snacks")
 require("plugins.editor")
