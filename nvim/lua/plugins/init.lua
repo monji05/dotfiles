@@ -34,7 +34,6 @@ vim.pack.add({
 	"https://github.com/nacro90/numb.nvim",
 	"https://github.com/xzbdmw/colorful-menu.nvim",
 	"https://github.com/emmanueltouzery/key-menu.nvim",
-	"https://github.com/folke/trouble.nvim",
 	"https://github.com/rachartier/tiny-cmdline.nvim",
 
 	-- coding
@@ -57,7 +56,6 @@ vim.pack.add({
 	"https://github.com/nvimdev/lspsaga.nvim",
 	{ src = "https://github.com/saghen/blink.cmp", version = vim.version.range("*") },
 	"https://github.com/mfussenegger/nvim-lint",
-	"https://github.com/nvimtools/none-ls.nvim",
 
 	-- git
 	"https://github.com/lewis6991/gitsigns.nvim",
