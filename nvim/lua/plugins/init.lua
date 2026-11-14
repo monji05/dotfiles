@@ -37,7 +37,6 @@ vim.pack.add({
 	"https://github.com/xzbdmw/colorful-menu.nvim",
 	"https://github.com/emmanueltouzery/key-menu.nvim",
 	"https://github.com/folke/trouble.nvim",
-	"https://github.com/nvim-lualine/lualine.nvim",
 	"https://github.com/rachartier/tiny-cmdline.nvim",
 
 	-- coding
