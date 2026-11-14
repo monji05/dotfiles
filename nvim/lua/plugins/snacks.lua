@@ -74,9 +74,6 @@ end, { desc = "Lazygit Current File History" })
 map("n", "<leader>gl", function()
 	Snacks.lazygit.log()
 end, { desc = "Lazygit Log (cwd)" })
-map("n", "<leader>gd", function()
-	Snacks.picker.git_diff()
-end, { desc = "Git Diff (Hunks)" })
 
 -- terminal
 map("n", "<c-/>", function()

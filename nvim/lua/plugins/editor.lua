@@ -1,9 +1,14 @@
-require("mini.diff").setup({
+local miniDiff = require("mini.diff")
+miniDiff.setup({
 	view = {
 		-- show whole reference part above whole buffer part, as in `git diff`
 		overlay_style = "hunk",
 	},
 })
+
+vim.keymap.set("n", "<leader>gd", function()
+	miniDiff.toggle_overlay()
+end, { desc = "Toggle MiniDiff overlay" })
 
 require("codediff").setup({
 	explorer = {
