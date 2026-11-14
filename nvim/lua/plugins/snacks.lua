@@ -80,7 +80,7 @@ end, { desc = "Git Diff (Hunks)" })
 
 -- terminal
 map("n", "<c-/>", function()
-	Snacks.terminal()
+	Snacks.terminal.toggle()
 end, { desc = "Toggle Terminal" })
 map("n", "<c-_>", function()
 	Snacks.terminal()
