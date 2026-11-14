@@ -89,9 +89,10 @@ local by_name = {
 	["makefile"] = { ch(0xe779), "#6d8086" },
 	["package.json"] = { ch(0xe71e), "#e8274b" },
 	["composer.json"] = { ch(0xe73d), "#a074c4" },
-	["init.lua"] = { ch(0xe620), "#51a0cf" },
+	["init.lua"] = { ch(0xe6ae), "#8dc149" },
 	["readme.md"] = { ch(0xf48a), "#ffffff" },
 	["license"] = { ch(0xf15c), "#d0bf41" },
+	[".editorconfig"] = { ch(0xe652), "#fff" },
 }
 
 -- vim.filetype のファイルタイプごとのアイコンと色
