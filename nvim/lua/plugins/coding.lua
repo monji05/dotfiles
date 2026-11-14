@@ -6,6 +6,18 @@ require("Comment").setup({
 })
 
 require("ultimate-autopair").setup({
+	fastwarp = { -- *ultimate-autopair-map-fastwarp-config*
+		enable = true,
+		enable_normal = true,
+		enable_reverse = true,
+		hopout = false,
+		--{(|)} > fastwarp > {(}|)
+		map = "<C-l>", --string or table
+		rmap = "<C-h>", --string or table
+		cmap = "<C-l>", --string or table
+		rcmap = "<C-h>", --string or table
+	},
+
 	bs = { -- *ultimate-autopair-map-backspace-config*
 		single_delete = true,
 		-- <!--|--> > bs > <!-|
