@@ -1,27 +1,27 @@
 require("oil").setup({
-  columns = {
-    "icon",
-  },
-  keymaps = {
-    ["h"] = { "actions.parent", mode = "n" },
-    ["q"] = { "actions.close", mode = "n" },
-  },
-  view_options = {
-    show_hidden = true,
-  },
-  float = {
-    border = "rounded",
-    win_options = {
-      winblend = 0,
-    },
-    max_width = 200,
-  },
-  preview_win = {
-    update_on_cursor_moved = true,
-  },
-  lsp_file_methods = {
-    enabled = true,
-    timeout_ms = 1000,
-    autosave_changes = true,
-  },
+	columns = {
+		"icon",
+	},
+	keymaps = {
+		["h"] = { "actions.parent", mode = "n" },
+		["q"] = { "actions.close", mode = "n" },
+	},
+	view_options = {
+		show_hidden = true,
+	},
+	float = {
+		border = "rounded",
+		win_options = {
+			winblend = 0,
+		},
+		max_width = 200,
+	},
+	preview_win = {
+		update_on_cursor_moved = true,
+	},
+	lsp_file_methods = {
+		enabled = true,
+		timeout_ms = 1000,
+		autosave_changes = true,
+	},
 })
