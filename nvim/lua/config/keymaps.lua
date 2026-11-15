@@ -10,6 +10,13 @@ local opts = { noremap = true, silent = true }
 -- jj is enable to move to normal mode
 keymap("i", "jj", "<ESC><CR>", opts)
 
+-- save on <Space> w
+keymap("n", "<leader>w", ":w<CR>", { noremap = false, desc = "save current file" })
+
+-- close current file on <Space> x
+keymap("n", "<leader>q", ":q<CR>", { noremap = false, desc = "quit current file" })
+keymap("n", "<leader>Q", ":qa<CR>", { desc = "Quit all" })
+
 -- cc to :nohl
 keymap("n", "cc", ":nohl<CR>", opts)
 
@@ -74,15 +81,8 @@ keymap("n", "<C-b>", "<C-b>zz", opts)
 
 keymap("n", "Y", "yy", opts)
 keymap("n", "<Leader>s", "<cmd>SwitchCase<CR>", { noremap = true, silent = true })
-keymap("n", "<Leader>f", "<cmd>Oil<CR>", { noremap = true, silent = true })
 
 -- neovim restart
 keymap("n", "<leader>R", "<cmd>restart<CR>", opts)
 
-keymap({ "n", "t" }, ";t", function()
-	Snacks.terminal.toggle(cmd, opts)
-end)
-
 keymap({ "n" }, "==", "<CMD>wincmd=<CR>", opts)
-
-keymap("n", "<leader>pp", "<cmd>PackUI<cr>", opts)

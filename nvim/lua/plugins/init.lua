@@ -27,40 +27,35 @@ vim.pack.add({
   -- colorscheme
   "https://github.com/craftzdog/solarized-osaka.nvim",
 
-  -- UI
-  "https://github.com/folke/snacks.nvim",
-  "https://github.com/b0o/incline.nvim",
-  "https://github.com/shellRaining/hlchunk.nvim",
-  "https://github.com/m-demare/hlargs.nvim",
-  "https://github.com/NvChad/nvim-colorizer.lua",
-  "https://github.com/nacro90/numb.nvim",
-  "https://github.com/xzbdmw/colorful-menu.nvim",
-  "https://github.com/emmanueltouzery/key-menu.nvim",
-  "https://github.com/folke/trouble.nvim",
-  "https://github.com/nvim-lualine/lualine.nvim",
-  "https://github.com/rachartier/tiny-cmdline.nvim",
+	-- UI
+	"https://github.com/folke/snacks.nvim",
+	"https://github.com/b0o/incline.nvim",
+	"https://github.com/shellRaining/hlchunk.nvim",
+	"https://github.com/m-demare/hlargs.nvim",
+	"https://github.com/NvChad/nvim-colorizer.lua",
+	"https://github.com/nacro90/numb.nvim",
+	"https://github.com/xzbdmw/colorful-menu.nvim",
+	"https://github.com/emmanueltouzery/key-menu.nvim",
+	"https://github.com/rachartier/tiny-cmdline.nvim",
 
-  -- coding
-  { src = "https://github.com/altermo/ultimate-autopair.nvim",  version = "v0.6" },
-  "https://github.com/numToStr/Comment.nvim",
-  "https://github.com/nvim-mini/mini.surround",
-  "https://github.com/Wansmer/treesj",
-  "https://github.com/chrisgrieser/nvim-genghis",
-  "https://github.com/stevearc/oil.nvim",
-  "https://github.com/kkoomen/vim-doge",
-  "https://github.com/stevearc/conform.nvim",
+	-- coding
+	{ src = "https://github.com/altermo/ultimate-autopair.nvim", version = "v0.6" },
+	"https://github.com/numToStr/Comment.nvim",
+	"https://github.com/nvim-mini/mini.surround",
+	"https://github.com/chrisgrieser/nvim-genghis",
+	"https://github.com/stevearc/oil.nvim",
+	"https://github.com/stevearc/conform.nvim",
 
   -- treesitter
   { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
   "https://github.com/nvim-treesitter/nvim-treesitter-context",
 
-  -- LSP / completion / format / lint
-  "https://github.com/mason-org/mason.nvim",
-  "https://github.com/neovim/nvim-lspconfig",
-  "https://github.com/nvimdev/lspsaga.nvim",
-  { src = "https://github.com/saghen/blink.cmp",    version = vim.version.range("*") },
-  "https://github.com/mfussenegger/nvim-lint",
-  "https://github.com/nvimtools/none-ls.nvim",
+	-- LSP / completion / format / lint
+	"https://github.com/mason-org/mason.nvim",
+	"https://github.com/neovim/nvim-lspconfig",
+	"https://github.com/nvimdev/lspsaga.nvim",
+	{ src = "https://github.com/saghen/blink.cmp", version = vim.version.range("*") },
+	"https://github.com/mfussenegger/nvim-lint",
 
   -- git
   "https://github.com/lewis6991/gitsigns.nvim",
@@ -73,7 +68,7 @@ vim.pack.add({
 	-- tmux
 	"https://github.com/christoomey/vim-tmux-navigator",
 })
-
+require("utils.icons").install()
 require("plugins.ui")
 require("plugins.snacks")
 require("plugins.editor")

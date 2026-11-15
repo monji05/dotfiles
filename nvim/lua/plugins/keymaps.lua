@@ -1,4 +1,7 @@
 local keymap = vim.keymap.set
+-- keymap for plugins
+keymap("n", "<Leader>f", ":Oil<CR>", { noremap = true, silent = true })
+keymap("n", "<leader>l", ":PackUI<CR>", { noremap = true, silent = true })
 
 -- key-menu.nvim
 vim.o.timeoutlen = 300
@@ -9,11 +12,6 @@ local key_menu = require("key-menu")
 key_menu.set("n", "<leader>")
 key_menu.set("n", ";")
 key_menu.set("n", "[")
-
--- Use the desc option to Vim's built-in vim.keymap.set to describe mappings.
-keymap("n", "<Space>w", "<Cmd>w<CR>", { desc = "Save" })
-keymap("n", "<Space>q", "<Cmd>q<CR>", { desc = "Quit" })
-keymap("n", "<Space>Q", "<Cmd>qa<CR>", { desc = "Quit all" })
 
 -- To describe the group of mappings under <Space>g, use key-menu.set.
 key_menu.set("n", "<Space>g", { desc = "Git" })
