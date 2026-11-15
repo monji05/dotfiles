@@ -13,7 +13,7 @@ require("codediff").setup({
   },
 })
 
-vim.keymap.set("n", "<leader>do", "<CMD>CodeDiff<CR>", { desc = "CodeDiff" })
+vim.keymap.set("n", "<leader>do", "<CMD>CodeDiff --inline<CR>", { desc = "CodeDiff" })
 
 require("hlchunk").setup({
   chunk = {
