@@ -9,11 +9,6 @@ vim.api.nvim_create_autocmd("PackChanged", {
 				vim.cmd.packadd("nvim-treesitter")
 			end
 			vim.cmd("TSUpdate")
-		elseif name == "vim-doge" then
-			if not ev.data.active then
-				vim.cmd.packadd("vim-doge")
-			end
-			vim.cmd("call doge#install()")
 		end
 	end,
 })
@@ -42,7 +37,6 @@ vim.pack.add({
 	"https://github.com/nvim-mini/mini.surround",
 	"https://github.com/chrisgrieser/nvim-genghis",
 	"https://github.com/stevearc/oil.nvim",
-	"https://github.com/kkoomen/vim-doge",
 	"https://github.com/stevearc/conform.nvim",
 
 	-- treesitter
