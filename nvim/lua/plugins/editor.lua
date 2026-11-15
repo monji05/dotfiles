@@ -32,10 +32,6 @@ require("hlchunk").setup({
 	},
 })
 
--- very useful: join / split things in brackets, function args, ...
--- (no default keymaps; use :TSJToggle / :TSJSplit / :TSJJoin)
-require("treesj").setup({ use_default_keymaps = false })
-
 require("gitsigns").setup({
 	signs = {
 		add = { text = "▎" },

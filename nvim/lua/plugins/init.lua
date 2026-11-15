@@ -40,7 +40,6 @@ vim.pack.add({
 	{ src = "https://github.com/altermo/ultimate-autopair.nvim", version = "v0.6" },
 	"https://github.com/numToStr/Comment.nvim",
 	"https://github.com/nvim-mini/mini.surround",
-	"https://github.com/Wansmer/treesj",
 	"https://github.com/chrisgrieser/nvim-genghis",
 	"https://github.com/stevearc/oil.nvim",
 	"https://github.com/kkoomen/vim-doge",
