@@ -27,7 +27,6 @@ vim.pack.add({
 	"https://github.com/m-demare/hlargs.nvim",
 	"https://github.com/NvChad/nvim-colorizer.lua",
 	"https://github.com/nacro90/numb.nvim",
-	"https://github.com/xzbdmw/colorful-menu.nvim",
 	"https://github.com/emmanueltouzery/key-menu.nvim",
 	"https://github.com/rachartier/tiny-cmdline.nvim",
 
