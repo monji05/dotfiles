@@ -10,16 +10,6 @@ vim.keymap.set("n", "<leader>gd", function()
   miniDiff.toggle_overlay()
 end, { desc = "Toggle MiniDiff overlay" })
 
-require("codediff").setup({
-  explorer = {
-    auto_open_on_cursor = true, -- auto-open diff for file under cursor while moving
-    auto_open_debounce_ms = 80, -- debounce window (ms) for the above
-    view_mode = "tree",
-  },
-})
-
-vim.keymap.set("n", "<leader>do", "<CMD>CodeDiff --inline<CR>", { desc = "CodeDiff" })
-
 require("hlchunk").setup({
   chunk = {
     enable = true,
@@ -48,12 +38,13 @@ require("gitsigns").setup({
       vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
     end
 
-    map("n", "]c", gs.next_hunk, "Next Hunk")
-    map("n", "[c", gs.prev_hunk, "Prev Hunk")
-    map({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
-    map({ "n", "v" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
-    map("n", "<leader>h", gs.preview_hunk, "Preview Hunk")
-  end,
+		map("n", "]c", gs.next_hunk, "Next Hunk")
+		map("n", "[c", gs.prev_hunk, "Prev Hunk")
+		map({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
+		map({ "n", "v" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
+		map("n", "<leader>h", gs.preview_hunk, "Preview Hunk")
+		map("n", "<leader>do", ":Gitsigns diff --unified<CR>", "Show Diff")
+	end,
 })
 
 -- Convenience file operations (copy path, rename, move, create, duplicate)

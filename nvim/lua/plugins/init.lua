@@ -34,7 +34,6 @@ vim.pack.add({
 	"https://github.com/m-demare/hlargs.nvim",
 	"https://github.com/NvChad/nvim-colorizer.lua",
 	"https://github.com/nacro90/numb.nvim",
-	"https://github.com/xzbdmw/colorful-menu.nvim",
 	"https://github.com/emmanueltouzery/key-menu.nvim",
 	"https://github.com/rachartier/tiny-cmdline.nvim",
 
@@ -57,10 +56,9 @@ vim.pack.add({
 	{ src = "https://github.com/saghen/blink.cmp", version = vim.version.range("*") },
 	"https://github.com/mfussenegger/nvim-lint",
 
-  -- git
-  "https://github.com/lewis6991/gitsigns.nvim",
-  "https://github.com/esmuellert/codediff.nvim",
-  { src = "https://github.com/craftzdog/mini.diff", version = "feat/grouping" },
+	-- git
+	"https://github.com/lewis6991/gitsigns.nvim",
+	{ src = "https://github.com/craftzdog/mini.diff", version = "feat/grouping" },
 
 	-- docs / markup / preview
 	"https://github.com/MeanderingProgrammer/render-markdown.nvim",
