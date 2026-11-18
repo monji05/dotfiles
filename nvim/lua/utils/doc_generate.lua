@@ -135,7 +135,7 @@ LANGS.php = {
 		for _, p in ipairs(c.params) do
 			local ty = p.type and esc(p.type) or "mixed"
 			local name = esc((p.variadic and "..." or "") .. p.name)
-			tags[#tags + 1] = (" * @param %s"):format(ty, name)
+			tags[#tags + 1] = (" * @param %s %s"):format(ty, name)
 		end
 		if c.ret then
 			local ty = c.ret ~= "" and esc(c.ret) or "mixed"
