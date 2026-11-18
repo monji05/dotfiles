@@ -51,7 +51,6 @@ vim.pack.add({
 
 	-- git
 	"https://github.com/lewis6991/gitsigns.nvim",
-	"https://github.com/esmuellert/codediff.nvim",
 	{ src = "https://github.com/craftzdog/mini.diff", version = "feat/grouping" },
 
 	-- docs / markup / preview
