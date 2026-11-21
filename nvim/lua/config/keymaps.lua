@@ -11,11 +11,10 @@ local opts = { noremap = true, silent = true }
 keymap("i", "jj", "<ESC><CR>", opts)
 
 -- save on <Space> w
-keymap("n", "<leader>w", ":w<CR>", { noremap = false, desc = "save current file" })
+keymap("n", "<C-s>", ":w<CR>", { noremap = false, desc = "save current file" })
 
 -- close current file on <Space> x
-keymap("n", "<leader>q", ":q<CR>", { noremap = false, desc = "quit current file" })
-keymap("n", "<leader>Q", ":qa<CR>", { desc = "Quit all" })
+keymap("n", "<leader>q", ":qa<CR>", { noremap = false, desc = "quit all files" })
 
 -- cc to :nohl
 keymap("n", "cc", ":nohl<CR>", opts)
