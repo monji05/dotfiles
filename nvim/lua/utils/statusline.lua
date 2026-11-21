@@ -95,13 +95,12 @@ local function esc(s)
 	return (s:gsub("%%", "%%%%"))
 end
 
--- Git ブランチ (.git/HEAD を直接読む。バッファ変数にキャッシュ)
-local function read_branch(bufnr)
+local function find_gitdir(bufnr)
 	local name = vim.api.nvim_buf_get_name(bufnr)
 	local dir = name ~= "" and vim.fs.dirname(name) or uv.cwd()
 	local git = vim.fs.find(".git", { upward = true, path = dir })[1]
 	if not git then
-		return ""
+		return nil
 	end
 	local stat = uv.fs_stat(git)
 	if stat and stat.type == "file" then -- worktree / submodule
@@ -112,14 +111,18 @@ local function read_branch(bufnr)
 		end
 		local p = line and line:match("^gitdir:%s*(.+)")
 		if not p then
-			return ""
+			return nil
 		end
 		if not (p:match("^/") or p:match("^%a:")) then
 			p = vim.fs.joinpath(vim.fs.dirname(git), p)
 		end
 		git = p
 	end
-	local f = io.open(git .. "/HEAD")
+	return git
+end
+
+local function read_head(gitdir)
+	local f = io.open(gitdir .. "/HEAD")
 	if not f then
 		return ""
 	end
@@ -128,12 +131,43 @@ local function read_branch(bufnr)
 	return head:match("^ref: refs/heads/(.+)") or head:sub(1, 7)
 end
 
+-- gitdir -> { handle = fs_event, branch = "main" }
+local watchers = {}
+
+local function watch(gitdir)
+	if watchers[gitdir] then
+		return
+	end
+	local w = { branch = read_head(gitdir), handle = uv.new_fs_event() }
+	watchers[gitdir] = w
+
+	-- HEAD は更新時に置き換えられる(rename)ことがあるので、ディレクトリを監視する
+	w.handle:start(
+		gitdir,
+		{},
+		vim.schedule_wrap(function(err, fname)
+			if err or (fname and fname ~= "HEAD") then
+				return
+			end
+			local new = read_head(gitdir)
+			if new ~= w.branch then
+				w.branch = new
+				vim.cmd.redrawstatus({ bang = true })
+			end
+		end)
+	)
+end
+
 local function update_branch(args)
 	local bufnr = args.buf
 	if vim.bo[bufnr].buftype ~= "" then
 		return
 	end
-	vim.b[bufnr].sl_branch = read_branch(bufnr)
+	local gitdir = find_gitdir(bufnr)
+	vim.b[bufnr].sl_gitdir = gitdir or false
+	if gitdir then
+		watch(gitdir)
+	end
 end
 
 local function diagnostics(bufnr)
@@ -182,7 +216,8 @@ function M.render()
 	local m = MODE_HL[key]
 
 	-- ===== 左 =====
-	local branch = vim.b[bufnr].sl_branch or ""
+	local gitdir = vim.b[bufnr].sl_gitdir
+	local branch = (gitdir and watchers[gitdir] and watchers[gitdir].branch) or ""
 	local left = { string.format("%%#SlA_%s# %s ", m, MODE_NAME[key]) }
 	if branch ~= "" then
 		table.insert(
@@ -228,6 +263,16 @@ function M.setup()
 		group = group,
 		callback = function()
 			vim.cmd.redrawstatus()
+		end,
+	})
+	vim.api.nvim_create_autocmd("VimLeavePre", {
+		group = group,
+		callback = function()
+			for _, w in pairs(watchers) do
+				if not w.handle:is_closing() then
+					w.handle:close()
+				end
+			end
 		end,
 	})
 end
