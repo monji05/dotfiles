@@ -3,7 +3,6 @@ require("oil").setup({
 		"icon",
 	},
 	keymaps = {
-		["h"] = { "actions.parent", mode = "n" },
 		["q"] = { "actions.close", mode = "n" },
 	},
 	view_options = {
