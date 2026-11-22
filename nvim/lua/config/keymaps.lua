@@ -11,7 +11,7 @@ local opts = { noremap = true, silent = true }
 keymap("i", "jj", "<ESC><CR>", opts)
 
 -- save on <Space> w
-keymap("n", "<C-s>", ":w<CR>", { noremap = false, desc = "save current file" })
+keymap("n", "<leader>w", ":w<CR>", { noremap = false, desc = "save current file" })
 
 -- close current file on <Space> x
 keymap("n", "<leader>q", ":q<CR>", { noremap = false, desc = "quit current file" })
