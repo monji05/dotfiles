@@ -95,45 +95,79 @@ local function esc(s)
   return (s:gsub("%%", "%%%%"))
 end
 
--- Git ブランチ (.git/HEAD を直接読む。バッファ変数にキャッシュ)
-local function read_branch(bufnr)
-  local name = vim.api.nvim_buf_get_name(bufnr)
-  local dir = name ~= "" and vim.fs.dirname(name) or uv.cwd()
-  local git = vim.fs.find(".git", { upward = true, path = dir })[1]
-  if not git then
-    return ""
-  end
-  local stat = uv.fs_stat(git)
-  if stat and stat.type == "file" then -- worktree / submodule
-    local f = io.open(git)
-    local line = f and f:read("*l")
-    if f then
-      f:close()
-    end
-    local p = line and line:match("^gitdir:%s*(.+)")
-    if not p then
-      return ""
-    end
-    if not (p:match("^/") or p:match("^%a:")) then
-      p = vim.fs.joinpath(vim.fs.dirname(git), p)
-    end
-    git = p
-  end
-  local f = io.open(git .. "/HEAD")
-  if not f then
-    return ""
-  end
-  local head = f:read("*l") or ""
-  f:close()
-  return head:match("^ref: refs/heads/(.+)") or head:sub(1, 7)
+local function find_gitdir(bufnr)
+	local name = vim.api.nvim_buf_get_name(bufnr)
+	local dir = name ~= "" and vim.fs.dirname(name) or uv.cwd()
+	local git = vim.fs.find(".git", { upward = true, path = dir })[1]
+	if not git then
+		return nil
+	end
+	local stat = uv.fs_stat(git)
+	if stat and stat.type == "file" then -- worktree / submodule
+		local f = io.open(git)
+		local line = f and f:read("*l")
+		if f then
+			f:close()
+		end
+		local p = line and line:match("^gitdir:%s*(.+)")
+		if not p then
+			return nil
+		end
+		if not (p:match("^/") or p:match("^%a:")) then
+			p = vim.fs.joinpath(vim.fs.dirname(git), p)
+		end
+		git = p
+	end
+	return git
+end
+
+local function read_head(gitdir)
+	local f = io.open(gitdir .. "/HEAD")
+	if not f then
+		return ""
+	end
+	local head = f:read("*l") or ""
+	f:close()
+	return head:match("^ref: refs/heads/(.+)") or head:sub(1, 7)
+end
+
+-- gitdir -> { handle = fs_event, branch = "main" }
+local watchers = {}
+
+local function watch(gitdir)
+	if watchers[gitdir] then
+		return
+	end
+	local w = { branch = read_head(gitdir), handle = uv.new_fs_event() }
+	watchers[gitdir] = w
+
+	-- HEAD は更新時に置き換えられる(rename)ことがあるので、ディレクトリを監視する
+	w.handle:start(
+		gitdir,
+		{},
+		vim.schedule_wrap(function(err, fname)
+			if err or (fname and fname ~= "HEAD") then
+				return
+			end
+			local new = read_head(gitdir)
+			if new ~= w.branch then
+				w.branch = new
+				vim.cmd.redrawstatus({ bang = true })
+			end
+		end)
+	)
 end
 
 local function update_branch(args)
-  local bufnr = args.buf
-  if vim.bo[bufnr].buftype ~= "" then
-    return
-  end
-  vim.b[bufnr].sl_branch = read_branch(bufnr)
+	local bufnr = args.buf
+	if vim.bo[bufnr].buftype ~= "" then
+		return
+	end
+	local gitdir = find_gitdir(bufnr)
+	vim.b[bufnr].sl_gitdir = gitdir or false
+	if gitdir then
+		watch(gitdir)
+	end
 end
 
 local function diagnostics(bufnr)
@@ -181,36 +215,37 @@ function M.render()
   local key = MODE_HL[raw] and raw or "n"
   local m = MODE_HL[key]
 
-  -- ===== 左 =====
-  local branch = vim.b[bufnr].sl_branch or ""
-  local left = { string.format("%%#SlA_%s# %s ", m, MODE_NAME[key]) }
-  if branch ~= "" then
-    table.insert(
-      left,
-      string.format("%%#SlAB_%s#%s%%#SlB# %s %s %%#SlBSep#%s", m, I.rarrow, I.branch, esc(branch), I.rarrow)
-    )
-  else
-    table.insert(left, string.format("%%#SlAC_%s#%s", m, I.rarrow))
-  end
-  table.insert(left, "%#SlC# ")
-  local diag = diagnostics(bufnr)
-  if diag ~= "" then
-    table.insert(left, diag .. "%#SlC# ")
-  end
-  table.insert(left, filename(bufnr))
-  local clients = vim.lsp.get_clients({ bufnr = bufnr })
-  if #clients > 0 then
-    local names = {}
-    for _, c in ipairs(clients) do
-      table.insert(names, c.name)
-    end
-    table.insert(left, " %#SlCSub#" .. I.rthin .. " %#SlLsp#" .. esc(table.concat(names, ",")) .. "%#SlC#")
-  end
-  local prog = lsp_progress()
-  if prog ~= "" then
-    table.insert(left, "  " .. prog)
-  end
-  return table.concat(left)
+	-- ===== 左 =====
+	local gitdir = vim.b[bufnr].sl_gitdir
+	local branch = (gitdir and watchers[gitdir] and watchers[gitdir].branch) or ""
+	local left = { string.format("%%#SlA_%s# %s ", m, MODE_NAME[key]) }
+	if branch ~= "" then
+		table.insert(
+			left,
+			string.format("%%#SlAB_%s#%s%%#SlB# %s %s %%#SlBSep#%s", m, I.rarrow, I.branch, esc(branch), I.rarrow)
+		)
+	else
+		table.insert(left, string.format("%%#SlAC_%s#%s", m, I.rarrow))
+	end
+	table.insert(left, "%#SlC# ")
+	local diag = diagnostics(bufnr)
+	if diag ~= "" then
+		table.insert(left, diag .. "%#SlC# ")
+	end
+	table.insert(left, filename(bufnr))
+	local clients = vim.lsp.get_clients({ bufnr = bufnr })
+	if #clients > 0 then
+		local names = {}
+		for _, c in ipairs(clients) do
+			table.insert(names, c.name)
+		end
+		table.insert(left, " %#SlCSub#" .. I.rthin .. " %#SlLsp#" .. esc(table.concat(names, ",")) .. "%#SlC#")
+	end
+	local prog = lsp_progress()
+	if prog ~= "" then
+		table.insert(left, "  " .. prog)
+	end
+	return table.concat(left)
 end
 
 function M.setup()
@@ -218,18 +253,28 @@ function M.setup()
   vim.o.statusline = "%!v:lua.require'utils.statusline'.render()"
   -- vim.o.laststatus = 3 -- 全ウィンドウで1本にしたい場合
 
-  local group = vim.api.nvim_create_augroup("UserStatusline", { clear = true })
-  vim.api.nvim_create_autocmd("ColorScheme", { group = group, callback = set_hl })
-  vim.api.nvim_create_autocmd(
-    { "BufEnter", "BufWritePost", "FocusGained", "DirChanged" },
-    { group = group, callback = update_branch }
-  )
-  vim.api.nvim_create_autocmd({ "LspProgress", "LspAttach", "LspDetach", "DiagnosticChanged" }, {
-    group = group,
-    callback = function()
-      vim.cmd.redrawstatus()
-    end,
-  })
+	local group = vim.api.nvim_create_augroup("UserStatusline", { clear = true })
+	vim.api.nvim_create_autocmd("ColorScheme", { group = group, callback = set_hl })
+	vim.api.nvim_create_autocmd(
+		{ "BufEnter", "BufWritePost", "FocusGained", "DirChanged" },
+		{ group = group, callback = update_branch }
+	)
+	vim.api.nvim_create_autocmd({ "LspProgress", "LspAttach", "LspDetach", "DiagnosticChanged" }, {
+		group = group,
+		callback = function()
+			vim.cmd.redrawstatus()
+		end,
+	})
+	vim.api.nvim_create_autocmd("VimLeavePre", {
+		group = group,
+		callback = function()
+			for _, w in pairs(watchers) do
+				if not w.handle:is_closing() then
+					w.handle:close()
+				end
+			end
+		end,
+	})
 end
 
 return M

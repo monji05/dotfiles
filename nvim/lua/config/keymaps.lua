@@ -15,7 +15,7 @@ keymap("n", "<leader>w", ":w<CR>", { noremap = false, desc = "save current file"
 
 -- close current file on <Space> x
 keymap("n", "<leader>q", ":q<CR>", { noremap = false, desc = "quit current file" })
-keymap("n", "<leader>Q", ":qa<CR>", { desc = "Quit all" })
+keymap("n", "<leader>Q", ":qa<CR>", { noremap = false, desc = "quit all files" })
 
 -- cc to :nohl
 keymap("n", "cc", ":nohl<CR>", opts)
